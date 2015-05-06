@@ -6,8 +6,86 @@
 
 @import (css) '../../node_modules/bootstrap/dist/css/bootstrap.css';
 @import (css) '../../node_modules/bootstrap/dist/css/bootstrap-theme.css';
+@import (css) '../../node_modules/react-widgets/dist/css/react-widgets.css';
+@import (css) '../../node_modules/react-widgets/dist/css/core.css';
 
+@brand-primary:#cc6666;
+@brand-secondary:#333333;
 
 html{
-  height: 100%;
+  height: 100%; font-family: 'Open Sans', sans-serif;
+}
+h1,h2,h3,h4,p{font-family: 'Open Sans', sans-serif;}
+h1,h2,h3,h4{color:@brand-primary;}
+p{color:@brand-secondary;}
+ul{padding:0;margin:0;}
+h1{font-weight:100;}
+header{
+  .navbar-brand{padding:0;}
+  .navbar{background:@brand-primary; box-shadow:none; border:none; padding:20px 0 0 0; margin:0; border-radius:0;}
+  .inline-form{
+    input{width:300px;}
+    input,button{height:40px; vertical-align:top;}
+  }
+}
+
+.jumbotron{background:@brand-primary;
+  h1{color:#fff;}
+}
+
+.well{
+  h2{color:@brand-secondary;}
+}
+
+@btn-primary:#ff9966;
+@btn-default:#cccccc;
+
+.btn{border-radius:0; border:none; box-shadow:none; text-transform:capitalize;  color:#fff; text-align:left;
+  &:hover{color:#fff; text-shadow:none;}
+}
+.btn-primary{background:@btn-primary;
+  &:focus, &:hover{background:lighten(@btn-primary, 10%)}
+}
+
+.btn-default{background:@btn-default;
+  &:focus, &:hover{background:lighten(@btn-default, 10%)}
+}
+
+.inline-list{
+  li{list-style:none; display:inline-block; margin:0 10px 0 0;
+    &:last-child{margin:0;}
+  }
+}
+
+i{
+  &.search{background:url('/xyz-test/images/search.png') no-repeat; content:" "; width:17px; height:17px; display:block;}
+}
+
+
+
+form{
+  .form-control{border-radius:0; box-shadow:none; border:none;}
+  &.inline-form{
+    .form-group{display:inline-block;}
+    button{display:inline-block;}
+  }
+  &.step-form{
+    .btn{padding:5px 20px 5px 5px; font-size:30px; width:100%;}
+    .btn[type="submit"]{
+      &:after{content:">"; float:right;}
+    }
+  }
+}
+
+
+footer{padding:20px 0 40px;
+  a{color:@brand-secondary;
+    &:hover{color:@brand-secondary; text-decoration:underline;}
+  }
+}
+
+@media(min-width:768px){
+  footer{
+    .inline-list{text-align:right;}
+  }
 }

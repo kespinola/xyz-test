@@ -2,7 +2,8 @@ var React        = require('react');
 var Router       = require('react-router');
 var RouteHandler = Router.RouteHandler;
 var Header       = require('./header');
-var Profile      = require('./profile');
+var Home         = require('./home');
+var Footer       = require('./footer');
 
 module.exports = React.createClass({
 
@@ -10,7 +11,8 @@ module.exports = React.createClass({
     return (
       <section id="app">
         <Header {... this.props}/>
-        <RouteHandler {... this.props}/>
+        <Home />
+        <Footer />
       </section>
     )
   }

@@ -42,7 +42,6 @@ gulp.task('default', function(){
         extensions: ['', '.js', '.jsx', '.json'],
 
         alias:{
-          "fluxxor": node_modules + "/fluxxor/build/fluxxor.js"
         }
       },
       plugins:[

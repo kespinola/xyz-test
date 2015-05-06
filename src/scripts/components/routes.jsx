@@ -7,7 +7,7 @@ var Redirect            = Router.Redirect;
 
 module.exports = (
     <Route name="home" handler={require('./app.jsx')} path="/">
-      <Route handler={require('./profile.jsx')} path="*" />
+      <Route handler={require('./page.jsx')} path="*" />
       <NotFoundRoute handler={require('./not-found.jsx')} />
     </Route>
 );

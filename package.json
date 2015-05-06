@@ -57,6 +57,7 @@
     "react-bootstrap": "^0.20.3",
     "react-keybinding": "^1.2.0",
     "react-router": "^0.13.3",
-    "react-widgets": "^2.4.1"
+    "react-widgets": "^2.4.1",
+    "superagent": "^1.2.0"
   }
 }

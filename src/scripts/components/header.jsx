@@ -16,6 +16,7 @@ var OverlayTrigger    = Bootstrap.OverlayTrigger;
 var Tooltip           = Bootstrap.Tooltip;
 var ModalTrigger      = Bootstrap.ModalTrigger;
 var _                 = require('lodash');
+var SiteSearch        = require('./site-search');
 
 
 
@@ -24,10 +25,15 @@ module.exports = React.createClass({
 
   render: function(){
     return (
-      <Navbar fixedTop brand={<Link to="home">Home</Link>} toggleNavKey={0}>
-        <CollapsableNav eventKey={0}>
-        </CollapsableNav>
-      </Navbar>
+      <header>
+        <Navbar brand={<Link to="home"><img src="images/logo.png" className="img-responsive"/></Link>} toggleNavKey={0}>
+          <CollapsableNav  eventKey={0}>
+            <Nav navbar right>
+              <SiteSearch />
+            </Nav>
+          </CollapsableNav>
+        </Navbar>
+      </header>
     )
   }
 });

@@ -44,21 +44,15 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1);
 	__webpack_require__(2);
+	__webpack_require__(1);
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/** @jsx React.DOM */var React     = __webpack_require__(6);
-	var Fluxxor   = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"fluxxor\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var Fluxxor   = __webpack_require__(267);
 	var Router    = __webpack_require__(7);
 	var App       = __webpack_require__(4);
 	var routes    = __webpack_require__(5);
@@ -74,6 +68,12 @@
 	  React.render(React.createElement(Handler, {flux: flux}), document.body);
 	});
 
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ },
 /* 3 */
@@ -93,7 +93,8 @@
 	var Router       = __webpack_require__(7);
 	var RouteHandler = Router.RouteHandler;
 	var Header       = __webpack_require__(8);
-	var Profile      = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./profile\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var Home         = __webpack_require__(365);
+	var Footer       = __webpack_require__(368);
 
 	module.exports = React.createClass({displayName: "exports",
 
@@ -101,7 +102,8 @@
 	    return (
 	      React.createElement("section", {id: "app"}, 
 	        React.createElement(Header, React.__spread({},   this.props)), 
-	        React.createElement(RouteHandler, React.__spread({},   this.props))
+	        React.createElement(Home, null), 
+	        React.createElement(Footer, null)
 	      )
 	    )
 	  }
@@ -120,7 +122,7 @@
 
 	module.exports = (
 	    React.createElement(Route, {name: "home", handler: __webpack_require__(4), path: "/"}, 
-	      React.createElement(Route, {handler: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./profile.jsx\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())), path: "*"}), 
+	      React.createElement(Route, {handler: __webpack_require__(364), path: "*"}), 
 	      React.createElement(NotFoundRoute, {handler: __webpack_require__(9)})
 	    )
 	);
@@ -190,6 +192,7 @@
 	var Tooltip           = Bootstrap.Tooltip;
 	var ModalTrigger      = Bootstrap.ModalTrigger;
 	var _                 = __webpack_require__(32);
+	var SiteSearch        = __webpack_require__(451);
 
 
 
@@ -198,8 +201,13 @@
 
 	  render: function(){
 	    return (
-	      React.createElement(Navbar, {fixedTop: true, brand: React.createElement(Link, {to: "home"}, "Home"), toggleNavKey: 0}, 
-	        React.createElement(CollapsableNav, {eventKey: 0}
+	      React.createElement("header", null, 
+	        React.createElement(Navbar, {brand: React.createElement(Link, {to: "home"}, React.createElement("img", {src: "images/logo.png", className: "img-responsive"})), toggleNavKey: 0}, 
+	          React.createElement(CollapsableNav, {eventKey: 0}, 
+	            React.createElement(Nav, {navbar: true, right: true}, 
+	              React.createElement(SiteSearch, null)
+	            )
+	          )
 	        )
 	      )
 	    )
@@ -263,8 +271,8 @@
 	var ReactInstanceHandles = __webpack_require__(44);
 	var ReactMount = __webpack_require__(45);
 	var ReactPerf = __webpack_require__(46);
-	var ReactPropTypes = __webpack_require__(47);
-	var ReactReconciler = __webpack_require__(48);
+	var ReactPropTypes = __webpack_require__(48);
+	var ReactReconciler = __webpack_require__(47);
 	var ReactServerRendering = __webpack_require__(49);
 
 	var assign = __webpack_require__(50);
@@ -389,7 +397,11 @@
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {}
+	module.exports = {
+		"PAGE": {
+			"LOAD": "LOAD:PAGE"
+		}
+	}
 
 /***/ },
 /* 12 */
@@ -793,7 +805,7 @@
 	var _inherits = function (subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
 	var React = __webpack_require__(6);
-	var ContextWrapper = __webpack_require__(57);
+	var ContextWrapper = __webpack_require__(56);
 	var assign = __webpack_require__(50);
 	var PropTypes = __webpack_require__(54);
 
@@ -899,7 +911,7 @@
 
 	'use strict';
 
-	var LocationActions = __webpack_require__(56);
+	var LocationActions = __webpack_require__(57);
 	var History = __webpack_require__(25);
 
 	var _listeners = [];
@@ -1015,7 +1027,7 @@
 
 	'use strict';
 
-	var LocationActions = __webpack_require__(56);
+	var LocationActions = __webpack_require__(57);
 	var History = __webpack_require__(25);
 
 	var _listeners = [];
@@ -1201,7 +1213,7 @@
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 	var invariant = __webpack_require__(55);
-	var LocationActions = __webpack_require__(56);
+	var LocationActions = __webpack_require__(57);
 	var History = __webpack_require__(25);
 
 	/**
@@ -1295,7 +1307,7 @@
 
 	'use strict';
 
-	var LocationActions = __webpack_require__(56);
+	var LocationActions = __webpack_require__(57);
 
 	/**
 	 * A scroll behavior that attempts to imitate the default behavior
@@ -1834,7 +1846,7 @@
 	var warning = __webpack_require__(58);
 	var invariant = __webpack_require__(55);
 	var canUseDOM = __webpack_require__(53).canUseDOM;
-	var LocationActions = __webpack_require__(56);
+	var LocationActions = __webpack_require__(57);
 	var ImitateBrowserBehavior = __webpack_require__(23);
 	var HashLocation = __webpack_require__(18);
 	var HistoryLocation = __webpack_require__(19);
@@ -15146,17 +15158,17 @@
 	var ReactComponent = __webpack_require__(35);
 	var ReactCurrentOwner = __webpack_require__(38);
 	var ReactElement = __webpack_require__(39);
-	var ReactErrorUtils = __webpack_require__(79);
-	var ReactInstanceMap = __webpack_require__(80);
-	var ReactLifeCycle = __webpack_require__(81);
-	var ReactPropTypeLocations = __webpack_require__(75);
-	var ReactPropTypeLocationNames = __webpack_require__(76);
+	var ReactErrorUtils = __webpack_require__(74);
+	var ReactInstanceMap = __webpack_require__(75);
+	var ReactLifeCycle = __webpack_require__(76);
+	var ReactPropTypeLocations = __webpack_require__(77);
+	var ReactPropTypeLocationNames = __webpack_require__(78);
 	var ReactUpdateQueue = __webpack_require__(73);
 
 	var assign = __webpack_require__(50);
 	var invariant = __webpack_require__(55);
-	var keyMirror = __webpack_require__(82);
-	var keyOf = __webpack_require__(83);
+	var keyMirror = __webpack_require__(79);
+	var keyOf = __webpack_require__(80);
 	var warning = __webpack_require__(58);
 
 	var MIXINS_KEY = keyOf({mixins: null});
@@ -16093,7 +16105,7 @@
 	'use strict';
 
 	var assign = __webpack_require__(50);
-	var emptyObject = __webpack_require__(84);
+	var emptyObject = __webpack_require__(81);
 	var warning = __webpack_require__(58);
 
 	var didWarn = false;
@@ -16531,12 +16543,12 @@
 
 	var ReactElement = __webpack_require__(39);
 	var ReactFragment = __webpack_require__(71);
-	var ReactPropTypeLocations = __webpack_require__(75);
-	var ReactPropTypeLocationNames = __webpack_require__(76);
+	var ReactPropTypeLocations = __webpack_require__(77);
+	var ReactPropTypeLocationNames = __webpack_require__(78);
 	var ReactCurrentOwner = __webpack_require__(38);
-	var ReactNativeComponent = __webpack_require__(77);
+	var ReactNativeComponent = __webpack_require__(82);
 
-	var getIteratorFn = __webpack_require__(78);
+	var getIteratorFn = __webpack_require__(83);
 	var invariant = __webpack_require__(55);
 	var warning = __webpack_require__(58);
 
@@ -16994,7 +17006,7 @@
 	var ReactElement = __webpack_require__(39);
 	var ReactElementValidator = __webpack_require__(40);
 
-	var mapObject = __webpack_require__(74);
+	var mapObject = __webpack_require__(84);
 
 	/**
 	 * Create a factory that creates HTML tag elements.
@@ -17793,27 +17805,27 @@
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(122);
-	var ReactBrowserEventEmitter = __webpack_require__(123);
+	var DOMProperty = __webpack_require__(117);
+	var ReactBrowserEventEmitter = __webpack_require__(118);
 	var ReactCurrentOwner = __webpack_require__(38);
 	var ReactElement = __webpack_require__(39);
 	var ReactElementValidator = __webpack_require__(40);
-	var ReactEmptyComponent = __webpack_require__(124);
+	var ReactEmptyComponent = __webpack_require__(119);
 	var ReactInstanceHandles = __webpack_require__(44);
-	var ReactInstanceMap = __webpack_require__(80);
-	var ReactMarkupChecksum = __webpack_require__(118);
+	var ReactInstanceMap = __webpack_require__(75);
+	var ReactMarkupChecksum = __webpack_require__(120);
 	var ReactPerf = __webpack_require__(46);
-	var ReactReconciler = __webpack_require__(48);
+	var ReactReconciler = __webpack_require__(47);
 	var ReactUpdateQueue = __webpack_require__(73);
-	var ReactUpdates = __webpack_require__(125);
+	var ReactUpdates = __webpack_require__(121);
 
-	var emptyObject = __webpack_require__(84);
-	var containsNode = __webpack_require__(126);
-	var getReactRootElementInContainer = __webpack_require__(127);
-	var instantiateReactComponent = __webpack_require__(120);
+	var emptyObject = __webpack_require__(81);
+	var containsNode = __webpack_require__(122);
+	var getReactRootElementInContainer = __webpack_require__(123);
+	var instantiateReactComponent = __webpack_require__(124);
 	var invariant = __webpack_require__(55);
-	var setInnerHTML = __webpack_require__(128);
-	var shouldUpdateReactComponent = __webpack_require__(129);
+	var setInnerHTML = __webpack_require__(125);
+	var shouldUpdateReactComponent = __webpack_require__(126);
 	var warning = __webpack_require__(58);
 
 	var SEPARATOR = ReactInstanceHandles.SEPARATOR;
@@ -18781,6 +18793,133 @@
 /* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactReconciler
+	 */
+
+	'use strict';
+
+	var ReactRef = __webpack_require__(127);
+	var ReactElementValidator = __webpack_require__(40);
+
+	/**
+	 * Helper to call ReactRef.attachRefs with this composite component, split out
+	 * to avoid allocations in the transaction mount-ready queue.
+	 */
+	function attachRefs() {
+	  ReactRef.attachRefs(this, this._currentElement);
+	}
+
+	var ReactReconciler = {
+
+	  /**
+	   * Initializes the component, renders markup, and registers event listeners.
+	   *
+	   * @param {ReactComponent} internalInstance
+	   * @param {string} rootID DOM ID of the root node.
+	   * @param {ReactReconcileTransaction|ReactServerRenderingTransaction} transaction
+	   * @return {?string} Rendered markup to be inserted into the DOM.
+	   * @final
+	   * @internal
+	   */
+	  mountComponent: function(internalInstance, rootID, transaction, context) {
+	    var markup = internalInstance.mountComponent(rootID, transaction, context);
+	    if ("production" !== process.env.NODE_ENV) {
+	      ReactElementValidator.checkAndWarnForMutatedProps(
+	        internalInstance._currentElement
+	      );
+	    }
+	    transaction.getReactMountReady().enqueue(attachRefs, internalInstance);
+	    return markup;
+	  },
+
+	  /**
+	   * Releases any resources allocated by `mountComponent`.
+	   *
+	   * @final
+	   * @internal
+	   */
+	  unmountComponent: function(internalInstance) {
+	    ReactRef.detachRefs(internalInstance, internalInstance._currentElement);
+	    internalInstance.unmountComponent();
+	  },
+
+	  /**
+	   * Update a component using a new element.
+	   *
+	   * @param {ReactComponent} internalInstance
+	   * @param {ReactElement} nextElement
+	   * @param {ReactReconcileTransaction} transaction
+	   * @param {object} context
+	   * @internal
+	   */
+	  receiveComponent: function(
+	    internalInstance, nextElement, transaction, context
+	  ) {
+	    var prevElement = internalInstance._currentElement;
+
+	    if (nextElement === prevElement && nextElement._owner != null) {
+	      // Since elements are immutable after the owner is rendered,
+	      // we can do a cheap identity compare here to determine if this is a
+	      // superfluous reconcile. It's possible for state to be mutable but such
+	      // change should trigger an update of the owner which would recreate
+	      // the element. We explicitly check for the existence of an owner since
+	      // it's possible for an element created outside a composite to be
+	      // deeply mutated and reused.
+	      return;
+	    }
+
+	    if ("production" !== process.env.NODE_ENV) {
+	      ReactElementValidator.checkAndWarnForMutatedProps(nextElement);
+	    }
+
+	    var refsChanged = ReactRef.shouldUpdateRefs(
+	      prevElement,
+	      nextElement
+	    );
+
+	    if (refsChanged) {
+	      ReactRef.detachRefs(internalInstance, prevElement);
+	    }
+
+	    internalInstance.receiveComponent(nextElement, transaction, context);
+
+	    if (refsChanged) {
+	      transaction.getReactMountReady().enqueue(attachRefs, internalInstance);
+	    }
+	  },
+
+	  /**
+	   * Flush any dirty changes in a component.
+	   *
+	   * @param {ReactComponent} internalInstance
+	   * @param {ReactReconcileTransaction} transaction
+	   * @internal
+	   */
+	  performUpdateIfNecessary: function(
+	    internalInstance,
+	    transaction
+	  ) {
+	    internalInstance.performUpdateIfNecessary(transaction);
+	  }
+
+	};
+
+	module.exports = ReactReconciler;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 48 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/**
 	 * Copyright 2013-2015, Facebook, Inc.
 	 * All rights reserved.
@@ -18796,9 +18935,9 @@
 
 	var ReactElement = __webpack_require__(39);
 	var ReactFragment = __webpack_require__(71);
-	var ReactPropTypeLocationNames = __webpack_require__(76);
+	var ReactPropTypeLocationNames = __webpack_require__(78);
 
-	var emptyFunction = __webpack_require__(121);
+	var emptyFunction = __webpack_require__(129);
 
 	/**
 	 * Collection of methods that allow declaration and validation of props that are
@@ -19131,133 +19270,6 @@
 
 
 /***/ },
-/* 48 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactReconciler
-	 */
-
-	'use strict';
-
-	var ReactRef = __webpack_require__(117);
-	var ReactElementValidator = __webpack_require__(40);
-
-	/**
-	 * Helper to call ReactRef.attachRefs with this composite component, split out
-	 * to avoid allocations in the transaction mount-ready queue.
-	 */
-	function attachRefs() {
-	  ReactRef.attachRefs(this, this._currentElement);
-	}
-
-	var ReactReconciler = {
-
-	  /**
-	   * Initializes the component, renders markup, and registers event listeners.
-	   *
-	   * @param {ReactComponent} internalInstance
-	   * @param {string} rootID DOM ID of the root node.
-	   * @param {ReactReconcileTransaction|ReactServerRenderingTransaction} transaction
-	   * @return {?string} Rendered markup to be inserted into the DOM.
-	   * @final
-	   * @internal
-	   */
-	  mountComponent: function(internalInstance, rootID, transaction, context) {
-	    var markup = internalInstance.mountComponent(rootID, transaction, context);
-	    if ("production" !== process.env.NODE_ENV) {
-	      ReactElementValidator.checkAndWarnForMutatedProps(
-	        internalInstance._currentElement
-	      );
-	    }
-	    transaction.getReactMountReady().enqueue(attachRefs, internalInstance);
-	    return markup;
-	  },
-
-	  /**
-	   * Releases any resources allocated by `mountComponent`.
-	   *
-	   * @final
-	   * @internal
-	   */
-	  unmountComponent: function(internalInstance) {
-	    ReactRef.detachRefs(internalInstance, internalInstance._currentElement);
-	    internalInstance.unmountComponent();
-	  },
-
-	  /**
-	   * Update a component using a new element.
-	   *
-	   * @param {ReactComponent} internalInstance
-	   * @param {ReactElement} nextElement
-	   * @param {ReactReconcileTransaction} transaction
-	   * @param {object} context
-	   * @internal
-	   */
-	  receiveComponent: function(
-	    internalInstance, nextElement, transaction, context
-	  ) {
-	    var prevElement = internalInstance._currentElement;
-
-	    if (nextElement === prevElement && nextElement._owner != null) {
-	      // Since elements are immutable after the owner is rendered,
-	      // we can do a cheap identity compare here to determine if this is a
-	      // superfluous reconcile. It's possible for state to be mutable but such
-	      // change should trigger an update of the owner which would recreate
-	      // the element. We explicitly check for the existence of an owner since
-	      // it's possible for an element created outside a composite to be
-	      // deeply mutated and reused.
-	      return;
-	    }
-
-	    if ("production" !== process.env.NODE_ENV) {
-	      ReactElementValidator.checkAndWarnForMutatedProps(nextElement);
-	    }
-
-	    var refsChanged = ReactRef.shouldUpdateRefs(
-	      prevElement,
-	      nextElement
-	    );
-
-	    if (refsChanged) {
-	      ReactRef.detachRefs(internalInstance, prevElement);
-	    }
-
-	    internalInstance.receiveComponent(nextElement, transaction, context);
-
-	    if (refsChanged) {
-	      transaction.getReactMountReady().enqueue(attachRefs, internalInstance);
-	    }
-	  },
-
-	  /**
-	   * Flush any dirty changes in a component.
-	   *
-	   * @param {ReactComponent} internalInstance
-	   * @param {ReactReconcileTransaction} transaction
-	   * @internal
-	   */
-	  performUpdateIfNecessary: function(
-	    internalInstance,
-	    transaction
-	  ) {
-	    internalInstance.performUpdateIfNecessary(transaction);
-	  }
-
-	};
-
-	module.exports = ReactReconciler;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
-
-/***/ },
 /* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -19276,12 +19288,12 @@
 
 	var ReactElement = __webpack_require__(39);
 	var ReactInstanceHandles = __webpack_require__(44);
-	var ReactMarkupChecksum = __webpack_require__(118);
+	var ReactMarkupChecksum = __webpack_require__(120);
 	var ReactServerRenderingTransaction =
-	  __webpack_require__(119);
+	  __webpack_require__(128);
 
-	var emptyObject = __webpack_require__(84);
-	var instantiateReactComponent = __webpack_require__(120);
+	var emptyObject = __webpack_require__(81);
+	var instantiateReactComponent = __webpack_require__(124);
 	var invariant = __webpack_require__(55);
 
 	/**
@@ -19414,7 +19426,7 @@
 	'use strict';
 
 	var ReactCurrentOwner = __webpack_require__(38);
-	var ReactInstanceMap = __webpack_require__(80);
+	var ReactInstanceMap = __webpack_require__(75);
 	var ReactMount = __webpack_require__(45);
 
 	var invariant = __webpack_require__(55);
@@ -19662,36 +19674,6 @@
 /* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Actions that modify the URL.
-	 */
-	'use strict';
-
-	var LocationActions = {
-
-	  /**
-	   * Indicates a new location is being pushed to the history stack.
-	   */
-	  PUSH: 'push',
-
-	  /**
-	   * Indicates the current location should be replaced.
-	   */
-	  REPLACE: 'replace',
-
-	  /**
-	   * Indicates the most recent entry should be removed from the history stack.
-	   */
-	  POP: 'pop'
-
-	};
-
-	module.exports = LocationActions;
-
-/***/ },
-/* 57 */
-/***/ function(module, exports, __webpack_require__) {
-
 	'use strict';
 
 	var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -19732,6 +19714,36 @@
 	module.exports = ContextWrapper;
 
 /***/ },
+/* 57 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Actions that modify the URL.
+	 */
+	'use strict';
+
+	var LocationActions = {
+
+	  /**
+	   * Indicates a new location is being pushed to the history stack.
+	   */
+	  PUSH: 'push',
+
+	  /**
+	   * Indicates the current location should be replaced.
+	   */
+	  REPLACE: 'replace',
+
+	  /**
+	   * Indicates the most recent entry should be removed from the history stack.
+	   */
+	  POP: 'pop'
+
+	};
+
+	module.exports = LocationActions;
+
+/***/ },
 /* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -19748,7 +19760,7 @@
 
 	"use strict";
 
-	var emptyFunction = __webpack_require__(121);
+	var emptyFunction = __webpack_require__(129);
 
 	/**
 	 * Similar to invariant but only logs a warning if the condition is not met.
@@ -20507,7 +20519,7 @@
 
 	'use strict';
 
-	var keyMirror = __webpack_require__(82);
+	var keyMirror = __webpack_require__(79);
 
 	var PropagationPhases = keyMirror({bubbled: null, captured: null});
 
@@ -20894,7 +20906,7 @@
 	var ReactFragment = __webpack_require__(71);
 	var ReactInstanceHandles = __webpack_require__(44);
 
-	var getIteratorFn = __webpack_require__(78);
+	var getIteratorFn = __webpack_require__(83);
 	var invariant = __webpack_require__(55);
 	var warning = __webpack_require__(58);
 
@@ -21146,11 +21158,11 @@
 
 	'use strict';
 
-	var ReactLifeCycle = __webpack_require__(81);
+	var ReactLifeCycle = __webpack_require__(76);
 	var ReactCurrentOwner = __webpack_require__(38);
 	var ReactElement = __webpack_require__(39);
-	var ReactInstanceMap = __webpack_require__(80);
-	var ReactUpdates = __webpack_require__(125);
+	var ReactInstanceMap = __webpack_require__(75);
+	var ReactUpdates = __webpack_require__(121);
 
 	var assign = __webpack_require__(50);
 	var invariant = __webpack_require__(55);
@@ -21443,53 +21455,126 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule mapObject
+	 * @providesModule ReactErrorUtils
+	 * @typechecks
 	 */
 
-	'use strict';
+	"use strict";
 
-	var hasOwnProperty = Object.prototype.hasOwnProperty;
-
-	/**
-	 * Executes the provided `callback` once for each enumerable own property in the
-	 * object and constructs a new object from the results. The `callback` is
-	 * invoked with three arguments:
-	 *
-	 *  - the property value
-	 *  - the property name
-	 *  - the object being traversed
-	 *
-	 * Properties that are added after the call to `mapObject` will not be visited
-	 * by `callback`. If the values of existing properties are changed, the value
-	 * passed to `callback` will be the value at the time `mapObject` visits them.
-	 * Properties that are deleted before being visited are not visited.
-	 *
-	 * @grep function objectMap()
-	 * @grep function objMap()
-	 *
-	 * @param {?object} object
-	 * @param {function} callback
-	 * @param {*} context
-	 * @return {?object}
-	 */
-	function mapObject(object, callback, context) {
-	  if (!object) {
-	    return null;
+	var ReactErrorUtils = {
+	  /**
+	   * Creates a guarded version of a function. This is supposed to make debugging
+	   * of event handlers easier. To aid debugging with the browser's debugger,
+	   * this currently simply returns the original function.
+	   *
+	   * @param {function} func Function to be executed
+	   * @param {string} name The name of the guard
+	   * @return {function}
+	   */
+	  guard: function(func, name) {
+	    return func;
 	  }
-	  var result = {};
-	  for (var name in object) {
-	    if (hasOwnProperty.call(object, name)) {
-	      result[name] = callback.call(context, object[name], name, object);
-	    }
-	  }
-	  return result;
-	}
+	};
 
-	module.exports = mapObject;
+	module.exports = ReactErrorUtils;
 
 
 /***/ },
 /* 75 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactInstanceMap
+	 */
+
+	'use strict';
+
+	/**
+	 * `ReactInstanceMap` maintains a mapping from a public facing stateful
+	 * instance (key) and the internal representation (value). This allows public
+	 * methods to accept the user facing instance as an argument and map them back
+	 * to internal methods.
+	 */
+
+	// TODO: Replace this with ES6: var ReactInstanceMap = new Map();
+	var ReactInstanceMap = {
+
+	  /**
+	   * This API should be called `delete` but we'd have to make sure to always
+	   * transform these to strings for IE support. When this transform is fully
+	   * supported we can rename it.
+	   */
+	  remove: function(key) {
+	    key._reactInternalInstance = undefined;
+	  },
+
+	  get: function(key) {
+	    return key._reactInternalInstance;
+	  },
+
+	  has: function(key) {
+	    return key._reactInternalInstance !== undefined;
+	  },
+
+	  set: function(key, value) {
+	    key._reactInternalInstance = value;
+	  }
+
+	};
+
+	module.exports = ReactInstanceMap;
+
+
+/***/ },
+/* 76 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactLifeCycle
+	 */
+
+	'use strict';
+
+	/**
+	 * This module manages the bookkeeping when a component is in the process
+	 * of being mounted or being unmounted. This is used as a way to enforce
+	 * invariants (or warnings) when it is not recommended to call
+	 * setState/forceUpdate.
+	 *
+	 * currentlyMountingInstance: During the construction phase, it is not possible
+	 * to trigger an update since the instance is not fully mounted yet. However, we
+	 * currently allow this as a convenience for mutating the initial state.
+	 *
+	 * currentlyUnmountingInstance: During the unmounting phase, the instance is
+	 * still mounted and can therefore schedule an update. However, this is not
+	 * recommended and probably an error since it's about to be unmounted.
+	 * Therefore we still want to trigger in an error for that case.
+	 */
+
+	var ReactLifeCycle = {
+	  currentlyMountingInstance: null,
+	  currentlyUnmountingInstance: null
+	};
+
+	module.exports = ReactLifeCycle;
+
+
+/***/ },
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21505,7 +21590,7 @@
 
 	'use strict';
 
-	var keyMirror = __webpack_require__(82);
+	var keyMirror = __webpack_require__(79);
 
 	var ReactPropTypeLocations = keyMirror({
 	  prop: null,
@@ -21517,7 +21602,7 @@
 
 
 /***/ },
-/* 76 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -21548,7 +21633,132 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
-/* 77 */
+/* 79 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule keyMirror
+	 * @typechecks static-only
+	 */
+
+	'use strict';
+
+	var invariant = __webpack_require__(55);
+
+	/**
+	 * Constructs an enumeration with keys equal to their value.
+	 *
+	 * For example:
+	 *
+	 *   var COLORS = keyMirror({blue: null, red: null});
+	 *   var myColor = COLORS.blue;
+	 *   var isColorValid = !!COLORS[myColor];
+	 *
+	 * The last line could not be performed if the values of the generated enum were
+	 * not equal to their keys.
+	 *
+	 *   Input:  {key1: val1, key2: val2}
+	 *   Output: {key1: key1, key2: key2}
+	 *
+	 * @param {object} obj
+	 * @return {object}
+	 */
+	var keyMirror = function(obj) {
+	  var ret = {};
+	  var key;
+	  ("production" !== process.env.NODE_ENV ? invariant(
+	    obj instanceof Object && !Array.isArray(obj),
+	    'keyMirror(...): Argument must be an object.'
+	  ) : invariant(obj instanceof Object && !Array.isArray(obj)));
+	  for (key in obj) {
+	    if (!obj.hasOwnProperty(key)) {
+	      continue;
+	    }
+	    ret[key] = key;
+	  }
+	  return ret;
+	};
+
+	module.exports = keyMirror;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 80 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule keyOf
+	 */
+
+	/**
+	 * Allows extraction of a minified key. Let's the build system minify keys
+	 * without loosing the ability to dynamically use key strings as values
+	 * themselves. Pass in an object with a single key/val pair and it will return
+	 * you the string key of that single record. Suppose you want to grab the
+	 * value for a key 'className' inside of an object. Key/val minification may
+	 * have aliased that key to be 'xa12'. keyOf({className: null}) will return
+	 * 'xa12' in that case. Resolve keys you want to use once at startup time, then
+	 * reuse those resolutions.
+	 */
+	var keyOf = function(oneKeyObj) {
+	  var key;
+	  for (key in oneKeyObj) {
+	    if (!oneKeyObj.hasOwnProperty(key)) {
+	      continue;
+	    }
+	    return key;
+	  }
+	  return null;
+	};
+
+
+	module.exports = keyOf;
+
+
+/***/ },
+/* 81 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule emptyObject
+	 */
+
+	"use strict";
+
+	var emptyObject = {};
+
+	if ("production" !== process.env.NODE_ENV) {
+	  Object.freeze(emptyObject);
+	}
+
+	module.exports = emptyObject;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -21658,7 +21868,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
-/* 78 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21706,238 +21916,10 @@
 
 
 /***/ },
-/* 79 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactErrorUtils
-	 * @typechecks
-	 */
-
-	"use strict";
-
-	var ReactErrorUtils = {
-	  /**
-	   * Creates a guarded version of a function. This is supposed to make debugging
-	   * of event handlers easier. To aid debugging with the browser's debugger,
-	   * this currently simply returns the original function.
-	   *
-	   * @param {function} func Function to be executed
-	   * @param {string} name The name of the guard
-	   * @return {function}
-	   */
-	  guard: function(func, name) {
-	    return func;
-	  }
-	};
-
-	module.exports = ReactErrorUtils;
-
-
-/***/ },
-/* 80 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactInstanceMap
-	 */
-
-	'use strict';
-
-	/**
-	 * `ReactInstanceMap` maintains a mapping from a public facing stateful
-	 * instance (key) and the internal representation (value). This allows public
-	 * methods to accept the user facing instance as an argument and map them back
-	 * to internal methods.
-	 */
-
-	// TODO: Replace this with ES6: var ReactInstanceMap = new Map();
-	var ReactInstanceMap = {
-
-	  /**
-	   * This API should be called `delete` but we'd have to make sure to always
-	   * transform these to strings for IE support. When this transform is fully
-	   * supported we can rename it.
-	   */
-	  remove: function(key) {
-	    key._reactInternalInstance = undefined;
-	  },
-
-	  get: function(key) {
-	    return key._reactInternalInstance;
-	  },
-
-	  has: function(key) {
-	    return key._reactInternalInstance !== undefined;
-	  },
-
-	  set: function(key, value) {
-	    key._reactInternalInstance = value;
-	  }
-
-	};
-
-	module.exports = ReactInstanceMap;
-
-
-/***/ },
-/* 81 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactLifeCycle
-	 */
-
-	'use strict';
-
-	/**
-	 * This module manages the bookkeeping when a component is in the process
-	 * of being mounted or being unmounted. This is used as a way to enforce
-	 * invariants (or warnings) when it is not recommended to call
-	 * setState/forceUpdate.
-	 *
-	 * currentlyMountingInstance: During the construction phase, it is not possible
-	 * to trigger an update since the instance is not fully mounted yet. However, we
-	 * currently allow this as a convenience for mutating the initial state.
-	 *
-	 * currentlyUnmountingInstance: During the unmounting phase, the instance is
-	 * still mounted and can therefore schedule an update. However, this is not
-	 * recommended and probably an error since it's about to be unmounted.
-	 * Therefore we still want to trigger in an error for that case.
-	 */
-
-	var ReactLifeCycle = {
-	  currentlyMountingInstance: null,
-	  currentlyUnmountingInstance: null
-	};
-
-	module.exports = ReactLifeCycle;
-
-
-/***/ },
-/* 82 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule keyMirror
-	 * @typechecks static-only
-	 */
-
-	'use strict';
-
-	var invariant = __webpack_require__(55);
-
-	/**
-	 * Constructs an enumeration with keys equal to their value.
-	 *
-	 * For example:
-	 *
-	 *   var COLORS = keyMirror({blue: null, red: null});
-	 *   var myColor = COLORS.blue;
-	 *   var isColorValid = !!COLORS[myColor];
-	 *
-	 * The last line could not be performed if the values of the generated enum were
-	 * not equal to their keys.
-	 *
-	 *   Input:  {key1: val1, key2: val2}
-	 *   Output: {key1: key1, key2: key2}
-	 *
-	 * @param {object} obj
-	 * @return {object}
-	 */
-	var keyMirror = function(obj) {
-	  var ret = {};
-	  var key;
-	  ("production" !== process.env.NODE_ENV ? invariant(
-	    obj instanceof Object && !Array.isArray(obj),
-	    'keyMirror(...): Argument must be an object.'
-	  ) : invariant(obj instanceof Object && !Array.isArray(obj)));
-	  for (key in obj) {
-	    if (!obj.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    ret[key] = key;
-	  }
-	  return ret;
-	};
-
-	module.exports = keyMirror;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
-
-/***/ },
-/* 83 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule keyOf
-	 */
-
-	/**
-	 * Allows extraction of a minified key. Let's the build system minify keys
-	 * without loosing the ability to dynamically use key strings as values
-	 * themselves. Pass in an object with a single key/val pair and it will return
-	 * you the string key of that single record. Suppose you want to grab the
-	 * value for a key 'className' inside of an object. Key/val minification may
-	 * have aliased that key to be 'xa12'. keyOf({className: null}) will return
-	 * 'xa12' in that case. Resolve keys you want to use once at startup time, then
-	 * reuse those resolutions.
-	 */
-	var keyOf = function(oneKeyObj) {
-	  var key;
-	  for (key in oneKeyObj) {
-	    if (!oneKeyObj.hasOwnProperty(key)) {
-	      continue;
-	    }
-	    return key;
-	  }
-	  return null;
-	};
-
-
-	module.exports = keyOf;
-
-
-/***/ },
 /* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {/**
+	/**
 	 * Copyright 2013-2015, Facebook, Inc.
 	 * All rights reserved.
 	 *
@@ -21945,20 +21927,50 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule emptyObject
+	 * @providesModule mapObject
 	 */
 
-	"use strict";
+	'use strict';
 
-	var emptyObject = {};
+	var hasOwnProperty = Object.prototype.hasOwnProperty;
 
-	if ("production" !== process.env.NODE_ENV) {
-	  Object.freeze(emptyObject);
+	/**
+	 * Executes the provided `callback` once for each enumerable own property in the
+	 * object and constructs a new object from the results. The `callback` is
+	 * invoked with three arguments:
+	 *
+	 *  - the property value
+	 *  - the property name
+	 *  - the object being traversed
+	 *
+	 * Properties that are added after the call to `mapObject` will not be visited
+	 * by `callback`. If the values of existing properties are changed, the value
+	 * passed to `callback` will be the value at the time `mapObject` visits them.
+	 * Properties that are deleted before being visited are not visited.
+	 *
+	 * @grep function objectMap()
+	 * @grep function objMap()
+	 *
+	 * @param {?object} object
+	 * @param {function} callback
+	 * @param {*} context
+	 * @return {?object}
+	 */
+	function mapObject(object, callback, context) {
+	  if (!object) {
+	    return null;
+	  }
+	  var result = {};
+	  for (var name in object) {
+	    if (hasOwnProperty.call(object, name)) {
+	      result[name] = callback.call(context, object[name], name, object);
+	    }
+	  }
+	  return result;
 	}
 
-	module.exports = emptyObject;
+	module.exports = mapObject;
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
 /* 85 */
@@ -21978,9 +21990,9 @@
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(122);
+	var DOMProperty = __webpack_require__(117);
 
-	var quoteAttributeValueForBrowser = __webpack_require__(188);
+	var quoteAttributeValueForBrowser = __webpack_require__(185);
 	var warning = __webpack_require__(58);
 
 	function shouldIgnoreValue(name, value) {
@@ -22226,21 +22238,21 @@
 
 	'use strict';
 
-	var CSSPropertyOperations = __webpack_require__(185);
-	var DOMProperty = __webpack_require__(122);
+	var CSSPropertyOperations = __webpack_require__(186);
+	var DOMProperty = __webpack_require__(117);
 	var DOMPropertyOperations = __webpack_require__(85);
-	var ReactBrowserEventEmitter = __webpack_require__(123);
+	var ReactBrowserEventEmitter = __webpack_require__(118);
 	var ReactComponentBrowserEnvironment =
 	  __webpack_require__(86);
 	var ReactMount = __webpack_require__(45);
-	var ReactMultiChild = __webpack_require__(186);
+	var ReactMultiChild = __webpack_require__(187);
 	var ReactPerf = __webpack_require__(46);
 
 	var assign = __webpack_require__(50);
 	var escapeTextContentForBrowser = __webpack_require__(88);
 	var invariant = __webpack_require__(55);
-	var isEventSupported = __webpack_require__(187);
-	var keyOf = __webpack_require__(83);
+	var isEventSupported = __webpack_require__(188);
+	var keyOf = __webpack_require__(80);
 	var warning = __webpack_require__(58);
 
 	var deleteListener = ReactBrowserEventEmitter.deleteListener;
@@ -22786,7 +22798,7 @@
 	var SyntheticCompositionEvent = __webpack_require__(191);
 	var SyntheticInputEvent = __webpack_require__(192);
 
-	var keyOf = __webpack_require__(83);
+	var keyOf = __webpack_require__(80);
 
 	var END_KEYCODES = [9, 13, 27, 32]; // Tab, Return, Esc, Space
 	var START_KEYCODE = 229;
@@ -23281,12 +23293,12 @@
 	var EventPluginHub = __webpack_require__(193);
 	var EventPropagators = __webpack_require__(189);
 	var ExecutionEnvironment = __webpack_require__(53);
-	var ReactUpdates = __webpack_require__(125);
+	var ReactUpdates = __webpack_require__(121);
 	var SyntheticEvent = __webpack_require__(194);
 
-	var isEventSupported = __webpack_require__(187);
+	var isEventSupported = __webpack_require__(188);
 	var isTextInputElement = __webpack_require__(195);
-	var keyOf = __webpack_require__(83);
+	var keyOf = __webpack_require__(80);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -23692,7 +23704,7 @@
 
 	'use strict';
 
-	var keyOf = __webpack_require__(83);
+	var keyOf = __webpack_require__(80);
 
 	/**
 	 * Module that is injectable into `EventPluginHub`, that specifies a
@@ -23741,7 +23753,7 @@
 	var SyntheticMouseEvent = __webpack_require__(196);
 
 	var ReactMount = __webpack_require__(45);
-	var keyOf = __webpack_require__(83);
+	var keyOf = __webpack_require__(80);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 	var getFirstReactDOM = ReactMount.getFirstReactDOM;
@@ -23881,7 +23893,7 @@
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(122);
+	var DOMProperty = __webpack_require__(117);
 	var ExecutionEnvironment = __webpack_require__(53);
 
 	var MUST_USE_ATTRIBUTE = DOMProperty.injection.MUST_USE_ATTRIBUTE;
@@ -24097,7 +24109,7 @@
 
 	var EventConstants = __webpack_require__(69);
 
-	var emptyFunction = __webpack_require__(121);
+	var emptyFunction = __webpack_require__(129);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -24191,11 +24203,11 @@
 
 	'use strict';
 
-	var ReactUpdates = __webpack_require__(125);
-	var Transaction = __webpack_require__(197);
+	var ReactUpdates = __webpack_require__(121);
+	var Transaction = __webpack_require__(198);
 
 	var assign = __webpack_require__(50);
-	var emptyFunction = __webpack_require__(121);
+	var emptyFunction = __webpack_require__(129);
 
 	var RESET_BATCHED_UPDATES = {
 	  initialize: emptyFunction,
@@ -24268,12 +24280,12 @@
 
 	'use strict';
 
-	var AutoFocusMixin = __webpack_require__(198);
+	var AutoFocusMixin = __webpack_require__(199);
 	var ReactBrowserComponentMixin = __webpack_require__(96);
 	var ReactClass = __webpack_require__(36);
 	var ReactElement = __webpack_require__(39);
 
-	var keyMirror = __webpack_require__(82);
+	var keyMirror = __webpack_require__(79);
 
 	var button = ReactElement.createFactory('button');
 
@@ -24337,7 +24349,7 @@
 	'use strict';
 
 	var EventConstants = __webpack_require__(69);
-	var LocalEventTrapMixin = __webpack_require__(199);
+	var LocalEventTrapMixin = __webpack_require__(197);
 	var ReactBrowserComponentMixin = __webpack_require__(96);
 	var ReactClass = __webpack_require__(36);
 	var ReactElement = __webpack_require__(39);
@@ -24390,7 +24402,7 @@
 	'use strict';
 
 	var EventConstants = __webpack_require__(69);
-	var LocalEventTrapMixin = __webpack_require__(199);
+	var LocalEventTrapMixin = __webpack_require__(197);
 	var ReactBrowserComponentMixin = __webpack_require__(96);
 	var ReactClass = __webpack_require__(36);
 	var ReactElement = __webpack_require__(39);
@@ -24442,14 +24454,14 @@
 
 	'use strict';
 
-	var CSSPropertyOperations = __webpack_require__(185);
+	var CSSPropertyOperations = __webpack_require__(186);
 	var DOMChildrenOperations = __webpack_require__(200);
 	var DOMPropertyOperations = __webpack_require__(85);
 	var ReactMount = __webpack_require__(45);
 	var ReactPerf = __webpack_require__(46);
 
 	var invariant = __webpack_require__(55);
-	var setInnerHTML = __webpack_require__(128);
+	var setInnerHTML = __webpack_require__(125);
 
 	/**
 	 * Errors for properties that should not be updated with `updatePropertyById()`.
@@ -24611,7 +24623,7 @@
 	'use strict';
 
 	var EventConstants = __webpack_require__(69);
-	var LocalEventTrapMixin = __webpack_require__(199);
+	var LocalEventTrapMixin = __webpack_require__(197);
 	var ReactBrowserComponentMixin = __webpack_require__(96);
 	var ReactClass = __webpack_require__(36);
 	var ReactElement = __webpack_require__(39);
@@ -24659,14 +24671,14 @@
 
 	'use strict';
 
-	var AutoFocusMixin = __webpack_require__(198);
+	var AutoFocusMixin = __webpack_require__(199);
 	var DOMPropertyOperations = __webpack_require__(85);
 	var LinkedValueUtils = __webpack_require__(201);
 	var ReactBrowserComponentMixin = __webpack_require__(96);
 	var ReactClass = __webpack_require__(36);
 	var ReactElement = __webpack_require__(39);
 	var ReactMount = __webpack_require__(45);
-	var ReactUpdates = __webpack_require__(125);
+	var ReactUpdates = __webpack_require__(121);
 
 	var assign = __webpack_require__(50);
 	var invariant = __webpack_require__(55);
@@ -24894,12 +24906,12 @@
 
 	'use strict';
 
-	var AutoFocusMixin = __webpack_require__(198);
+	var AutoFocusMixin = __webpack_require__(199);
 	var LinkedValueUtils = __webpack_require__(201);
 	var ReactBrowserComponentMixin = __webpack_require__(96);
 	var ReactClass = __webpack_require__(36);
 	var ReactElement = __webpack_require__(39);
-	var ReactUpdates = __webpack_require__(125);
+	var ReactUpdates = __webpack_require__(121);
 
 	var assign = __webpack_require__(50);
 
@@ -25076,13 +25088,13 @@
 
 	'use strict';
 
-	var AutoFocusMixin = __webpack_require__(198);
+	var AutoFocusMixin = __webpack_require__(199);
 	var DOMPropertyOperations = __webpack_require__(85);
 	var LinkedValueUtils = __webpack_require__(201);
 	var ReactBrowserComponentMixin = __webpack_require__(96);
 	var ReactClass = __webpack_require__(36);
 	var ReactElement = __webpack_require__(39);
-	var ReactUpdates = __webpack_require__(125);
+	var ReactUpdates = __webpack_require__(121);
 
 	var assign = __webpack_require__(50);
 	var invariant = __webpack_require__(55);
@@ -25220,16 +25232,16 @@
 
 	'use strict';
 
-	var EventListener = __webpack_require__(203);
+	var EventListener = __webpack_require__(202);
 	var ExecutionEnvironment = __webpack_require__(53);
 	var PooledClass = __webpack_require__(70);
 	var ReactInstanceHandles = __webpack_require__(44);
 	var ReactMount = __webpack_require__(45);
-	var ReactUpdates = __webpack_require__(125);
+	var ReactUpdates = __webpack_require__(121);
 
 	var assign = __webpack_require__(50);
-	var getEventTarget = __webpack_require__(204);
-	var getUnboundedScrollPosition = __webpack_require__(205);
+	var getEventTarget = __webpack_require__(203);
+	var getUnboundedScrollPosition = __webpack_require__(204);
 
 	/**
 	 * Finds the parent React component of `node`.
@@ -25406,17 +25418,17 @@
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(122);
+	var DOMProperty = __webpack_require__(117);
 	var EventPluginHub = __webpack_require__(193);
-	var ReactComponentEnvironment = __webpack_require__(202);
+	var ReactComponentEnvironment = __webpack_require__(205);
 	var ReactClass = __webpack_require__(36);
-	var ReactEmptyComponent = __webpack_require__(124);
-	var ReactBrowserEventEmitter = __webpack_require__(123);
-	var ReactNativeComponent = __webpack_require__(77);
+	var ReactEmptyComponent = __webpack_require__(119);
+	var ReactBrowserEventEmitter = __webpack_require__(118);
+	var ReactNativeComponent = __webpack_require__(82);
 	var ReactDOMComponent = __webpack_require__(87);
 	var ReactPerf = __webpack_require__(46);
 	var ReactRootIndex = __webpack_require__(116);
-	var ReactUpdates = __webpack_require__(125);
+	var ReactUpdates = __webpack_require__(121);
 
 	var ReactInjection = {
 	  Component: ReactComponentEnvironment.injection,
@@ -25455,10 +25467,10 @@
 
 	var CallbackQueue = __webpack_require__(206);
 	var PooledClass = __webpack_require__(70);
-	var ReactBrowserEventEmitter = __webpack_require__(123);
+	var ReactBrowserEventEmitter = __webpack_require__(118);
 	var ReactInputSelection = __webpack_require__(207);
 	var ReactPutListenerQueue = __webpack_require__(208);
-	var Transaction = __webpack_require__(197);
+	var Transaction = __webpack_require__(198);
 
 	var assign = __webpack_require__(50);
 
@@ -25637,10 +25649,10 @@
 	var ReactInputSelection = __webpack_require__(207);
 	var SyntheticEvent = __webpack_require__(194);
 
-	var getActiveElement = __webpack_require__(209);
+	var getActiveElement = __webpack_require__(217);
 	var isTextInputElement = __webpack_require__(195);
-	var keyOf = __webpack_require__(83);
-	var shallowEqual = __webpack_require__(210);
+	var keyOf = __webpack_require__(80);
+	var shallowEqual = __webpack_require__(218);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -25869,20 +25881,20 @@
 	var EventConstants = __webpack_require__(69);
 	var EventPluginUtils = __webpack_require__(33);
 	var EventPropagators = __webpack_require__(189);
-	var SyntheticClipboardEvent = __webpack_require__(211);
+	var SyntheticClipboardEvent = __webpack_require__(209);
 	var SyntheticEvent = __webpack_require__(194);
-	var SyntheticFocusEvent = __webpack_require__(212);
-	var SyntheticKeyboardEvent = __webpack_require__(213);
+	var SyntheticFocusEvent = __webpack_require__(210);
+	var SyntheticKeyboardEvent = __webpack_require__(211);
 	var SyntheticMouseEvent = __webpack_require__(196);
-	var SyntheticDragEvent = __webpack_require__(214);
-	var SyntheticTouchEvent = __webpack_require__(215);
-	var SyntheticUIEvent = __webpack_require__(216);
-	var SyntheticWheelEvent = __webpack_require__(217);
+	var SyntheticDragEvent = __webpack_require__(212);
+	var SyntheticTouchEvent = __webpack_require__(213);
+	var SyntheticUIEvent = __webpack_require__(214);
+	var SyntheticWheelEvent = __webpack_require__(215);
 
-	var getEventCharCode = __webpack_require__(218);
+	var getEventCharCode = __webpack_require__(216);
 
 	var invariant = __webpack_require__(55);
-	var keyOf = __webpack_require__(83);
+	var keyOf = __webpack_require__(80);
 	var warning = __webpack_require__(58);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
@@ -26299,7 +26311,7 @@
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(122);
+	var DOMProperty = __webpack_require__(117);
 
 	var MUST_USE_ATTRIBUTE = DOMProperty.injection.MUST_USE_ATTRIBUTE;
 
@@ -26459,7 +26471,7 @@
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(122);
+	var DOMProperty = __webpack_require__(117);
 	var ReactDefaultPerfAnalysis = __webpack_require__(219);
 	var ReactMount = __webpack_require__(45);
 	var ReactPerf = __webpack_require__(46);
@@ -26748,429 +26760,6 @@
 
 /***/ },
 /* 117 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactRef
-	 */
-
-	'use strict';
-
-	var ReactOwner = __webpack_require__(221);
-
-	var ReactRef = {};
-
-	function attachRef(ref, component, owner) {
-	  if (typeof ref === 'function') {
-	    ref(component.getPublicInstance());
-	  } else {
-	    // Legacy ref
-	    ReactOwner.addComponentAsRefTo(component, ref, owner);
-	  }
-	}
-
-	function detachRef(ref, component, owner) {
-	  if (typeof ref === 'function') {
-	    ref(null);
-	  } else {
-	    // Legacy ref
-	    ReactOwner.removeComponentAsRefFrom(component, ref, owner);
-	  }
-	}
-
-	ReactRef.attachRefs = function(instance, element) {
-	  var ref = element.ref;
-	  if (ref != null) {
-	    attachRef(ref, instance, element._owner);
-	  }
-	};
-
-	ReactRef.shouldUpdateRefs = function(prevElement, nextElement) {
-	  // If either the owner or a `ref` has changed, make sure the newest owner
-	  // has stored a reference to `this`, and the previous owner (if different)
-	  // has forgotten the reference to `this`. We use the element instead
-	  // of the public this.props because the post processing cannot determine
-	  // a ref. The ref conceptually lives on the element.
-
-	  // TODO: Should this even be possible? The owner cannot change because
-	  // it's forbidden by shouldUpdateReactComponent. The ref can change
-	  // if you swap the keys of but not the refs. Reconsider where this check
-	  // is made. It probably belongs where the key checking and
-	  // instantiateReactComponent is done.
-
-	  return (
-	    nextElement._owner !== prevElement._owner ||
-	    nextElement.ref !== prevElement.ref
-	  );
-	};
-
-	ReactRef.detachRefs = function(instance, element) {
-	  var ref = element.ref;
-	  if (ref != null) {
-	    detachRef(ref, instance, element._owner);
-	  }
-	};
-
-	module.exports = ReactRef;
-
-
-/***/ },
-/* 118 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactMarkupChecksum
-	 */
-
-	'use strict';
-
-	var adler32 = __webpack_require__(222);
-
-	var ReactMarkupChecksum = {
-	  CHECKSUM_ATTR_NAME: 'data-react-checksum',
-
-	  /**
-	   * @param {string} markup Markup string
-	   * @return {string} Markup string with checksum attribute attached
-	   */
-	  addChecksumToMarkup: function(markup) {
-	    var checksum = adler32(markup);
-	    return markup.replace(
-	      '>',
-	      ' ' + ReactMarkupChecksum.CHECKSUM_ATTR_NAME + '="' + checksum + '">'
-	    );
-	  },
-
-	  /**
-	   * @param {string} markup to use
-	   * @param {DOMElement} element root React element
-	   * @returns {boolean} whether or not the markup is the same
-	   */
-	  canReuseMarkup: function(markup, element) {
-	    var existingChecksum = element.getAttribute(
-	      ReactMarkupChecksum.CHECKSUM_ATTR_NAME
-	    );
-	    existingChecksum = existingChecksum && parseInt(existingChecksum, 10);
-	    var markupChecksum = adler32(markup);
-	    return markupChecksum === existingChecksum;
-	  }
-	};
-
-	module.exports = ReactMarkupChecksum;
-
-
-/***/ },
-/* 119 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2014-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactServerRenderingTransaction
-	 * @typechecks
-	 */
-
-	'use strict';
-
-	var PooledClass = __webpack_require__(70);
-	var CallbackQueue = __webpack_require__(206);
-	var ReactPutListenerQueue = __webpack_require__(208);
-	var Transaction = __webpack_require__(197);
-
-	var assign = __webpack_require__(50);
-	var emptyFunction = __webpack_require__(121);
-
-	/**
-	 * Provides a `CallbackQueue` queue for collecting `onDOMReady` callbacks
-	 * during the performing of the transaction.
-	 */
-	var ON_DOM_READY_QUEUEING = {
-	  /**
-	   * Initializes the internal `onDOMReady` queue.
-	   */
-	  initialize: function() {
-	    this.reactMountReady.reset();
-	  },
-
-	  close: emptyFunction
-	};
-
-	var PUT_LISTENER_QUEUEING = {
-	  initialize: function() {
-	    this.putListenerQueue.reset();
-	  },
-
-	  close: emptyFunction
-	};
-
-	/**
-	 * Executed within the scope of the `Transaction` instance. Consider these as
-	 * being member methods, but with an implied ordering while being isolated from
-	 * each other.
-	 */
-	var TRANSACTION_WRAPPERS = [
-	  PUT_LISTENER_QUEUEING,
-	  ON_DOM_READY_QUEUEING
-	];
-
-	/**
-	 * @class ReactServerRenderingTransaction
-	 * @param {boolean} renderToStaticMarkup
-	 */
-	function ReactServerRenderingTransaction(renderToStaticMarkup) {
-	  this.reinitializeTransaction();
-	  this.renderToStaticMarkup = renderToStaticMarkup;
-	  this.reactMountReady = CallbackQueue.getPooled(null);
-	  this.putListenerQueue = ReactPutListenerQueue.getPooled();
-	}
-
-	var Mixin = {
-	  /**
-	   * @see Transaction
-	   * @abstract
-	   * @final
-	   * @return {array} Empty list of operation wrap proceedures.
-	   */
-	  getTransactionWrappers: function() {
-	    return TRANSACTION_WRAPPERS;
-	  },
-
-	  /**
-	   * @return {object} The queue to collect `onDOMReady` callbacks with.
-	   */
-	  getReactMountReady: function() {
-	    return this.reactMountReady;
-	  },
-
-	  getPutListenerQueue: function() {
-	    return this.putListenerQueue;
-	  },
-
-	  /**
-	   * `PooledClass` looks for this, and will invoke this before allowing this
-	   * instance to be resused.
-	   */
-	  destructor: function() {
-	    CallbackQueue.release(this.reactMountReady);
-	    this.reactMountReady = null;
-
-	    ReactPutListenerQueue.release(this.putListenerQueue);
-	    this.putListenerQueue = null;
-	  }
-	};
-
-
-	assign(
-	  ReactServerRenderingTransaction.prototype,
-	  Transaction.Mixin,
-	  Mixin
-	);
-
-	PooledClass.addPoolingTo(ReactServerRenderingTransaction);
-
-	module.exports = ReactServerRenderingTransaction;
-
-
-/***/ },
-/* 120 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule instantiateReactComponent
-	 * @typechecks static-only
-	 */
-
-	'use strict';
-
-	var ReactCompositeComponent = __webpack_require__(223);
-	var ReactEmptyComponent = __webpack_require__(124);
-	var ReactNativeComponent = __webpack_require__(77);
-
-	var assign = __webpack_require__(50);
-	var invariant = __webpack_require__(55);
-	var warning = __webpack_require__(58);
-
-	// To avoid a cyclic dependency, we create the final class in this module
-	var ReactCompositeComponentWrapper = function() { };
-	assign(
-	  ReactCompositeComponentWrapper.prototype,
-	  ReactCompositeComponent.Mixin,
-	  {
-	    _instantiateReactComponent: instantiateReactComponent
-	  }
-	);
-
-	/**
-	 * Check if the type reference is a known internal type. I.e. not a user
-	 * provided composite type.
-	 *
-	 * @param {function} type
-	 * @return {boolean} Returns true if this is a valid internal type.
-	 */
-	function isInternalComponentType(type) {
-	  return (
-	    typeof type === 'function' &&
-	    typeof type.prototype !== 'undefined' &&
-	    typeof type.prototype.mountComponent === 'function' &&
-	    typeof type.prototype.receiveComponent === 'function'
-	  );
-	}
-
-	/**
-	 * Given a ReactNode, create an instance that will actually be mounted.
-	 *
-	 * @param {ReactNode} node
-	 * @param {*} parentCompositeType The composite type that resolved this.
-	 * @return {object} A new instance of the element's constructor.
-	 * @protected
-	 */
-	function instantiateReactComponent(node, parentCompositeType) {
-	  var instance;
-
-	  if (node === null || node === false) {
-	    node = ReactEmptyComponent.emptyElement;
-	  }
-
-	  if (typeof node === 'object') {
-	    var element = node;
-	    if ("production" !== process.env.NODE_ENV) {
-	      ("production" !== process.env.NODE_ENV ? warning(
-	        element && (typeof element.type === 'function' ||
-	                    typeof element.type === 'string'),
-	        'Only functions or strings can be mounted as React components.'
-	      ) : null);
-	    }
-
-	    // Special case string values
-	    if (parentCompositeType === element.type &&
-	        typeof element.type === 'string') {
-	      // Avoid recursion if the wrapper renders itself.
-	      instance = ReactNativeComponent.createInternalComponent(element);
-	      // All native components are currently wrapped in a composite so we're
-	      // safe to assume that this is what we should instantiate.
-	    } else if (isInternalComponentType(element.type)) {
-	      // This is temporarily available for custom components that are not string
-	      // represenations. I.e. ART. Once those are updated to use the string
-	      // representation, we can drop this code path.
-	      instance = new element.type(element);
-	    } else {
-	      instance = new ReactCompositeComponentWrapper();
-	    }
-	  } else if (typeof node === 'string' || typeof node === 'number') {
-	    instance = ReactNativeComponent.createInstanceForText(node);
-	  } else {
-	    ("production" !== process.env.NODE_ENV ? invariant(
-	      false,
-	      'Encountered invalid React node of type %s',
-	      typeof node
-	    ) : invariant(false));
-	  }
-
-	  if ("production" !== process.env.NODE_ENV) {
-	    ("production" !== process.env.NODE_ENV ? warning(
-	      typeof instance.construct === 'function' &&
-	      typeof instance.mountComponent === 'function' &&
-	      typeof instance.receiveComponent === 'function' &&
-	      typeof instance.unmountComponent === 'function',
-	      'Only React Components can be mounted.'
-	    ) : null);
-	  }
-
-	  // Sets up the instance. This can probably just move into the constructor now.
-	  instance.construct(node);
-
-	  // These two fields are used by the DOM and ART diffing algorithms
-	  // respectively. Instead of using expandos on components, we should be
-	  // storing the state needed by the diffing algorithms elsewhere.
-	  instance._mountIndex = 0;
-	  instance._mountImage = null;
-
-	  if ("production" !== process.env.NODE_ENV) {
-	    instance._isOwnerNecessary = false;
-	    instance._warnedAboutRefsInRender = false;
-	  }
-
-	  // Internal instances should fully constructed at this point, so they should
-	  // not get any new fields added to them at this point.
-	  if ("production" !== process.env.NODE_ENV) {
-	    if (Object.preventExtensions) {
-	      Object.preventExtensions(instance);
-	    }
-	  }
-
-	  return instance;
-	}
-
-	module.exports = instantiateReactComponent;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
-
-/***/ },
-/* 121 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule emptyFunction
-	 */
-
-	function makeEmptyFunction(arg) {
-	  return function() {
-	    return arg;
-	  };
-	}
-
-	/**
-	 * This function accepts and discards inputs; it has no side effects. This is
-	 * primarily useful idiomatically for overridable function endpoints which
-	 * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
-	 */
-	function emptyFunction() {}
-
-	emptyFunction.thatReturns = makeEmptyFunction;
-	emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
-	emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
-	emptyFunction.thatReturnsNull = makeEmptyFunction(null);
-	emptyFunction.thatReturnsThis = function() { return this; };
-	emptyFunction.thatReturnsArgument = function(arg) { return arg; };
-
-	module.exports = emptyFunction;
-
-
-/***/ },
-/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -27472,7 +27061,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
-/* 123 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27491,12 +27080,12 @@
 
 	var EventConstants = __webpack_require__(69);
 	var EventPluginHub = __webpack_require__(193);
-	var EventPluginRegistry = __webpack_require__(225);
-	var ReactEventEmitterMixin = __webpack_require__(226);
-	var ViewportMetrics = __webpack_require__(227);
+	var EventPluginRegistry = __webpack_require__(222);
+	var ReactEventEmitterMixin = __webpack_require__(223);
+	var ViewportMetrics = __webpack_require__(224);
 
 	var assign = __webpack_require__(50);
-	var isEventSupported = __webpack_require__(187);
+	var isEventSupported = __webpack_require__(188);
 
 	/**
 	 * Summary of `ReactBrowserEventEmitter` event handling:
@@ -27829,7 +27418,7 @@
 
 
 /***/ },
-/* 124 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -27846,7 +27435,7 @@
 	'use strict';
 
 	var ReactElement = __webpack_require__(39);
-	var ReactInstanceMap = __webpack_require__(80);
+	var ReactInstanceMap = __webpack_require__(75);
 
 	var invariant = __webpack_require__(55);
 
@@ -27927,7 +27516,59 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
-/* 125 */
+/* 120 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactMarkupChecksum
+	 */
+
+	'use strict';
+
+	var adler32 = __webpack_require__(221);
+
+	var ReactMarkupChecksum = {
+	  CHECKSUM_ATTR_NAME: 'data-react-checksum',
+
+	  /**
+	   * @param {string} markup Markup string
+	   * @return {string} Markup string with checksum attribute attached
+	   */
+	  addChecksumToMarkup: function(markup) {
+	    var checksum = adler32(markup);
+	    return markup.replace(
+	      '>',
+	      ' ' + ReactMarkupChecksum.CHECKSUM_ATTR_NAME + '="' + checksum + '">'
+	    );
+	  },
+
+	  /**
+	   * @param {string} markup to use
+	   * @param {DOMElement} element root React element
+	   * @returns {boolean} whether or not the markup is the same
+	   */
+	  canReuseMarkup: function(markup, element) {
+	    var existingChecksum = element.getAttribute(
+	      ReactMarkupChecksum.CHECKSUM_ATTR_NAME
+	    );
+	    existingChecksum = existingChecksum && parseInt(existingChecksum, 10);
+	    var markupChecksum = adler32(markup);
+	    return markupChecksum === existingChecksum;
+	  }
+	};
+
+	module.exports = ReactMarkupChecksum;
+
+
+/***/ },
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -27947,8 +27588,8 @@
 	var PooledClass = __webpack_require__(70);
 	var ReactCurrentOwner = __webpack_require__(38);
 	var ReactPerf = __webpack_require__(46);
-	var ReactReconciler = __webpack_require__(48);
-	var Transaction = __webpack_require__(197);
+	var ReactReconciler = __webpack_require__(47);
+	var Transaction = __webpack_require__(198);
 
 	var assign = __webpack_require__(50);
 	var invariant = __webpack_require__(55);
@@ -28212,7 +27853,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
-/* 126 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28227,7 +27868,7 @@
 	 * @typechecks
 	 */
 
-	var isTextNode = __webpack_require__(224);
+	var isTextNode = __webpack_require__(226);
 
 	/*jslint bitwise:true */
 
@@ -28260,7 +27901,7 @@
 
 
 /***/ },
-/* 127 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28299,7 +27940,148 @@
 
 
 /***/ },
-/* 128 */
+/* 124 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule instantiateReactComponent
+	 * @typechecks static-only
+	 */
+
+	'use strict';
+
+	var ReactCompositeComponent = __webpack_require__(225);
+	var ReactEmptyComponent = __webpack_require__(119);
+	var ReactNativeComponent = __webpack_require__(82);
+
+	var assign = __webpack_require__(50);
+	var invariant = __webpack_require__(55);
+	var warning = __webpack_require__(58);
+
+	// To avoid a cyclic dependency, we create the final class in this module
+	var ReactCompositeComponentWrapper = function() { };
+	assign(
+	  ReactCompositeComponentWrapper.prototype,
+	  ReactCompositeComponent.Mixin,
+	  {
+	    _instantiateReactComponent: instantiateReactComponent
+	  }
+	);
+
+	/**
+	 * Check if the type reference is a known internal type. I.e. not a user
+	 * provided composite type.
+	 *
+	 * @param {function} type
+	 * @return {boolean} Returns true if this is a valid internal type.
+	 */
+	function isInternalComponentType(type) {
+	  return (
+	    typeof type === 'function' &&
+	    typeof type.prototype !== 'undefined' &&
+	    typeof type.prototype.mountComponent === 'function' &&
+	    typeof type.prototype.receiveComponent === 'function'
+	  );
+	}
+
+	/**
+	 * Given a ReactNode, create an instance that will actually be mounted.
+	 *
+	 * @param {ReactNode} node
+	 * @param {*} parentCompositeType The composite type that resolved this.
+	 * @return {object} A new instance of the element's constructor.
+	 * @protected
+	 */
+	function instantiateReactComponent(node, parentCompositeType) {
+	  var instance;
+
+	  if (node === null || node === false) {
+	    node = ReactEmptyComponent.emptyElement;
+	  }
+
+	  if (typeof node === 'object') {
+	    var element = node;
+	    if ("production" !== process.env.NODE_ENV) {
+	      ("production" !== process.env.NODE_ENV ? warning(
+	        element && (typeof element.type === 'function' ||
+	                    typeof element.type === 'string'),
+	        'Only functions or strings can be mounted as React components.'
+	      ) : null);
+	    }
+
+	    // Special case string values
+	    if (parentCompositeType === element.type &&
+	        typeof element.type === 'string') {
+	      // Avoid recursion if the wrapper renders itself.
+	      instance = ReactNativeComponent.createInternalComponent(element);
+	      // All native components are currently wrapped in a composite so we're
+	      // safe to assume that this is what we should instantiate.
+	    } else if (isInternalComponentType(element.type)) {
+	      // This is temporarily available for custom components that are not string
+	      // represenations. I.e. ART. Once those are updated to use the string
+	      // representation, we can drop this code path.
+	      instance = new element.type(element);
+	    } else {
+	      instance = new ReactCompositeComponentWrapper();
+	    }
+	  } else if (typeof node === 'string' || typeof node === 'number') {
+	    instance = ReactNativeComponent.createInstanceForText(node);
+	  } else {
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      false,
+	      'Encountered invalid React node of type %s',
+	      typeof node
+	    ) : invariant(false));
+	  }
+
+	  if ("production" !== process.env.NODE_ENV) {
+	    ("production" !== process.env.NODE_ENV ? warning(
+	      typeof instance.construct === 'function' &&
+	      typeof instance.mountComponent === 'function' &&
+	      typeof instance.receiveComponent === 'function' &&
+	      typeof instance.unmountComponent === 'function',
+	      'Only React Components can be mounted.'
+	    ) : null);
+	  }
+
+	  // Sets up the instance. This can probably just move into the constructor now.
+	  instance.construct(node);
+
+	  // These two fields are used by the DOM and ART diffing algorithms
+	  // respectively. Instead of using expandos on components, we should be
+	  // storing the state needed by the diffing algorithms elsewhere.
+	  instance._mountIndex = 0;
+	  instance._mountImage = null;
+
+	  if ("production" !== process.env.NODE_ENV) {
+	    instance._isOwnerNecessary = false;
+	    instance._warnedAboutRefsInRender = false;
+	  }
+
+	  // Internal instances should fully constructed at this point, so they should
+	  // not get any new fields added to them at this point.
+	  if ("production" !== process.env.NODE_ENV) {
+	    if (Object.preventExtensions) {
+	      Object.preventExtensions(instance);
+	    }
+	  }
+
+	  return instance;
+	}
+
+	module.exports = instantiateReactComponent;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28392,7 +28174,7 @@
 
 
 /***/ },
-/* 129 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -28497,6 +28279,236 @@
 	module.exports = shouldUpdateReactComponent;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 127 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactRef
+	 */
+
+	'use strict';
+
+	var ReactOwner = __webpack_require__(227);
+
+	var ReactRef = {};
+
+	function attachRef(ref, component, owner) {
+	  if (typeof ref === 'function') {
+	    ref(component.getPublicInstance());
+	  } else {
+	    // Legacy ref
+	    ReactOwner.addComponentAsRefTo(component, ref, owner);
+	  }
+	}
+
+	function detachRef(ref, component, owner) {
+	  if (typeof ref === 'function') {
+	    ref(null);
+	  } else {
+	    // Legacy ref
+	    ReactOwner.removeComponentAsRefFrom(component, ref, owner);
+	  }
+	}
+
+	ReactRef.attachRefs = function(instance, element) {
+	  var ref = element.ref;
+	  if (ref != null) {
+	    attachRef(ref, instance, element._owner);
+	  }
+	};
+
+	ReactRef.shouldUpdateRefs = function(prevElement, nextElement) {
+	  // If either the owner or a `ref` has changed, make sure the newest owner
+	  // has stored a reference to `this`, and the previous owner (if different)
+	  // has forgotten the reference to `this`. We use the element instead
+	  // of the public this.props because the post processing cannot determine
+	  // a ref. The ref conceptually lives on the element.
+
+	  // TODO: Should this even be possible? The owner cannot change because
+	  // it's forbidden by shouldUpdateReactComponent. The ref can change
+	  // if you swap the keys of but not the refs. Reconsider where this check
+	  // is made. It probably belongs where the key checking and
+	  // instantiateReactComponent is done.
+
+	  return (
+	    nextElement._owner !== prevElement._owner ||
+	    nextElement.ref !== prevElement.ref
+	  );
+	};
+
+	ReactRef.detachRefs = function(instance, element) {
+	  var ref = element.ref;
+	  if (ref != null) {
+	    detachRef(ref, instance, element._owner);
+	  }
+	};
+
+	module.exports = ReactRef;
+
+
+/***/ },
+/* 128 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactServerRenderingTransaction
+	 * @typechecks
+	 */
+
+	'use strict';
+
+	var PooledClass = __webpack_require__(70);
+	var CallbackQueue = __webpack_require__(206);
+	var ReactPutListenerQueue = __webpack_require__(208);
+	var Transaction = __webpack_require__(198);
+
+	var assign = __webpack_require__(50);
+	var emptyFunction = __webpack_require__(129);
+
+	/**
+	 * Provides a `CallbackQueue` queue for collecting `onDOMReady` callbacks
+	 * during the performing of the transaction.
+	 */
+	var ON_DOM_READY_QUEUEING = {
+	  /**
+	   * Initializes the internal `onDOMReady` queue.
+	   */
+	  initialize: function() {
+	    this.reactMountReady.reset();
+	  },
+
+	  close: emptyFunction
+	};
+
+	var PUT_LISTENER_QUEUEING = {
+	  initialize: function() {
+	    this.putListenerQueue.reset();
+	  },
+
+	  close: emptyFunction
+	};
+
+	/**
+	 * Executed within the scope of the `Transaction` instance. Consider these as
+	 * being member methods, but with an implied ordering while being isolated from
+	 * each other.
+	 */
+	var TRANSACTION_WRAPPERS = [
+	  PUT_LISTENER_QUEUEING,
+	  ON_DOM_READY_QUEUEING
+	];
+
+	/**
+	 * @class ReactServerRenderingTransaction
+	 * @param {boolean} renderToStaticMarkup
+	 */
+	function ReactServerRenderingTransaction(renderToStaticMarkup) {
+	  this.reinitializeTransaction();
+	  this.renderToStaticMarkup = renderToStaticMarkup;
+	  this.reactMountReady = CallbackQueue.getPooled(null);
+	  this.putListenerQueue = ReactPutListenerQueue.getPooled();
+	}
+
+	var Mixin = {
+	  /**
+	   * @see Transaction
+	   * @abstract
+	   * @final
+	   * @return {array} Empty list of operation wrap proceedures.
+	   */
+	  getTransactionWrappers: function() {
+	    return TRANSACTION_WRAPPERS;
+	  },
+
+	  /**
+	   * @return {object} The queue to collect `onDOMReady` callbacks with.
+	   */
+	  getReactMountReady: function() {
+	    return this.reactMountReady;
+	  },
+
+	  getPutListenerQueue: function() {
+	    return this.putListenerQueue;
+	  },
+
+	  /**
+	   * `PooledClass` looks for this, and will invoke this before allowing this
+	   * instance to be resused.
+	   */
+	  destructor: function() {
+	    CallbackQueue.release(this.reactMountReady);
+	    this.reactMountReady = null;
+
+	    ReactPutListenerQueue.release(this.putListenerQueue);
+	    this.putListenerQueue = null;
+	  }
+	};
+
+
+	assign(
+	  ReactServerRenderingTransaction.prototype,
+	  Transaction.Mixin,
+	  Mixin
+	);
+
+	PooledClass.addPoolingTo(ReactServerRenderingTransaction);
+
+	module.exports = ReactServerRenderingTransaction;
+
+
+/***/ },
+/* 129 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule emptyFunction
+	 */
+
+	function makeEmptyFunction(arg) {
+	  return function() {
+	    return arg;
+	  };
+	}
+
+	/**
+	 * This function accepts and discards inputs; it has no side effects. This is
+	 * primarily useful idiomatically for overridable function endpoints which
+	 * always need to be callable, since JS lacks a null-call idiom ala Cocoa.
+	 */
+	function emptyFunction() {}
+
+	emptyFunction.thatReturns = makeEmptyFunction;
+	emptyFunction.thatReturnsFalse = makeEmptyFunction(false);
+	emptyFunction.thatReturnsTrue = makeEmptyFunction(true);
+	emptyFunction.thatReturnsNull = makeEmptyFunction(null);
+	emptyFunction.thatReturnsThis = function() { return this; };
+	emptyFunction.thatReturnsArgument = function(arg) { return arg; };
+
+	module.exports = emptyFunction;
+
 
 /***/ },
 /* 130 */
@@ -29140,7 +29152,7 @@
 
 	var ValidComponentChildren = _interopRequire(__webpack_require__(230));
 
-	var createChainedFunction = _interopRequire(__webpack_require__(232));
+	var createChainedFunction = _interopRequire(__webpack_require__(231));
 
 	var CollapsableNav = React.createClass({
 	  displayName: "CollapsableNav",
@@ -29544,7 +29556,7 @@
 
 	var classNames = _interopRequire(__webpack_require__(237));
 
-	var TransitionEvents = _interopRequire(__webpack_require__(231));
+	var TransitionEvents = _interopRequire(__webpack_require__(232));
 
 	var CarouselItem = React.createClass({
 	  displayName: "CarouselItem",
@@ -29916,7 +29928,7 @@
 
 	var classNames = _interopRequire(__webpack_require__(237));
 
-	var createChainedFunction = _interopRequire(__webpack_require__(232));
+	var createChainedFunction = _interopRequire(__webpack_require__(231));
 
 	var BootstrapMixin = _interopRequire(__webpack_require__(136));
 
@@ -30054,7 +30066,7 @@
 
 	var classNames = _interopRequire(__webpack_require__(237));
 
-	var createChainedFunction = _interopRequire(__webpack_require__(232));
+	var createChainedFunction = _interopRequire(__webpack_require__(231));
 
 	var ValidComponentChildren = _interopRequire(__webpack_require__(230));
 
@@ -31214,7 +31226,7 @@
 
 	var ValidComponentChildren = _interopRequire(__webpack_require__(230));
 
-	var createChainedFunction = _interopRequire(__webpack_require__(232));
+	var createChainedFunction = _interopRequire(__webpack_require__(231));
 
 	var Nav = React.createClass({
 	  displayName: "Nav",
@@ -31340,7 +31352,7 @@
 
 	var ValidComponentChildren = _interopRequire(__webpack_require__(230));
 
-	var createChainedFunction = _interopRequire(__webpack_require__(232));
+	var createChainedFunction = _interopRequire(__webpack_require__(231));
 
 	var Navbar = React.createClass({
 	  displayName: "Navbar",
@@ -31587,7 +31599,7 @@
 
 	var OverlayMixin = _interopRequire(__webpack_require__(165));
 
-	var createChainedFunction = _interopRequire(__webpack_require__(232));
+	var createChainedFunction = _interopRequire(__webpack_require__(231));
 
 	var ModalTrigger = React.createClass({
 	  displayName: "ModalTrigger",
@@ -31660,7 +31672,7 @@
 
 	var domUtils = _interopRequire(__webpack_require__(228));
 
-	var createChainedFunction = _interopRequire(__webpack_require__(232));
+	var createChainedFunction = _interopRequire(__webpack_require__(231));
 
 	var assign = _interopRequire(__webpack_require__(234));
 
@@ -32410,7 +32422,7 @@
 
 	var ValidComponentChildren = _interopRequire(__webpack_require__(230));
 
-	var createChainedFunction = _interopRequire(__webpack_require__(232));
+	var createChainedFunction = _interopRequire(__webpack_require__(231));
 
 	var Pager = React.createClass({
 	  displayName: "Pager",
@@ -32865,7 +32877,7 @@
 
 	var ValidComponentChildren = _interopRequire(__webpack_require__(230));
 
-	var createChainedFunction = _interopRequire(__webpack_require__(232));
+	var createChainedFunction = _interopRequire(__webpack_require__(231));
 
 	var BootstrapMixin = _interopRequire(__webpack_require__(136));
 
@@ -33219,7 +33231,7 @@
 
 	var classNames = _interopRequire(__webpack_require__(237));
 
-	var TransitionEvents = _interopRequire(__webpack_require__(231));
+	var TransitionEvents = _interopRequire(__webpack_require__(232));
 
 	var TabPane = React.createClass({
 	  displayName: "TabPane",
@@ -33520,11 +33532,43 @@
 /* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(250);
+	module.exports = __webpack_require__(255);
 
 
 /***/ },
 /* 185 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule quoteAttributeValueForBrowser
+	 */
+
+	'use strict';
+
+	var escapeTextContentForBrowser = __webpack_require__(88);
+
+	/**
+	 * Escapes attribute value to prevent scripting attacks.
+	 *
+	 * @param {*} value Value to escape.
+	 * @return {string} An escaped string.
+	 */
+	function quoteAttributeValueForBrowser(value) {
+	  return '"' + escapeTextContentForBrowser(value) + '"';
+	}
+
+	module.exports = quoteAttributeValueForBrowser;
+
+
+/***/ },
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -33709,7 +33753,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -33726,10 +33770,10 @@
 
 	'use strict';
 
-	var ReactComponentEnvironment = __webpack_require__(202);
+	var ReactComponentEnvironment = __webpack_require__(205);
 	var ReactMultiChildUpdateTypes = __webpack_require__(243);
 
-	var ReactReconciler = __webpack_require__(48);
+	var ReactReconciler = __webpack_require__(47);
 	var ReactChildReconciler = __webpack_require__(244);
 
 	/**
@@ -34143,7 +34187,7 @@
 
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34212,38 +34256,6 @@
 
 
 /***/ },
-/* 188 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule quoteAttributeValueForBrowser
-	 */
-
-	'use strict';
-
-	var escapeTextContentForBrowser = __webpack_require__(88);
-
-	/**
-	 * Escapes attribute value to prevent scripting attacks.
-	 *
-	 * @param {*} value Value to escape.
-	 * @return {string} An escaped string.
-	 */
-	function quoteAttributeValueForBrowser(value) {
-	  return '"' + escapeTextContentForBrowser(value) + '"';
-	}
-
-	module.exports = quoteAttributeValueForBrowser;
-
-
-/***/ },
 /* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -34263,8 +34275,8 @@
 	var EventConstants = __webpack_require__(69);
 	var EventPluginHub = __webpack_require__(193);
 
-	var accumulateInto = __webpack_require__(246);
-	var forEachAccumulated = __webpack_require__(247);
+	var accumulateInto = __webpack_require__(245);
+	var forEachAccumulated = __webpack_require__(246);
 
 	var PropagationPhases = EventConstants.PropagationPhases;
 	var getListener = EventPluginHub.getListener;
@@ -34409,7 +34421,7 @@
 	var PooledClass = __webpack_require__(70);
 
 	var assign = __webpack_require__(50);
-	var getTextContentAccessor = __webpack_require__(245);
+	var getTextContentAccessor = __webpack_require__(247);
 
 	/**
 	 * This helper class stores information about text content of a target node,
@@ -34599,11 +34611,11 @@
 
 	'use strict';
 
-	var EventPluginRegistry = __webpack_require__(225);
+	var EventPluginRegistry = __webpack_require__(222);
 	var EventPluginUtils = __webpack_require__(33);
 
-	var accumulateInto = __webpack_require__(246);
-	var forEachAccumulated = __webpack_require__(247);
+	var accumulateInto = __webpack_require__(245);
+	var forEachAccumulated = __webpack_require__(246);
 	var invariant = __webpack_require__(55);
 
 	/**
@@ -34884,8 +34896,8 @@
 	var PooledClass = __webpack_require__(70);
 
 	var assign = __webpack_require__(50);
-	var emptyFunction = __webpack_require__(121);
-	var getEventTarget = __webpack_require__(204);
+	var emptyFunction = __webpack_require__(129);
+	var getEventTarget = __webpack_require__(203);
 
 	/**
 	 * @interface Event
@@ -35098,8 +35110,8 @@
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(216);
-	var ViewportMetrics = __webpack_require__(227);
+	var SyntheticUIEvent = __webpack_require__(214);
+	var ViewportMetrics = __webpack_require__(224);
 
 	var getEventModifierState = __webpack_require__(248);
 
@@ -35167,6 +35179,66 @@
 
 /***/ },
 /* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule LocalEventTrapMixin
+	 */
+
+	'use strict';
+
+	var ReactBrowserEventEmitter = __webpack_require__(118);
+
+	var accumulateInto = __webpack_require__(245);
+	var forEachAccumulated = __webpack_require__(246);
+	var invariant = __webpack_require__(55);
+
+	function remove(event) {
+	  event.remove();
+	}
+
+	var LocalEventTrapMixin = {
+	  trapBubbledEvent:function(topLevelType, handlerBaseName) {
+	    ("production" !== process.env.NODE_ENV ? invariant(this.isMounted(), 'Must be mounted to trap events') : invariant(this.isMounted()));
+	    // If a component renders to null or if another component fatals and causes
+	    // the state of the tree to be corrupted, `node` here can be null.
+	    var node = this.getDOMNode();
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      node,
+	      'LocalEventTrapMixin.trapBubbledEvent(...): Requires node to be rendered.'
+	    ) : invariant(node));
+	    var listener = ReactBrowserEventEmitter.trapBubbledEvent(
+	      topLevelType,
+	      handlerBaseName,
+	      node
+	    );
+	    this._localEventListeners =
+	      accumulateInto(this._localEventListeners, listener);
+	  },
+
+	  // trapCapturedEvent would look nearly identical. We don't implement that
+	  // method because it isn't currently needed.
+
+	  componentWillUnmount:function() {
+	    if (this._localEventListeners) {
+	      forEachAccumulated(this._localEventListeners, remove);
+	    }
+	  }
+	};
+
+	module.exports = LocalEventTrapMixin;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -35410,7 +35482,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
-/* 198 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35441,66 +35513,6 @@
 
 
 /***/ },
-/* 199 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2014-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule LocalEventTrapMixin
-	 */
-
-	'use strict';
-
-	var ReactBrowserEventEmitter = __webpack_require__(123);
-
-	var accumulateInto = __webpack_require__(246);
-	var forEachAccumulated = __webpack_require__(247);
-	var invariant = __webpack_require__(55);
-
-	function remove(event) {
-	  event.remove();
-	}
-
-	var LocalEventTrapMixin = {
-	  trapBubbledEvent:function(topLevelType, handlerBaseName) {
-	    ("production" !== process.env.NODE_ENV ? invariant(this.isMounted(), 'Must be mounted to trap events') : invariant(this.isMounted()));
-	    // If a component renders to null or if another component fatals and causes
-	    // the state of the tree to be corrupted, `node` here can be null.
-	    var node = this.getDOMNode();
-	    ("production" !== process.env.NODE_ENV ? invariant(
-	      node,
-	      'LocalEventTrapMixin.trapBubbledEvent(...): Requires node to be rendered.'
-	    ) : invariant(node));
-	    var listener = ReactBrowserEventEmitter.trapBubbledEvent(
-	      topLevelType,
-	      handlerBaseName,
-	      node
-	    );
-	    this._localEventListeners =
-	      accumulateInto(this._localEventListeners, listener);
-	  },
-
-	  // trapCapturedEvent would look nearly identical. We don't implement that
-	  // method because it isn't currently needed.
-
-	  componentWillUnmount:function() {
-	    if (this._localEventListeners) {
-	      forEachAccumulated(this._localEventListeners, remove);
-	    }
-	  }
-	};
-
-	module.exports = LocalEventTrapMixin;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
-
-/***/ },
 /* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -35518,10 +35530,10 @@
 
 	'use strict';
 
-	var Danger = __webpack_require__(251);
+	var Danger = __webpack_require__(250);
 	var ReactMultiChildUpdateTypes = __webpack_require__(243);
 
-	var setTextContent = __webpack_require__(252);
+	var setTextContent = __webpack_require__(251);
 	var invariant = __webpack_require__(55);
 
 	/**
@@ -35659,7 +35671,7 @@
 
 	'use strict';
 
-	var ReactPropTypes = __webpack_require__(47);
+	var ReactPropTypes = __webpack_require__(48);
 
 	var invariant = __webpack_require__(55);
 
@@ -35805,70 +35817,6 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2014-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactComponentEnvironment
-	 */
-
-	'use strict';
-
-	var invariant = __webpack_require__(55);
-
-	var injected = false;
-
-	var ReactComponentEnvironment = {
-
-	  /**
-	   * Optionally injectable environment dependent cleanup hook. (server vs.
-	   * browser etc). Example: A browser system caches DOM nodes based on component
-	   * ID and must remove that cache entry when this instance is unmounted.
-	   */
-	  unmountIDFromEnvironment: null,
-
-	  /**
-	   * Optionally injectable hook for swapping out mount images in the middle of
-	   * the tree.
-	   */
-	  replaceNodeWithMarkupByID: null,
-
-	  /**
-	   * Optionally injectable hook for processing a queue of child updates. Will
-	   * later move into MultiChildComponents.
-	   */
-	  processChildrenUpdates: null,
-
-	  injection: {
-	    injectEnvironment: function(environment) {
-	      ("production" !== process.env.NODE_ENV ? invariant(
-	        !injected,
-	        'ReactCompositeComponent: injectEnvironment() can only be called once.'
-	      ) : invariant(!injected));
-	      ReactComponentEnvironment.unmountIDFromEnvironment =
-	        environment.unmountIDFromEnvironment;
-	      ReactComponentEnvironment.replaceNodeWithMarkupByID =
-	        environment.replaceNodeWithMarkupByID;
-	      ReactComponentEnvironment.processChildrenUpdates =
-	        environment.processChildrenUpdates;
-	      injected = true;
-	    }
-	  }
-
-	};
-
-	module.exports = ReactComponentEnvironment;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
-
-/***/ },
-/* 203 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-2015, Facebook, Inc.
 	 *
 	 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35887,7 +35835,7 @@
 	 * @typechecks
 	 */
 
-	var emptyFunction = __webpack_require__(121);
+	var emptyFunction = __webpack_require__(129);
 
 	/**
 	 * Upstream version of event listener. Does not take into account specific
@@ -35958,7 +35906,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
-/* 204 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35993,7 +35941,7 @@
 
 
 /***/ },
-/* 205 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36035,6 +35983,70 @@
 
 	module.exports = getUnboundedScrollPosition;
 
+
+/***/ },
+/* 205 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2014-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactComponentEnvironment
+	 */
+
+	'use strict';
+
+	var invariant = __webpack_require__(55);
+
+	var injected = false;
+
+	var ReactComponentEnvironment = {
+
+	  /**
+	   * Optionally injectable environment dependent cleanup hook. (server vs.
+	   * browser etc). Example: A browser system caches DOM nodes based on component
+	   * ID and must remove that cache entry when this instance is unmounted.
+	   */
+	  unmountIDFromEnvironment: null,
+
+	  /**
+	   * Optionally injectable hook for swapping out mount images in the middle of
+	   * the tree.
+	   */
+	  replaceNodeWithMarkupByID: null,
+
+	  /**
+	   * Optionally injectable hook for processing a queue of child updates. Will
+	   * later move into MultiChildComponents.
+	   */
+	  processChildrenUpdates: null,
+
+	  injection: {
+	    injectEnvironment: function(environment) {
+	      ("production" !== process.env.NODE_ENV ? invariant(
+	        !injected,
+	        'ReactCompositeComponent: injectEnvironment() can only be called once.'
+	      ) : invariant(!injected));
+	      ReactComponentEnvironment.unmountIDFromEnvironment =
+	        environment.unmountIDFromEnvironment;
+	      ReactComponentEnvironment.replaceNodeWithMarkupByID =
+	        environment.replaceNodeWithMarkupByID;
+	      ReactComponentEnvironment.processChildrenUpdates =
+	        environment.processChildrenUpdates;
+	      injected = true;
+	    }
+	  }
+
+	};
+
+	module.exports = ReactComponentEnvironment;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
 /* 206 */
@@ -36156,11 +36168,11 @@
 
 	'use strict';
 
-	var ReactDOMSelection = __webpack_require__(253);
+	var ReactDOMSelection = __webpack_require__(252);
 
-	var containsNode = __webpack_require__(126);
+	var containsNode = __webpack_require__(122);
 	var focusNode = __webpack_require__(249);
-	var getActiveElement = __webpack_require__(209);
+	var getActiveElement = __webpack_require__(217);
 
 	function isInDocument(node) {
 	  return containsNode(document.documentElement, node);
@@ -36296,7 +36308,7 @@
 	'use strict';
 
 	var PooledClass = __webpack_require__(70);
-	var ReactBrowserEventEmitter = __webpack_require__(123);
+	var ReactBrowserEventEmitter = __webpack_require__(118);
 
 	var assign = __webpack_require__(50);
 
@@ -36350,87 +36362,6 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule getActiveElement
-	 * @typechecks
-	 */
-
-	/**
-	 * Same as document.activeElement but wraps in a try-catch block. In IE it is
-	 * not safe to call document.activeElement if there is nothing focused.
-	 *
-	 * The activeElement will be null only if the document body is not yet defined.
-	 */
-	function getActiveElement() /*?DOMElement*/ {
-	  try {
-	    return document.activeElement || document.body;
-	  } catch (e) {
-	    return document.body;
-	  }
-	}
-
-	module.exports = getActiveElement;
-
-
-/***/ },
-/* 210 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule shallowEqual
-	 */
-
-	'use strict';
-
-	/**
-	 * Performs equality by iterating through keys on an object and returning
-	 * false when any key has values which are not strictly equal between
-	 * objA and objB. Returns true when the values of all keys are strictly equal.
-	 *
-	 * @return {boolean}
-	 */
-	function shallowEqual(objA, objB) {
-	  if (objA === objB) {
-	    return true;
-	  }
-	  var key;
-	  // Test for A's keys different from B.
-	  for (key in objA) {
-	    if (objA.hasOwnProperty(key) &&
-	        (!objB.hasOwnProperty(key) || objA[key] !== objB[key])) {
-	      return false;
-	    }
-	  }
-	  // Test for B's keys missing from A.
-	  for (key in objB) {
-	    if (objB.hasOwnProperty(key) && !objA.hasOwnProperty(key)) {
-	      return false;
-	    }
-	  }
-	  return true;
-	}
-
-	module.exports = shallowEqual;
-
-
-/***/ },
-/* 211 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
 	 * @providesModule SyntheticClipboardEvent
 	 * @typechecks static-only
 	 */
@@ -36469,7 +36400,7 @@
 
 
 /***/ },
-/* 212 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36486,7 +36417,7 @@
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(216);
+	var SyntheticUIEvent = __webpack_require__(214);
 
 	/**
 	 * @interface FocusEvent
@@ -36512,7 +36443,7 @@
 
 
 /***/ },
-/* 213 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36529,10 +36460,10 @@
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(216);
+	var SyntheticUIEvent = __webpack_require__(214);
 
-	var getEventCharCode = __webpack_require__(218);
-	var getEventKey = __webpack_require__(254);
+	var getEventCharCode = __webpack_require__(216);
+	var getEventKey = __webpack_require__(253);
 	var getEventModifierState = __webpack_require__(248);
 
 	/**
@@ -36603,7 +36534,7 @@
 
 
 /***/ },
-/* 214 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36646,7 +36577,7 @@
 
 
 /***/ },
-/* 215 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36663,7 +36594,7 @@
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(216);
+	var SyntheticUIEvent = __webpack_require__(214);
 
 	var getEventModifierState = __webpack_require__(248);
 
@@ -36698,7 +36629,7 @@
 
 
 /***/ },
-/* 216 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36717,7 +36648,7 @@
 
 	var SyntheticEvent = __webpack_require__(194);
 
-	var getEventTarget = __webpack_require__(204);
+	var getEventTarget = __webpack_require__(203);
 
 	/**
 	 * @interface UIEvent
@@ -36764,7 +36695,7 @@
 
 
 /***/ },
-/* 217 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36829,7 +36760,7 @@
 
 
 /***/ },
-/* 218 */
+/* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36882,6 +36813,87 @@
 	}
 
 	module.exports = getEventCharCode;
+
+
+/***/ },
+/* 217 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule getActiveElement
+	 * @typechecks
+	 */
+
+	/**
+	 * Same as document.activeElement but wraps in a try-catch block. In IE it is
+	 * not safe to call document.activeElement if there is nothing focused.
+	 *
+	 * The activeElement will be null only if the document body is not yet defined.
+	 */
+	function getActiveElement() /*?DOMElement*/ {
+	  try {
+	    return document.activeElement || document.body;
+	  } catch (e) {
+	    return document.body;
+	  }
+	}
+
+	module.exports = getActiveElement;
+
+
+/***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule shallowEqual
+	 */
+
+	'use strict';
+
+	/**
+	 * Performs equality by iterating through keys on an object and returning
+	 * false when any key has values which are not strictly equal between
+	 * objA and objB. Returns true when the values of all keys are strictly equal.
+	 *
+	 * @return {boolean}
+	 */
+	function shallowEqual(objA, objB) {
+	  if (objA === objB) {
+	    return true;
+	  }
+	  var key;
+	  // Test for A's keys different from B.
+	  for (key in objA) {
+	    if (objA.hasOwnProperty(key) &&
+	        (!objB.hasOwnProperty(key) || objA[key] !== objB[key])) {
+	      return false;
+	    }
+	  }
+	  // Test for B's keys missing from A.
+	  for (key in objB) {
+	    if (objB.hasOwnProperty(key) && !objA.hasOwnProperty(key)) {
+	      return false;
+	    }
+	  }
+	  return true;
+	}
+
+	module.exports = shallowEqual;
 
 
 /***/ },
@@ -37110,7 +37122,7 @@
 	 * @typechecks
 	 */
 
-	var performance = __webpack_require__(255);
+	var performance = __webpack_require__(254);
 
 	/**
 	 * Detect if we can use `window.performance.now()` and gracefully fallback to
@@ -37128,121 +37140,6 @@
 
 /***/ },
 /* 221 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactOwner
-	 */
-
-	'use strict';
-
-	var invariant = __webpack_require__(55);
-
-	/**
-	 * ReactOwners are capable of storing references to owned components.
-	 *
-	 * All components are capable of //being// referenced by owner components, but
-	 * only ReactOwner components are capable of //referencing// owned components.
-	 * The named reference is known as a "ref".
-	 *
-	 * Refs are available when mounted and updated during reconciliation.
-	 *
-	 *   var MyComponent = React.createClass({
-	 *     render: function() {
-	 *       return (
-	 *         <div onClick={this.handleClick}>
-	 *           <CustomComponent ref="custom" />
-	 *         </div>
-	 *       );
-	 *     },
-	 *     handleClick: function() {
-	 *       this.refs.custom.handleClick();
-	 *     },
-	 *     componentDidMount: function() {
-	 *       this.refs.custom.initialize();
-	 *     }
-	 *   });
-	 *
-	 * Refs should rarely be used. When refs are used, they should only be done to
-	 * control data that is not handled by React's data flow.
-	 *
-	 * @class ReactOwner
-	 */
-	var ReactOwner = {
-
-	  /**
-	   * @param {?object} object
-	   * @return {boolean} True if `object` is a valid owner.
-	   * @final
-	   */
-	  isValidOwner: function(object) {
-	    return !!(
-	      (object &&
-	      typeof object.attachRef === 'function' && typeof object.detachRef === 'function')
-	    );
-	  },
-
-	  /**
-	   * Adds a component by ref to an owner component.
-	   *
-	   * @param {ReactComponent} component Component to reference.
-	   * @param {string} ref Name by which to refer to the component.
-	   * @param {ReactOwner} owner Component on which to record the ref.
-	   * @final
-	   * @internal
-	   */
-	  addComponentAsRefTo: function(component, ref, owner) {
-	    ("production" !== process.env.NODE_ENV ? invariant(
-	      ReactOwner.isValidOwner(owner),
-	      'addComponentAsRefTo(...): Only a ReactOwner can have refs. This ' +
-	      'usually means that you\'re trying to add a ref to a component that ' +
-	      'doesn\'t have an owner (that is, was not created inside of another ' +
-	      'component\'s `render` method). Try rendering this component inside of ' +
-	      'a new top-level component which will hold the ref.'
-	    ) : invariant(ReactOwner.isValidOwner(owner)));
-	    owner.attachRef(ref, component);
-	  },
-
-	  /**
-	   * Removes a component by ref from an owner component.
-	   *
-	   * @param {ReactComponent} component Component to dereference.
-	   * @param {string} ref Name of the ref to remove.
-	   * @param {ReactOwner} owner Component on which the ref is recorded.
-	   * @final
-	   * @internal
-	   */
-	  removeComponentAsRefFrom: function(component, ref, owner) {
-	    ("production" !== process.env.NODE_ENV ? invariant(
-	      ReactOwner.isValidOwner(owner),
-	      'removeComponentAsRefFrom(...): Only a ReactOwner can have refs. This ' +
-	      'usually means that you\'re trying to remove a ref to a component that ' +
-	      'doesn\'t have an owner (that is, was not created inside of another ' +
-	      'component\'s `render` method). Try rendering this component inside of ' +
-	      'a new top-level component which will hold the ref.'
-	    ) : invariant(ReactOwner.isValidOwner(owner)));
-	    // Check that `component` is still the current ref because we do not want to
-	    // detach the ref if another component stole it.
-	    if (owner.getPublicInstance().refs[ref] === component.getPublicInstance()) {
-	      owner.detachRef(ref);
-	    }
-	  }
-
-	};
-
-	module.exports = ReactOwner;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
-
-/***/ },
-/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37280,7 +37177,377 @@
 
 
 /***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule EventPluginRegistry
+	 * @typechecks static-only
+	 */
+
+	'use strict';
+
+	var invariant = __webpack_require__(55);
+
+	/**
+	 * Injectable ordering of event plugins.
+	 */
+	var EventPluginOrder = null;
+
+	/**
+	 * Injectable mapping from names to event plugin modules.
+	 */
+	var namesToPlugins = {};
+
+	/**
+	 * Recomputes the plugin list using the injected plugins and plugin ordering.
+	 *
+	 * @private
+	 */
+	function recomputePluginOrdering() {
+	  if (!EventPluginOrder) {
+	    // Wait until an `EventPluginOrder` is injected.
+	    return;
+	  }
+	  for (var pluginName in namesToPlugins) {
+	    var PluginModule = namesToPlugins[pluginName];
+	    var pluginIndex = EventPluginOrder.indexOf(pluginName);
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      pluginIndex > -1,
+	      'EventPluginRegistry: Cannot inject event plugins that do not exist in ' +
+	      'the plugin ordering, `%s`.',
+	      pluginName
+	    ) : invariant(pluginIndex > -1));
+	    if (EventPluginRegistry.plugins[pluginIndex]) {
+	      continue;
+	    }
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      PluginModule.extractEvents,
+	      'EventPluginRegistry: Event plugins must implement an `extractEvents` ' +
+	      'method, but `%s` does not.',
+	      pluginName
+	    ) : invariant(PluginModule.extractEvents));
+	    EventPluginRegistry.plugins[pluginIndex] = PluginModule;
+	    var publishedEvents = PluginModule.eventTypes;
+	    for (var eventName in publishedEvents) {
+	      ("production" !== process.env.NODE_ENV ? invariant(
+	        publishEventForPlugin(
+	          publishedEvents[eventName],
+	          PluginModule,
+	          eventName
+	        ),
+	        'EventPluginRegistry: Failed to publish event `%s` for plugin `%s`.',
+	        eventName,
+	        pluginName
+	      ) : invariant(publishEventForPlugin(
+	        publishedEvents[eventName],
+	        PluginModule,
+	        eventName
+	      )));
+	    }
+	  }
+	}
+
+	/**
+	 * Publishes an event so that it can be dispatched by the supplied plugin.
+	 *
+	 * @param {object} dispatchConfig Dispatch configuration for the event.
+	 * @param {object} PluginModule Plugin publishing the event.
+	 * @return {boolean} True if the event was successfully published.
+	 * @private
+	 */
+	function publishEventForPlugin(dispatchConfig, PluginModule, eventName) {
+	  ("production" !== process.env.NODE_ENV ? invariant(
+	    !EventPluginRegistry.eventNameDispatchConfigs.hasOwnProperty(eventName),
+	    'EventPluginHub: More than one plugin attempted to publish the same ' +
+	    'event name, `%s`.',
+	    eventName
+	  ) : invariant(!EventPluginRegistry.eventNameDispatchConfigs.hasOwnProperty(eventName)));
+	  EventPluginRegistry.eventNameDispatchConfigs[eventName] = dispatchConfig;
+
+	  var phasedRegistrationNames = dispatchConfig.phasedRegistrationNames;
+	  if (phasedRegistrationNames) {
+	    for (var phaseName in phasedRegistrationNames) {
+	      if (phasedRegistrationNames.hasOwnProperty(phaseName)) {
+	        var phasedRegistrationName = phasedRegistrationNames[phaseName];
+	        publishRegistrationName(
+	          phasedRegistrationName,
+	          PluginModule,
+	          eventName
+	        );
+	      }
+	    }
+	    return true;
+	  } else if (dispatchConfig.registrationName) {
+	    publishRegistrationName(
+	      dispatchConfig.registrationName,
+	      PluginModule,
+	      eventName
+	    );
+	    return true;
+	  }
+	  return false;
+	}
+
+	/**
+	 * Publishes a registration name that is used to identify dispatched events and
+	 * can be used with `EventPluginHub.putListener` to register listeners.
+	 *
+	 * @param {string} registrationName Registration name to add.
+	 * @param {object} PluginModule Plugin publishing the event.
+	 * @private
+	 */
+	function publishRegistrationName(registrationName, PluginModule, eventName) {
+	  ("production" !== process.env.NODE_ENV ? invariant(
+	    !EventPluginRegistry.registrationNameModules[registrationName],
+	    'EventPluginHub: More than one plugin attempted to publish the same ' +
+	    'registration name, `%s`.',
+	    registrationName
+	  ) : invariant(!EventPluginRegistry.registrationNameModules[registrationName]));
+	  EventPluginRegistry.registrationNameModules[registrationName] = PluginModule;
+	  EventPluginRegistry.registrationNameDependencies[registrationName] =
+	    PluginModule.eventTypes[eventName].dependencies;
+	}
+
+	/**
+	 * Registers plugins so that they can extract and dispatch events.
+	 *
+	 * @see {EventPluginHub}
+	 */
+	var EventPluginRegistry = {
+
+	  /**
+	   * Ordered list of injected plugins.
+	   */
+	  plugins: [],
+
+	  /**
+	   * Mapping from event name to dispatch config
+	   */
+	  eventNameDispatchConfigs: {},
+
+	  /**
+	   * Mapping from registration name to plugin module
+	   */
+	  registrationNameModules: {},
+
+	  /**
+	   * Mapping from registration name to event name
+	   */
+	  registrationNameDependencies: {},
+
+	  /**
+	   * Injects an ordering of plugins (by plugin name). This allows the ordering
+	   * to be decoupled from injection of the actual plugins so that ordering is
+	   * always deterministic regardless of packaging, on-the-fly injection, etc.
+	   *
+	   * @param {array} InjectedEventPluginOrder
+	   * @internal
+	   * @see {EventPluginHub.injection.injectEventPluginOrder}
+	   */
+	  injectEventPluginOrder: function(InjectedEventPluginOrder) {
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      !EventPluginOrder,
+	      'EventPluginRegistry: Cannot inject event plugin ordering more than ' +
+	      'once. You are likely trying to load more than one copy of React.'
+	    ) : invariant(!EventPluginOrder));
+	    // Clone the ordering so it cannot be dynamically mutated.
+	    EventPluginOrder = Array.prototype.slice.call(InjectedEventPluginOrder);
+	    recomputePluginOrdering();
+	  },
+
+	  /**
+	   * Injects plugins to be used by `EventPluginHub`. The plugin names must be
+	   * in the ordering injected by `injectEventPluginOrder`.
+	   *
+	   * Plugins can be injected as part of page initialization or on-the-fly.
+	   *
+	   * @param {object} injectedNamesToPlugins Map from names to plugin modules.
+	   * @internal
+	   * @see {EventPluginHub.injection.injectEventPluginsByName}
+	   */
+	  injectEventPluginsByName: function(injectedNamesToPlugins) {
+	    var isOrderingDirty = false;
+	    for (var pluginName in injectedNamesToPlugins) {
+	      if (!injectedNamesToPlugins.hasOwnProperty(pluginName)) {
+	        continue;
+	      }
+	      var PluginModule = injectedNamesToPlugins[pluginName];
+	      if (!namesToPlugins.hasOwnProperty(pluginName) ||
+	          namesToPlugins[pluginName] !== PluginModule) {
+	        ("production" !== process.env.NODE_ENV ? invariant(
+	          !namesToPlugins[pluginName],
+	          'EventPluginRegistry: Cannot inject two different event plugins ' +
+	          'using the same name, `%s`.',
+	          pluginName
+	        ) : invariant(!namesToPlugins[pluginName]));
+	        namesToPlugins[pluginName] = PluginModule;
+	        isOrderingDirty = true;
+	      }
+	    }
+	    if (isOrderingDirty) {
+	      recomputePluginOrdering();
+	    }
+	  },
+
+	  /**
+	   * Looks up the plugin for the supplied event.
+	   *
+	   * @param {object} event A synthetic event.
+	   * @return {?object} The plugin that created the supplied event.
+	   * @internal
+	   */
+	  getPluginModuleForEvent: function(event) {
+	    var dispatchConfig = event.dispatchConfig;
+	    if (dispatchConfig.registrationName) {
+	      return EventPluginRegistry.registrationNameModules[
+	        dispatchConfig.registrationName
+	      ] || null;
+	    }
+	    for (var phase in dispatchConfig.phasedRegistrationNames) {
+	      if (!dispatchConfig.phasedRegistrationNames.hasOwnProperty(phase)) {
+	        continue;
+	      }
+	      var PluginModule = EventPluginRegistry.registrationNameModules[
+	        dispatchConfig.phasedRegistrationNames[phase]
+	      ];
+	      if (PluginModule) {
+	        return PluginModule;
+	      }
+	    }
+	    return null;
+	  },
+
+	  /**
+	   * Exposed for unit testing.
+	   * @private
+	   */
+	  _resetEventPlugins: function() {
+	    EventPluginOrder = null;
+	    for (var pluginName in namesToPlugins) {
+	      if (namesToPlugins.hasOwnProperty(pluginName)) {
+	        delete namesToPlugins[pluginName];
+	      }
+	    }
+	    EventPluginRegistry.plugins.length = 0;
+
+	    var eventNameDispatchConfigs = EventPluginRegistry.eventNameDispatchConfigs;
+	    for (var eventName in eventNameDispatchConfigs) {
+	      if (eventNameDispatchConfigs.hasOwnProperty(eventName)) {
+	        delete eventNameDispatchConfigs[eventName];
+	      }
+	    }
+
+	    var registrationNameModules = EventPluginRegistry.registrationNameModules;
+	    for (var registrationName in registrationNameModules) {
+	      if (registrationNameModules.hasOwnProperty(registrationName)) {
+	        delete registrationNameModules[registrationName];
+	      }
+	    }
+	  }
+
+	};
+
+	module.exports = EventPluginRegistry;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
 /* 223 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactEventEmitterMixin
+	 */
+
+	'use strict';
+
+	var EventPluginHub = __webpack_require__(193);
+
+	function runEventQueueInBatch(events) {
+	  EventPluginHub.enqueueEvents(events);
+	  EventPluginHub.processEventQueue();
+	}
+
+	var ReactEventEmitterMixin = {
+
+	  /**
+	   * Streams a fired top-level event to `EventPluginHub` where plugins have the
+	   * opportunity to create `ReactEvent`s to be dispatched.
+	   *
+	   * @param {string} topLevelType Record from `EventConstants`.
+	   * @param {object} topLevelTarget The listening component root node.
+	   * @param {string} topLevelTargetID ID of `topLevelTarget`.
+	   * @param {object} nativeEvent Native environment event.
+	   */
+	  handleTopLevel: function(
+	      topLevelType,
+	      topLevelTarget,
+	      topLevelTargetID,
+	      nativeEvent) {
+	    var events = EventPluginHub.extractEvents(
+	      topLevelType,
+	      topLevelTarget,
+	      topLevelTargetID,
+	      nativeEvent
+	    );
+
+	    runEventQueueInBatch(events);
+	  }
+	};
+
+	module.exports = ReactEventEmitterMixin;
+
+
+/***/ },
+/* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ViewportMetrics
+	 */
+
+	'use strict';
+
+	var ViewportMetrics = {
+
+	  currentScrollLeft: 0,
+
+	  currentScrollTop: 0,
+
+	  refreshScrollValues: function(scrollPosition) {
+	    ViewportMetrics.currentScrollLeft = scrollPosition.x;
+	    ViewportMetrics.currentScrollTop = scrollPosition.y;
+	  }
+
+	};
+
+	module.exports = ViewportMetrics;
+
+
+/***/ },
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -37296,24 +37563,24 @@
 
 	'use strict';
 
-	var ReactComponentEnvironment = __webpack_require__(202);
+	var ReactComponentEnvironment = __webpack_require__(205);
 	var ReactContext = __webpack_require__(37);
 	var ReactCurrentOwner = __webpack_require__(38);
 	var ReactElement = __webpack_require__(39);
 	var ReactElementValidator = __webpack_require__(40);
-	var ReactInstanceMap = __webpack_require__(80);
-	var ReactLifeCycle = __webpack_require__(81);
-	var ReactNativeComponent = __webpack_require__(77);
+	var ReactInstanceMap = __webpack_require__(75);
+	var ReactLifeCycle = __webpack_require__(76);
+	var ReactNativeComponent = __webpack_require__(82);
 	var ReactPerf = __webpack_require__(46);
-	var ReactPropTypeLocations = __webpack_require__(75);
-	var ReactPropTypeLocationNames = __webpack_require__(76);
-	var ReactReconciler = __webpack_require__(48);
-	var ReactUpdates = __webpack_require__(125);
+	var ReactPropTypeLocations = __webpack_require__(77);
+	var ReactPropTypeLocationNames = __webpack_require__(78);
+	var ReactReconciler = __webpack_require__(47);
+	var ReactUpdates = __webpack_require__(121);
 
 	var assign = __webpack_require__(50);
-	var emptyObject = __webpack_require__(84);
+	var emptyObject = __webpack_require__(81);
 	var invariant = __webpack_require__(55);
-	var shouldUpdateReactComponent = __webpack_require__(129);
+	var shouldUpdateReactComponent = __webpack_require__(126);
 	var warning = __webpack_require__(58);
 
 	function getDeclarationErrorAddendum(component) {
@@ -38181,7 +38448,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
-/* 224 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -38210,7 +38477,7 @@
 
 
 /***/ },
-/* 225 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -38221,8 +38488,7 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule EventPluginRegistry
-	 * @typechecks static-only
+	 * @providesModule ReactOwner
 	 */
 
 	'use strict';
@@ -38230,354 +38496,100 @@
 	var invariant = __webpack_require__(55);
 
 	/**
-	 * Injectable ordering of event plugins.
-	 */
-	var EventPluginOrder = null;
-
-	/**
-	 * Injectable mapping from names to event plugin modules.
-	 */
-	var namesToPlugins = {};
-
-	/**
-	 * Recomputes the plugin list using the injected plugins and plugin ordering.
+	 * ReactOwners are capable of storing references to owned components.
 	 *
-	 * @private
-	 */
-	function recomputePluginOrdering() {
-	  if (!EventPluginOrder) {
-	    // Wait until an `EventPluginOrder` is injected.
-	    return;
-	  }
-	  for (var pluginName in namesToPlugins) {
-	    var PluginModule = namesToPlugins[pluginName];
-	    var pluginIndex = EventPluginOrder.indexOf(pluginName);
-	    ("production" !== process.env.NODE_ENV ? invariant(
-	      pluginIndex > -1,
-	      'EventPluginRegistry: Cannot inject event plugins that do not exist in ' +
-	      'the plugin ordering, `%s`.',
-	      pluginName
-	    ) : invariant(pluginIndex > -1));
-	    if (EventPluginRegistry.plugins[pluginIndex]) {
-	      continue;
-	    }
-	    ("production" !== process.env.NODE_ENV ? invariant(
-	      PluginModule.extractEvents,
-	      'EventPluginRegistry: Event plugins must implement an `extractEvents` ' +
-	      'method, but `%s` does not.',
-	      pluginName
-	    ) : invariant(PluginModule.extractEvents));
-	    EventPluginRegistry.plugins[pluginIndex] = PluginModule;
-	    var publishedEvents = PluginModule.eventTypes;
-	    for (var eventName in publishedEvents) {
-	      ("production" !== process.env.NODE_ENV ? invariant(
-	        publishEventForPlugin(
-	          publishedEvents[eventName],
-	          PluginModule,
-	          eventName
-	        ),
-	        'EventPluginRegistry: Failed to publish event `%s` for plugin `%s`.',
-	        eventName,
-	        pluginName
-	      ) : invariant(publishEventForPlugin(
-	        publishedEvents[eventName],
-	        PluginModule,
-	        eventName
-	      )));
-	    }
-	  }
-	}
-
-	/**
-	 * Publishes an event so that it can be dispatched by the supplied plugin.
+	 * All components are capable of //being// referenced by owner components, but
+	 * only ReactOwner components are capable of //referencing// owned components.
+	 * The named reference is known as a "ref".
 	 *
-	 * @param {object} dispatchConfig Dispatch configuration for the event.
-	 * @param {object} PluginModule Plugin publishing the event.
-	 * @return {boolean} True if the event was successfully published.
-	 * @private
+	 * Refs are available when mounted and updated during reconciliation.
+	 *
+	 *   var MyComponent = React.createClass({
+	 *     render: function() {
+	 *       return (
+	 *         <div onClick={this.handleClick}>
+	 *           <CustomComponent ref="custom" />
+	 *         </div>
+	 *       );
+	 *     },
+	 *     handleClick: function() {
+	 *       this.refs.custom.handleClick();
+	 *     },
+	 *     componentDidMount: function() {
+	 *       this.refs.custom.initialize();
+	 *     }
+	 *   });
+	 *
+	 * Refs should rarely be used. When refs are used, they should only be done to
+	 * control data that is not handled by React's data flow.
+	 *
+	 * @class ReactOwner
 	 */
-	function publishEventForPlugin(dispatchConfig, PluginModule, eventName) {
-	  ("production" !== process.env.NODE_ENV ? invariant(
-	    !EventPluginRegistry.eventNameDispatchConfigs.hasOwnProperty(eventName),
-	    'EventPluginHub: More than one plugin attempted to publish the same ' +
-	    'event name, `%s`.',
-	    eventName
-	  ) : invariant(!EventPluginRegistry.eventNameDispatchConfigs.hasOwnProperty(eventName)));
-	  EventPluginRegistry.eventNameDispatchConfigs[eventName] = dispatchConfig;
+	var ReactOwner = {
 
-	  var phasedRegistrationNames = dispatchConfig.phasedRegistrationNames;
-	  if (phasedRegistrationNames) {
-	    for (var phaseName in phasedRegistrationNames) {
-	      if (phasedRegistrationNames.hasOwnProperty(phaseName)) {
-	        var phasedRegistrationName = phasedRegistrationNames[phaseName];
-	        publishRegistrationName(
-	          phasedRegistrationName,
-	          PluginModule,
-	          eventName
-	        );
-	      }
-	    }
-	    return true;
-	  } else if (dispatchConfig.registrationName) {
-	    publishRegistrationName(
-	      dispatchConfig.registrationName,
-	      PluginModule,
-	      eventName
+	  /**
+	   * @param {?object} object
+	   * @return {boolean} True if `object` is a valid owner.
+	   * @final
+	   */
+	  isValidOwner: function(object) {
+	    return !!(
+	      (object &&
+	      typeof object.attachRef === 'function' && typeof object.detachRef === 'function')
 	    );
-	    return true;
-	  }
-	  return false;
-	}
-
-	/**
-	 * Publishes a registration name that is used to identify dispatched events and
-	 * can be used with `EventPluginHub.putListener` to register listeners.
-	 *
-	 * @param {string} registrationName Registration name to add.
-	 * @param {object} PluginModule Plugin publishing the event.
-	 * @private
-	 */
-	function publishRegistrationName(registrationName, PluginModule, eventName) {
-	  ("production" !== process.env.NODE_ENV ? invariant(
-	    !EventPluginRegistry.registrationNameModules[registrationName],
-	    'EventPluginHub: More than one plugin attempted to publish the same ' +
-	    'registration name, `%s`.',
-	    registrationName
-	  ) : invariant(!EventPluginRegistry.registrationNameModules[registrationName]));
-	  EventPluginRegistry.registrationNameModules[registrationName] = PluginModule;
-	  EventPluginRegistry.registrationNameDependencies[registrationName] =
-	    PluginModule.eventTypes[eventName].dependencies;
-	}
-
-	/**
-	 * Registers plugins so that they can extract and dispatch events.
-	 *
-	 * @see {EventPluginHub}
-	 */
-	var EventPluginRegistry = {
+	  },
 
 	  /**
-	   * Ordered list of injected plugins.
-	   */
-	  plugins: [],
-
-	  /**
-	   * Mapping from event name to dispatch config
-	   */
-	  eventNameDispatchConfigs: {},
-
-	  /**
-	   * Mapping from registration name to plugin module
-	   */
-	  registrationNameModules: {},
-
-	  /**
-	   * Mapping from registration name to event name
-	   */
-	  registrationNameDependencies: {},
-
-	  /**
-	   * Injects an ordering of plugins (by plugin name). This allows the ordering
-	   * to be decoupled from injection of the actual plugins so that ordering is
-	   * always deterministic regardless of packaging, on-the-fly injection, etc.
+	   * Adds a component by ref to an owner component.
 	   *
-	   * @param {array} InjectedEventPluginOrder
+	   * @param {ReactComponent} component Component to reference.
+	   * @param {string} ref Name by which to refer to the component.
+	   * @param {ReactOwner} owner Component on which to record the ref.
+	   * @final
 	   * @internal
-	   * @see {EventPluginHub.injection.injectEventPluginOrder}
 	   */
-	  injectEventPluginOrder: function(InjectedEventPluginOrder) {
+	  addComponentAsRefTo: function(component, ref, owner) {
 	    ("production" !== process.env.NODE_ENV ? invariant(
-	      !EventPluginOrder,
-	      'EventPluginRegistry: Cannot inject event plugin ordering more than ' +
-	      'once. You are likely trying to load more than one copy of React.'
-	    ) : invariant(!EventPluginOrder));
-	    // Clone the ordering so it cannot be dynamically mutated.
-	    EventPluginOrder = Array.prototype.slice.call(InjectedEventPluginOrder);
-	    recomputePluginOrdering();
+	      ReactOwner.isValidOwner(owner),
+	      'addComponentAsRefTo(...): Only a ReactOwner can have refs. This ' +
+	      'usually means that you\'re trying to add a ref to a component that ' +
+	      'doesn\'t have an owner (that is, was not created inside of another ' +
+	      'component\'s `render` method). Try rendering this component inside of ' +
+	      'a new top-level component which will hold the ref.'
+	    ) : invariant(ReactOwner.isValidOwner(owner)));
+	    owner.attachRef(ref, component);
 	  },
 
 	  /**
-	   * Injects plugins to be used by `EventPluginHub`. The plugin names must be
-	   * in the ordering injected by `injectEventPluginOrder`.
+	   * Removes a component by ref from an owner component.
 	   *
-	   * Plugins can be injected as part of page initialization or on-the-fly.
-	   *
-	   * @param {object} injectedNamesToPlugins Map from names to plugin modules.
-	   * @internal
-	   * @see {EventPluginHub.injection.injectEventPluginsByName}
-	   */
-	  injectEventPluginsByName: function(injectedNamesToPlugins) {
-	    var isOrderingDirty = false;
-	    for (var pluginName in injectedNamesToPlugins) {
-	      if (!injectedNamesToPlugins.hasOwnProperty(pluginName)) {
-	        continue;
-	      }
-	      var PluginModule = injectedNamesToPlugins[pluginName];
-	      if (!namesToPlugins.hasOwnProperty(pluginName) ||
-	          namesToPlugins[pluginName] !== PluginModule) {
-	        ("production" !== process.env.NODE_ENV ? invariant(
-	          !namesToPlugins[pluginName],
-	          'EventPluginRegistry: Cannot inject two different event plugins ' +
-	          'using the same name, `%s`.',
-	          pluginName
-	        ) : invariant(!namesToPlugins[pluginName]));
-	        namesToPlugins[pluginName] = PluginModule;
-	        isOrderingDirty = true;
-	      }
-	    }
-	    if (isOrderingDirty) {
-	      recomputePluginOrdering();
-	    }
-	  },
-
-	  /**
-	   * Looks up the plugin for the supplied event.
-	   *
-	   * @param {object} event A synthetic event.
-	   * @return {?object} The plugin that created the supplied event.
+	   * @param {ReactComponent} component Component to dereference.
+	   * @param {string} ref Name of the ref to remove.
+	   * @param {ReactOwner} owner Component on which the ref is recorded.
+	   * @final
 	   * @internal
 	   */
-	  getPluginModuleForEvent: function(event) {
-	    var dispatchConfig = event.dispatchConfig;
-	    if (dispatchConfig.registrationName) {
-	      return EventPluginRegistry.registrationNameModules[
-	        dispatchConfig.registrationName
-	      ] || null;
-	    }
-	    for (var phase in dispatchConfig.phasedRegistrationNames) {
-	      if (!dispatchConfig.phasedRegistrationNames.hasOwnProperty(phase)) {
-	        continue;
-	      }
-	      var PluginModule = EventPluginRegistry.registrationNameModules[
-	        dispatchConfig.phasedRegistrationNames[phase]
-	      ];
-	      if (PluginModule) {
-	        return PluginModule;
-	      }
-	    }
-	    return null;
-	  },
-
-	  /**
-	   * Exposed for unit testing.
-	   * @private
-	   */
-	  _resetEventPlugins: function() {
-	    EventPluginOrder = null;
-	    for (var pluginName in namesToPlugins) {
-	      if (namesToPlugins.hasOwnProperty(pluginName)) {
-	        delete namesToPlugins[pluginName];
-	      }
-	    }
-	    EventPluginRegistry.plugins.length = 0;
-
-	    var eventNameDispatchConfigs = EventPluginRegistry.eventNameDispatchConfigs;
-	    for (var eventName in eventNameDispatchConfigs) {
-	      if (eventNameDispatchConfigs.hasOwnProperty(eventName)) {
-	        delete eventNameDispatchConfigs[eventName];
-	      }
-	    }
-
-	    var registrationNameModules = EventPluginRegistry.registrationNameModules;
-	    for (var registrationName in registrationNameModules) {
-	      if (registrationNameModules.hasOwnProperty(registrationName)) {
-	        delete registrationNameModules[registrationName];
-	      }
+	  removeComponentAsRefFrom: function(component, ref, owner) {
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      ReactOwner.isValidOwner(owner),
+	      'removeComponentAsRefFrom(...): Only a ReactOwner can have refs. This ' +
+	      'usually means that you\'re trying to remove a ref to a component that ' +
+	      'doesn\'t have an owner (that is, was not created inside of another ' +
+	      'component\'s `render` method). Try rendering this component inside of ' +
+	      'a new top-level component which will hold the ref.'
+	    ) : invariant(ReactOwner.isValidOwner(owner)));
+	    // Check that `component` is still the current ref because we do not want to
+	    // detach the ref if another component stole it.
+	    if (owner.getPublicInstance().refs[ref] === component.getPublicInstance()) {
+	      owner.detachRef(ref);
 	    }
 	  }
 
 	};
 
-	module.exports = EventPluginRegistry;
+	module.exports = ReactOwner;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
-
-/***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ReactEventEmitterMixin
-	 */
-
-	'use strict';
-
-	var EventPluginHub = __webpack_require__(193);
-
-	function runEventQueueInBatch(events) {
-	  EventPluginHub.enqueueEvents(events);
-	  EventPluginHub.processEventQueue();
-	}
-
-	var ReactEventEmitterMixin = {
-
-	  /**
-	   * Streams a fired top-level event to `EventPluginHub` where plugins have the
-	   * opportunity to create `ReactEvent`s to be dispatched.
-	   *
-	   * @param {string} topLevelType Record from `EventConstants`.
-	   * @param {object} topLevelTarget The listening component root node.
-	   * @param {string} topLevelTargetID ID of `topLevelTarget`.
-	   * @param {object} nativeEvent Native environment event.
-	   */
-	  handleTopLevel: function(
-	      topLevelType,
-	      topLevelTarget,
-	      topLevelTargetID,
-	      nativeEvent) {
-	    var events = EventPluginHub.extractEvents(
-	      topLevelType,
-	      topLevelTarget,
-	      topLevelTargetID,
-	      nativeEvent
-	    );
-
-	    runEventQueueInBatch(events);
-	  }
-	};
-
-	module.exports = ReactEventEmitterMixin;
-
-
-/***/ },
-/* 227 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule ViewportMetrics
-	 */
-
-	'use strict';
-
-	var ViewportMetrics = {
-
-	  currentScrollLeft: 0,
-
-	  currentScrollTop: 0,
-
-	  refreshScrollValues: function(scrollPosition) {
-	    ViewportMetrics.currentScrollLeft = scrollPosition.x;
-	    ViewportMetrics.currentScrollTop = scrollPosition.y;
-	  }
-
-	};
-
-	module.exports = ViewportMetrics;
-
 
 /***/ },
 /* 228 */
@@ -38875,6 +38887,44 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
+	 * Safe chained function
+	 *
+	 * Will only create a new function if needed,
+	 * otherwise will pass back existing functions or null.
+	 *
+	 * @param {function} one
+	 * @param {function} two
+	 * @returns {function|null}
+	 */
+	"use strict";
+
+	function createChainedFunction(one, two) {
+	  var hasOne = typeof one === "function";
+	  var hasTwo = typeof two === "function";
+
+	  if (!hasOne && !hasTwo) {
+	    return null;
+	  }
+	  if (!hasOne) {
+	    return two;
+	  }
+	  if (!hasTwo) {
+	    return one;
+	  }
+
+	  return function chainedFunction() {
+	    one.apply(this, arguments);
+	    two.apply(this, arguments);
+	  };
+	}
+
+	module.exports = createChainedFunction;
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
 	 * Copyright 2013-2014, Facebook, Inc.
 	 * All rights reserved.
 	 *
@@ -38985,44 +39035,6 @@
 	};
 
 	module.exports = ReactTransitionEvents;
-
-/***/ },
-/* 232 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Safe chained function
-	 *
-	 * Will only create a new function if needed,
-	 * otherwise will pass back existing functions or null.
-	 *
-	 * @param {function} one
-	 * @param {function} two
-	 * @returns {function|null}
-	 */
-	"use strict";
-
-	function createChainedFunction(one, two) {
-	  var hasOne = typeof one === "function";
-	  var hasTwo = typeof two === "function";
-
-	  if (!hasOne && !hasTwo) {
-	    return null;
-	  }
-	  if (!hasOne) {
-	    return two;
-	  }
-	  if (!hasTwo) {
-	    return one;
-	  }
-
-	  return function chainedFunction() {
-	    one.apply(this, arguments);
-	    two.apply(this, arguments);
-	  };
-	}
-
-	module.exports = createChainedFunction;
 
 /***/ },
 /* 233 */
@@ -39703,7 +39715,7 @@
 
 	'use strict';
 
-	var keyMirror = __webpack_require__(82);
+	var keyMirror = __webpack_require__(79);
 
 	/**
 	 * When a component's children are updated, a series of update configuration
@@ -39741,11 +39753,11 @@
 
 	'use strict';
 
-	var ReactReconciler = __webpack_require__(48);
+	var ReactReconciler = __webpack_require__(47);
 
 	var flattenChildren = __webpack_require__(258);
-	var instantiateReactComponent = __webpack_require__(120);
-	var shouldUpdateReactComponent = __webpack_require__(129);
+	var instantiateReactComponent = __webpack_require__(124);
+	var shouldUpdateReactComponent = __webpack_require__(126);
 
 	/**
 	 * ReactChildReconciler provides helpers for initializing or updating a set of
@@ -39858,47 +39870,6 @@
 /* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule getTextContentAccessor
-	 */
-
-	'use strict';
-
-	var ExecutionEnvironment = __webpack_require__(53);
-
-	var contentKey = null;
-
-	/**
-	 * Gets the key used to access text content on a DOM node.
-	 *
-	 * @return {?string} Key used to access text content.
-	 * @internal
-	 */
-	function getTextContentAccessor() {
-	  if (!contentKey && ExecutionEnvironment.canUseDOM) {
-	    // Prefer textContent to innerText because many browsers support both but
-	    // SVG <text> elements don't support innerText even when <div> does.
-	    contentKey = 'textContent' in document.documentElement ?
-	      'textContent' :
-	      'innerText';
-	  }
-	  return contentKey;
-	}
-
-	module.exports = getTextContentAccessor;
-
-
-/***/ },
-/* 246 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2014-2015, Facebook, Inc.
 	 * All rights reserved.
@@ -39965,7 +39936,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
-/* 247 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -39997,6 +39968,47 @@
 	};
 
 	module.exports = forEachAccumulated;
+
+
+/***/ },
+/* 247 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule getTextContentAccessor
+	 */
+
+	'use strict';
+
+	var ExecutionEnvironment = __webpack_require__(53);
+
+	var contentKey = null;
+
+	/**
+	 * Gets the key used to access text content on a DOM node.
+	 *
+	 * @return {?string} Key used to access text content.
+	 * @internal
+	 */
+	function getTextContentAccessor() {
+	  if (!contentKey && ExecutionEnvironment.canUseDOM) {
+	    // Prefer textContent to innerText because many browsers support both but
+	    // SVG <text> elements don't support innerText even when <div> does.
+	    contentKey = 'textContent' in document.documentElement ?
+	      'textContent' :
+	      'innerText';
+	  }
+	  return contentKey;
+	}
+
+	module.exports = getTextContentAccessor;
 
 
 /***/ },
@@ -40087,27 +40099,6 @@
 /* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// Load modules
-
-	var Stringify = __webpack_require__(259);
-	var Parse = __webpack_require__(260);
-
-
-	// Declare internals
-
-	var internals = {};
-
-
-	module.exports = {
-	    stringify: Stringify,
-	    parse: Parse
-	};
-
-
-/***/ },
-/* 251 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* WEBPACK VAR INJECTION */(function(process) {/**
 	 * Copyright 2013-2015, Facebook, Inc.
 	 * All rights reserved.
@@ -40126,9 +40117,9 @@
 
 	var ExecutionEnvironment = __webpack_require__(53);
 
-	var createNodesFromMarkup = __webpack_require__(261);
-	var emptyFunction = __webpack_require__(121);
-	var getMarkupWrap = __webpack_require__(262);
+	var createNodesFromMarkup = __webpack_require__(259);
+	var emptyFunction = __webpack_require__(129);
+	var getMarkupWrap = __webpack_require__(260);
 	var invariant = __webpack_require__(55);
 
 	var OPEN_TAG_NAME_EXP = /^(<[^ \/>]+)/;
@@ -40295,7 +40286,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
 
 /***/ },
-/* 252 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40313,7 +40304,7 @@
 
 	var ExecutionEnvironment = __webpack_require__(53);
 	var escapeTextContentForBrowser = __webpack_require__(88);
-	var setInnerHTML = __webpack_require__(128);
+	var setInnerHTML = __webpack_require__(125);
 
 	/**
 	 * Set the textContent property of a node, ensuring that whitespace is preserved
@@ -40341,7 +40332,7 @@
 
 
 /***/ },
-/* 253 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40359,8 +40350,8 @@
 
 	var ExecutionEnvironment = __webpack_require__(53);
 
-	var getNodeForCharacterOffset = __webpack_require__(263);
-	var getTextContentAccessor = __webpack_require__(245);
+	var getNodeForCharacterOffset = __webpack_require__(261);
+	var getTextContentAccessor = __webpack_require__(247);
 
 	/**
 	 * While `isCollapsed` is available on the Selection object and `collapsed`
@@ -40558,7 +40549,7 @@
 
 
 /***/ },
-/* 254 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40575,7 +40566,7 @@
 
 	'use strict';
 
-	var getEventCharCode = __webpack_require__(218);
+	var getEventCharCode = __webpack_require__(216);
 
 	/**
 	 * Normalization of deprecated HTML5 `key` values
@@ -40667,7 +40658,7 @@
 
 
 /***/ },
-/* 255 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -40696,6 +40687,27 @@
 	}
 
 	module.exports = performance || {};
+
+
+/***/ },
+/* 255 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// Load modules
+
+	var Stringify = __webpack_require__(262);
+	var Parse = __webpack_require__(263);
+
+
+	// Declare internals
+
+	var internals = {};
+
+
+	module.exports = {
+	    stringify: Stringify,
+	    parse: Parse
+	};
 
 
 /***/ },
@@ -40836,9 +40848,301 @@
 /* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule createNodesFromMarkup
+	 * @typechecks
+	 */
+
+	/*jslint evil: true, sub: true */
+
+	var ExecutionEnvironment = __webpack_require__(53);
+
+	var createArrayFromMixed = __webpack_require__(264);
+	var getMarkupWrap = __webpack_require__(260);
+	var invariant = __webpack_require__(55);
+
+	/**
+	 * Dummy container used to render all markup.
+	 */
+	var dummyNode =
+	  ExecutionEnvironment.canUseDOM ? document.createElement('div') : null;
+
+	/**
+	 * Pattern used by `getNodeName`.
+	 */
+	var nodeNamePattern = /^\s*<(\w+)/;
+
+	/**
+	 * Extracts the `nodeName` of the first element in a string of markup.
+	 *
+	 * @param {string} markup String of markup.
+	 * @return {?string} Node name of the supplied markup.
+	 */
+	function getNodeName(markup) {
+	  var nodeNameMatch = markup.match(nodeNamePattern);
+	  return nodeNameMatch && nodeNameMatch[1].toLowerCase();
+	}
+
+	/**
+	 * Creates an array containing the nodes rendered from the supplied markup. The
+	 * optionally supplied `handleScript` function will be invoked once for each
+	 * <script> element that is rendered. If no `handleScript` function is supplied,
+	 * an exception is thrown if any <script> elements are rendered.
+	 *
+	 * @param {string} markup A string of valid HTML markup.
+	 * @param {?function} handleScript Invoked once for each rendered <script>.
+	 * @return {array<DOMElement|DOMTextNode>} An array of rendered nodes.
+	 */
+	function createNodesFromMarkup(markup, handleScript) {
+	  var node = dummyNode;
+	  ("production" !== process.env.NODE_ENV ? invariant(!!dummyNode, 'createNodesFromMarkup dummy not initialized') : invariant(!!dummyNode));
+	  var nodeName = getNodeName(markup);
+
+	  var wrap = nodeName && getMarkupWrap(nodeName);
+	  if (wrap) {
+	    node.innerHTML = wrap[1] + markup + wrap[2];
+
+	    var wrapDepth = wrap[0];
+	    while (wrapDepth--) {
+	      node = node.lastChild;
+	    }
+	  } else {
+	    node.innerHTML = markup;
+	  }
+
+	  var scripts = node.getElementsByTagName('script');
+	  if (scripts.length) {
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      handleScript,
+	      'createNodesFromMarkup(...): Unexpected <script> element rendered.'
+	    ) : invariant(handleScript));
+	    createArrayFromMixed(scripts).forEach(handleScript);
+	  }
+
+	  var nodes = createArrayFromMixed(node.childNodes);
+	  while (node.lastChild) {
+	    node.removeChild(node.lastChild);
+	  }
+	  return nodes;
+	}
+
+	module.exports = createNodesFromMarkup;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 260 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule getMarkupWrap
+	 */
+
+	var ExecutionEnvironment = __webpack_require__(53);
+
+	var invariant = __webpack_require__(55);
+
+	/**
+	 * Dummy container used to detect which wraps are necessary.
+	 */
+	var dummyNode =
+	  ExecutionEnvironment.canUseDOM ? document.createElement('div') : null;
+
+	/**
+	 * Some browsers cannot use `innerHTML` to render certain elements standalone,
+	 * so we wrap them, render the wrapped nodes, then extract the desired node.
+	 *
+	 * In IE8, certain elements cannot render alone, so wrap all elements ('*').
+	 */
+	var shouldWrap = {
+	  // Force wrapping for SVG elements because if they get created inside a <div>,
+	  // they will be initialized in the wrong namespace (and will not display).
+	  'circle': true,
+	  'defs': true,
+	  'ellipse': true,
+	  'g': true,
+	  'line': true,
+	  'linearGradient': true,
+	  'path': true,
+	  'polygon': true,
+	  'polyline': true,
+	  'radialGradient': true,
+	  'rect': true,
+	  'stop': true,
+	  'text': true
+	};
+
+	var selectWrap = [1, '<select multiple="true">', '</select>'];
+	var tableWrap = [1, '<table>', '</table>'];
+	var trWrap = [3, '<table><tbody><tr>', '</tr></tbody></table>'];
+
+	var svgWrap = [1, '<svg>', '</svg>'];
+
+	var markupWrap = {
+	  '*': [1, '?<div>', '</div>'],
+
+	  'area': [1, '<map>', '</map>'],
+	  'col': [2, '<table><tbody></tbody><colgroup>', '</colgroup></table>'],
+	  'legend': [1, '<fieldset>', '</fieldset>'],
+	  'param': [1, '<object>', '</object>'],
+	  'tr': [2, '<table><tbody>', '</tbody></table>'],
+
+	  'optgroup': selectWrap,
+	  'option': selectWrap,
+
+	  'caption': tableWrap,
+	  'colgroup': tableWrap,
+	  'tbody': tableWrap,
+	  'tfoot': tableWrap,
+	  'thead': tableWrap,
+
+	  'td': trWrap,
+	  'th': trWrap,
+
+	  'circle': svgWrap,
+	  'defs': svgWrap,
+	  'ellipse': svgWrap,
+	  'g': svgWrap,
+	  'line': svgWrap,
+	  'linearGradient': svgWrap,
+	  'path': svgWrap,
+	  'polygon': svgWrap,
+	  'polyline': svgWrap,
+	  'radialGradient': svgWrap,
+	  'rect': svgWrap,
+	  'stop': svgWrap,
+	  'text': svgWrap
+	};
+
+	/**
+	 * Gets the markup wrap configuration for the supplied `nodeName`.
+	 *
+	 * NOTE: This lazily detects which wraps are necessary for the current browser.
+	 *
+	 * @param {string} nodeName Lowercase `nodeName`.
+	 * @return {?array} Markup wrap configuration, if applicable.
+	 */
+	function getMarkupWrap(nodeName) {
+	  ("production" !== process.env.NODE_ENV ? invariant(!!dummyNode, 'Markup wrapping node not initialized') : invariant(!!dummyNode));
+	  if (!markupWrap.hasOwnProperty(nodeName)) {
+	    nodeName = '*';
+	  }
+	  if (!shouldWrap.hasOwnProperty(nodeName)) {
+	    if (nodeName === '*') {
+	      dummyNode.innerHTML = '<link />';
+	    } else {
+	      dummyNode.innerHTML = '<' + nodeName + '></' + nodeName + '>';
+	    }
+	    shouldWrap[nodeName] = !dummyNode.firstChild;
+	  }
+	  return shouldWrap[nodeName] ? markupWrap[nodeName] : null;
+	}
+
+
+	module.exports = getMarkupWrap;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 261 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule getNodeForCharacterOffset
+	 */
+
+	'use strict';
+
+	/**
+	 * Given any node return the first leaf node without children.
+	 *
+	 * @param {DOMElement|DOMTextNode} node
+	 * @return {DOMElement|DOMTextNode}
+	 */
+	function getLeafNode(node) {
+	  while (node && node.firstChild) {
+	    node = node.firstChild;
+	  }
+	  return node;
+	}
+
+	/**
+	 * Get the next sibling within a container. This will walk up the
+	 * DOM if a node's siblings have been exhausted.
+	 *
+	 * @param {DOMElement|DOMTextNode} node
+	 * @return {?DOMElement|DOMTextNode}
+	 */
+	function getSiblingNode(node) {
+	  while (node) {
+	    if (node.nextSibling) {
+	      return node.nextSibling;
+	    }
+	    node = node.parentNode;
+	  }
+	}
+
+	/**
+	 * Get object describing the nodes which contain characters at offset.
+	 *
+	 * @param {DOMElement|DOMTextNode} root
+	 * @param {number} offset
+	 * @return {?object}
+	 */
+	function getNodeForCharacterOffset(root, offset) {
+	  var node = getLeafNode(root);
+	  var nodeStart = 0;
+	  var nodeEnd = 0;
+
+	  while (node) {
+	    if (node.nodeType === 3) {
+	      nodeEnd = nodeStart + node.textContent.length;
+
+	      if (nodeStart <= offset && nodeEnd >= offset) {
+	        return {
+	          node: node,
+	          offset: offset - nodeStart
+	        };
+	      }
+
+	      nodeStart = nodeEnd;
+	    }
+
+	    node = getLeafNode(getSiblingNode(node));
+	  }
+	}
+
+	module.exports = getNodeForCharacterOffset;
+
+
+/***/ },
+/* 262 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// Load modules
 
-	var Utils = __webpack_require__(264);
+	var Utils = __webpack_require__(265);
 
 
 	// Declare internals
@@ -40936,12 +41240,12 @@
 
 
 /***/ },
-/* 260 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Load modules
 
-	var Utils = __webpack_require__(264);
+	var Utils = __webpack_require__(265);
 
 
 	// Declare internals
@@ -41103,10 +41407,10 @@
 
 
 /***/ },
-/* 261 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {/**
+	/**
 	 * Copyright 2013-2015, Facebook, Inc.
 	 * All rights reserved.
 	 *
@@ -41114,288 +41418,86 @@
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 * @providesModule createNodesFromMarkup
+	 * @providesModule createArrayFromMixed
 	 * @typechecks
 	 */
 
-	/*jslint evil: true, sub: true */
-
-	var ExecutionEnvironment = __webpack_require__(53);
-
-	var createArrayFromMixed = __webpack_require__(265);
-	var getMarkupWrap = __webpack_require__(262);
-	var invariant = __webpack_require__(55);
+	var toArray = __webpack_require__(266);
 
 	/**
-	 * Dummy container used to render all markup.
-	 */
-	var dummyNode =
-	  ExecutionEnvironment.canUseDOM ? document.createElement('div') : null;
-
-	/**
-	 * Pattern used by `getNodeName`.
-	 */
-	var nodeNamePattern = /^\s*<(\w+)/;
-
-	/**
-	 * Extracts the `nodeName` of the first element in a string of markup.
+	 * Perform a heuristic test to determine if an object is "array-like".
 	 *
-	 * @param {string} markup String of markup.
-	 * @return {?string} Node name of the supplied markup.
+	 *   A monk asked Joshu, a Zen master, "Has a dog Buddha nature?"
+	 *   Joshu replied: "Mu."
+	 *
+	 * This function determines if its argument has "array nature": it returns
+	 * true if the argument is an actual array, an `arguments' object, or an
+	 * HTMLCollection (e.g. node.childNodes or node.getElementsByTagName()).
+	 *
+	 * It will return false for other array-like objects like Filelist.
+	 *
+	 * @param {*} obj
+	 * @return {boolean}
 	 */
-	function getNodeName(markup) {
-	  var nodeNameMatch = markup.match(nodeNamePattern);
-	  return nodeNameMatch && nodeNameMatch[1].toLowerCase();
+	function hasArrayNature(obj) {
+	  return (
+	    // not null/false
+	    !!obj &&
+	    // arrays are objects, NodeLists are functions in Safari
+	    (typeof obj == 'object' || typeof obj == 'function') &&
+	    // quacks like an array
+	    ('length' in obj) &&
+	    // not window
+	    !('setInterval' in obj) &&
+	    // no DOM node should be considered an array-like
+	    // a 'select' element has 'length' and 'item' properties on IE8
+	    (typeof obj.nodeType != 'number') &&
+	    (
+	      // a real array
+	      (// HTMLCollection/NodeList
+	      (Array.isArray(obj) ||
+	      // arguments
+	      ('callee' in obj) || 'item' in obj))
+	    )
+	  );
 	}
 
 	/**
-	 * Creates an array containing the nodes rendered from the supplied markup. The
-	 * optionally supplied `handleScript` function will be invoked once for each
-	 * <script> element that is rendered. If no `handleScript` function is supplied,
-	 * an exception is thrown if any <script> elements are rendered.
+	 * Ensure that the argument is an array by wrapping it in an array if it is not.
+	 * Creates a copy of the argument if it is already an array.
 	 *
-	 * @param {string} markup A string of valid HTML markup.
-	 * @param {?function} handleScript Invoked once for each rendered <script>.
-	 * @return {array<DOMElement|DOMTextNode>} An array of rendered nodes.
+	 * This is mostly useful idiomatically:
+	 *
+	 *   var createArrayFromMixed = require('createArrayFromMixed');
+	 *
+	 *   function takesOneOrMoreThings(things) {
+	 *     things = createArrayFromMixed(things);
+	 *     ...
+	 *   }
+	 *
+	 * This allows you to treat `things' as an array, but accept scalars in the API.
+	 *
+	 * If you need to convert an array-like object, like `arguments`, into an array
+	 * use toArray instead.
+	 *
+	 * @param {*} obj
+	 * @return {array}
 	 */
-	function createNodesFromMarkup(markup, handleScript) {
-	  var node = dummyNode;
-	  ("production" !== process.env.NODE_ENV ? invariant(!!dummyNode, 'createNodesFromMarkup dummy not initialized') : invariant(!!dummyNode));
-	  var nodeName = getNodeName(markup);
-
-	  var wrap = nodeName && getMarkupWrap(nodeName);
-	  if (wrap) {
-	    node.innerHTML = wrap[1] + markup + wrap[2];
-
-	    var wrapDepth = wrap[0];
-	    while (wrapDepth--) {
-	      node = node.lastChild;
-	    }
+	function createArrayFromMixed(obj) {
+	  if (!hasArrayNature(obj)) {
+	    return [obj];
+	  } else if (Array.isArray(obj)) {
+	    return obj.slice();
 	  } else {
-	    node.innerHTML = markup;
-	  }
-
-	  var scripts = node.getElementsByTagName('script');
-	  if (scripts.length) {
-	    ("production" !== process.env.NODE_ENV ? invariant(
-	      handleScript,
-	      'createNodesFromMarkup(...): Unexpected <script> element rendered.'
-	    ) : invariant(handleScript));
-	    createArrayFromMixed(scripts).forEach(handleScript);
-	  }
-
-	  var nodes = createArrayFromMixed(node.childNodes);
-	  while (node.lastChild) {
-	    node.removeChild(node.lastChild);
-	  }
-	  return nodes;
-	}
-
-	module.exports = createNodesFromMarkup;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
-
-/***/ },
-/* 262 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule getMarkupWrap
-	 */
-
-	var ExecutionEnvironment = __webpack_require__(53);
-
-	var invariant = __webpack_require__(55);
-
-	/**
-	 * Dummy container used to detect which wraps are necessary.
-	 */
-	var dummyNode =
-	  ExecutionEnvironment.canUseDOM ? document.createElement('div') : null;
-
-	/**
-	 * Some browsers cannot use `innerHTML` to render certain elements standalone,
-	 * so we wrap them, render the wrapped nodes, then extract the desired node.
-	 *
-	 * In IE8, certain elements cannot render alone, so wrap all elements ('*').
-	 */
-	var shouldWrap = {
-	  // Force wrapping for SVG elements because if they get created inside a <div>,
-	  // they will be initialized in the wrong namespace (and will not display).
-	  'circle': true,
-	  'defs': true,
-	  'ellipse': true,
-	  'g': true,
-	  'line': true,
-	  'linearGradient': true,
-	  'path': true,
-	  'polygon': true,
-	  'polyline': true,
-	  'radialGradient': true,
-	  'rect': true,
-	  'stop': true,
-	  'text': true
-	};
-
-	var selectWrap = [1, '<select multiple="true">', '</select>'];
-	var tableWrap = [1, '<table>', '</table>'];
-	var trWrap = [3, '<table><tbody><tr>', '</tr></tbody></table>'];
-
-	var svgWrap = [1, '<svg>', '</svg>'];
-
-	var markupWrap = {
-	  '*': [1, '?<div>', '</div>'],
-
-	  'area': [1, '<map>', '</map>'],
-	  'col': [2, '<table><tbody></tbody><colgroup>', '</colgroup></table>'],
-	  'legend': [1, '<fieldset>', '</fieldset>'],
-	  'param': [1, '<object>', '</object>'],
-	  'tr': [2, '<table><tbody>', '</tbody></table>'],
-
-	  'optgroup': selectWrap,
-	  'option': selectWrap,
-
-	  'caption': tableWrap,
-	  'colgroup': tableWrap,
-	  'tbody': tableWrap,
-	  'tfoot': tableWrap,
-	  'thead': tableWrap,
-
-	  'td': trWrap,
-	  'th': trWrap,
-
-	  'circle': svgWrap,
-	  'defs': svgWrap,
-	  'ellipse': svgWrap,
-	  'g': svgWrap,
-	  'line': svgWrap,
-	  'linearGradient': svgWrap,
-	  'path': svgWrap,
-	  'polygon': svgWrap,
-	  'polyline': svgWrap,
-	  'radialGradient': svgWrap,
-	  'rect': svgWrap,
-	  'stop': svgWrap,
-	  'text': svgWrap
-	};
-
-	/**
-	 * Gets the markup wrap configuration for the supplied `nodeName`.
-	 *
-	 * NOTE: This lazily detects which wraps are necessary for the current browser.
-	 *
-	 * @param {string} nodeName Lowercase `nodeName`.
-	 * @return {?array} Markup wrap configuration, if applicable.
-	 */
-	function getMarkupWrap(nodeName) {
-	  ("production" !== process.env.NODE_ENV ? invariant(!!dummyNode, 'Markup wrapping node not initialized') : invariant(!!dummyNode));
-	  if (!markupWrap.hasOwnProperty(nodeName)) {
-	    nodeName = '*';
-	  }
-	  if (!shouldWrap.hasOwnProperty(nodeName)) {
-	    if (nodeName === '*') {
-	      dummyNode.innerHTML = '<link />';
-	    } else {
-	      dummyNode.innerHTML = '<' + nodeName + '></' + nodeName + '>';
-	    }
-	    shouldWrap[nodeName] = !dummyNode.firstChild;
-	  }
-	  return shouldWrap[nodeName] ? markupWrap[nodeName] : null;
-	}
-
-
-	module.exports = getMarkupWrap;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
-
-/***/ },
-/* 263 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule getNodeForCharacterOffset
-	 */
-
-	'use strict';
-
-	/**
-	 * Given any node return the first leaf node without children.
-	 *
-	 * @param {DOMElement|DOMTextNode} node
-	 * @return {DOMElement|DOMTextNode}
-	 */
-	function getLeafNode(node) {
-	  while (node && node.firstChild) {
-	    node = node.firstChild;
-	  }
-	  return node;
-	}
-
-	/**
-	 * Get the next sibling within a container. This will walk up the
-	 * DOM if a node's siblings have been exhausted.
-	 *
-	 * @param {DOMElement|DOMTextNode} node
-	 * @return {?DOMElement|DOMTextNode}
-	 */
-	function getSiblingNode(node) {
-	  while (node) {
-	    if (node.nextSibling) {
-	      return node.nextSibling;
-	    }
-	    node = node.parentNode;
+	    return toArray(obj);
 	  }
 	}
 
-	/**
-	 * Get object describing the nodes which contain characters at offset.
-	 *
-	 * @param {DOMElement|DOMTextNode} root
-	 * @param {number} offset
-	 * @return {?object}
-	 */
-	function getNodeForCharacterOffset(root, offset) {
-	  var node = getLeafNode(root);
-	  var nodeStart = 0;
-	  var nodeEnd = 0;
-
-	  while (node) {
-	    if (node.nodeType === 3) {
-	      nodeEnd = nodeStart + node.textContent.length;
-
-	      if (nodeStart <= offset && nodeEnd >= offset) {
-	        return {
-	          node: node,
-	          offset: offset - nodeStart
-	        };
-	      }
-
-	      nodeStart = nodeEnd;
-	    }
-
-	    node = getLeafNode(getSiblingNode(node));
-	  }
-	}
-
-	module.exports = getNodeForCharacterOffset;
+	module.exports = createArrayFromMixed;
 
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Load modules
@@ -41533,96 +41635,6 @@
 
 
 /***/ },
-/* 265 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 *
-	 * @providesModule createArrayFromMixed
-	 * @typechecks
-	 */
-
-	var toArray = __webpack_require__(266);
-
-	/**
-	 * Perform a heuristic test to determine if an object is "array-like".
-	 *
-	 *   A monk asked Joshu, a Zen master, "Has a dog Buddha nature?"
-	 *   Joshu replied: "Mu."
-	 *
-	 * This function determines if its argument has "array nature": it returns
-	 * true if the argument is an actual array, an `arguments' object, or an
-	 * HTMLCollection (e.g. node.childNodes or node.getElementsByTagName()).
-	 *
-	 * It will return false for other array-like objects like Filelist.
-	 *
-	 * @param {*} obj
-	 * @return {boolean}
-	 */
-	function hasArrayNature(obj) {
-	  return (
-	    // not null/false
-	    !!obj &&
-	    // arrays are objects, NodeLists are functions in Safari
-	    (typeof obj == 'object' || typeof obj == 'function') &&
-	    // quacks like an array
-	    ('length' in obj) &&
-	    // not window
-	    !('setInterval' in obj) &&
-	    // no DOM node should be considered an array-like
-	    // a 'select' element has 'length' and 'item' properties on IE8
-	    (typeof obj.nodeType != 'number') &&
-	    (
-	      // a real array
-	      (// HTMLCollection/NodeList
-	      (Array.isArray(obj) ||
-	      // arguments
-	      ('callee' in obj) || 'item' in obj))
-	    )
-	  );
-	}
-
-	/**
-	 * Ensure that the argument is an array by wrapping it in an array if it is not.
-	 * Creates a copy of the argument if it is already an array.
-	 *
-	 * This is mostly useful idiomatically:
-	 *
-	 *   var createArrayFromMixed = require('createArrayFromMixed');
-	 *
-	 *   function takesOneOrMoreThings(things) {
-	 *     things = createArrayFromMixed(things);
-	 *     ...
-	 *   }
-	 *
-	 * This allows you to treat `things' as an array, but accept scalars in the API.
-	 *
-	 * If you need to convert an array-like object, like `arguments`, into an array
-	 * use toArray instead.
-	 *
-	 * @param {*} obj
-	 * @return {array}
-	 */
-	function createArrayFromMixed(obj) {
-	  if (!hasArrayNature(obj)) {
-	    return [obj];
-	  } else if (Array.isArray(obj)) {
-	    return obj.slice();
-	  } else {
-	    return toArray(obj);
-	  }
-	}
-
-	module.exports = createArrayFromMixed;
-
-
-/***/ },
 /* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -41696,6 +41708,25785 @@
 	module.exports = toArray;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 267 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Dispatcher = __webpack_require__(268),
+	    Flux = __webpack_require__(269),
+	    FluxMixin = __webpack_require__(270),
+	    FluxChildMixin = __webpack_require__(271),
+	    StoreWatchMixin = __webpack_require__(272),
+	    createStore = __webpack_require__(273);
+
+	var Fluxxor = {
+	  Dispatcher: Dispatcher,
+	  Flux: Flux,
+	  FluxMixin: FluxMixin,
+	  FluxChildMixin: FluxChildMixin,
+	  StoreWatchMixin: StoreWatchMixin,
+	  createStore: createStore,
+	  version: __webpack_require__(274)
+	};
+
+	module.exports = Fluxxor;
+
+
+/***/ },
+/* 268 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _clone = __webpack_require__(285),
+	    _mapValues = __webpack_require__(286),
+	    _forOwn = __webpack_require__(287),
+	    _intersection = __webpack_require__(290),
+	    _keys = __webpack_require__(288),
+	    _map = __webpack_require__(281),
+	    _each = __webpack_require__(279),
+	    _size = __webpack_require__(282),
+	    _findKey = __webpack_require__(289),
+	    _uniq = __webpack_require__(291);
+
+	var Dispatcher = function(stores) {
+	  this.stores = {};
+	  this.currentDispatch = null;
+	  this.currentActionType = null;
+	  this.waitingToDispatch = [];
+
+	  for (var key in stores) {
+	    if (stores.hasOwnProperty(key)) {
+	      this.addStore(key, stores[key]);
+	    }
+	  }
+	};
+
+	Dispatcher.prototype.addStore = function(name, store) {
+	  store.dispatcher = this;
+	  this.stores[name] = store;
+	};
+
+	Dispatcher.prototype.dispatch = function(action) {
+	  if (!action || !action.type) {
+	    throw new Error("Can only dispatch actions with a 'type' property");
+	  }
+
+	  if (this.currentDispatch) {
+	    var complaint = "Cannot dispatch an action ('" + action.type + "') while another action ('" +
+	                    this.currentActionType + "') is being dispatched";
+	    throw new Error(complaint);
+	  }
+
+	  this.waitingToDispatch = _clone(this.stores);
+
+	  this.currentActionType = action.type;
+	  this.currentDispatch = _mapValues(this.stores, function() {
+	    return { resolved: false, waitingOn: [], waitCallback: null };
+	  });
+
+	  try {
+	    this.doDispatchLoop(action);
+	  } finally {
+	    this.currentActionType = null;
+	    this.currentDispatch = null;
+	  }
+	};
+
+	Dispatcher.prototype.doDispatchLoop = function(action) {
+	  var dispatch, canBeDispatchedTo, wasHandled = false,
+	      removeFromDispatchQueue = [], dispatchedThisLoop = [];
+
+	  _forOwn(this.waitingToDispatch, function(value, key) {
+	    dispatch = this.currentDispatch[key];
+	    canBeDispatchedTo = !dispatch.waitingOn.length ||
+	      !_intersection(dispatch.waitingOn, _keys(this.waitingToDispatch)).length;
+	    if (canBeDispatchedTo) {
+	      if (dispatch.waitCallback) {
+	        var stores = _map(dispatch.waitingOn, function(key) {
+	          return this.stores[key];
+	        }, this);
+	        var fn = dispatch.waitCallback;
+	        dispatch.waitCallback = null;
+	        dispatch.waitingOn = [];
+	        dispatch.resolved = true;
+	        fn.apply(null, stores);
+	        wasHandled = true;
+	      } else {
+	        dispatch.resolved = true;
+	        var handled = this.stores[key].__handleAction__(action);
+	        if (handled) {
+	          wasHandled = true;
+	        }
+	      }
+
+	      dispatchedThisLoop.push(key);
+
+	      if (this.currentDispatch[key].resolved) {
+	        removeFromDispatchQueue.push(key);
+	      }
+	    }
+	  }, this);
+
+	  if (_keys(this.waitingToDispatch).length && !dispatchedThisLoop.length) {
+	    var storesWithCircularWaits = _keys(this.waitingToDispatch).join(", ");
+	    throw new Error("Indirect circular wait detected among: " + storesWithCircularWaits);
+	  }
+
+	  _each(removeFromDispatchQueue, function(key) {
+	    delete this.waitingToDispatch[key];
+	  }, this);
+
+	  if (_size(this.waitingToDispatch)) {
+	    this.doDispatchLoop(action);
+	  }
+
+	  if (!wasHandled && console && console.warn) {
+	    console.warn("An action of type " + action.type + " was dispatched, but no store handled it");
+	  }
+
+	};
+
+	Dispatcher.prototype.waitForStores = function(store, stores, fn) {
+	  if (!this.currentDispatch) {
+	    throw new Error("Cannot wait unless an action is being dispatched");
+	  }
+
+	  var waitingStoreName = _findKey(this.stores, function(val) {
+	    return val === store;
+	  });
+
+	  if (stores.indexOf(waitingStoreName) > -1) {
+	    throw new Error("A store cannot wait on itself");
+	  }
+
+	  var dispatch = this.currentDispatch[waitingStoreName];
+
+	  if (dispatch.waitingOn.length) {
+	    throw new Error(waitingStoreName + " already waiting on stores");
+	  }
+
+	  _each(stores, function(storeName) {
+	    var storeDispatch = this.currentDispatch[storeName];
+	    if (!this.stores[storeName]) {
+	      throw new Error("Cannot wait for non-existent store " + storeName);
+	    }
+	    if (storeDispatch.waitingOn.indexOf(waitingStoreName) > -1) {
+	      throw new Error("Circular wait detected between " + waitingStoreName + " and " + storeName);
+	    }
+	  }, this);
+
+	  dispatch.resolved = false;
+	  dispatch.waitingOn = _uniq(dispatch.waitingOn.concat(stores));
+	  dispatch.waitCallback = fn;
+	};
+
+	module.exports = Dispatcher;
+
+
+/***/ },
+/* 269 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var EventEmitter = __webpack_require__(277),
+	    inherits = __webpack_require__(275),
+	    objectPath = __webpack_require__(278),
+	    _each = __webpack_require__(279),
+	    _reduce = __webpack_require__(280),
+	    _isFunction = __webpack_require__(283),
+	    _isString = __webpack_require__(284);
+
+	var Dispatcher = __webpack_require__(268);
+
+	var findLeaves = function(obj, path, callback) {
+	  path = path || [];
+
+	  for (var key in obj) {
+	    if (obj.hasOwnProperty(key)) {
+	      if (_isFunction(obj[key])) {
+	        callback(path.concat(key), obj[key]);
+	      } else {
+	        findLeaves(obj[key], path.concat(key), callback);
+	      }
+	    }
+	  }
+	};
+
+	var Flux = function(stores, actions) {
+	  EventEmitter.call(this);
+	  this.dispatcher = new Dispatcher(stores);
+	  this.actions = {};
+	  this.stores = {};
+
+	  var dispatcher = this.dispatcher;
+	  var flux = this;
+	  this.dispatchBinder = {
+	    flux: flux,
+	    dispatch: function(type, payload) {
+	      try {
+	        flux.emit("dispatch", type, payload);
+	      } finally {
+	        dispatcher.dispatch({type: type, payload: payload});
+	      }
+	    }
+	  };
+
+	  this.addActions(actions);
+	  this.addStores(stores);
+	};
+
+	inherits(Flux, EventEmitter);
+
+	Flux.prototype.addActions = function(actions) {
+	  findLeaves(actions, [], this.addAction.bind(this));
+	};
+
+	// addAction has two signatures:
+	// 1: string[, string, string, string...], actionFunction
+	// 2: arrayOfStrings, actionFunction
+	Flux.prototype.addAction = function() {
+	  if (arguments.length < 2) {
+	    throw new Error("addAction requires at least two arguments, a string (or array of strings) and a function");
+	  }
+
+	  var args = Array.prototype.slice.call(arguments);
+
+	  if (!_isFunction(args[args.length - 1])) {
+	    throw new Error("The last argument to addAction must be a function");
+	  }
+
+	  var func = args.pop().bind(this.dispatchBinder);
+
+	  if (!_isString(args[0])) {
+	    args = args[0];
+	  }
+
+	  var leadingPaths = _reduce(args, function(acc, next) {
+	    if (acc) {
+	      var nextPath = acc[acc.length - 1].concat([next]);
+	      return acc.concat([nextPath]);
+	    } else {
+	      return [[next]];
+	    }
+	  }, null);
+
+	  // Detect trying to replace a function at any point in the path
+	  _each(leadingPaths, function(path) {
+	    if (_isFunction(objectPath.get(this.actions, path))) {
+	      throw new Error("An action named " + args.join(".") + " already exists");
+	    }
+	  }, this);
+
+	  // Detect trying to replace a namespace at the final point in the path
+	  if (objectPath.get(this.actions, args)) {
+	    throw new Error("A namespace named " + args.join(".") + " already exists");
+	  }
+
+	  objectPath.set(this.actions, args, func, true);
+	};
+
+	Flux.prototype.store = function(name) {
+	  return this.stores[name];
+	};
+
+	Flux.prototype.addStore = function(name, store) {
+	  if (name in this.stores) {
+	    throw new Error("A store named '" + name + "' already exists");
+	  }
+	  store.flux = this;
+	  this.stores[name] = store;
+	  this.dispatcher.addStore(name, store);
+	};
+
+	Flux.prototype.addStores = function(stores) {
+	  for (var key in stores) {
+	    if (stores.hasOwnProperty(key)) {
+	      this.addStore(key, stores[key]);
+	    }
+	  }
+	};
+
+	module.exports = Flux;
+
+
+/***/ },
+/* 270 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var FluxMixin = function(React) {
+	  return {
+	    componentWillMount: function() {
+	      if (!this.props.flux && (!this.context || !this.context.flux)) {
+	        var namePart = this.constructor.displayName ? " of " + this.constructor.displayName : "";
+	        throw new Error("Could not find flux on this.props or this.context" + namePart);
+	      }
+	    },
+
+	    childContextTypes: {
+	      flux: React.PropTypes.object
+	    },
+
+	    contextTypes: {
+	      flux: React.PropTypes.object
+	    },
+
+	    getChildContext: function() {
+	      return {
+	        flux: this.getFlux()
+	      };
+	    },
+
+	    getFlux: function() {
+	      return this.props.flux || (this.context && this.context.flux);
+	    }
+	  };
+	};
+
+	FluxMixin.componentWillMount = function() {
+	  throw new Error("Fluxxor.FluxMixin is a function that takes React as a " +
+	    "parameter and returns the mixin, e.g.: mixins: [Fluxxor.FluxMixin(React)]");
+	};
+
+	module.exports = FluxMixin;
+
+
+/***/ },
+/* 271 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var FluxChildMixin = function(React) {
+	  return {
+	    componentWillMount: function() {
+	      if (console && console.warn) {
+	        var namePart = this.constructor.displayName ? " in " + this.constructor.displayName : "",
+	            message = "Fluxxor.FluxChildMixin was found in use" + namePart + ", " +
+	                      "but has been deprecated. Use Fluxxor.FluxMixin instead.";
+	        console.warn(message);
+	      }
+	    },
+
+	    contextTypes: {
+	      flux: React.PropTypes.object
+	    },
+
+	    getFlux: function() {
+	      return this.context.flux;
+	    }
+	  };
+	};
+
+	FluxChildMixin.componentWillMount = function() {
+	  throw new Error("Fluxxor.FluxChildMixin is a function that takes React as a " +
+	    "parameter and returns the mixin, e.g.: mixins[Fluxxor.FluxChildMixin(React)]");
+	};
+
+	module.exports = FluxChildMixin;
+
+
+/***/ },
+/* 272 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _each = __webpack_require__(279);
+
+	var StoreWatchMixin = function() {
+	  var storeNames = Array.prototype.slice.call(arguments);
+	  return {
+	    componentDidMount: function() {
+	      var flux = this.props.flux || this.context.flux;
+	      _each(storeNames, function(store) {
+	        flux.store(store).on("change", this._setStateFromFlux);
+	      }, this);
+	    },
+
+	    componentWillUnmount: function() {
+	      var flux = this.props.flux || this.context.flux;
+	      _each(storeNames, function(store) {
+	        flux.store(store).removeListener("change", this._setStateFromFlux);
+	      }, this);
+	    },
+
+	    _setStateFromFlux: function() {
+	      if(this.isMounted()) {
+	        this.setState(this.getStateFromFlux());
+	      }
+	    },
+
+	    getInitialState: function() {
+	      return this.getStateFromFlux();
+	    }
+	  };
+	};
+
+	StoreWatchMixin.componentWillMount = function() {
+	  throw new Error("Fluxxor.StoreWatchMixin is a function that takes one or more " +
+	    "store names as parameters and returns the mixin, e.g.: " +
+	    "mixins: [Fluxxor.StoreWatchMixin(\"Store1\", \"Store2\")]");
+	};
+
+	module.exports = StoreWatchMixin;
+
+
+/***/ },
+/* 273 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _each = __webpack_require__(279),
+	    _isFunction = __webpack_require__(283),
+	    Store = __webpack_require__(276),
+	    inherits = __webpack_require__(275);
+
+	var RESERVED_KEYS = ["flux", "waitFor"];
+
+	var createStore = function(spec) {
+	  _each(RESERVED_KEYS, function(key) {
+	    if (spec[key]) {
+	      throw new Error("Reserved key '" + key + "' found in store definition");
+	    }
+	  });
+
+	  var constructor = function(options) {
+	    options = options || {};
+	    Store.call(this);
+
+	    for (var key in spec) {
+	      if (key === "actions") {
+	        this.bindActions(spec[key]);
+	      } else if (key === "initialize") {
+	        // do nothing
+	      } else if (_isFunction(spec[key])) {
+	        this[key] = spec[key].bind(this);
+	      } else {
+	        this[key] = spec[key];
+	      }
+	    }
+
+	    if (spec.initialize) {
+	      spec.initialize.call(this, options);
+	    }
+	  };
+
+	  inherits(constructor, Store);
+	  return constructor;
+	};
+
+	module.exports = createStore;
+
+
+/***/ },
+/* 274 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = "1.5.3"
+
+/***/ },
+/* 275 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// From https://github.com/isaacs/inherits
+	// inherits is licensed under the ISC license:
+	//
+	//
+	// The ISC License
+	//
+	// Copyright (c) Isaac Z. Schlueter
+	//
+	// Permission to use, copy, modify, and/or distribute this software for any
+	// purpose with or without fee is hereby granted, provided that the above
+	// copyright notice and this permission notice appear in all copies.
+	//
+	// THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+	// REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+	// FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+	// INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+	// LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+	// OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+	// PERFORMANCE OF THIS SOFTWARE.
+
+	if (typeof Object.create === 'function') {
+	  // implementation from standard node.js 'util' module
+	  module.exports = function inherits(ctor, superCtor) {
+	    ctor.super_ = superCtor;
+	    ctor.prototype = Object.create(superCtor.prototype, {
+	      constructor: {
+	        value: ctor,
+	        enumerable: false,
+	        writable: true,
+	        configurable: true
+	      }
+	    });
+	  };
+	} else {
+	  // old school shim for old browsers
+	  module.exports = function inherits(ctor, superCtor) {
+	    ctor.super_ = superCtor;
+	    var TempCtor = function () {};
+	    TempCtor.prototype = superCtor.prototype;
+	    ctor.prototype = new TempCtor();
+	    ctor.prototype.constructor = ctor;
+	  };
+	}
+
+
+/***/ },
+/* 276 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var EventEmitter = __webpack_require__(277),
+	    inherits = __webpack_require__(275),
+	    _isFunction = __webpack_require__(283),
+	    _isObject = __webpack_require__(292);
+
+	function Store(dispatcher) {
+	  this.dispatcher = dispatcher;
+	  this.__actions__ = {};
+	  EventEmitter.call(this);
+	}
+
+	inherits(Store, EventEmitter);
+
+	Store.prototype.__handleAction__ = function(action) {
+	  var handler;
+	  if (!!(handler = this.__actions__[action.type])) {
+	    if (_isFunction(handler)) {
+	      handler.call(this, action.payload, action.type);
+	    } else if (handler && _isFunction(this[handler])) {
+	      this[handler].call(this, action.payload, action.type);
+	    } else {
+	      throw new Error("The handler for action type " + action.type + " is not a function");
+	    }
+	    return true;
+	  } else {
+	    return false;
+	  }
+	};
+
+	Store.prototype.bindActions = function() {
+	  var actions = Array.prototype.slice.call(arguments);
+
+	  if (actions.length > 1 && actions.length % 2 !== 0) {
+	    throw new Error("bindActions must take an even number of arguments.");
+	  }
+
+	  var bindAction = function(type, handler) {
+	    if (!handler) {
+	      throw new Error("The handler for action type " + type + " is falsy");
+	    }
+
+	    this.__actions__[type] = handler;
+	  }.bind(this);
+
+	  if (actions.length === 1 && _isObject(actions[0])) {
+	    actions = actions[0];
+	    for (var key in actions) {
+	      if (actions.hasOwnProperty(key)) {
+	        bindAction(key, actions[key]);
+	      }
+	    }
+	  } else {
+	    for (var i = 0; i < actions.length; i += 2) {
+	      var type = actions[i],
+	          handler = actions[i+1];
+
+	      if (!type) {
+	        throw new Error("Argument " + (i+1) + " to bindActions is a falsy value");
+	      }
+
+	      bindAction(type, handler);
+	    }
+	  }
+	};
+
+	Store.prototype.waitFor = function(stores, fn) {
+	  this.dispatcher.waitForStores(this, stores, fn.bind(this));
+	};
+
+	module.exports = Store;
+
+
+/***/ },
+/* 277 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	/**
+	 * Representation of a single EventEmitter function.
+	 *
+	 * @param {Function} fn Event handler to be called.
+	 * @param {Mixed} context Context for function execution.
+	 * @param {Boolean} once Only emit once
+	 * @api private
+	 */
+	function EE(fn, context, once) {
+	  this.fn = fn;
+	  this.context = context;
+	  this.once = once || false;
+	}
+
+	/**
+	 * Minimal EventEmitter interface that is molded against the Node.js
+	 * EventEmitter interface.
+	 *
+	 * @constructor
+	 * @api public
+	 */
+	function EventEmitter() { /* Nothing to set */ }
+
+	/**
+	 * Holds the assigned EventEmitters by name.
+	 *
+	 * @type {Object}
+	 * @private
+	 */
+	EventEmitter.prototype._events = undefined;
+
+	/**
+	 * Return a list of assigned event listeners.
+	 *
+	 * @param {String} event The events that should be listed.
+	 * @returns {Array}
+	 * @api public
+	 */
+	EventEmitter.prototype.listeners = function listeners(event) {
+	  if (!this._events || !this._events[event]) return [];
+	  if (this._events[event].fn) return [this._events[event].fn];
+
+	  for (var i = 0, l = this._events[event].length, ee = new Array(l); i < l; i++) {
+	    ee[i] = this._events[event][i].fn;
+	  }
+
+	  return ee;
+	};
+
+	/**
+	 * Emit an event to all registered event listeners.
+	 *
+	 * @param {String} event The name of the event.
+	 * @returns {Boolean} Indication if we've emitted an event.
+	 * @api public
+	 */
+	EventEmitter.prototype.emit = function emit(event, a1, a2, a3, a4, a5) {
+	  if (!this._events || !this._events[event]) return false;
+
+	  var listeners = this._events[event]
+	    , len = arguments.length
+	    , args
+	    , i;
+
+	  if ('function' === typeof listeners.fn) {
+	    if (listeners.once) this.removeListener(event, listeners.fn, true);
+
+	    switch (len) {
+	      case 1: return listeners.fn.call(listeners.context), true;
+	      case 2: return listeners.fn.call(listeners.context, a1), true;
+	      case 3: return listeners.fn.call(listeners.context, a1, a2), true;
+	      case 4: return listeners.fn.call(listeners.context, a1, a2, a3), true;
+	      case 5: return listeners.fn.call(listeners.context, a1, a2, a3, a4), true;
+	      case 6: return listeners.fn.call(listeners.context, a1, a2, a3, a4, a5), true;
+	    }
+
+	    for (i = 1, args = new Array(len -1); i < len; i++) {
+	      args[i - 1] = arguments[i];
+	    }
+
+	    listeners.fn.apply(listeners.context, args);
+	  } else {
+	    var length = listeners.length
+	      , j;
+
+	    for (i = 0; i < length; i++) {
+	      if (listeners[i].once) this.removeListener(event, listeners[i].fn, true);
+
+	      switch (len) {
+	        case 1: listeners[i].fn.call(listeners[i].context); break;
+	        case 2: listeners[i].fn.call(listeners[i].context, a1); break;
+	        case 3: listeners[i].fn.call(listeners[i].context, a1, a2); break;
+	        default:
+	          if (!args) for (j = 1, args = new Array(len -1); j < len; j++) {
+	            args[j - 1] = arguments[j];
+	          }
+
+	          listeners[i].fn.apply(listeners[i].context, args);
+	      }
+	    }
+	  }
+
+	  return true;
+	};
+
+	/**
+	 * Register a new EventListener for the given event.
+	 *
+	 * @param {String} event Name of the event.
+	 * @param {Functon} fn Callback function.
+	 * @param {Mixed} context The context of the function.
+	 * @api public
+	 */
+	EventEmitter.prototype.on = function on(event, fn, context) {
+	  var listener = new EE(fn, context || this);
+
+	  if (!this._events) this._events = {};
+	  if (!this._events[event]) this._events[event] = listener;
+	  else {
+	    if (!this._events[event].fn) this._events[event].push(listener);
+	    else this._events[event] = [
+	      this._events[event], listener
+	    ];
+	  }
+
+	  return this;
+	};
+
+	/**
+	 * Add an EventListener that's only called once.
+	 *
+	 * @param {String} event Name of the event.
+	 * @param {Function} fn Callback function.
+	 * @param {Mixed} context The context of the function.
+	 * @api public
+	 */
+	EventEmitter.prototype.once = function once(event, fn, context) {
+	  var listener = new EE(fn, context || this, true);
+
+	  if (!this._events) this._events = {};
+	  if (!this._events[event]) this._events[event] = listener;
+	  else {
+	    if (!this._events[event].fn) this._events[event].push(listener);
+	    else this._events[event] = [
+	      this._events[event], listener
+	    ];
+	  }
+
+	  return this;
+	};
+
+	/**
+	 * Remove event listeners.
+	 *
+	 * @param {String} event The event we want to remove.
+	 * @param {Function} fn The listener that we need to find.
+	 * @param {Boolean} once Only remove once listeners.
+	 * @api public
+	 */
+	EventEmitter.prototype.removeListener = function removeListener(event, fn, once) {
+	  if (!this._events || !this._events[event]) return this;
+
+	  var listeners = this._events[event]
+	    , events = [];
+
+	  if (fn) {
+	    if (listeners.fn && (listeners.fn !== fn || (once && !listeners.once))) {
+	      events.push(listeners);
+	    }
+	    if (!listeners.fn) for (var i = 0, length = listeners.length; i < length; i++) {
+	      if (listeners[i].fn !== fn || (once && !listeners[i].once)) {
+	        events.push(listeners[i]);
+	      }
+	    }
+	  }
+
+	  //
+	  // Reset the array, or remove it completely if we have no more listeners.
+	  //
+	  if (events.length) {
+	    this._events[event] = events.length === 1 ? events[0] : events;
+	  } else {
+	    delete this._events[event];
+	  }
+
+	  return this;
+	};
+
+	/**
+	 * Remove all listeners or only the listeners for the specified event.
+	 *
+	 * @param {String} event The event want to remove all listeners for.
+	 * @api public
+	 */
+	EventEmitter.prototype.removeAllListeners = function removeAllListeners(event) {
+	  if (!this._events) return this;
+
+	  if (event) delete this._events[event];
+	  else this._events = {};
+
+	  return this;
+	};
+
+	//
+	// Alias methods names because people roll like that.
+	//
+	EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
+	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+
+	//
+	// This function doesn't apply anymore.
+	//
+	EventEmitter.prototype.setMaxListeners = function setMaxListeners() {
+	  return this;
+	};
+
+	//
+	// Expose the module.
+	//
+	EventEmitter.EventEmitter = EventEmitter;
+	EventEmitter.EventEmitter2 = EventEmitter;
+	EventEmitter.EventEmitter3 = EventEmitter;
+
+	//
+	// Expose the module.
+	//
+	module.exports = EventEmitter;
+
+
+/***/ },
+/* 278 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory){
+	  'use strict';
+
+	  /*istanbul ignore next:cant test*/
+	  if (typeof module === 'object' && typeof module.exports === 'object') {
+	    module.exports = factory();
+	  } else if (true) {
+	    // AMD. Register as an anonymous module.
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else {
+	    // Browser globals
+	    root.objectPath = factory();
+	  }
+	})(this, function(){
+	  'use strict';
+
+	  var
+	    toStr = Object.prototype.toString,
+	    _hasOwnProperty = Object.prototype.hasOwnProperty;
+
+	  function isEmpty(value){
+	    if (!value) {
+	      return true;
+	    }
+	    if (isArray(value) && value.length === 0) {
+	      return true;
+	    } else {
+	      for (var i in value) {
+	        if (_hasOwnProperty.call(value, i)) {
+	          return false;
+	        }
+	      }
+	      return true;
+	    }
+	  }
+
+	  function toString(type){
+	    return toStr.call(type);
+	  }
+
+	  function isNumber(value){
+	    return typeof value === 'number' || toString(value) === "[object Number]";
+	  }
+
+	  function isString(obj){
+	    return typeof obj === 'string' || toString(obj) === "[object String]";
+	  }
+
+	  function isObject(obj){
+	    return typeof obj === 'object' && toString(obj) === "[object Object]";
+	  }
+
+	  function isArray(obj){
+	    return typeof obj === 'object' && typeof obj.length === 'number' && toString(obj) === '[object Array]';
+	  }
+
+	  function isBoolean(obj){
+	    return typeof obj === 'boolean' || toString(obj) === '[object Boolean]';
+	  }
+
+	  function getKey(key){
+	    var intKey = parseInt(key);
+	    if (intKey.toString() === key) {
+	      return intKey;
+	    }
+	    return key;
+	  }
+
+	  function set(obj, path, value, doNotReplace){
+	    if (isNumber(path)) {
+	      path = [path];
+	    }
+	    if (isEmpty(path)) {
+	      return obj;
+	    }
+	    if (isString(path)) {
+	      return set(obj, path.split('.'), value, doNotReplace);
+	    }
+	    var currentPath = getKey(path[0]);
+
+	    if (path.length === 1) {
+	      var oldVal = obj[currentPath];
+	      if (oldVal === void 0 || !doNotReplace) {
+	        obj[currentPath] = value;
+	      }
+	      return oldVal;
+	    }
+
+	    if (obj[currentPath] === void 0) {
+	      if (isNumber(currentPath)) {
+	        obj[currentPath] = [];
+	      } else {
+	        obj[currentPath] = {};
+	      }
+	    }
+
+	    return set(obj[currentPath], path.slice(1), value, doNotReplace);
+	  }
+
+	  function del(obj, path) {
+	    if (isNumber(path)) {
+	      path = [path];
+	    }
+
+	    if (isEmpty(obj)) {
+	      return void 0;
+	    }
+
+	    if (isEmpty(path)) {
+	      return obj;
+	    }
+	    if(isString(path)) {
+	      return del(obj, path.split('.'));
+	    }
+
+	    var currentPath = getKey(path[0]);
+	    var oldVal = obj[currentPath];
+
+	    if(path.length === 1) {
+	      if (oldVal !== void 0) {
+	        if (isArray(obj)) {
+	          obj.splice(currentPath, 1);
+	        } else {
+	          delete obj[currentPath];
+	        }
+	      }
+	    } else {
+	      if (obj[currentPath] !== void 0) {
+	        return del(obj[currentPath], path.slice(1));
+	      }
+	    }
+
+	    return obj;
+	  }
+
+	  var objectPath = {};
+
+	  objectPath.ensureExists = function (obj, path, value){
+	    return set(obj, path, value, true);
+	  };
+
+	  objectPath.set = function (obj, path, value, doNotReplace){
+	    return set(obj, path, value, doNotReplace);
+	  };
+
+	  objectPath.insert = function (obj, path, value, at){
+	    var arr = objectPath.get(obj, path);
+	    at = ~~at;
+	    if (!isArray(arr)) {
+	      arr = [];
+	      objectPath.set(obj, path, arr);
+	    }
+	    arr.splice(at, 0, value);
+	  };
+
+	  objectPath.empty = function(obj, path) {
+	    if (isEmpty(path)) {
+	      return obj;
+	    }
+	    if (isEmpty(obj)) {
+	      return void 0;
+	    }
+
+	    var value, i;
+	    if (!(value = objectPath.get(obj, path))) {
+	      return obj;
+	    }
+
+	    if (isString(value)) {
+	      return objectPath.set(obj, path, '');
+	    } else if (isBoolean(value)) {
+	      return objectPath.set(obj, path, false);
+	    } else if (isNumber(value)) {
+	      return objectPath.set(obj, path, 0);
+	    } else if (isArray(value)) {
+	      value.length = 0;
+	    } else if (isObject(value)) {
+	      for (i in value) {
+	        if (_hasOwnProperty.call(value, i)) {
+	          delete value[i];
+	        }
+	      }
+	    } else {
+	      return objectPath.set(obj, path, null);
+	    }
+	  };
+
+	  objectPath.push = function (obj, path /*, values */){
+	    var arr = objectPath.get(obj, path);
+	    if (!isArray(arr)) {
+	      arr = [];
+	      objectPath.set(obj, path, arr);
+	    }
+
+	    arr.push.apply(arr, Array.prototype.slice.call(arguments, 2));
+	  };
+
+	  objectPath.coalesce = function (obj, paths, defaultValue) {
+	    var value;
+
+	    for (var i = 0, len = paths.length; i < len; i++) {
+	      if ((value = objectPath.get(obj, paths[i])) !== void 0) {
+	        return value;
+	      }
+	    }
+
+	    return defaultValue;
+	  };
+
+	  objectPath.get = function (obj, path, defaultValue){
+	    if (isNumber(path)) {
+	      path = [path];
+	    }
+	    if (isEmpty(path)) {
+	      return obj;
+	    }
+	    if (isEmpty(obj)) {
+	      return defaultValue;
+	    }
+	    if (isString(path)) {
+	      return objectPath.get(obj, path.split('.'), defaultValue);
+	    }
+
+	    var currentPath = getKey(path[0]);
+
+	    if (path.length === 1) {
+	      if (obj[currentPath] === void 0) {
+	        return defaultValue;
+	      }
+	      return obj[currentPath];
+	    }
+
+	    return objectPath.get(obj[currentPath], path.slice(1), defaultValue);
+	  };
+
+	  objectPath.del = function(obj, path) {
+	    return del(obj, path);
+	  };
+
+	  return objectPath;
+	});
+
+/***/ },
+/* 279 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var arrayEach = __webpack_require__(293),
+	    baseEach = __webpack_require__(294),
+	    createForEach = __webpack_require__(295);
+
+	/**
+	 * Iterates over elements of `collection` invoking `iteratee` for each element.
+	 * The `iteratee` is bound to `thisArg` and invoked with three arguments:
+	 * (value, index|key, collection). Iteratee functions may exit iteration early
+	 * by explicitly returning `false`.
+	 *
+	 * **Note:** As with other "Collections" methods, objects with a "length" property
+	 * are iterated like arrays. To avoid this behavior `_.forIn` or `_.forOwn`
+	 * may be used for object iteration.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @alias each
+	 * @category Collection
+	 * @param {Array|Object|string} collection The collection to iterate over.
+	 * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+	 * @param {*} [thisArg] The `this` binding of `iteratee`.
+	 * @returns {Array|Object|string} Returns `collection`.
+	 * @example
+	 *
+	 * _([1, 2]).forEach(function(n) {
+	 *   console.log(n);
+	 * }).value();
+	 * // => logs each value from left to right and returns the array
+	 *
+	 * _.forEach({ 'a': 1, 'b': 2 }, function(n, key) {
+	 *   console.log(n, key);
+	 * });
+	 * // => logs each value-key pair and returns the object (iteration order is not guaranteed)
+	 */
+	var forEach = createForEach(arrayEach, baseEach);
+
+	module.exports = forEach;
+
+
+/***/ },
+/* 280 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var arrayReduce = __webpack_require__(296),
+	    baseEach = __webpack_require__(294),
+	    createReduce = __webpack_require__(297);
+
+	/**
+	 * Reduces `collection` to a value which is the accumulated result of running
+	 * each element in `collection` through `iteratee`, where each successive
+	 * invocation is supplied the return value of the previous. If `accumulator`
+	 * is not provided the first element of `collection` is used as the initial
+	 * value. The `iteratee` is bound to `thisArg` and invoked with four arguments:
+	 * (accumulator, value, index|key, collection).
+	 *
+	 * Many lodash methods are guarded to work as interatees for methods like
+	 * `_.reduce`, `_.reduceRight`, and `_.transform`.
+	 *
+	 * The guarded methods are:
+	 * `assign`, `defaults`, `includes`, `merge`, `sortByAll`, and `sortByOrder`
+	 *
+	 * @static
+	 * @memberOf _
+	 * @alias foldl, inject
+	 * @category Collection
+	 * @param {Array|Object|string} collection The collection to iterate over.
+	 * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+	 * @param {*} [accumulator] The initial value.
+	 * @param {*} [thisArg] The `this` binding of `iteratee`.
+	 * @returns {*} Returns the accumulated value.
+	 * @example
+	 *
+	 * _.reduce([1, 2], function(total, n) {
+	 *   return total + n;
+	 * });
+	 * // => 3
+	 *
+	 * _.reduce({ 'a': 1, 'b': 2 }, function(result, n, key) {
+	 *   result[key] = n * 3;
+	 *   return result;
+	 * }, {});
+	 * // => { 'a': 3, 'b': 6 } (iteration order is not guaranteed)
+	 */
+	var reduce = createReduce(arrayReduce, baseEach);
+
+	module.exports = reduce;
+
+
+/***/ },
+/* 281 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var arrayMap = __webpack_require__(300),
+	    baseCallback = __webpack_require__(301),
+	    baseMap = __webpack_require__(302),
+	    isArray = __webpack_require__(303);
+
+	/**
+	 * Creates an array of values by running each element in `collection` through
+	 * `iteratee`. The `iteratee` is bound to `thisArg` and invoked with three
+	 * arguments: (value, index|key, collection).
+	 *
+	 * If a property name is provided for `iteratee` the created `_.property`
+	 * style callback returns the property value of the given element.
+	 *
+	 * If a value is also provided for `thisArg` the created `_.matchesProperty`
+	 * style callback returns `true` for elements that have a matching property
+	 * value, else `false`.
+	 *
+	 * If an object is provided for `iteratee` the created `_.matches` style
+	 * callback returns `true` for elements that have the properties of the given
+	 * object, else `false`.
+	 *
+	 * Many lodash methods are guarded to work as interatees for methods like
+	 * `_.every`, `_.filter`, `_.map`, `_.mapValues`, `_.reject`, and `_.some`.
+	 *
+	 * The guarded methods are:
+	 * `ary`, `callback`, `chunk`, `clone`, `create`, `curry`, `curryRight`,
+	 * `drop`, `dropRight`, `every`, `fill`, `flatten`, `invert`, `max`, `min`,
+	 * `parseInt`, `slice`, `sortBy`, `take`, `takeRight`, `template`, `trim`,
+	 * `trimLeft`, `trimRight`, `trunc`, `random`, `range`, `sample`, `some`,
+	 * `sum`, `uniq`, and `words`
+	 *
+	 * @static
+	 * @memberOf _
+	 * @alias collect
+	 * @category Collection
+	 * @param {Array|Object|string} collection The collection to iterate over.
+	 * @param {Function|Object|string} [iteratee=_.identity] The function invoked
+	 *  per iteration.
+	 * @param {*} [thisArg] The `this` binding of `iteratee`.
+	 * @returns {Array} Returns the new mapped array.
+	 * @example
+	 *
+	 * function timesThree(n) {
+	 *   return n * 3;
+	 * }
+	 *
+	 * _.map([1, 2], timesThree);
+	 * // => [3, 6]
+	 *
+	 * _.map({ 'a': 1, 'b': 2 }, timesThree);
+	 * // => [3, 6] (iteration order is not guaranteed)
+	 *
+	 * var users = [
+	 *   { 'user': 'barney' },
+	 *   { 'user': 'fred' }
+	 * ];
+	 *
+	 * // using the `_.property` callback shorthand
+	 * _.map(users, 'user');
+	 * // => ['barney', 'fred']
+	 */
+	function map(collection, iteratee, thisArg) {
+	  var func = isArray(collection) ? arrayMap : baseMap;
+	  iteratee = baseCallback(iteratee, thisArg, 3);
+	  return func(collection, iteratee);
+	}
+
+	module.exports = map;
+
+
+/***/ },
+/* 282 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var getLength = __webpack_require__(298),
+	    isLength = __webpack_require__(299),
+	    keys = __webpack_require__(288);
+
+	/**
+	 * Gets the size of `collection` by returning its length for array-like
+	 * values or the number of own enumerable properties for objects.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Collection
+	 * @param {Array|Object|string} collection The collection to inspect.
+	 * @returns {number} Returns the size of `collection`.
+	 * @example
+	 *
+	 * _.size([1, 2, 3]);
+	 * // => 3
+	 *
+	 * _.size({ 'a': 1, 'b': 2 });
+	 * // => 2
+	 *
+	 * _.size('pebbles');
+	 * // => 7
+	 */
+	function size(collection) {
+	  var length = collection ? getLength(collection) : 0;
+	  return isLength(length) ? length : keys(collection).length;
+	}
+
+	module.exports = size;
+
+
+/***/ },
+/* 283 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {var baseIsFunction = __webpack_require__(304),
+	    isNative = __webpack_require__(305);
+
+	/** `Object#toString` result references. */
+	var funcTag = '[object Function]';
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+
+	/** Native method references. */
+	var Uint8Array = isNative(Uint8Array = global.Uint8Array) && Uint8Array;
+
+	/**
+	 * Checks if `value` is classified as a `Function` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isFunction(_);
+	 * // => true
+	 *
+	 * _.isFunction(/abc/);
+	 * // => false
+	 */
+	var isFunction = !(baseIsFunction(/x/) || (Uint8Array && !baseIsFunction(Uint8Array))) ? baseIsFunction : function(value) {
+	  // The use of `Object#toString` avoids issues with the `typeof` operator
+	  // in older versions of Chrome and Safari which return 'function' for regexes
+	  // and Safari 8 equivalents which return 'object' for typed array constructors.
+	  return objToString.call(value) == funcTag;
+	};
+
+	module.exports = isFunction;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObjectLike = __webpack_require__(306);
+
+	/** `Object#toString` result references. */
+	var stringTag = '[object String]';
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+
+	/**
+	 * Checks if `value` is classified as a `String` primitive or object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isString('abc');
+	 * // => true
+	 *
+	 * _.isString(1);
+	 * // => false
+	 */
+	function isString(value) {
+	  return typeof value == 'string' || (isObjectLike(value) && objToString.call(value) == stringTag);
+	}
+
+	module.exports = isString;
+
+
+/***/ },
+/* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseClone = __webpack_require__(307),
+	    bindCallback = __webpack_require__(308),
+	    isIterateeCall = __webpack_require__(309);
+
+	/**
+	 * Creates a clone of `value`. If `isDeep` is `true` nested objects are cloned,
+	 * otherwise they are assigned by reference. If `customizer` is provided it is
+	 * invoked to produce the cloned values. If `customizer` returns `undefined`
+	 * cloning is handled by the method instead. The `customizer` is bound to
+	 * `thisArg` and invoked with two argument; (value [, index|key, object]).
+	 *
+	 * **Note:** This method is loosely based on the
+	 * [structured clone algorithm](http://www.w3.org/TR/html5/infrastructure.html#internal-structured-cloning-algorithm).
+	 * The enumerable properties of `arguments` objects and objects created by
+	 * constructors other than `Object` are cloned to plain `Object` objects. An
+	 * empty object is returned for uncloneable values such as functions, DOM nodes,
+	 * Maps, Sets, and WeakMaps.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to clone.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @param {Function} [customizer] The function to customize cloning values.
+	 * @param {*} [thisArg] The `this` binding of `customizer`.
+	 * @returns {*} Returns the cloned value.
+	 * @example
+	 *
+	 * var users = [
+	 *   { 'user': 'barney' },
+	 *   { 'user': 'fred' }
+	 * ];
+	 *
+	 * var shallow = _.clone(users);
+	 * shallow[0] === users[0];
+	 * // => true
+	 *
+	 * var deep = _.clone(users, true);
+	 * deep[0] === users[0];
+	 * // => false
+	 *
+	 * // using a customizer callback
+	 * var el = _.clone(document.body, function(value) {
+	 *   if (_.isElement(value)) {
+	 *     return value.cloneNode(false);
+	 *   }
+	 * });
+	 *
+	 * el === document.body
+	 * // => false
+	 * el.nodeName
+	 * // => BODY
+	 * el.childNodes.length;
+	 * // => 0
+	 */
+	function clone(value, isDeep, customizer, thisArg) {
+	  if (isDeep && typeof isDeep != 'boolean' && isIterateeCall(value, isDeep, customizer)) {
+	    isDeep = false;
+	  }
+	  else if (typeof isDeep == 'function') {
+	    thisArg = customizer;
+	    customizer = isDeep;
+	    isDeep = false;
+	  }
+	  customizer = typeof customizer == 'function' && bindCallback(customizer, thisArg, 1);
+	  return baseClone(value, isDeep, customizer);
+	}
+
+	module.exports = clone;
+
+
+/***/ },
+/* 286 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var createObjectMapper = __webpack_require__(310);
+
+	/**
+	 * Creates an object with the same keys as `object` and values generated by
+	 * running each own enumerable property of `object` through `iteratee`. The
+	 * iteratee function is bound to `thisArg` and invoked with three arguments:
+	 * (value, key, object).
+	 *
+	 * If a property name is provided for `iteratee` the created `_.property`
+	 * style callback returns the property value of the given element.
+	 *
+	 * If a value is also provided for `thisArg` the created `_.matchesProperty`
+	 * style callback returns `true` for elements that have a matching property
+	 * value, else `false`.
+	 *
+	 * If an object is provided for `iteratee` the created `_.matches` style
+	 * callback returns `true` for elements that have the properties of the given
+	 * object, else `false`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Object
+	 * @param {Object} object The object to iterate over.
+	 * @param {Function|Object|string} [iteratee=_.identity] The function invoked
+	 *  per iteration.
+	 * @param {*} [thisArg] The `this` binding of `iteratee`.
+	 * @returns {Object} Returns the new mapped object.
+	 * @example
+	 *
+	 * _.mapValues({ 'a': 1, 'b': 2 }, function(n) {
+	 *   return n * 3;
+	 * });
+	 * // => { 'a': 3, 'b': 6 }
+	 *
+	 * var users = {
+	 *   'fred':    { 'user': 'fred',    'age': 40 },
+	 *   'pebbles': { 'user': 'pebbles', 'age': 1 }
+	 * };
+	 *
+	 * // using the `_.property` callback shorthand
+	 * _.mapValues(users, 'age');
+	 * // => { 'fred': 40, 'pebbles': 1 } (iteration order is not guaranteed)
+	 */
+	var mapValues = createObjectMapper();
+
+	module.exports = mapValues;
+
+
+/***/ },
+/* 287 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseForOwn = __webpack_require__(311),
+	    createForOwn = __webpack_require__(312);
+
+	/**
+	 * Iterates over own enumerable properties of an object invoking `iteratee`
+	 * for each property. The `iteratee` is bound to `thisArg` and invoked with
+	 * three arguments: (value, key, object). Iteratee functions may exit iteration
+	 * early by explicitly returning `false`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Object
+	 * @param {Object} object The object to iterate over.
+	 * @param {Function} [iteratee=_.identity] The function invoked per iteration.
+	 * @param {*} [thisArg] The `this` binding of `iteratee`.
+	 * @returns {Object} Returns `object`.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.forOwn(new Foo, function(value, key) {
+	 *   console.log(key);
+	 * });
+	 * // => logs 'a' and 'b' (iteration order is not guaranteed)
+	 */
+	var forOwn = createForOwn(baseForOwn);
+
+	module.exports = forOwn;
+
+
+/***/ },
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isArrayLike = __webpack_require__(316),
+	    isNative = __webpack_require__(305),
+	    isObject = __webpack_require__(292),
+	    shimKeys = __webpack_require__(317);
+
+	/* Native method references for those with the same name as other `lodash` methods. */
+	var nativeKeys = isNative(nativeKeys = Object.keys) && nativeKeys;
+
+	/**
+	 * Creates an array of the own enumerable property names of `object`.
+	 *
+	 * **Note:** Non-object values are coerced to objects. See the
+	 * [ES spec](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.keys)
+	 * for more details.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Object
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.keys(new Foo);
+	 * // => ['a', 'b'] (iteration order is not guaranteed)
+	 *
+	 * _.keys('hi');
+	 * // => ['0', '1']
+	 */
+	var keys = !nativeKeys ? shimKeys : function(object) {
+	  var Ctor = object != null && object.constructor;
+	  if ((typeof Ctor == 'function' && Ctor.prototype === object) ||
+	      (typeof object != 'function' && isArrayLike(object))) {
+	    return shimKeys(object);
+	  }
+	  return isObject(object) ? nativeKeys(object) : [];
+	};
+
+	module.exports = keys;
+
+
+/***/ },
+/* 289 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseForOwn = __webpack_require__(311),
+	    createFindKey = __webpack_require__(320);
+
+	/**
+	 * This method is like `_.find` except that it returns the key of the first
+	 * element `predicate` returns truthy for instead of the element itself.
+	 *
+	 * If a property name is provided for `predicate` the created `_.property`
+	 * style callback returns the property value of the given element.
+	 *
+	 * If a value is also provided for `thisArg` the created `_.matchesProperty`
+	 * style callback returns `true` for elements that have a matching property
+	 * value, else `false`.
+	 *
+	 * If an object is provided for `predicate` the created `_.matches` style
+	 * callback returns `true` for elements that have the properties of the given
+	 * object, else `false`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Object
+	 * @param {Object} object The object to search.
+	 * @param {Function|Object|string} [predicate=_.identity] The function invoked
+	 *  per iteration.
+	 * @param {*} [thisArg] The `this` binding of `predicate`.
+	 * @returns {string|undefined} Returns the key of the matched element, else `undefined`.
+	 * @example
+	 *
+	 * var users = {
+	 *   'barney':  { 'age': 36, 'active': true },
+	 *   'fred':    { 'age': 40, 'active': false },
+	 *   'pebbles': { 'age': 1,  'active': true }
+	 * };
+	 *
+	 * _.findKey(users, function(chr) {
+	 *   return chr.age < 40;
+	 * });
+	 * // => 'barney' (iteration order is not guaranteed)
+	 *
+	 * // using the `_.matches` callback shorthand
+	 * _.findKey(users, { 'age': 1, 'active': true });
+	 * // => 'pebbles'
+	 *
+	 * // using the `_.matchesProperty` callback shorthand
+	 * _.findKey(users, 'active', false);
+	 * // => 'fred'
+	 *
+	 * // using the `_.property` callback shorthand
+	 * _.findKey(users, 'active');
+	 * // => 'barney'
+	 */
+	var findKey = createFindKey(baseForOwn);
+
+	module.exports = findKey;
+
+
+/***/ },
+/* 290 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseIndexOf = __webpack_require__(313),
+	    cacheIndexOf = __webpack_require__(314),
+	    createCache = __webpack_require__(315),
+	    isArrayLike = __webpack_require__(316);
+
+	/**
+	 * Creates an array of unique values in all provided arrays using
+	 * [`SameValueZero`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-samevaluezero)
+	 * for equality comparisons.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Array
+	 * @param {...Array} [arrays] The arrays to inspect.
+	 * @returns {Array} Returns the new array of shared values.
+	 * @example
+	 * _.intersection([1, 2], [4, 2], [2, 1]);
+	 * // => [2]
+	 */
+	function intersection() {
+	  var args = [],
+	      argsIndex = -1,
+	      argsLength = arguments.length,
+	      caches = [],
+	      indexOf = baseIndexOf,
+	      isCommon = true,
+	      result = [];
+
+	  while (++argsIndex < argsLength) {
+	    var value = arguments[argsIndex];
+	    if (isArrayLike(value)) {
+	      args.push(value);
+	      caches.push((isCommon && value.length >= 120) ? createCache(argsIndex && value) : null);
+	    }
+	  }
+	  argsLength = args.length;
+	  if (argsLength < 2) {
+	    return result;
+	  }
+	  var array = args[0],
+	      index = -1,
+	      length = array ? array.length : 0,
+	      seen = caches[0];
+
+	  outer:
+	  while (++index < length) {
+	    value = array[index];
+	    if ((seen ? cacheIndexOf(seen, value) : indexOf(result, value, 0)) < 0) {
+	      argsIndex = argsLength;
+	      while (--argsIndex) {
+	        var cache = caches[argsIndex];
+	        if ((cache ? cacheIndexOf(cache, value) : indexOf(args[argsIndex], value, 0)) < 0) {
+	          continue outer;
+	        }
+	      }
+	      if (seen) {
+	        seen.push(value);
+	      }
+	      result.push(value);
+	    }
+	  }
+	  return result;
+	}
+
+	module.exports = intersection;
+
+
+/***/ },
+/* 291 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseCallback = __webpack_require__(301),
+	    baseUniq = __webpack_require__(318),
+	    isIterateeCall = __webpack_require__(309),
+	    sortedUniq = __webpack_require__(319);
+
+	/**
+	 * Creates a duplicate-free version of an array, using
+	 * [`SameValueZero`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-samevaluezero)
+	 * for equality comparisons, in which only the first occurence of each element
+	 * is kept. Providing `true` for `isSorted` performs a faster search algorithm
+	 * for sorted arrays. If an iteratee function is provided it is invoked for
+	 * each element in the array to generate the criterion by which uniqueness
+	 * is computed. The `iteratee` is bound to `thisArg` and invoked with three
+	 * arguments: (value, index, array).
+	 *
+	 * If a property name is provided for `iteratee` the created `_.property`
+	 * style callback returns the property value of the given element.
+	 *
+	 * If a value is also provided for `thisArg` the created `_.matchesProperty`
+	 * style callback returns `true` for elements that have a matching property
+	 * value, else `false`.
+	 *
+	 * If an object is provided for `iteratee` the created `_.matches` style
+	 * callback returns `true` for elements that have the properties of the given
+	 * object, else `false`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @alias unique
+	 * @category Array
+	 * @param {Array} array The array to inspect.
+	 * @param {boolean} [isSorted] Specify the array is sorted.
+	 * @param {Function|Object|string} [iteratee] The function invoked per iteration.
+	 * @param {*} [thisArg] The `this` binding of `iteratee`.
+	 * @returns {Array} Returns the new duplicate-value-free array.
+	 * @example
+	 *
+	 * _.uniq([2, 1, 2]);
+	 * // => [2, 1]
+	 *
+	 * // using `isSorted`
+	 * _.uniq([1, 1, 2], true);
+	 * // => [1, 2]
+	 *
+	 * // using an iteratee function
+	 * _.uniq([1, 2.5, 1.5, 2], function(n) {
+	 *   return this.floor(n);
+	 * }, Math);
+	 * // => [1, 2.5]
+	 *
+	 * // using the `_.property` callback shorthand
+	 * _.uniq([{ 'x': 1 }, { 'x': 2 }, { 'x': 1 }], 'x');
+	 * // => [{ 'x': 1 }, { 'x': 2 }]
+	 */
+	function uniq(array, isSorted, iteratee, thisArg) {
+	  var length = array ? array.length : 0;
+	  if (!length) {
+	    return [];
+	  }
+	  if (isSorted != null && typeof isSorted != 'boolean') {
+	    thisArg = iteratee;
+	    iteratee = isIterateeCall(array, isSorted, thisArg) ? null : isSorted;
+	    isSorted = false;
+	  }
+	  iteratee = iteratee == null ? iteratee : baseCallback(iteratee, thisArg, 3);
+	  return (isSorted)
+	    ? sortedUniq(array, iteratee)
+	    : baseUniq(array, iteratee);
+	}
+
+	module.exports = uniq;
+
+
+/***/ },
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
+	 * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+	 * @example
+	 *
+	 * _.isObject({});
+	 * // => true
+	 *
+	 * _.isObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObject(1);
+	 * // => false
+	 */
+	function isObject(value) {
+	  // Avoid a V8 JIT bug in Chrome 19-20.
+	  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
+	  var type = typeof value;
+	  return type == 'function' || (!!value && type == 'object');
+	}
+
+	module.exports = isObject;
+
+
+/***/ },
+/* 293 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * A specialized version of `_.forEach` for arrays without support for callback
+	 * shorthands and `this` binding.
+	 *
+	 * @private
+	 * @param {Array} array The array to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Array} Returns `array`.
+	 */
+	function arrayEach(array, iteratee) {
+	  var index = -1,
+	      length = array.length;
+
+	  while (++index < length) {
+	    if (iteratee(array[index], index, array) === false) {
+	      break;
+	    }
+	  }
+	  return array;
+	}
+
+	module.exports = arrayEach;
+
+
+/***/ },
+/* 294 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseForOwn = __webpack_require__(311),
+	    createBaseEach = __webpack_require__(321);
+
+	/**
+	 * The base implementation of `_.forEach` without support for callback
+	 * shorthands and `this` binding.
+	 *
+	 * @private
+	 * @param {Array|Object|string} collection The collection to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Array|Object|string} Returns `collection`.
+	 */
+	var baseEach = createBaseEach(baseForOwn);
+
+	module.exports = baseEach;
+
+
+/***/ },
+/* 295 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var bindCallback = __webpack_require__(308),
+	    isArray = __webpack_require__(303);
+
+	/**
+	 * Creates a function for `_.forEach` or `_.forEachRight`.
+	 *
+	 * @private
+	 * @param {Function} arrayFunc The function to iterate over an array.
+	 * @param {Function} eachFunc The function to iterate over a collection.
+	 * @returns {Function} Returns the new each function.
+	 */
+	function createForEach(arrayFunc, eachFunc) {
+	  return function(collection, iteratee, thisArg) {
+	    return (typeof iteratee == 'function' && thisArg === undefined && isArray(collection))
+	      ? arrayFunc(collection, iteratee)
+	      : eachFunc(collection, bindCallback(iteratee, thisArg, 3));
+	  };
+	}
+
+	module.exports = createForEach;
+
+
+/***/ },
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * A specialized version of `_.reduce` for arrays without support for callback
+	 * shorthands and `this` binding.
+	 *
+	 * @private
+	 * @param {Array} array The array to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @param {*} [accumulator] The initial value.
+	 * @param {boolean} [initFromArray] Specify using the first element of `array`
+	 *  as the initial value.
+	 * @returns {*} Returns the accumulated value.
+	 */
+	function arrayReduce(array, iteratee, accumulator, initFromArray) {
+	  var index = -1,
+	      length = array.length;
+
+	  if (initFromArray && length) {
+	    accumulator = array[++index];
+	  }
+	  while (++index < length) {
+	    accumulator = iteratee(accumulator, array[index], index, array);
+	  }
+	  return accumulator;
+	}
+
+	module.exports = arrayReduce;
+
+
+/***/ },
+/* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseCallback = __webpack_require__(301),
+	    baseReduce = __webpack_require__(322),
+	    isArray = __webpack_require__(303);
+
+	/**
+	 * Creates a function for `_.reduce` or `_.reduceRight`.
+	 *
+	 * @private
+	 * @param {Function} arrayFunc The function to iterate over an array.
+	 * @param {Function} eachFunc The function to iterate over a collection.
+	 * @returns {Function} Returns the new each function.
+	 */
+	function createReduce(arrayFunc, eachFunc) {
+	  return function(collection, iteratee, accumulator, thisArg) {
+	    var initFromArray = arguments.length < 3;
+	    return (typeof iteratee == 'function' && thisArg === undefined && isArray(collection))
+	      ? arrayFunc(collection, iteratee, accumulator, initFromArray)
+	      : baseReduce(collection, baseCallback(iteratee, thisArg, 4), accumulator, initFromArray, eachFunc);
+	  };
+	}
+
+	module.exports = createReduce;
+
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseProperty = __webpack_require__(323);
+
+	/**
+	 * Gets the "length" property value of `object`.
+	 *
+	 * **Note:** This function is used to avoid a [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792)
+	 * that affects Safari on at least iOS 8.1-8.3 ARM64.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {*} Returns the "length" value.
+	 */
+	var getLength = baseProperty('length');
+
+	module.exports = getLength;
+
+
+/***/ },
+/* 299 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Used as the [maximum length](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.max_safe_integer)
+	 * of an array-like value.
+	 */
+	var MAX_SAFE_INTEGER = Math.pow(2, 53) - 1;
+
+	/**
+	 * Checks if `value` is a valid array-like length.
+	 *
+	 * **Note:** This function is based on [`ToLength`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength).
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+	 */
+	function isLength(value) {
+	  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+	}
+
+	module.exports = isLength;
+
+
+/***/ },
+/* 300 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * A specialized version of `_.map` for arrays without support for callback
+	 * shorthands and `this` binding.
+	 *
+	 * @private
+	 * @param {Array} array The array to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Array} Returns the new mapped array.
+	 */
+	function arrayMap(array, iteratee) {
+	  var index = -1,
+	      length = array.length,
+	      result = Array(length);
+
+	  while (++index < length) {
+	    result[index] = iteratee(array[index], index, array);
+	  }
+	  return result;
+	}
+
+	module.exports = arrayMap;
+
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseMatches = __webpack_require__(324),
+	    baseMatchesProperty = __webpack_require__(325),
+	    bindCallback = __webpack_require__(308),
+	    identity = __webpack_require__(326),
+	    property = __webpack_require__(327);
+
+	/**
+	 * The base implementation of `_.callback` which supports specifying the
+	 * number of arguments to provide to `func`.
+	 *
+	 * @private
+	 * @param {*} [func=_.identity] The value to convert to a callback.
+	 * @param {*} [thisArg] The `this` binding of `func`.
+	 * @param {number} [argCount] The number of arguments to provide to `func`.
+	 * @returns {Function} Returns the callback.
+	 */
+	function baseCallback(func, thisArg, argCount) {
+	  var type = typeof func;
+	  if (type == 'function') {
+	    return thisArg === undefined
+	      ? func
+	      : bindCallback(func, thisArg, argCount);
+	  }
+	  if (func == null) {
+	    return identity;
+	  }
+	  if (type == 'object') {
+	    return baseMatches(func);
+	  }
+	  return thisArg === undefined
+	    ? property(func)
+	    : baseMatchesProperty(func, thisArg);
+	}
+
+	module.exports = baseCallback;
+
+
+/***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseEach = __webpack_require__(294),
+	    isArrayLike = __webpack_require__(316);
+
+	/**
+	 * The base implementation of `_.map` without support for callback shorthands
+	 * and `this` binding.
+	 *
+	 * @private
+	 * @param {Array|Object|string} collection The collection to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Array} Returns the new mapped array.
+	 */
+	function baseMap(collection, iteratee) {
+	  var index = -1,
+	      result = isArrayLike(collection) ? Array(collection.length) : [];
+
+	  baseEach(collection, function(value, key, collection) {
+	    result[++index] = iteratee(value, key, collection);
+	  });
+	  return result;
+	}
+
+	module.exports = baseMap;
+
+
+/***/ },
+/* 303 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isLength = __webpack_require__(299),
+	    isNative = __webpack_require__(305),
+	    isObjectLike = __webpack_require__(306);
+
+	/** `Object#toString` result references. */
+	var arrayTag = '[object Array]';
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+
+	/* Native method references for those with the same name as other `lodash` methods. */
+	var nativeIsArray = isNative(nativeIsArray = Array.isArray) && nativeIsArray;
+
+	/**
+	 * Checks if `value` is classified as an `Array` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isArray([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArray(function() { return arguments; }());
+	 * // => false
+	 */
+	var isArray = nativeIsArray || function(value) {
+	  return isObjectLike(value) && isLength(value.length) && objToString.call(value) == arrayTag;
+	};
+
+	module.exports = isArray;
+
+
+/***/ },
+/* 304 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * The base implementation of `_.isFunction` without support for environments
+	 * with incorrect `typeof` results.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 */
+	function baseIsFunction(value) {
+	  // Avoid a Chakra JIT bug in compatibility modes of IE 11.
+	  // See https://github.com/jashkenas/underscore/issues/1621 for more details.
+	  return typeof value == 'function' || false;
+	}
+
+	module.exports = baseIsFunction;
+
+
+/***/ },
+/* 305 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var escapeRegExp = __webpack_require__(328),
+	    isObjectLike = __webpack_require__(306);
+
+	/** `Object#toString` result references. */
+	var funcTag = '[object Function]';
+
+	/** Used to detect host constructors (Safari > 5). */
+	var reIsHostCtor = /^\[object .+?Constructor\]$/;
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/** Used to resolve the decompiled source of functions. */
+	var fnToString = Function.prototype.toString;
+
+	/**
+	 * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+
+	/** Used to detect if a method is native. */
+	var reIsNative = RegExp('^' +
+	  escapeRegExp(objToString)
+	  .replace(/toString|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+	);
+
+	/**
+	 * Checks if `value` is a native function.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a native function, else `false`.
+	 * @example
+	 *
+	 * _.isNative(Array.prototype.push);
+	 * // => true
+	 *
+	 * _.isNative(_);
+	 * // => false
+	 */
+	function isNative(value) {
+	  if (value == null) {
+	    return false;
+	  }
+	  if (objToString.call(value) == funcTag) {
+	    return reIsNative.test(fnToString.call(value));
+	  }
+	  return isObjectLike(value) && reIsHostCtor.test(value);
+	}
+
+	module.exports = isNative;
+
+
+/***/ },
+/* 306 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Checks if `value` is object-like.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+
+	module.exports = isObjectLike;
+
+
+/***/ },
+/* 307 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var arrayCopy = __webpack_require__(330),
+	    arrayEach = __webpack_require__(293),
+	    baseAssign = __webpack_require__(331),
+	    baseForOwn = __webpack_require__(311),
+	    initCloneArray = __webpack_require__(332),
+	    initCloneByTag = __webpack_require__(333),
+	    initCloneObject = __webpack_require__(334),
+	    isArray = __webpack_require__(303),
+	    isObject = __webpack_require__(292);
+
+	/** `Object#toString` result references. */
+	var argsTag = '[object Arguments]',
+	    arrayTag = '[object Array]',
+	    boolTag = '[object Boolean]',
+	    dateTag = '[object Date]',
+	    errorTag = '[object Error]',
+	    funcTag = '[object Function]',
+	    mapTag = '[object Map]',
+	    numberTag = '[object Number]',
+	    objectTag = '[object Object]',
+	    regexpTag = '[object RegExp]',
+	    setTag = '[object Set]',
+	    stringTag = '[object String]',
+	    weakMapTag = '[object WeakMap]';
+
+	var arrayBufferTag = '[object ArrayBuffer]',
+	    float32Tag = '[object Float32Array]',
+	    float64Tag = '[object Float64Array]',
+	    int8Tag = '[object Int8Array]',
+	    int16Tag = '[object Int16Array]',
+	    int32Tag = '[object Int32Array]',
+	    uint8Tag = '[object Uint8Array]',
+	    uint8ClampedTag = '[object Uint8ClampedArray]',
+	    uint16Tag = '[object Uint16Array]',
+	    uint32Tag = '[object Uint32Array]';
+
+	/** Used to identify `toStringTag` values supported by `_.clone`. */
+	var cloneableTags = {};
+	cloneableTags[argsTag] = cloneableTags[arrayTag] =
+	cloneableTags[arrayBufferTag] = cloneableTags[boolTag] =
+	cloneableTags[dateTag] = cloneableTags[float32Tag] =
+	cloneableTags[float64Tag] = cloneableTags[int8Tag] =
+	cloneableTags[int16Tag] = cloneableTags[int32Tag] =
+	cloneableTags[numberTag] = cloneableTags[objectTag] =
+	cloneableTags[regexpTag] = cloneableTags[stringTag] =
+	cloneableTags[uint8Tag] = cloneableTags[uint8ClampedTag] =
+	cloneableTags[uint16Tag] = cloneableTags[uint32Tag] = true;
+	cloneableTags[errorTag] = cloneableTags[funcTag] =
+	cloneableTags[mapTag] = cloneableTags[setTag] =
+	cloneableTags[weakMapTag] = false;
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+
+	/**
+	 * The base implementation of `_.clone` without support for argument juggling
+	 * and `this` binding `customizer` functions.
+	 *
+	 * @private
+	 * @param {*} value The value to clone.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @param {Function} [customizer] The function to customize cloning values.
+	 * @param {string} [key] The key of `value`.
+	 * @param {Object} [object] The object `value` belongs to.
+	 * @param {Array} [stackA=[]] Tracks traversed source objects.
+	 * @param {Array} [stackB=[]] Associates clones with source counterparts.
+	 * @returns {*} Returns the cloned value.
+	 */
+	function baseClone(value, isDeep, customizer, key, object, stackA, stackB) {
+	  var result;
+	  if (customizer) {
+	    result = object ? customizer(value, key, object) : customizer(value);
+	  }
+	  if (result !== undefined) {
+	    return result;
+	  }
+	  if (!isObject(value)) {
+	    return value;
+	  }
+	  var isArr = isArray(value);
+	  if (isArr) {
+	    result = initCloneArray(value);
+	    if (!isDeep) {
+	      return arrayCopy(value, result);
+	    }
+	  } else {
+	    var tag = objToString.call(value),
+	        isFunc = tag == funcTag;
+
+	    if (tag == objectTag || tag == argsTag || (isFunc && !object)) {
+	      result = initCloneObject(isFunc ? {} : value);
+	      if (!isDeep) {
+	        return baseAssign(result, value);
+	      }
+	    } else {
+	      return cloneableTags[tag]
+	        ? initCloneByTag(value, tag, isDeep)
+	        : (object ? value : {});
+	    }
+	  }
+	  // Check for circular references and return corresponding clone.
+	  stackA || (stackA = []);
+	  stackB || (stackB = []);
+
+	  var length = stackA.length;
+	  while (length--) {
+	    if (stackA[length] == value) {
+	      return stackB[length];
+	    }
+	  }
+	  // Add the source value to the stack of traversed objects and associate it with its clone.
+	  stackA.push(value);
+	  stackB.push(result);
+
+	  // Recursively populate clone (susceptible to call stack limits).
+	  (isArr ? arrayEach : baseForOwn)(value, function(subValue, key) {
+	    result[key] = baseClone(subValue, isDeep, customizer, key, value, stackA, stackB);
+	  });
+	  return result;
+	}
+
+	module.exports = baseClone;
+
+
+/***/ },
+/* 308 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var identity = __webpack_require__(326);
+
+	/**
+	 * A specialized version of `baseCallback` which only supports `this` binding
+	 * and specifying the number of arguments to provide to `func`.
+	 *
+	 * @private
+	 * @param {Function} func The function to bind.
+	 * @param {*} thisArg The `this` binding of `func`.
+	 * @param {number} [argCount] The number of arguments to provide to `func`.
+	 * @returns {Function} Returns the callback.
+	 */
+	function bindCallback(func, thisArg, argCount) {
+	  if (typeof func != 'function') {
+	    return identity;
+	  }
+	  if (thisArg === undefined) {
+	    return func;
+	  }
+	  switch (argCount) {
+	    case 1: return function(value) {
+	      return func.call(thisArg, value);
+	    };
+	    case 3: return function(value, index, collection) {
+	      return func.call(thisArg, value, index, collection);
+	    };
+	    case 4: return function(accumulator, value, index, collection) {
+	      return func.call(thisArg, accumulator, value, index, collection);
+	    };
+	    case 5: return function(value, other, key, object, source) {
+	      return func.call(thisArg, value, other, key, object, source);
+	    };
+	  }
+	  return function() {
+	    return func.apply(thisArg, arguments);
+	  };
+	}
+
+	module.exports = bindCallback;
+
+
+/***/ },
+/* 309 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isArrayLike = __webpack_require__(316),
+	    isIndex = __webpack_require__(329),
+	    isObject = __webpack_require__(292);
+
+	/**
+	 * Checks if the provided arguments are from an iteratee call.
+	 *
+	 * @private
+	 * @param {*} value The potential iteratee value argument.
+	 * @param {*} index The potential iteratee index or key argument.
+	 * @param {*} object The potential iteratee object argument.
+	 * @returns {boolean} Returns `true` if the arguments are from an iteratee call, else `false`.
+	 */
+	function isIterateeCall(value, index, object) {
+	  if (!isObject(object)) {
+	    return false;
+	  }
+	  var type = typeof index;
+	  if (type == 'number'
+	      ? (isArrayLike(object) && isIndex(index, object.length))
+	      : (type == 'string' && index in object)) {
+	    var other = object[index];
+	    return value === value ? (value === other) : (other !== other);
+	  }
+	  return false;
+	}
+
+	module.exports = isIterateeCall;
+
+
+/***/ },
+/* 310 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseCallback = __webpack_require__(301),
+	    baseForOwn = __webpack_require__(311);
+
+	/**
+	 * Creates a function for `_.mapKeys` or `_.mapValues`.
+	 *
+	 * @private
+	 * @param {boolean} [isMapKeys] Specify mapping keys instead of values.
+	 * @returns {Function} Returns the new map function.
+	 */
+	function createObjectMapper(isMapKeys) {
+	  return function(object, iteratee, thisArg) {
+	    var result = {};
+	    iteratee = baseCallback(iteratee, thisArg, 3);
+
+	    baseForOwn(object, function(value, key, object) {
+	      var mapped = iteratee(value, key, object);
+	      key = isMapKeys ? mapped : key;
+	      value = isMapKeys ? value : mapped;
+	      result[key] = value;
+	    });
+	    return result;
+	  };
+	}
+
+	module.exports = createObjectMapper;
+
+
+/***/ },
+/* 311 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseFor = __webpack_require__(335),
+	    keys = __webpack_require__(288);
+
+	/**
+	 * The base implementation of `_.forOwn` without support for callback
+	 * shorthands and `this` binding.
+	 *
+	 * @private
+	 * @param {Object} object The object to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @returns {Object} Returns `object`.
+	 */
+	function baseForOwn(object, iteratee) {
+	  return baseFor(object, iteratee, keys);
+	}
+
+	module.exports = baseForOwn;
+
+
+/***/ },
+/* 312 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var bindCallback = __webpack_require__(308);
+
+	/**
+	 * Creates a function for `_.forOwn` or `_.forOwnRight`.
+	 *
+	 * @private
+	 * @param {Function} objectFunc The function to iterate over an object.
+	 * @returns {Function} Returns the new each function.
+	 */
+	function createForOwn(objectFunc) {
+	  return function(object, iteratee, thisArg) {
+	    if (typeof iteratee != 'function' || thisArg !== undefined) {
+	      iteratee = bindCallback(iteratee, thisArg, 3);
+	    }
+	    return objectFunc(object, iteratee);
+	  };
+	}
+
+	module.exports = createForOwn;
+
+
+/***/ },
+/* 313 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var indexOfNaN = __webpack_require__(336);
+
+	/**
+	 * The base implementation of `_.indexOf` without support for binary searches.
+	 *
+	 * @private
+	 * @param {Array} array The array to search.
+	 * @param {*} value The value to search for.
+	 * @param {number} fromIndex The index to search from.
+	 * @returns {number} Returns the index of the matched value, else `-1`.
+	 */
+	function baseIndexOf(array, value, fromIndex) {
+	  if (value !== value) {
+	    return indexOfNaN(array, fromIndex);
+	  }
+	  var index = fromIndex - 1,
+	      length = array.length;
+
+	  while (++index < length) {
+	    if (array[index] === value) {
+	      return index;
+	    }
+	  }
+	  return -1;
+	}
+
+	module.exports = baseIndexOf;
+
+
+/***/ },
+/* 314 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(292);
+
+	/**
+	 * Checks if `value` is in `cache` mimicking the return signature of
+	 * `_.indexOf` by returning `0` if the value is found, else `-1`.
+	 *
+	 * @private
+	 * @param {Object} cache The cache to search.
+	 * @param {*} value The value to search for.
+	 * @returns {number} Returns `0` if `value` is found, else `-1`.
+	 */
+	function cacheIndexOf(cache, value) {
+	  var data = cache.data,
+	      result = (typeof value == 'string' || isObject(value)) ? data.set.has(value) : data.hash[value];
+
+	  return result ? 0 : -1;
+	}
+
+	module.exports = cacheIndexOf;
+
+
+/***/ },
+/* 315 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {var SetCache = __webpack_require__(337),
+	    constant = __webpack_require__(338),
+	    isNative = __webpack_require__(305);
+
+	/** Native method references. */
+	var Set = isNative(Set = global.Set) && Set;
+
+	/* Native method references for those with the same name as other `lodash` methods. */
+	var nativeCreate = isNative(nativeCreate = Object.create) && nativeCreate;
+
+	/**
+	 * Creates a `Set` cache object to optimize linear searches of large arrays.
+	 *
+	 * @private
+	 * @param {Array} [values] The values to cache.
+	 * @returns {null|Object} Returns the new cache object if `Set` is supported, else `null`.
+	 */
+	var createCache = !(nativeCreate && Set) ? constant(null) : function(values) {
+	  return new SetCache(values);
+	};
+
+	module.exports = createCache;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 316 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var getLength = __webpack_require__(298),
+	    isLength = __webpack_require__(299);
+
+	/**
+	 * Checks if `value` is array-like.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+	 */
+	function isArrayLike(value) {
+	  return value != null && isLength(getLength(value));
+	}
+
+	module.exports = isArrayLike;
+
+
+/***/ },
+/* 317 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isArguments = __webpack_require__(339),
+	    isArray = __webpack_require__(303),
+	    isIndex = __webpack_require__(329),
+	    isLength = __webpack_require__(299),
+	    keysIn = __webpack_require__(340),
+	    support = __webpack_require__(341);
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+
+	/**
+	 * A fallback implementation of `Object.keys` which creates an array of the
+	 * own enumerable property names of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function shimKeys(object) {
+	  var props = keysIn(object),
+	      propsLength = props.length,
+	      length = propsLength && object.length;
+
+	  var allowIndexes = length && isLength(length) &&
+	    (isArray(object) || (support.nonEnumArgs && isArguments(object)));
+
+	  var index = -1,
+	      result = [];
+
+	  while (++index < propsLength) {
+	    var key = props[index];
+	    if ((allowIndexes && isIndex(key, length)) || hasOwnProperty.call(object, key)) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+
+	module.exports = shimKeys;
+
+
+/***/ },
+/* 318 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseIndexOf = __webpack_require__(313),
+	    cacheIndexOf = __webpack_require__(314),
+	    createCache = __webpack_require__(315);
+
+	/**
+	 * The base implementation of `_.uniq` without support for callback shorthands
+	 * and `this` binding.
+	 *
+	 * @private
+	 * @param {Array} array The array to inspect.
+	 * @param {Function} [iteratee] The function invoked per iteration.
+	 * @returns {Array} Returns the new duplicate-value-free array.
+	 */
+	function baseUniq(array, iteratee) {
+	  var index = -1,
+	      indexOf = baseIndexOf,
+	      length = array.length,
+	      isCommon = true,
+	      isLarge = isCommon && length >= 200,
+	      seen = isLarge ? createCache() : null,
+	      result = [];
+
+	  if (seen) {
+	    indexOf = cacheIndexOf;
+	    isCommon = false;
+	  } else {
+	    isLarge = false;
+	    seen = iteratee ? [] : result;
+	  }
+	  outer:
+	  while (++index < length) {
+	    var value = array[index],
+	        computed = iteratee ? iteratee(value, index, array) : value;
+
+	    if (isCommon && value === value) {
+	      var seenIndex = seen.length;
+	      while (seenIndex--) {
+	        if (seen[seenIndex] === computed) {
+	          continue outer;
+	        }
+	      }
+	      if (iteratee) {
+	        seen.push(computed);
+	      }
+	      result.push(value);
+	    }
+	    else if (indexOf(seen, computed, 0) < 0) {
+	      if (iteratee || isLarge) {
+	        seen.push(computed);
+	      }
+	      result.push(value);
+	    }
+	  }
+	  return result;
+	}
+
+	module.exports = baseUniq;
+
+
+/***/ },
+/* 319 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * An implementation of `_.uniq` optimized for sorted arrays without support
+	 * for callback shorthands and `this` binding.
+	 *
+	 * @private
+	 * @param {Array} array The array to inspect.
+	 * @param {Function} [iteratee] The function invoked per iteration.
+	 * @returns {Array} Returns the new duplicate-value-free array.
+	 */
+	function sortedUniq(array, iteratee) {
+	  var seen,
+	      index = -1,
+	      length = array.length,
+	      resIndex = -1,
+	      result = [];
+
+	  while (++index < length) {
+	    var value = array[index],
+	        computed = iteratee ? iteratee(value, index, array) : value;
+
+	    if (!index || seen !== computed) {
+	      seen = computed;
+	      result[++resIndex] = value;
+	    }
+	  }
+	  return result;
+	}
+
+	module.exports = sortedUniq;
+
+
+/***/ },
+/* 320 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseCallback = __webpack_require__(301),
+	    baseFind = __webpack_require__(342);
+
+	/**
+	 * Creates a `_.findKey` or `_.findLastKey` function.
+	 *
+	 * @private
+	 * @param {Function} objectFunc The function to iterate over an object.
+	 * @returns {Function} Returns the new find function.
+	 */
+	function createFindKey(objectFunc) {
+	  return function(object, predicate, thisArg) {
+	    predicate = baseCallback(predicate, thisArg, 3);
+	    return baseFind(object, predicate, objectFunc, true);
+	  };
+	}
+
+	module.exports = createFindKey;
+
+
+/***/ },
+/* 321 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var getLength = __webpack_require__(298),
+	    isLength = __webpack_require__(299),
+	    toObject = __webpack_require__(343);
+
+	/**
+	 * Creates a `baseEach` or `baseEachRight` function.
+	 *
+	 * @private
+	 * @param {Function} eachFunc The function to iterate over a collection.
+	 * @param {boolean} [fromRight] Specify iterating from right to left.
+	 * @returns {Function} Returns the new base function.
+	 */
+	function createBaseEach(eachFunc, fromRight) {
+	  return function(collection, iteratee) {
+	    var length = collection ? getLength(collection) : 0;
+	    if (!isLength(length)) {
+	      return eachFunc(collection, iteratee);
+	    }
+	    var index = fromRight ? length : -1,
+	        iterable = toObject(collection);
+
+	    while ((fromRight ? index-- : ++index < length)) {
+	      if (iteratee(iterable[index], index, iterable) === false) {
+	        break;
+	      }
+	    }
+	    return collection;
+	  };
+	}
+
+	module.exports = createBaseEach;
+
+
+/***/ },
+/* 322 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * The base implementation of `_.reduce` and `_.reduceRight` without support
+	 * for callback shorthands and `this` binding, which iterates over `collection`
+	 * using the provided `eachFunc`.
+	 *
+	 * @private
+	 * @param {Array|Object|string} collection The collection to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @param {*} accumulator The initial value.
+	 * @param {boolean} initFromCollection Specify using the first or last element
+	 *  of `collection` as the initial value.
+	 * @param {Function} eachFunc The function to iterate over `collection`.
+	 * @returns {*} Returns the accumulated value.
+	 */
+	function baseReduce(collection, iteratee, accumulator, initFromCollection, eachFunc) {
+	  eachFunc(collection, function(value, index, collection) {
+	    accumulator = initFromCollection
+	      ? (initFromCollection = false, value)
+	      : iteratee(accumulator, value, index, collection);
+	  });
+	  return accumulator;
+	}
+
+	module.exports = baseReduce;
+
+
+/***/ },
+/* 323 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * The base implementation of `_.property` without support for deep paths.
+	 *
+	 * @private
+	 * @param {string} key The key of the property to get.
+	 * @returns {Function} Returns the new function.
+	 */
+	function baseProperty(key) {
+	  return function(object) {
+	    return object == null ? undefined : object[key];
+	  };
+	}
+
+	module.exports = baseProperty;
+
+
+/***/ },
+/* 324 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseIsMatch = __webpack_require__(344),
+	    constant = __webpack_require__(338),
+	    isStrictComparable = __webpack_require__(345),
+	    keys = __webpack_require__(288),
+	    toObject = __webpack_require__(343);
+
+	/**
+	 * The base implementation of `_.matches` which does not clone `source`.
+	 *
+	 * @private
+	 * @param {Object} source The object of property values to match.
+	 * @returns {Function} Returns the new function.
+	 */
+	function baseMatches(source) {
+	  var props = keys(source),
+	      length = props.length;
+
+	  if (!length) {
+	    return constant(true);
+	  }
+	  if (length == 1) {
+	    var key = props[0],
+	        value = source[key];
+
+	    if (isStrictComparable(value)) {
+	      return function(object) {
+	        if (object == null) {
+	          return false;
+	        }
+	        return object[key] === value && (value !== undefined || (key in toObject(object)));
+	      };
+	    }
+	  }
+	  var values = Array(length),
+	      strictCompareFlags = Array(length);
+
+	  while (length--) {
+	    value = source[props[length]];
+	    values[length] = value;
+	    strictCompareFlags[length] = isStrictComparable(value);
+	  }
+	  return function(object) {
+	    return object != null && baseIsMatch(toObject(object), props, values, strictCompareFlags);
+	  };
+	}
+
+	module.exports = baseMatches;
+
+
+/***/ },
+/* 325 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseGet = __webpack_require__(346),
+	    baseIsEqual = __webpack_require__(347),
+	    baseSlice = __webpack_require__(348),
+	    isArray = __webpack_require__(303),
+	    isKey = __webpack_require__(349),
+	    isStrictComparable = __webpack_require__(345),
+	    last = __webpack_require__(350),
+	    toObject = __webpack_require__(343),
+	    toPath = __webpack_require__(351);
+
+	/**
+	 * The base implementation of `_.matchesProperty` which does not which does
+	 * not clone `value`.
+	 *
+	 * @private
+	 * @param {string} path The path of the property to get.
+	 * @param {*} value The value to compare.
+	 * @returns {Function} Returns the new function.
+	 */
+	function baseMatchesProperty(path, value) {
+	  var isArr = isArray(path),
+	      isCommon = isKey(path) && isStrictComparable(value),
+	      pathKey = (path + '');
+
+	  path = toPath(path);
+	  return function(object) {
+	    if (object == null) {
+	      return false;
+	    }
+	    var key = pathKey;
+	    object = toObject(object);
+	    if ((isArr || !isCommon) && !(key in object)) {
+	      object = path.length == 1 ? object : baseGet(object, baseSlice(path, 0, -1));
+	      if (object == null) {
+	        return false;
+	      }
+	      key = last(path);
+	      object = toObject(object);
+	    }
+	    return object[key] === value
+	      ? (value !== undefined || (key in object))
+	      : baseIsEqual(value, object[key], null, true);
+	  };
+	}
+
+	module.exports = baseMatchesProperty;
+
+
+/***/ },
+/* 326 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * This method returns the first argument provided to it.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Utility
+	 * @param {*} value Any value.
+	 * @returns {*} Returns `value`.
+	 * @example
+	 *
+	 * var object = { 'user': 'fred' };
+	 *
+	 * _.identity(object) === object;
+	 * // => true
+	 */
+	function identity(value) {
+	  return value;
+	}
+
+	module.exports = identity;
+
+
+/***/ },
+/* 327 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseProperty = __webpack_require__(323),
+	    basePropertyDeep = __webpack_require__(352),
+	    isKey = __webpack_require__(349);
+
+	/**
+	 * Creates a function which returns the property value at `path` on a
+	 * given object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Utility
+	 * @param {Array|string} path The path of the property to get.
+	 * @returns {Function} Returns the new function.
+	 * @example
+	 *
+	 * var objects = [
+	 *   { 'a': { 'b': { 'c': 2 } } },
+	 *   { 'a': { 'b': { 'c': 1 } } }
+	 * ];
+	 *
+	 * _.map(objects, _.property('a.b.c'));
+	 * // => [2, 1]
+	 *
+	 * _.pluck(_.sortBy(objects, _.property(['a', 'b', 'c'])), 'a.b.c');
+	 * // => [1, 2]
+	 */
+	function property(path) {
+	  return isKey(path) ? baseProperty(path) : basePropertyDeep(path);
+	}
+
+	module.exports = property;
+
+
+/***/ },
+/* 328 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseToString = __webpack_require__(353);
+
+	/**
+	 * Used to match `RegExp` [special characters](http://www.regular-expressions.info/characters.html#special).
+	 * In addition to special characters the forward slash is escaped to allow for
+	 * easier `eval` use and `Function` compilation.
+	 */
+	var reRegExpChars = /[.*+?^${}()|[\]\/\\]/g,
+	    reHasRegExpChars = RegExp(reRegExpChars.source);
+
+	/**
+	 * Escapes the `RegExp` special characters "\", "/", "^", "$", ".", "|", "?",
+	 * "*", "+", "(", ")", "[", "]", "{" and "}" in `string`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category String
+	 * @param {string} [string=''] The string to escape.
+	 * @returns {string} Returns the escaped string.
+	 * @example
+	 *
+	 * _.escapeRegExp('[lodash](https://lodash.com/)');
+	 * // => '\[lodash\]\(https:\/\/lodash\.com\/\)'
+	 */
+	function escapeRegExp(string) {
+	  string = baseToString(string);
+	  return (string && reHasRegExpChars.test(string))
+	    ? string.replace(reRegExpChars, '\\$&')
+	    : string;
+	}
+
+	module.exports = escapeRegExp;
+
+
+/***/ },
+/* 329 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Used as the [maximum length](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.max_safe_integer)
+	 * of an array-like value.
+	 */
+	var MAX_SAFE_INTEGER = Math.pow(2, 53) - 1;
+
+	/**
+	 * Checks if `value` is a valid array-like index.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+	 * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+	 */
+	function isIndex(value, length) {
+	  value = +value;
+	  length = length == null ? MAX_SAFE_INTEGER : length;
+	  return value > -1 && value % 1 == 0 && value < length;
+	}
+
+	module.exports = isIndex;
+
+
+/***/ },
+/* 330 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copies the values of `source` to `array`.
+	 *
+	 * @private
+	 * @param {Array} source The array to copy values from.
+	 * @param {Array} [array=[]] The array to copy values to.
+	 * @returns {Array} Returns `array`.
+	 */
+	function arrayCopy(source, array) {
+	  var index = -1,
+	      length = source.length;
+
+	  array || (array = Array(length));
+	  while (++index < length) {
+	    array[index] = source[index];
+	  }
+	  return array;
+	}
+
+	module.exports = arrayCopy;
+
+
+/***/ },
+/* 331 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseCopy = __webpack_require__(354),
+	    getSymbols = __webpack_require__(355),
+	    isNative = __webpack_require__(305),
+	    keys = __webpack_require__(288);
+
+	/** Native method references. */
+	var preventExtensions = isNative(preventExtensions = Object.preventExtensions) && preventExtensions;
+
+	/** Used as `baseAssign`. */
+	var nativeAssign = (function() {
+	  // Avoid `Object.assign` in Firefox 34-37 which have an early implementation
+	  // with a now defunct try/catch behavior. See https://bugzilla.mozilla.org/show_bug.cgi?id=1103344
+	  // for more details.
+	  //
+	  // Use `Object.preventExtensions` on a plain object instead of simply using
+	  // `Object('x')` because Chrome and IE fail to throw an error when attempting
+	  // to assign values to readonly indexes of strings.
+	  var func = preventExtensions && isNative(func = Object.assign) && func;
+	  try {
+	    if (func) {
+	      var object = preventExtensions({ '1': 0 });
+	      object[0] = 1;
+	    }
+	  } catch(e) {
+	    // Only attempt in strict mode.
+	    try { func(object, 'xo'); } catch(e) {}
+	    return !object[1] && func;
+	  }
+	  return false;
+	}());
+
+	/**
+	 * The base implementation of `_.assign` without support for argument juggling,
+	 * multiple sources, and `customizer` functions.
+	 *
+	 * @private
+	 * @param {Object} object The destination object.
+	 * @param {Object} source The source object.
+	 * @returns {Object} Returns `object`.
+	 */
+	var baseAssign = nativeAssign || function(object, source) {
+	  return source == null
+	    ? object
+	    : baseCopy(source, getSymbols(source), baseCopy(source, keys(source), object));
+	};
+
+	module.exports = baseAssign;
+
+
+/***/ },
+/* 332 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+
+	/**
+	 * Initializes an array clone.
+	 *
+	 * @private
+	 * @param {Array} array The array to clone.
+	 * @returns {Array} Returns the initialized clone.
+	 */
+	function initCloneArray(array) {
+	  var length = array.length,
+	      result = new array.constructor(length);
+
+	  // Add array properties assigned by `RegExp#exec`.
+	  if (length && typeof array[0] == 'string' && hasOwnProperty.call(array, 'index')) {
+	    result.index = array.index;
+	    result.input = array.input;
+	  }
+	  return result;
+	}
+
+	module.exports = initCloneArray;
+
+
+/***/ },
+/* 333 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var bufferClone = __webpack_require__(356);
+
+	/** `Object#toString` result references. */
+	var boolTag = '[object Boolean]',
+	    dateTag = '[object Date]',
+	    numberTag = '[object Number]',
+	    regexpTag = '[object RegExp]',
+	    stringTag = '[object String]';
+
+	var arrayBufferTag = '[object ArrayBuffer]',
+	    float32Tag = '[object Float32Array]',
+	    float64Tag = '[object Float64Array]',
+	    int8Tag = '[object Int8Array]',
+	    int16Tag = '[object Int16Array]',
+	    int32Tag = '[object Int32Array]',
+	    uint8Tag = '[object Uint8Array]',
+	    uint8ClampedTag = '[object Uint8ClampedArray]',
+	    uint16Tag = '[object Uint16Array]',
+	    uint32Tag = '[object Uint32Array]';
+
+	/** Used to match `RegExp` flags from their coerced string values. */
+	var reFlags = /\w*$/;
+
+	/**
+	 * Initializes an object clone based on its `toStringTag`.
+	 *
+	 * **Note:** This function only supports cloning values with tags of
+	 * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
+	 *
+	 * @private
+	 * @param {Object} object The object to clone.
+	 * @param {string} tag The `toStringTag` of the object to clone.
+	 * @param {boolean} [isDeep] Specify a deep clone.
+	 * @returns {Object} Returns the initialized clone.
+	 */
+	function initCloneByTag(object, tag, isDeep) {
+	  var Ctor = object.constructor;
+	  switch (tag) {
+	    case arrayBufferTag:
+	      return bufferClone(object);
+
+	    case boolTag:
+	    case dateTag:
+	      return new Ctor(+object);
+
+	    case float32Tag: case float64Tag:
+	    case int8Tag: case int16Tag: case int32Tag:
+	    case uint8Tag: case uint8ClampedTag: case uint16Tag: case uint32Tag:
+	      var buffer = object.buffer;
+	      return new Ctor(isDeep ? bufferClone(buffer) : buffer, object.byteOffset, object.length);
+
+	    case numberTag:
+	    case stringTag:
+	      return new Ctor(object);
+
+	    case regexpTag:
+	      var result = new Ctor(object.source, reFlags.exec(object));
+	      result.lastIndex = object.lastIndex;
+	  }
+	  return result;
+	}
+
+	module.exports = initCloneByTag;
+
+
+/***/ },
+/* 334 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Initializes an object clone.
+	 *
+	 * @private
+	 * @param {Object} object The object to clone.
+	 * @returns {Object} Returns the initialized clone.
+	 */
+	function initCloneObject(object) {
+	  var Ctor = object.constructor;
+	  if (!(typeof Ctor == 'function' && Ctor instanceof Ctor)) {
+	    Ctor = Object;
+	  }
+	  return new Ctor;
+	}
+
+	module.exports = initCloneObject;
+
+
+/***/ },
+/* 335 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var createBaseFor = __webpack_require__(357);
+
+	/**
+	 * The base implementation of `baseForIn` and `baseForOwn` which iterates
+	 * over `object` properties returned by `keysFunc` invoking `iteratee` for
+	 * each property. Iteratee functions may exit iteration early by explicitly
+	 * returning `false`.
+	 *
+	 * @private
+	 * @param {Object} object The object to iterate over.
+	 * @param {Function} iteratee The function invoked per iteration.
+	 * @param {Function} keysFunc The function to get the keys of `object`.
+	 * @returns {Object} Returns `object`.
+	 */
+	var baseFor = createBaseFor();
+
+	module.exports = baseFor;
+
+
+/***/ },
+/* 336 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Gets the index at which the first occurrence of `NaN` is found in `array`.
+	 *
+	 * @private
+	 * @param {Array} array The array to search.
+	 * @param {number} fromIndex The index to search from.
+	 * @param {boolean} [fromRight] Specify iterating from right to left.
+	 * @returns {number} Returns the index of the matched `NaN`, else `-1`.
+	 */
+	function indexOfNaN(array, fromIndex, fromRight) {
+	  var length = array.length,
+	      index = fromIndex + (fromRight ? 0 : -1);
+
+	  while ((fromRight ? index-- : ++index < length)) {
+	    var other = array[index];
+	    if (other !== other) {
+	      return index;
+	    }
+	  }
+	  return -1;
+	}
+
+	module.exports = indexOfNaN;
+
+
+/***/ },
+/* 337 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {var cachePush = __webpack_require__(358),
+	    isNative = __webpack_require__(305);
+
+	/** Native method references. */
+	var Set = isNative(Set = global.Set) && Set;
+
+	/* Native method references for those with the same name as other `lodash` methods. */
+	var nativeCreate = isNative(nativeCreate = Object.create) && nativeCreate;
+
+	/**
+	 *
+	 * Creates a cache object to store unique values.
+	 *
+	 * @private
+	 * @param {Array} [values] The values to cache.
+	 */
+	function SetCache(values) {
+	  var length = values ? values.length : 0;
+
+	  this.data = { 'hash': nativeCreate(null), 'set': new Set };
+	  while (length--) {
+	    this.push(values[length]);
+	  }
+	}
+
+	// Add functions to the `Set` cache.
+	SetCache.prototype.push = cachePush;
+
+	module.exports = SetCache;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 338 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Creates a function that returns `value`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Utility
+	 * @param {*} value The value to return from the new function.
+	 * @returns {Function} Returns the new function.
+	 * @example
+	 *
+	 * var object = { 'user': 'fred' };
+	 * var getter = _.constant(object);
+	 *
+	 * getter() === object;
+	 * // => true
+	 */
+	function constant(value) {
+	  return function() {
+	    return value;
+	  };
+	}
+
+	module.exports = constant;
+
+
+/***/ },
+/* 339 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isArrayLike = __webpack_require__(316),
+	    isObjectLike = __webpack_require__(306);
+
+	/** `Object#toString` result references. */
+	var argsTag = '[object Arguments]';
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+
+	/**
+	 * Checks if `value` is classified as an `arguments` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isArguments(function() { return arguments; }());
+	 * // => true
+	 *
+	 * _.isArguments([1, 2, 3]);
+	 * // => false
+	 */
+	function isArguments(value) {
+	  return isObjectLike(value) && isArrayLike(value) && objToString.call(value) == argsTag;
+	}
+
+	module.exports = isArguments;
+
+
+/***/ },
+/* 340 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isArguments = __webpack_require__(339),
+	    isArray = __webpack_require__(303),
+	    isIndex = __webpack_require__(329),
+	    isLength = __webpack_require__(299),
+	    isObject = __webpack_require__(292),
+	    support = __webpack_require__(341);
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+
+	/**
+	 * Creates an array of the own and inherited enumerable property names of `object`.
+	 *
+	 * **Note:** Non-object values are coerced to objects.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Object
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.keysIn(new Foo);
+	 * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
+	 */
+	function keysIn(object) {
+	  if (object == null) {
+	    return [];
+	  }
+	  if (!isObject(object)) {
+	    object = Object(object);
+	  }
+	  var length = object.length;
+	  length = (length && isLength(length) &&
+	    (isArray(object) || (support.nonEnumArgs && isArguments(object))) && length) || 0;
+
+	  var Ctor = object.constructor,
+	      index = -1,
+	      isProto = typeof Ctor == 'function' && Ctor.prototype === object,
+	      result = Array(length),
+	      skipIndexes = length > 0;
+
+	  while (++index < length) {
+	    result[index] = (index + '');
+	  }
+	  for (var key in object) {
+	    if (!(skipIndexes && isIndex(key, length)) &&
+	        !(key == 'constructor' && (isProto || !hasOwnProperty.call(object, key)))) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+
+	module.exports = keysIn;
+
+
+/***/ },
+/* 341 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/** Used to detect DOM support. */
+	var document = (document = global.window) && document.document;
+
+	/** Native method references. */
+	var propertyIsEnumerable = objectProto.propertyIsEnumerable;
+
+	/**
+	 * An object environment feature flags.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @type Object
+	 */
+	var support = {};
+
+	(function(x) {
+	  var Ctor = function() { this.x = x; },
+	      args = arguments,
+	      object = { '0': x, 'length': x },
+	      props = [];
+
+	  Ctor.prototype = { 'valueOf': x, 'y': x };
+	  for (var key in new Ctor) { props.push(key); }
+
+	  /**
+	   * Detect if functions can be decompiled by `Function#toString`
+	   * (all but Firefox OS certified apps, older Opera mobile browsers, and
+	   * the PlayStation 3; forced `false` for Windows 8 apps).
+	   *
+	   * @memberOf _.support
+	   * @type boolean
+	   */
+	  support.funcDecomp = /\bthis\b/.test(function() { return this; });
+
+	  /**
+	   * Detect if `Function#name` is supported (all but IE).
+	   *
+	   * @memberOf _.support
+	   * @type boolean
+	   */
+	  support.funcNames = typeof Function.name == 'string';
+
+	  /**
+	   * Detect if the DOM is supported.
+	   *
+	   * @memberOf _.support
+	   * @type boolean
+	   */
+	  try {
+	    support.dom = document.createDocumentFragment().nodeType === 11;
+	  } catch(e) {
+	    support.dom = false;
+	  }
+
+	  /**
+	   * Detect if `arguments` object indexes are non-enumerable.
+	   *
+	   * In Firefox < 4, IE < 9, PhantomJS, and Safari < 5.1 `arguments` object
+	   * indexes are non-enumerable. Chrome < 25 and Node.js < 0.11.0 treat
+	   * `arguments` object indexes as non-enumerable and fail `hasOwnProperty`
+	   * checks for indexes that exceed the number of function parameters and
+	   * whose associated argument values are `0`.
+	   *
+	   * @memberOf _.support
+	   * @type boolean
+	   */
+	  try {
+	    support.nonEnumArgs = !propertyIsEnumerable.call(args, 1);
+	  } catch(e) {
+	    support.nonEnumArgs = true;
+	  }
+	}(1, 0));
+
+	module.exports = support;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 342 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * The base implementation of `_.find`, `_.findLast`, `_.findKey`, and `_.findLastKey`,
+	 * without support for callback shorthands and `this` binding, which iterates
+	 * over `collection` using the provided `eachFunc`.
+	 *
+	 * @private
+	 * @param {Array|Object|string} collection The collection to search.
+	 * @param {Function} predicate The function invoked per iteration.
+	 * @param {Function} eachFunc The function to iterate over `collection`.
+	 * @param {boolean} [retKey] Specify returning the key of the found element
+	 *  instead of the element itself.
+	 * @returns {*} Returns the found element or its key, else `undefined`.
+	 */
+	function baseFind(collection, predicate, eachFunc, retKey) {
+	  var result;
+	  eachFunc(collection, function(value, key, collection) {
+	    if (predicate(value, key, collection)) {
+	      result = retKey ? key : value;
+	      return false;
+	    }
+	  });
+	  return result;
+	}
+
+	module.exports = baseFind;
+
+
+/***/ },
+/* 343 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(292);
+
+	/**
+	 * Converts `value` to an object if it is not one.
+	 *
+	 * @private
+	 * @param {*} value The value to process.
+	 * @returns {Object} Returns the object.
+	 */
+	function toObject(value) {
+	  return isObject(value) ? value : Object(value);
+	}
+
+	module.exports = toObject;
+
+
+/***/ },
+/* 344 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseIsEqual = __webpack_require__(347);
+
+	/**
+	 * The base implementation of `_.isMatch` without support for callback
+	 * shorthands and `this` binding.
+	 *
+	 * @private
+	 * @param {Object} object The object to inspect.
+	 * @param {Array} props The source property names to match.
+	 * @param {Array} values The source values to match.
+	 * @param {Array} strictCompareFlags Strict comparison flags for source values.
+	 * @param {Function} [customizer] The function to customize comparing objects.
+	 * @returns {boolean} Returns `true` if `object` is a match, else `false`.
+	 */
+	function baseIsMatch(object, props, values, strictCompareFlags, customizer) {
+	  var index = -1,
+	      length = props.length,
+	      noCustomizer = !customizer;
+
+	  while (++index < length) {
+	    if ((noCustomizer && strictCompareFlags[index])
+	          ? values[index] !== object[props[index]]
+	          : !(props[index] in object)
+	        ) {
+	      return false;
+	    }
+	  }
+	  index = -1;
+	  while (++index < length) {
+	    var key = props[index],
+	        objValue = object[key],
+	        srcValue = values[index];
+
+	    if (noCustomizer && strictCompareFlags[index]) {
+	      var result = objValue !== undefined || (key in object);
+	    } else {
+	      result = customizer ? customizer(objValue, srcValue, key) : undefined;
+	      if (result === undefined) {
+	        result = baseIsEqual(srcValue, objValue, customizer, true);
+	      }
+	    }
+	    if (!result) {
+	      return false;
+	    }
+	  }
+	  return true;
+	}
+
+	module.exports = baseIsMatch;
+
+
+/***/ },
+/* 345 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(292);
+
+	/**
+	 * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` if suitable for strict
+	 *  equality comparisons, else `false`.
+	 */
+	function isStrictComparable(value) {
+	  return value === value && !isObject(value);
+	}
+
+	module.exports = isStrictComparable;
+
+
+/***/ },
+/* 346 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var toObject = __webpack_require__(343);
+
+	/**
+	 * The base implementation of `get` without support for string paths
+	 * and default values.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @param {Array} path The path of the property to get.
+	 * @param {string} [pathKey] The key representation of path.
+	 * @returns {*} Returns the resolved value.
+	 */
+	function baseGet(object, path, pathKey) {
+	  if (object == null) {
+	    return;
+	  }
+	  if (pathKey !== undefined && pathKey in toObject(object)) {
+	    path = [pathKey];
+	  }
+	  var index = -1,
+	      length = path.length;
+
+	  while (object != null && ++index < length) {
+	    object = object[path[index]];
+	  }
+	  return (index && index == length) ? object : undefined;
+	}
+
+	module.exports = baseGet;
+
+
+/***/ },
+/* 347 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseIsEqualDeep = __webpack_require__(359);
+
+	/**
+	 * The base implementation of `_.isEqual` without support for `this` binding
+	 * `customizer` functions.
+	 *
+	 * @private
+	 * @param {*} value The value to compare.
+	 * @param {*} other The other value to compare.
+	 * @param {Function} [customizer] The function to customize comparing values.
+	 * @param {boolean} [isLoose] Specify performing partial comparisons.
+	 * @param {Array} [stackA] Tracks traversed `value` objects.
+	 * @param {Array} [stackB] Tracks traversed `other` objects.
+	 * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+	 */
+	function baseIsEqual(value, other, customizer, isLoose, stackA, stackB) {
+	  // Exit early for identical values.
+	  if (value === other) {
+	    return true;
+	  }
+	  var valType = typeof value,
+	      othType = typeof other;
+
+	  // Exit early for unlike primitive values.
+	  if ((valType != 'function' && valType != 'object' && othType != 'function' && othType != 'object') ||
+	      value == null || other == null) {
+	    // Return `false` unless both values are `NaN`.
+	    return value !== value && other !== other;
+	  }
+	  return baseIsEqualDeep(value, other, baseIsEqual, customizer, isLoose, stackA, stackB);
+	}
+
+	module.exports = baseIsEqual;
+
+
+/***/ },
+/* 348 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * The base implementation of `_.slice` without an iteratee call guard.
+	 *
+	 * @private
+	 * @param {Array} array The array to slice.
+	 * @param {number} [start=0] The start position.
+	 * @param {number} [end=array.length] The end position.
+	 * @returns {Array} Returns the slice of `array`.
+	 */
+	function baseSlice(array, start, end) {
+	  var index = -1,
+	      length = array.length;
+
+	  start = start == null ? 0 : (+start || 0);
+	  if (start < 0) {
+	    start = -start > length ? 0 : (length + start);
+	  }
+	  end = (end === undefined || end > length) ? length : (+end || 0);
+	  if (end < 0) {
+	    end += length;
+	  }
+	  length = start > end ? 0 : ((end - start) >>> 0);
+	  start >>>= 0;
+
+	  var result = Array(length);
+	  while (++index < length) {
+	    result[index] = array[index + start];
+	  }
+	  return result;
+	}
+
+	module.exports = baseSlice;
+
+
+/***/ },
+/* 349 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isArray = __webpack_require__(303),
+	    toObject = __webpack_require__(343);
+
+	/** Used to match property names within property paths. */
+	var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\n\\]|\\.)*?\1)\]/,
+	    reIsPlainProp = /^\w*$/;
+
+	/**
+	 * Checks if `value` is a property name and not a property path.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @param {Object} [object] The object to query keys on.
+	 * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
+	 */
+	function isKey(value, object) {
+	  var type = typeof value;
+	  if ((type == 'string' && reIsPlainProp.test(value)) || type == 'number') {
+	    return true;
+	  }
+	  if (isArray(value)) {
+	    return false;
+	  }
+	  var result = !reIsDeepProp.test(value);
+	  return result || (object != null && value in toObject(object));
+	}
+
+	module.exports = isKey;
+
+
+/***/ },
+/* 350 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Gets the last element of `array`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Array
+	 * @param {Array} array The array to query.
+	 * @returns {*} Returns the last element of `array`.
+	 * @example
+	 *
+	 * _.last([1, 2, 3]);
+	 * // => 3
+	 */
+	function last(array) {
+	  var length = array ? array.length : 0;
+	  return length ? array[length - 1] : undefined;
+	}
+
+	module.exports = last;
+
+
+/***/ },
+/* 351 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseToString = __webpack_require__(353),
+	    isArray = __webpack_require__(303);
+
+	/** Used to match property names within property paths. */
+	var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\n\\]|\\.)*?)\2)\]/g;
+
+	/** Used to match backslashes in property paths. */
+	var reEscapeChar = /\\(\\)?/g;
+
+	/**
+	 * Converts `value` to property path array if it is not one.
+	 *
+	 * @private
+	 * @param {*} value The value to process.
+	 * @returns {Array} Returns the property path array.
+	 */
+	function toPath(value) {
+	  if (isArray(value)) {
+	    return value;
+	  }
+	  var result = [];
+	  baseToString(value).replace(rePropName, function(match, number, quote, string) {
+	    result.push(quote ? string.replace(reEscapeChar, '$1') : (number || match));
+	  });
+	  return result;
+	}
+
+	module.exports = toPath;
+
+
+/***/ },
+/* 352 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var baseGet = __webpack_require__(346),
+	    toPath = __webpack_require__(351);
+
+	/**
+	 * A specialized version of `baseProperty` which supports deep paths.
+	 *
+	 * @private
+	 * @param {Array|string} path The path of the property to get.
+	 * @returns {Function} Returns the new function.
+	 */
+	function basePropertyDeep(path) {
+	  var pathKey = (path + '');
+	  path = toPath(path);
+	  return function(object) {
+	    return baseGet(object, path, pathKey);
+	  };
+	}
+
+	module.exports = basePropertyDeep;
+
+
+/***/ },
+/* 353 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Converts `value` to a string if it is not one. An empty string is returned
+	 * for `null` or `undefined` values.
+	 *
+	 * @private
+	 * @param {*} value The value to process.
+	 * @returns {string} Returns the string.
+	 */
+	function baseToString(value) {
+	  if (typeof value == 'string') {
+	    return value;
+	  }
+	  return value == null ? '' : (value + '');
+	}
+
+	module.exports = baseToString;
+
+
+/***/ },
+/* 354 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copies properties of `source` to `object`.
+	 *
+	 * @private
+	 * @param {Object} source The object to copy properties from.
+	 * @param {Array} props The property names to copy.
+	 * @param {Object} [object={}] The object to copy properties to.
+	 * @returns {Object} Returns `object`.
+	 */
+	function baseCopy(source, props, object) {
+	  object || (object = {});
+
+	  var index = -1,
+	      length = props.length;
+
+	  while (++index < length) {
+	    var key = props[index];
+	    object[key] = source[key];
+	  }
+	  return object;
+	}
+
+	module.exports = baseCopy;
+
+
+/***/ },
+/* 355 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var constant = __webpack_require__(338),
+	    isNative = __webpack_require__(305),
+	    toObject = __webpack_require__(343);
+
+	/** Native method references. */
+	var getOwnPropertySymbols = isNative(getOwnPropertySymbols = Object.getOwnPropertySymbols) && getOwnPropertySymbols;
+
+	/**
+	 * Creates an array of the own symbols of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of symbols.
+	 */
+	var getSymbols = !getOwnPropertySymbols ? constant([]) : function(object) {
+	  return getOwnPropertySymbols(toObject(object));
+	};
+
+	module.exports = getSymbols;
+
+
+/***/ },
+/* 356 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {var constant = __webpack_require__(338),
+	    isNative = __webpack_require__(305);
+
+	/** Native method references. */
+	var ArrayBuffer = isNative(ArrayBuffer = global.ArrayBuffer) && ArrayBuffer,
+	    bufferSlice = isNative(bufferSlice = ArrayBuffer && new ArrayBuffer(0).slice) && bufferSlice,
+	    floor = Math.floor,
+	    Uint8Array = isNative(Uint8Array = global.Uint8Array) && Uint8Array;
+
+	/** Used to clone array buffers. */
+	var Float64Array = (function() {
+	  // Safari 5 errors when using an array buffer to initialize a typed array
+	  // where the array buffer's `byteLength` is not a multiple of the typed
+	  // array's `BYTES_PER_ELEMENT`.
+	  try {
+	    var func = isNative(func = global.Float64Array) && func,
+	        result = new func(new ArrayBuffer(10), 0, 1) && func;
+	  } catch(e) {}
+	  return result;
+	}());
+
+	/** Used as the size, in bytes, of each `Float64Array` element. */
+	var FLOAT64_BYTES_PER_ELEMENT = Float64Array ? Float64Array.BYTES_PER_ELEMENT : 0;
+
+	/**
+	 * Creates a clone of the given array buffer.
+	 *
+	 * @private
+	 * @param {ArrayBuffer} buffer The array buffer to clone.
+	 * @returns {ArrayBuffer} Returns the cloned array buffer.
+	 */
+	function bufferClone(buffer) {
+	  return bufferSlice.call(buffer, 0);
+	}
+	if (!bufferSlice) {
+	  // PhantomJS has `ArrayBuffer` and `Uint8Array` but not `Float64Array`.
+	  bufferClone = !(ArrayBuffer && Uint8Array) ? constant(null) : function(buffer) {
+	    var byteLength = buffer.byteLength,
+	        floatLength = Float64Array ? floor(byteLength / FLOAT64_BYTES_PER_ELEMENT) : 0,
+	        offset = floatLength * FLOAT64_BYTES_PER_ELEMENT,
+	        result = new ArrayBuffer(byteLength);
+
+	    if (floatLength) {
+	      var view = new Float64Array(result, 0, floatLength);
+	      view.set(new Float64Array(buffer, 0, floatLength));
+	    }
+	    if (byteLength != offset) {
+	      view = new Uint8Array(result, offset);
+	      view.set(new Uint8Array(buffer, offset));
+	    }
+	    return result;
+	  };
+	}
+
+	module.exports = bufferClone;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 357 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var toObject = __webpack_require__(343);
+
+	/**
+	 * Creates a base function for `_.forIn` or `_.forInRight`.
+	 *
+	 * @private
+	 * @param {boolean} [fromRight] Specify iterating from right to left.
+	 * @returns {Function} Returns the new base function.
+	 */
+	function createBaseFor(fromRight) {
+	  return function(object, iteratee, keysFunc) {
+	    var iterable = toObject(object),
+	        props = keysFunc(object),
+	        length = props.length,
+	        index = fromRight ? length : -1;
+
+	    while ((fromRight ? index-- : ++index < length)) {
+	      var key = props[index];
+	      if (iteratee(iterable[key], key, iterable) === false) {
+	        break;
+	      }
+	    }
+	    return object;
+	  };
+	}
+
+	module.exports = createBaseFor;
+
+
+/***/ },
+/* 358 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isObject = __webpack_require__(292);
+
+	/**
+	 * Adds `value` to the cache.
+	 *
+	 * @private
+	 * @name push
+	 * @memberOf SetCache
+	 * @param {*} value The value to cache.
+	 */
+	function cachePush(value) {
+	  var data = this.data;
+	  if (typeof value == 'string' || isObject(value)) {
+	    data.set.add(value);
+	  } else {
+	    data.hash[value] = true;
+	  }
+	}
+
+	module.exports = cachePush;
+
+
+/***/ },
+/* 359 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var equalArrays = __webpack_require__(360),
+	    equalByTag = __webpack_require__(361),
+	    equalObjects = __webpack_require__(362),
+	    isArray = __webpack_require__(303),
+	    isTypedArray = __webpack_require__(363);
+
+	/** `Object#toString` result references. */
+	var argsTag = '[object Arguments]',
+	    arrayTag = '[object Array]',
+	    objectTag = '[object Object]';
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+
+	/**
+	 * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+
+	/**
+	 * A specialized version of `baseIsEqual` for arrays and objects which performs
+	 * deep comparisons and tracks traversed objects enabling objects with circular
+	 * references to be compared.
+	 *
+	 * @private
+	 * @param {Object} object The object to compare.
+	 * @param {Object} other The other object to compare.
+	 * @param {Function} equalFunc The function to determine equivalents of values.
+	 * @param {Function} [customizer] The function to customize comparing objects.
+	 * @param {boolean} [isLoose] Specify performing partial comparisons.
+	 * @param {Array} [stackA=[]] Tracks traversed `value` objects.
+	 * @param {Array} [stackB=[]] Tracks traversed `other` objects.
+	 * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+	 */
+	function baseIsEqualDeep(object, other, equalFunc, customizer, isLoose, stackA, stackB) {
+	  var objIsArr = isArray(object),
+	      othIsArr = isArray(other),
+	      objTag = arrayTag,
+	      othTag = arrayTag;
+
+	  if (!objIsArr) {
+	    objTag = objToString.call(object);
+	    if (objTag == argsTag) {
+	      objTag = objectTag;
+	    } else if (objTag != objectTag) {
+	      objIsArr = isTypedArray(object);
+	    }
+	  }
+	  if (!othIsArr) {
+	    othTag = objToString.call(other);
+	    if (othTag == argsTag) {
+	      othTag = objectTag;
+	    } else if (othTag != objectTag) {
+	      othIsArr = isTypedArray(other);
+	    }
+	  }
+	  var objIsObj = objTag == objectTag,
+	      othIsObj = othTag == objectTag,
+	      isSameTag = objTag == othTag;
+
+	  if (isSameTag && !(objIsArr || objIsObj)) {
+	    return equalByTag(object, other, objTag);
+	  }
+	  if (!isLoose) {
+	    var valWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),
+	        othWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');
+
+	    if (valWrapped || othWrapped) {
+	      return equalFunc(valWrapped ? object.value() : object, othWrapped ? other.value() : other, customizer, isLoose, stackA, stackB);
+	    }
+	  }
+	  if (!isSameTag) {
+	    return false;
+	  }
+	  // Assume cyclic values are equal.
+	  // For more information on detecting circular references see https://es5.github.io/#JO.
+	  stackA || (stackA = []);
+	  stackB || (stackB = []);
+
+	  var length = stackA.length;
+	  while (length--) {
+	    if (stackA[length] == object) {
+	      return stackB[length] == other;
+	    }
+	  }
+	  // Add `object` and `other` to the stack of traversed objects.
+	  stackA.push(object);
+	  stackB.push(other);
+
+	  var result = (objIsArr ? equalArrays : equalObjects)(object, other, equalFunc, customizer, isLoose, stackA, stackB);
+
+	  stackA.pop();
+	  stackB.pop();
+
+	  return result;
+	}
+
+	module.exports = baseIsEqualDeep;
+
+
+/***/ },
+/* 360 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * A specialized version of `baseIsEqualDeep` for arrays with support for
+	 * partial deep comparisons.
+	 *
+	 * @private
+	 * @param {Array} array The array to compare.
+	 * @param {Array} other The other array to compare.
+	 * @param {Function} equalFunc The function to determine equivalents of values.
+	 * @param {Function} [customizer] The function to customize comparing arrays.
+	 * @param {boolean} [isLoose] Specify performing partial comparisons.
+	 * @param {Array} [stackA] Tracks traversed `value` objects.
+	 * @param {Array} [stackB] Tracks traversed `other` objects.
+	 * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
+	 */
+	function equalArrays(array, other, equalFunc, customizer, isLoose, stackA, stackB) {
+	  var index = -1,
+	      arrLength = array.length,
+	      othLength = other.length,
+	      result = true;
+
+	  if (arrLength != othLength && !(isLoose && othLength > arrLength)) {
+	    return false;
+	  }
+	  // Deep compare the contents, ignoring non-numeric properties.
+	  while (result && ++index < arrLength) {
+	    var arrValue = array[index],
+	        othValue = other[index];
+
+	    result = undefined;
+	    if (customizer) {
+	      result = isLoose
+	        ? customizer(othValue, arrValue, index)
+	        : customizer(arrValue, othValue, index);
+	    }
+	    if (result === undefined) {
+	      // Recursively compare arrays (susceptible to call stack limits).
+	      if (isLoose) {
+	        var othIndex = othLength;
+	        while (othIndex--) {
+	          othValue = other[othIndex];
+	          result = (arrValue && arrValue === othValue) || equalFunc(arrValue, othValue, customizer, isLoose, stackA, stackB);
+	          if (result) {
+	            break;
+	          }
+	        }
+	      } else {
+	        result = (arrValue && arrValue === othValue) || equalFunc(arrValue, othValue, customizer, isLoose, stackA, stackB);
+	      }
+	    }
+	  }
+	  return !!result;
+	}
+
+	module.exports = equalArrays;
+
+
+/***/ },
+/* 361 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** `Object#toString` result references. */
+	var boolTag = '[object Boolean]',
+	    dateTag = '[object Date]',
+	    errorTag = '[object Error]',
+	    numberTag = '[object Number]',
+	    regexpTag = '[object RegExp]',
+	    stringTag = '[object String]';
+
+	/**
+	 * A specialized version of `baseIsEqualDeep` for comparing objects of
+	 * the same `toStringTag`.
+	 *
+	 * **Note:** This function only supports comparing values with tags of
+	 * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
+	 *
+	 * @private
+	 * @param {Object} value The object to compare.
+	 * @param {Object} other The other object to compare.
+	 * @param {string} tag The `toStringTag` of the objects to compare.
+	 * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+	 */
+	function equalByTag(object, other, tag) {
+	  switch (tag) {
+	    case boolTag:
+	    case dateTag:
+	      // Coerce dates and booleans to numbers, dates to milliseconds and booleans
+	      // to `1` or `0` treating invalid dates coerced to `NaN` as not equal.
+	      return +object == +other;
+
+	    case errorTag:
+	      return object.name == other.name && object.message == other.message;
+
+	    case numberTag:
+	      // Treat `NaN` vs. `NaN` as equal.
+	      return (object != +object)
+	        ? other != +other
+	        : object == +other;
+
+	    case regexpTag:
+	    case stringTag:
+	      // Coerce regexes to strings and treat strings primitives and string
+	      // objects as equal. See https://es5.github.io/#x15.10.6.4 for more details.
+	      return object == (other + '');
+	  }
+	  return false;
+	}
+
+	module.exports = equalByTag;
+
+
+/***/ },
+/* 362 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var keys = __webpack_require__(288);
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+
+	/**
+	 * A specialized version of `baseIsEqualDeep` for objects with support for
+	 * partial deep comparisons.
+	 *
+	 * @private
+	 * @param {Object} object The object to compare.
+	 * @param {Object} other The other object to compare.
+	 * @param {Function} equalFunc The function to determine equivalents of values.
+	 * @param {Function} [customizer] The function to customize comparing values.
+	 * @param {boolean} [isLoose] Specify performing partial comparisons.
+	 * @param {Array} [stackA] Tracks traversed `value` objects.
+	 * @param {Array} [stackB] Tracks traversed `other` objects.
+	 * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+	 */
+	function equalObjects(object, other, equalFunc, customizer, isLoose, stackA, stackB) {
+	  var objProps = keys(object),
+	      objLength = objProps.length,
+	      othProps = keys(other),
+	      othLength = othProps.length;
+
+	  if (objLength != othLength && !isLoose) {
+	    return false;
+	  }
+	  var skipCtor = isLoose,
+	      index = -1;
+
+	  while (++index < objLength) {
+	    var key = objProps[index],
+	        result = isLoose ? key in other : hasOwnProperty.call(other, key);
+
+	    if (result) {
+	      var objValue = object[key],
+	          othValue = other[key];
+
+	      result = undefined;
+	      if (customizer) {
+	        result = isLoose
+	          ? customizer(othValue, objValue, key)
+	          : customizer(objValue, othValue, key);
+	      }
+	      if (result === undefined) {
+	        // Recursively compare objects (susceptible to call stack limits).
+	        result = (objValue && objValue === othValue) || equalFunc(objValue, othValue, customizer, isLoose, stackA, stackB);
+	      }
+	    }
+	    if (!result) {
+	      return false;
+	    }
+	    skipCtor || (skipCtor = key == 'constructor');
+	  }
+	  if (!skipCtor) {
+	    var objCtor = object.constructor,
+	        othCtor = other.constructor;
+
+	    // Non `Object` object instances with different constructors are not equal.
+	    if (objCtor != othCtor &&
+	        ('constructor' in object && 'constructor' in other) &&
+	        !(typeof objCtor == 'function' && objCtor instanceof objCtor &&
+	          typeof othCtor == 'function' && othCtor instanceof othCtor)) {
+	      return false;
+	    }
+	  }
+	  return true;
+	}
+
+	module.exports = equalObjects;
+
+
+/***/ },
+/* 363 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var isLength = __webpack_require__(299),
+	    isObjectLike = __webpack_require__(306);
+
+	/** `Object#toString` result references. */
+	var argsTag = '[object Arguments]',
+	    arrayTag = '[object Array]',
+	    boolTag = '[object Boolean]',
+	    dateTag = '[object Date]',
+	    errorTag = '[object Error]',
+	    funcTag = '[object Function]',
+	    mapTag = '[object Map]',
+	    numberTag = '[object Number]',
+	    objectTag = '[object Object]',
+	    regexpTag = '[object RegExp]',
+	    setTag = '[object Set]',
+	    stringTag = '[object String]',
+	    weakMapTag = '[object WeakMap]';
+
+	var arrayBufferTag = '[object ArrayBuffer]',
+	    float32Tag = '[object Float32Array]',
+	    float64Tag = '[object Float64Array]',
+	    int8Tag = '[object Int8Array]',
+	    int16Tag = '[object Int16Array]',
+	    int32Tag = '[object Int32Array]',
+	    uint8Tag = '[object Uint8Array]',
+	    uint8ClampedTag = '[object Uint8ClampedArray]',
+	    uint16Tag = '[object Uint16Array]',
+	    uint32Tag = '[object Uint32Array]';
+
+	/** Used to identify `toStringTag` values of typed arrays. */
+	var typedArrayTags = {};
+	typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
+	typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
+	typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
+	typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
+	typedArrayTags[uint32Tag] = true;
+	typedArrayTags[argsTag] = typedArrayTags[arrayTag] =
+	typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] =
+	typedArrayTags[dateTag] = typedArrayTags[errorTag] =
+	typedArrayTags[funcTag] = typedArrayTags[mapTag] =
+	typedArrayTags[numberTag] = typedArrayTags[objectTag] =
+	typedArrayTags[regexpTag] = typedArrayTags[setTag] =
+	typedArrayTags[stringTag] = typedArrayTags[weakMapTag] = false;
+
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+
+	/**
+	 * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+
+	/**
+	 * Checks if `value` is classified as a typed array.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isTypedArray(new Uint8Array);
+	 * // => true
+	 *
+	 * _.isTypedArray([]);
+	 * // => false
+	 */
+	function isTypedArray(value) {
+	  return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[objToString.call(value)];
+	}
+
+	module.exports = isTypedArray;
+
+
+/***/ },
+/* 364 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */var React             = __webpack_require__(6);
+	var Home              = __webpack_require__(365);
+
+	module.exports = React.createClass({displayName: "exports",
+
+	  render: function(){
+	    return React.createElement(Home, null)
+	  }
+	});
+
+/***/ },
+/* 365 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */var React             = __webpack_require__(6);
+	var Bootstrap         = __webpack_require__(67);
+	var Jumbotron         = Bootstrap.Jumbotron;
+	var Well              = Bootstrap.Well;
+	var Grid              = Bootstrap.Grid;
+	var Col               = Bootstrap.Col;
+	var Row               = Bootstrap.Row;
+	var Block             = __webpack_require__(367);
+	var JoinForm          = __webpack_require__(366);
+
+	module.exports = React.createClass({displayName: "exports",
+	  render: function(){
+	    return (
+	      React.createElement("article", null, 
+	        React.createElement(Jumbotron, null, 
+	          React.createElement(Grid, null, 
+	            React.createElement(Row, null, 
+	              React.createElement(Col, {xs: 12, sm: 6}, 
+	                React.createElement("h1", null, "Lorem ", React.createElement("strong", null, "ipsum"), " dolor sit amet, consectetur")
+	              ), 
+	              React.createElement(Col, {xs: 12, sm: 6}, 
+	                React.createElement(Well, null, React.createElement(JoinForm, null))
+	              )
+	            )
+	          )
+	        ), 
+	        React.createElement(Grid, null, 
+	          React.createElement(Row, null, 
+	            React.createElement(Block, {
+	              header: "Consectetur, Adipiscing Elit", 
+	              content: "Chambray bushwick you probably haven't heard of them biodiesel fingerstache ethical, chillwave vegan food truck farm-to-table four loko DIY hella beard. Jean shorts street art artisan leggings, wolf organic. This is a link organic echo park occupy, pour-over Austin wayfarers cosby sweater umami leggings swag shoreditch fap. Messenger bag Austin vinyl artisan."}
+	            ), 
+	            React.createElement(Block, {
+	              header: "Lorem ipsum dolor sit amet", 
+	              content: "Butcher whatever gluten-free shoreditch bespoke, mumblecore echo park DIY. Blog narwhal salvia, locavore stumptown umami dreamcatcher bicycle rights wolf portland 8-bit mcsweeney's. Chambray portland VHS vinyl pork belly. Mlkshk vice ethical pork belly fanny pack, shoreditch viral fap. Austin art party VHS +1 direct trade williamsburg flexitarian locavore stumptown."}
+	            )
+	          ), 
+	          React.createElement(Row, null, 
+	            React.createElement(Block, {
+	              sm: 12, 
+	              header: "Lorem ipsum dolor sit amet", 
+	              content: "Chambray bushwick you probably haven't heard of them biodiesel fingerstache ethical, chillwave vegan food truck farm-to-table four loko DIY hella beard. Jean shorts street art artisan leggings, wolf organic. Echo park occupy, pour-over Austin wayfarers cosby sweater umami leggings swag shoreditch fap. Messenger bag Austin vinyl artisan."}
+	            )
+	          ), 
+	          React.createElement(Row, null, 
+	            React.createElement(Col, {xs: 12}, 
+	              React.createElement("h1", null, "This is a very important header"), 
+	              React.createElement("h2", null, "This is also an important header"), 
+	              React.createElement("h3", null, "This is important too"), 
+	              React.createElement("strong", null, "Everything is important, really"), 
+	              React.createElement("p", null, "Butcher whatever gluten-free shoreditch bespoke, mumblecore echo park DIY. Blog narwhal salvia, locavore stumptown umami dreamcatcher bicycle rights wolf portland 8-bit mcsweeney's. Chambray portland VHS vinyl pork belly. Mlkshk vice ethical pork belly fanny pack, shoreditch viral fap. Austin art party VHS +1 direct trade williamsburg flexitarian locavore stumptown umami dreamcatcher bicycle rights wolf cray. Etsy photo booth cosby sweater forage. You probably haven't heard of them biodiesel fingerstache ethical, chillwave vegan food truck farm-to-table four loko DIY hella beard. Jean shorts street art artisan leggings, wolf organic. Echo park occupy, pour-over Austin wayfarers cosby sweater umami leggings swag shoreditch fap.")
+	            )
+	          )
+	        )
+	      )
+	    )
+	  }
+	})
+
+/***/ },
+/* 366 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */var React       =  __webpack_require__(452);
+	var Bootstrap   = __webpack_require__(67);
+	var Input       = Bootstrap.Input;
+	var Col         = Bootstrap.Col;
+	var Row         = Bootstrap.Row;
+	var _           = __webpack_require__(32);
+	var request     = __webpack_require__(469);
+	var DropdownList    = __webpack_require__(472);
+	var DateTimePicker          = __webpack_require__(520);
+
+	var CityState = React.createClass({displayName: "CityState",
+
+	  getDefaultProp: function(){
+	    return {
+	      city:"",
+	      state:"",
+	      zip:""
+	    }
+	  },
+
+	  getInitialState: function(){
+	    return {
+	      states: __webpack_require__(504),
+	      city:this.props.city
+	    }
+	  },
+
+	  getCityState: function(){
+	    request
+	      .get("http://ZiptasticAPI.com/" + this.props.zip)
+	      .end(function(err,res){
+	        res = JSON.parse(res.text);
+	        this.setState({city:res.city, state:res.state})
+	      }.bind(this))
+	  },
+
+	  render:function(){
+	    return (
+	      React.createElement(Row, null, 
+	        React.createElement(Col, {xs: 6}, 
+	          React.createElement("div", {className: "form-group"}, 
+	            React.createElement("label", null, "City", 
+	              React.createElement(Input, {type: "text", value: this.state.city})
+	            )
+	          )
+	        ), 
+	        React.createElement(Col, {xs: 6}, 
+	          React.createElement("div", {className: "form-group"}, 
+	            React.createElement("label", null, "City", 
+	              React.createElement(DropdownList, {
+	                value: this.state.state, 
+	                data: this.state.states, 
+	                valueField: "abbreviation", 
+	                textField: "name"}
+	              )
+	            )
+	          )
+	        )
+	      )
+	    )
+	  },
+
+	  componentDidMount: function(){
+	    if(!_.isEmpty(this.props.zip)) this.getCityState();
+	  }
+	});
+
+	var Field = React.createClass({displayName: "Field",
+	  getDefaultProps: function(){
+	    return {
+	      name:"",
+	      type:"text",
+	      options:[],
+	      label:null,
+	      require:true
+	    }
+	  },
+
+	  onChange: function(e){
+	    this.props.onChange(this.props.name, e.target.value)
+	  },
+
+	  renderInput: function() {
+	    return (
+	      React.createElement(Input, {ref: "input", type: this.props.type, required: this.props.required, label: this.props.label, onChange: this.onChange})
+	    )
+	  },
+
+	  renderSelect: function(){
+	    return (
+	      React.createElement("select", {onChange: this.onChange})
+	    )
+	  },
+
+	  render: function(){
+	    return (
+	      React.createElement(Col, {xs: 6}, 
+	      this.props.type == "select" ? this.renderSelect() : this.renderInput()
+	      )
+	    )
+	  }
+	});
+
+	module.exports = React.createClass({displayName: "exports",
+
+	  getDefaultProps: function(){
+	    return {
+	      steps:[
+	        "firstName,lastName,email,zip",
+	        "city,state,dob,phone",
+	        "pay1,pay2,employmentType,employmentName"
+	      ]
+	    }
+	  },
+
+	  getInitialState:function(){
+	    return {
+	      current:0,
+	      submitText:"next",
+	      firstName:"",
+	      lastName:"",
+	      email:"",
+	      zip:"",
+	      city:"",
+	      state:"",
+	      dob:"",
+	      phone:""
+	    }
+	  },
+
+	  onSubmit: function(e){
+	    e.preventDefault();
+	    var valid = true;
+
+	    _.forEach(this.props.steps[this.state.current].split(","), function(field){
+	        if(_.isEmpty(this.state[field])) valid = false;
+	    }.bind(this));
+
+	    if(!valid ) return false;
+
+	    if(this.state.current == this.props.steps.length - 1){
+	      this.submit();
+	    }else{
+
+	      this.setState({current: ++this.state.current})
+	    }
+	  },
+
+	  onInputChange: function(input, val){
+
+	    var update = {};
+	    update[input] = val;
+	    this.setState(update);
+
+	  },
+
+	  onClickBack: function(){
+	    this.setState({current: --this.state.current})
+	  },
+
+	  renderStep0: function(){
+	    return (
+	      React.createElement("section", null, 
+	        React.createElement(Row, null, 
+	          React.createElement(Field, {name: "firstName", type: "text", label: "First Name", onChange: this.onInputChange}), 
+	          React.createElement(Field, {name: "lastName", type: "text", label: "Last Name", onChange: this.onInputChange})
+	        ), 
+	        React.createElement(Row, null, 
+	          React.createElement(Field, {name: "email", type: "email", label: "Email Address", onChange: this.onInputChange}), 
+	          React.createElement(Field, {name: "zip", type: "text", label: "Zip Code", onChange: this.onInputChange})
+	        )
+	      )
+	    )
+	  },
+
+	  renderStep1: function(){
+	    return (
+	      React.createElement("section", null, 
+	          React.createElement(CityState, {zip: this.state.zip}), 
+	        React.createElement(Row, null, 
+	          React.createElement(Col, {xs: 6}, 
+	            React.createElement("div", {className: "form-group"}, 
+	              React.createElement("label", null, "Birthdate", 
+	                React.createElement(DateTimePicker, {time: false, onChange: function(value)  {return this.setState({dob:value });}.bind(this)})
+	              )
+	            )
+	          ), 
+	          React.createElement(Field, {name: "phone", type: "text", label: "Phone Number", onChange: this.onInputChange})
+	        )
+	      )
+	    )
+	  },
+
+	  renderStep2: function(){
+	    return (
+	      React.createElement("section", null, 
+	        React.createElement(Row, null, 
+	          React.createElement(Field, {name: "pay1", type: "text", label: "Pay Date 1", onChange: this.onInputChange}), 
+	          React.createElement(Field, {name: "pay2", type: "text", label: "Pay Date 2", onChange: this.onInputChange})
+	        ), 
+	        React.createElement(Row, null, 
+	          React.createElement(Field, {name: "employmentType", type: "select", label: "Employment Type", onChange: this.onInputChange}), 
+	          React.createElement(Field, {name: "employmentName", type: "text", label: "Employment Name", onChange: this.onInputChange})
+	        )
+	      )
+	    )
+	  },
+
+	  render: function() {
+	    return (
+	      React.createElement("form", {onSubmit: this.onSubmit, className: "step-form", autoComplete: "off"}, 
+	        React.createElement("h2", null, "Do This Thing!"), 
+	        React.createElement("div", {className: "step-wrap"}, 
+	        this["renderStep"+ this.state.current]()
+	        ), 
+	        React.createElement(Row, null, 
+	          React.createElement(Col, {xs: 6}, 
+	            this.state.current > 0 ? React.createElement("button", {className: "btn btn-default", onClick: this.onClickBack}, "Back") : null
+	          ), 
+	          React.createElement(Col, {xs: 6}, 
+	            React.createElement("button", {className: "btn btn-primary", type: "submit"}, this.state.submitText)
+	          )
+	        )
+	      )
+	    )
+	  }
+	})
+
+/***/ },
+/* 367 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */var React             = __webpack_require__(6);
+	var Bootstrap         = __webpack_require__(67);
+	var Col               = Bootstrap.Col;
+	var _                 = __webpack_require__(32);
+
+	module.exports = React.createClass({displayName: "exports",
+	  getDefaultProps:function(){
+	    return {
+	      xs:12,
+	      sm:6,
+	      header:null,
+	      content:null
+	    }
+	  },
+	  render: function(){
+	    return (
+	      React.createElement(Col, {xs: this.props.xs, sm: this.props.sm}, 
+	      _.isNull(this.props.header) ? null : React.createElement("h2", null, this.props.header), 
+	      _.isNull(this.props.content) ? null : React.createElement("p", null, this.props.content)
+	      )
+	    )
+	  }
+	})
+
+/***/ },
+/* 368 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */var React         = __webpack_require__(6);
+	var Bootstrap     = __webpack_require__(67);
+	var Router        = __webpack_require__(7);
+	var Link          = Router.Link;
+	var Grid          = Bootstrap.Grid;
+	var Row           = Bootstrap.Row;
+	var Col           = Bootstrap.Col;
+	var moment        = __webpack_require__(369);
+
+	module.exports = React.createClass({displayName: "exports",
+	  getInitialState: function(){
+	    return {
+	      currentYear: moment().year()
+	    }
+	  },
+
+	  render: function(){
+	    return (
+	      React.createElement("footer", null, 
+	        React.createElement(Grid, null, 
+	          React.createElement(Row, null, 
+	            React.createElement(Col, {xs: 12, sm: 4}, 
+	              React.createElement(Link, {to: "home"}, React.createElement("img", {src: "images/footer-logo.jpg"})), 
+	              React.createElement("span", {className: "clearfix"}, this.state.currentYear + ". All Rights Reserved.")
+	            ), 
+	            React.createElement(Col, {xs: 12, sm: 8}, 
+	              React.createElement("ul", {className: "inline-list"}, 
+	                React.createElement("li", null, React.createElement("a", {href: "#"}, "Privacy Policy")), 
+	                React.createElement("li", null, React.createElement("a", {href: "#"}, "Contact Us")), 
+	                React.createElement("li", null, React.createElement("a", {href: "#"}, "Terms of Use")), 
+	                React.createElement("li", null, React.createElement("a", {href: "#"}, "Sitemap"))
+	              )
+	            )
+	          )
+	        )
+	      )
+	    )
+	  }
+	})
+
+/***/ },
+/* 369 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
+	//! version : 2.10.2
+	//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
+	//! license : MIT
+	//! momentjs.com
+
+	(function (global, factory) {
+	    true ? module.exports = factory() :
+	    typeof define === 'function' && define.amd ? define(factory) :
+	    global.moment = factory()
+	}(this, function () { 'use strict';
+
+	    var hookCallback;
+
+	    function utils_hooks__hooks () {
+	        return hookCallback.apply(null, arguments);
+	    }
+
+	    // This is done to register the method called with moment()
+	    // without creating circular dependencies.
+	    function setHookCallback (callback) {
+	        hookCallback = callback;
+	    }
+
+	    function defaultParsingFlags() {
+	        // We need to deep clone this object.
+	        return {
+	            empty           : false,
+	            unusedTokens    : [],
+	            unusedInput     : [],
+	            overflow        : -2,
+	            charsLeftOver   : 0,
+	            nullInput       : false,
+	            invalidMonth    : null,
+	            invalidFormat   : false,
+	            userInvalidated : false,
+	            iso             : false
+	        };
+	    }
+
+	    function isArray(input) {
+	        return Object.prototype.toString.call(input) === '[object Array]';
+	    }
+
+	    function isDate(input) {
+	        return Object.prototype.toString.call(input) === '[object Date]' || input instanceof Date;
+	    }
+
+	    function map(arr, fn) {
+	        var res = [], i;
+	        for (i = 0; i < arr.length; ++i) {
+	            res.push(fn(arr[i], i));
+	        }
+	        return res;
+	    }
+
+	    function hasOwnProp(a, b) {
+	        return Object.prototype.hasOwnProperty.call(a, b);
+	    }
+
+	    function extend(a, b) {
+	        for (var i in b) {
+	            if (hasOwnProp(b, i)) {
+	                a[i] = b[i];
+	            }
+	        }
+
+	        if (hasOwnProp(b, 'toString')) {
+	            a.toString = b.toString;
+	        }
+
+	        if (hasOwnProp(b, 'valueOf')) {
+	            a.valueOf = b.valueOf;
+	        }
+
+	        return a;
+	    }
+
+	    function create_utc__createUTC (input, format, locale, strict) {
+	        return createLocalOrUTC(input, format, locale, strict, true).utc();
+	    }
+
+	    function valid__isValid(m) {
+	        if (m._isValid == null) {
+	            m._isValid = !isNaN(m._d.getTime()) &&
+	                m._pf.overflow < 0 &&
+	                !m._pf.empty &&
+	                !m._pf.invalidMonth &&
+	                !m._pf.nullInput &&
+	                !m._pf.invalidFormat &&
+	                !m._pf.userInvalidated;
+
+	            if (m._strict) {
+	                m._isValid = m._isValid &&
+	                    m._pf.charsLeftOver === 0 &&
+	                    m._pf.unusedTokens.length === 0 &&
+	                    m._pf.bigHour === undefined;
+	            }
+	        }
+	        return m._isValid;
+	    }
+
+	    function valid__createInvalid (flags) {
+	        var m = create_utc__createUTC(NaN);
+	        if (flags != null) {
+	            extend(m._pf, flags);
+	        }
+	        else {
+	            m._pf.userInvalidated = true;
+	        }
+
+	        return m;
+	    }
+
+	    var momentProperties = utils_hooks__hooks.momentProperties = [];
+
+	    function copyConfig(to, from) {
+	        var i, prop, val;
+
+	        if (typeof from._isAMomentObject !== 'undefined') {
+	            to._isAMomentObject = from._isAMomentObject;
+	        }
+	        if (typeof from._i !== 'undefined') {
+	            to._i = from._i;
+	        }
+	        if (typeof from._f !== 'undefined') {
+	            to._f = from._f;
+	        }
+	        if (typeof from._l !== 'undefined') {
+	            to._l = from._l;
+	        }
+	        if (typeof from._strict !== 'undefined') {
+	            to._strict = from._strict;
+	        }
+	        if (typeof from._tzm !== 'undefined') {
+	            to._tzm = from._tzm;
+	        }
+	        if (typeof from._isUTC !== 'undefined') {
+	            to._isUTC = from._isUTC;
+	        }
+	        if (typeof from._offset !== 'undefined') {
+	            to._offset = from._offset;
+	        }
+	        if (typeof from._pf !== 'undefined') {
+	            to._pf = from._pf;
+	        }
+	        if (typeof from._locale !== 'undefined') {
+	            to._locale = from._locale;
+	        }
+
+	        if (momentProperties.length > 0) {
+	            for (i in momentProperties) {
+	                prop = momentProperties[i];
+	                val = from[prop];
+	                if (typeof val !== 'undefined') {
+	                    to[prop] = val;
+	                }
+	            }
+	        }
+
+	        return to;
+	    }
+
+	    var updateInProgress = false;
+
+	    // Moment prototype object
+	    function Moment(config) {
+	        copyConfig(this, config);
+	        this._d = new Date(+config._d);
+	        // Prevent infinite loop in case updateOffset creates new moment
+	        // objects.
+	        if (updateInProgress === false) {
+	            updateInProgress = true;
+	            utils_hooks__hooks.updateOffset(this);
+	            updateInProgress = false;
+	        }
+	    }
+
+	    function isMoment (obj) {
+	        return obj instanceof Moment || (obj != null && hasOwnProp(obj, '_isAMomentObject'));
+	    }
+
+	    function toInt(argumentForCoercion) {
+	        var coercedNumber = +argumentForCoercion,
+	            value = 0;
+
+	        if (coercedNumber !== 0 && isFinite(coercedNumber)) {
+	            if (coercedNumber >= 0) {
+	                value = Math.floor(coercedNumber);
+	            } else {
+	                value = Math.ceil(coercedNumber);
+	            }
+	        }
+
+	        return value;
+	    }
+
+	    function compareArrays(array1, array2, dontConvert) {
+	        var len = Math.min(array1.length, array2.length),
+	            lengthDiff = Math.abs(array1.length - array2.length),
+	            diffs = 0,
+	            i;
+	        for (i = 0; i < len; i++) {
+	            if ((dontConvert && array1[i] !== array2[i]) ||
+	                (!dontConvert && toInt(array1[i]) !== toInt(array2[i]))) {
+	                diffs++;
+	            }
+	        }
+	        return diffs + lengthDiff;
+	    }
+
+	    function Locale() {
+	    }
+
+	    var locales = {};
+	    var globalLocale;
+
+	    function normalizeLocale(key) {
+	        return key ? key.toLowerCase().replace('_', '-') : key;
+	    }
+
+	    // pick the locale from the array
+	    // try ['en-au', 'en-gb'] as 'en-au', 'en-gb', 'en', as in move through the list trying each
+	    // substring from most specific to least, but move to the next array item if it's a more specific variant than the current root
+	    function chooseLocale(names) {
+	        var i = 0, j, next, locale, split;
+
+	        while (i < names.length) {
+	            split = normalizeLocale(names[i]).split('-');
+	            j = split.length;
+	            next = normalizeLocale(names[i + 1]);
+	            next = next ? next.split('-') : null;
+	            while (j > 0) {
+	                locale = loadLocale(split.slice(0, j).join('-'));
+	                if (locale) {
+	                    return locale;
+	                }
+	                if (next && next.length >= j && compareArrays(split, next, true) >= j - 1) {
+	                    //the next array item is better than a shallower substring of this one
+	                    break;
+	                }
+	                j--;
+	            }
+	            i++;
+	        }
+	        return null;
+	    }
+
+	    function loadLocale(name) {
+	        var oldLocale = null;
+	        // TODO: Find a better way to register and load all the locales in Node
+	        if (!locales[name] && typeof module !== 'undefined' &&
+	                module && module.exports) {
+	            try {
+	                oldLocale = globalLocale._abbr;
+	                __webpack_require__(370)("./" + name);
+	                // because defineLocale currently also sets the global locale, we
+	                // want to undo that for lazy loaded locales
+	                locale_locales__getSetGlobalLocale(oldLocale);
+	            } catch (e) { }
+	        }
+	        return locales[name];
+	    }
+
+	    // This function will load locale and then set the global locale.  If
+	    // no arguments are passed in, it will simply return the current global
+	    // locale key.
+	    function locale_locales__getSetGlobalLocale (key, values) {
+	        var data;
+	        if (key) {
+	            if (typeof values === 'undefined') {
+	                data = locale_locales__getLocale(key);
+	            }
+	            else {
+	                data = defineLocale(key, values);
+	            }
+
+	            if (data) {
+	                // moment.duration._locale = moment._locale = data;
+	                globalLocale = data;
+	            }
+	        }
+
+	        return globalLocale._abbr;
+	    }
+
+	    function defineLocale (name, values) {
+	        if (values !== null) {
+	            values.abbr = name;
+	            if (!locales[name]) {
+	                locales[name] = new Locale();
+	            }
+	            locales[name].set(values);
+
+	            // backwards compat for now: also set the locale
+	            locale_locales__getSetGlobalLocale(name);
+
+	            return locales[name];
+	        } else {
+	            // useful for testing
+	            delete locales[name];
+	            return null;
+	        }
+	    }
+
+	    // returns locale data
+	    function locale_locales__getLocale (key) {
+	        var locale;
+
+	        if (key && key._locale && key._locale._abbr) {
+	            key = key._locale._abbr;
+	        }
+
+	        if (!key) {
+	            return globalLocale;
+	        }
+
+	        if (!isArray(key)) {
+	            //short-circuit everything else
+	            locale = loadLocale(key);
+	            if (locale) {
+	                return locale;
+	            }
+	            key = [key];
+	        }
+
+	        return chooseLocale(key);
+	    }
+
+	    var aliases = {};
+
+	    function addUnitAlias (unit, shorthand) {
+	        var lowerCase = unit.toLowerCase();
+	        aliases[lowerCase] = aliases[lowerCase + 's'] = aliases[shorthand] = unit;
+	    }
+
+	    function normalizeUnits(units) {
+	        return typeof units === 'string' ? aliases[units] || aliases[units.toLowerCase()] : undefined;
+	    }
+
+	    function normalizeObjectUnits(inputObject) {
+	        var normalizedInput = {},
+	            normalizedProp,
+	            prop;
+
+	        for (prop in inputObject) {
+	            if (hasOwnProp(inputObject, prop)) {
+	                normalizedProp = normalizeUnits(prop);
+	                if (normalizedProp) {
+	                    normalizedInput[normalizedProp] = inputObject[prop];
+	                }
+	            }
+	        }
+
+	        return normalizedInput;
+	    }
+
+	    function makeGetSet (unit, keepTime) {
+	        return function (value) {
+	            if (value != null) {
+	                get_set__set(this, unit, value);
+	                utils_hooks__hooks.updateOffset(this, keepTime);
+	                return this;
+	            } else {
+	                return get_set__get(this, unit);
+	            }
+	        };
+	    }
+
+	    function get_set__get (mom, unit) {
+	        return mom._d['get' + (mom._isUTC ? 'UTC' : '') + unit]();
+	    }
+
+	    function get_set__set (mom, unit, value) {
+	        return mom._d['set' + (mom._isUTC ? 'UTC' : '') + unit](value);
+	    }
+
+	    // MOMENTS
+
+	    function getSet (units, value) {
+	        var unit;
+	        if (typeof units === 'object') {
+	            for (unit in units) {
+	                this.set(unit, units[unit]);
+	            }
+	        } else {
+	            units = normalizeUnits(units);
+	            if (typeof this[units] === 'function') {
+	                return this[units](value);
+	            }
+	        }
+	        return this;
+	    }
+
+	    function zeroFill(number, targetLength, forceSign) {
+	        var output = '' + Math.abs(number),
+	            sign = number >= 0;
+
+	        while (output.length < targetLength) {
+	            output = '0' + output;
+	        }
+	        return (sign ? (forceSign ? '+' : '') : '-') + output;
+	    }
+
+	    var formattingTokens = /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Q|YYYYYY|YYYYY|YYYY|YY|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|mm?|ss?|S{1,4}|x|X|zz?|ZZ?|.)/g;
+
+	    var localFormattingTokens = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g;
+
+	    var formatFunctions = {};
+
+	    var formatTokenFunctions = {};
+
+	    // token:    'M'
+	    // padded:   ['MM', 2]
+	    // ordinal:  'Mo'
+	    // callback: function () { this.month() + 1 }
+	    function addFormatToken (token, padded, ordinal, callback) {
+	        var func = callback;
+	        if (typeof callback === 'string') {
+	            func = function () {
+	                return this[callback]();
+	            };
+	        }
+	        if (token) {
+	            formatTokenFunctions[token] = func;
+	        }
+	        if (padded) {
+	            formatTokenFunctions[padded[0]] = function () {
+	                return zeroFill(func.apply(this, arguments), padded[1], padded[2]);
+	            };
+	        }
+	        if (ordinal) {
+	            formatTokenFunctions[ordinal] = function () {
+	                return this.localeData().ordinal(func.apply(this, arguments), token);
+	            };
+	        }
+	    }
+
+	    function removeFormattingTokens(input) {
+	        if (input.match(/\[[\s\S]/)) {
+	            return input.replace(/^\[|\]$/g, '');
+	        }
+	        return input.replace(/\\/g, '');
+	    }
+
+	    function makeFormatFunction(format) {
+	        var array = format.match(formattingTokens), i, length;
+
+	        for (i = 0, length = array.length; i < length; i++) {
+	            if (formatTokenFunctions[array[i]]) {
+	                array[i] = formatTokenFunctions[array[i]];
+	            } else {
+	                array[i] = removeFormattingTokens(array[i]);
+	            }
+	        }
+
+	        return function (mom) {
+	            var output = '';
+	            for (i = 0; i < length; i++) {
+	                output += array[i] instanceof Function ? array[i].call(mom, format) : array[i];
+	            }
+	            return output;
+	        };
+	    }
+
+	    // format date using native date object
+	    function formatMoment(m, format) {
+	        if (!m.isValid()) {
+	            return m.localeData().invalidDate();
+	        }
+
+	        format = expandFormat(format, m.localeData());
+
+	        if (!formatFunctions[format]) {
+	            formatFunctions[format] = makeFormatFunction(format);
+	        }
+
+	        return formatFunctions[format](m);
+	    }
+
+	    function expandFormat(format, locale) {
+	        var i = 5;
+
+	        function replaceLongDateFormatTokens(input) {
+	            return locale.longDateFormat(input) || input;
+	        }
+
+	        localFormattingTokens.lastIndex = 0;
+	        while (i >= 0 && localFormattingTokens.test(format)) {
+	            format = format.replace(localFormattingTokens, replaceLongDateFormatTokens);
+	            localFormattingTokens.lastIndex = 0;
+	            i -= 1;
+	        }
+
+	        return format;
+	    }
+
+	    var match1         = /\d/;            //       0 - 9
+	    var match2         = /\d\d/;          //      00 - 99
+	    var match3         = /\d{3}/;         //     000 - 999
+	    var match4         = /\d{4}/;         //    0000 - 9999
+	    var match6         = /[+-]?\d{6}/;    // -999999 - 999999
+	    var match1to2      = /\d\d?/;         //       0 - 99
+	    var match1to3      = /\d{1,3}/;       //       0 - 999
+	    var match1to4      = /\d{1,4}/;       //       0 - 9999
+	    var match1to6      = /[+-]?\d{1,6}/;  // -999999 - 999999
+
+	    var matchUnsigned  = /\d+/;           //       0 - inf
+	    var matchSigned    = /[+-]?\d+/;      //    -inf - inf
+
+	    var matchOffset    = /Z|[+-]\d\d:?\d\d/gi; // +00:00 -00:00 +0000 -0000 or Z
+
+	    var matchTimestamp = /[+-]?\d+(\.\d{1,3})?/; // 123456789 123456789.123
+
+	    // any word (or two) characters or numbers including two/three word month in arabic.
+	    var matchWord = /[0-9]*['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF\/]+(\s*?[\u0600-\u06FF]+){1,2}/i;
+
+	    var regexes = {};
+
+	    function addRegexToken (token, regex, strictRegex) {
+	        regexes[token] = typeof regex === 'function' ? regex : function (isStrict) {
+	            return (isStrict && strictRegex) ? strictRegex : regex;
+	        };
+	    }
+
+	    function getParseRegexForToken (token, config) {
+	        if (!hasOwnProp(regexes, token)) {
+	            return new RegExp(unescapeFormat(token));
+	        }
+
+	        return regexes[token](config._strict, config._locale);
+	    }
+
+	    // Code from http://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript
+	    function unescapeFormat(s) {
+	        return s.replace('\\', '').replace(/\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g, function (matched, p1, p2, p3, p4) {
+	            return p1 || p2 || p3 || p4;
+	        }).replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+	    }
+
+	    var tokens = {};
+
+	    function addParseToken (token, callback) {
+	        var i, func = callback;
+	        if (typeof token === 'string') {
+	            token = [token];
+	        }
+	        if (typeof callback === 'number') {
+	            func = function (input, array) {
+	                array[callback] = toInt(input);
+	            };
+	        }
+	        for (i = 0; i < token.length; i++) {
+	            tokens[token[i]] = func;
+	        }
+	    }
+
+	    function addWeekParseToken (token, callback) {
+	        addParseToken(token, function (input, array, config, token) {
+	            config._w = config._w || {};
+	            callback(input, config._w, config, token);
+	        });
+	    }
+
+	    function addTimeToArrayFromToken(token, input, config) {
+	        if (input != null && hasOwnProp(tokens, token)) {
+	            tokens[token](input, config._a, config, token);
+	        }
+	    }
+
+	    var YEAR = 0;
+	    var MONTH = 1;
+	    var DATE = 2;
+	    var HOUR = 3;
+	    var MINUTE = 4;
+	    var SECOND = 5;
+	    var MILLISECOND = 6;
+
+	    function daysInMonth(year, month) {
+	        return new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+	    }
+
+	    // FORMATTING
+
+	    addFormatToken('M', ['MM', 2], 'Mo', function () {
+	        return this.month() + 1;
+	    });
+
+	    addFormatToken('MMM', 0, 0, function (format) {
+	        return this.localeData().monthsShort(this, format);
+	    });
+
+	    addFormatToken('MMMM', 0, 0, function (format) {
+	        return this.localeData().months(this, format);
+	    });
+
+	    // ALIASES
+
+	    addUnitAlias('month', 'M');
+
+	    // PARSING
+
+	    addRegexToken('M',    match1to2);
+	    addRegexToken('MM',   match1to2, match2);
+	    addRegexToken('MMM',  matchWord);
+	    addRegexToken('MMMM', matchWord);
+
+	    addParseToken(['M', 'MM'], function (input, array) {
+	        array[MONTH] = toInt(input) - 1;
+	    });
+
+	    addParseToken(['MMM', 'MMMM'], function (input, array, config, token) {
+	        var month = config._locale.monthsParse(input, token, config._strict);
+	        // if we didn't find a month name, mark the date as invalid.
+	        if (month != null) {
+	            array[MONTH] = month;
+	        } else {
+	            config._pf.invalidMonth = input;
+	        }
+	    });
+
+	    // LOCALES
+
+	    var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_');
+	    function localeMonths (m) {
+	        return this._months[m.month()];
+	    }
+
+	    var defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_');
+	    function localeMonthsShort (m) {
+	        return this._monthsShort[m.month()];
+	    }
+
+	    function localeMonthsParse (monthName, format, strict) {
+	        var i, mom, regex;
+
+	        if (!this._monthsParse) {
+	            this._monthsParse = [];
+	            this._longMonthsParse = [];
+	            this._shortMonthsParse = [];
+	        }
+
+	        for (i = 0; i < 12; i++) {
+	            // make the regex if we don't have it already
+	            mom = create_utc__createUTC([2000, i]);
+	            if (strict && !this._longMonthsParse[i]) {
+	                this._longMonthsParse[i] = new RegExp('^' + this.months(mom, '').replace('.', '') + '$', 'i');
+	                this._shortMonthsParse[i] = new RegExp('^' + this.monthsShort(mom, '').replace('.', '') + '$', 'i');
+	            }
+	            if (!strict && !this._monthsParse[i]) {
+	                regex = '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
+	                this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
+	            }
+	            // test the regex
+	            if (strict && format === 'MMMM' && this._longMonthsParse[i].test(monthName)) {
+	                return i;
+	            } else if (strict && format === 'MMM' && this._shortMonthsParse[i].test(monthName)) {
+	                return i;
+	            } else if (!strict && this._monthsParse[i].test(monthName)) {
+	                return i;
+	            }
+	        }
+	    }
+
+	    // MOMENTS
+
+	    function setMonth (mom, value) {
+	        var dayOfMonth;
+
+	        // TODO: Move this out of here!
+	        if (typeof value === 'string') {
+	            value = mom.localeData().monthsParse(value);
+	            // TODO: Another silent failure?
+	            if (typeof value !== 'number') {
+	                return mom;
+	            }
+	        }
+
+	        dayOfMonth = Math.min(mom.date(), daysInMonth(mom.year(), value));
+	        mom._d['set' + (mom._isUTC ? 'UTC' : '') + 'Month'](value, dayOfMonth);
+	        return mom;
+	    }
+
+	    function getSetMonth (value) {
+	        if (value != null) {
+	            setMonth(this, value);
+	            utils_hooks__hooks.updateOffset(this, true);
+	            return this;
+	        } else {
+	            return get_set__get(this, 'Month');
+	        }
+	    }
+
+	    function getDaysInMonth () {
+	        return daysInMonth(this.year(), this.month());
+	    }
+
+	    function checkOverflow (m) {
+	        var overflow;
+	        var a = m._a;
+
+	        if (a && m._pf.overflow === -2) {
+	            overflow =
+	                a[MONTH]       < 0 || a[MONTH]       > 11  ? MONTH :
+	                a[DATE]        < 1 || a[DATE]        > daysInMonth(a[YEAR], a[MONTH]) ? DATE :
+	                a[HOUR]        < 0 || a[HOUR]        > 24 || (a[HOUR] === 24 && (a[MINUTE] !== 0 || a[SECOND] !== 0 || a[MILLISECOND] !== 0)) ? HOUR :
+	                a[MINUTE]      < 0 || a[MINUTE]      > 59  ? MINUTE :
+	                a[SECOND]      < 0 || a[SECOND]      > 59  ? SECOND :
+	                a[MILLISECOND] < 0 || a[MILLISECOND] > 999 ? MILLISECOND :
+	                -1;
+
+	            if (m._pf._overflowDayOfYear && (overflow < YEAR || overflow > DATE)) {
+	                overflow = DATE;
+	            }
+
+	            m._pf.overflow = overflow;
+	        }
+
+	        return m;
+	    }
+
+	    function warn(msg) {
+	        if (utils_hooks__hooks.suppressDeprecationWarnings === false && typeof console !== 'undefined' && console.warn) {
+	            console.warn('Deprecation warning: ' + msg);
+	        }
+	    }
+
+	    function deprecate(msg, fn) {
+	        var firstTime = true;
+	        return extend(function () {
+	            if (firstTime) {
+	                warn(msg);
+	                firstTime = false;
+	            }
+	            return fn.apply(this, arguments);
+	        }, fn);
+	    }
+
+	    var deprecations = {};
+
+	    function deprecateSimple(name, msg) {
+	        if (!deprecations[name]) {
+	            warn(msg);
+	            deprecations[name] = true;
+	        }
+	    }
+
+	    utils_hooks__hooks.suppressDeprecationWarnings = false;
+
+	    var from_string__isoRegex = /^\s*(?:[+-]\d{6}|\d{4})-(?:(\d\d-\d\d)|(W\d\d$)|(W\d\d-\d)|(\d\d\d))((T| )(\d\d(:\d\d(:\d\d(\.\d+)?)?)?)?([\+\-]\d\d(?::?\d\d)?|\s*Z)?)?$/;
+
+	    var isoDates = [
+	        ['YYYYYY-MM-DD', /[+-]\d{6}-\d{2}-\d{2}/],
+	        ['YYYY-MM-DD', /\d{4}-\d{2}-\d{2}/],
+	        ['GGGG-[W]WW-E', /\d{4}-W\d{2}-\d/],
+	        ['GGGG-[W]WW', /\d{4}-W\d{2}/],
+	        ['YYYY-DDD', /\d{4}-\d{3}/]
+	    ];
+
+	    // iso time formats and regexes
+	    var isoTimes = [
+	        ['HH:mm:ss.SSSS', /(T| )\d\d:\d\d:\d\d\.\d+/],
+	        ['HH:mm:ss', /(T| )\d\d:\d\d:\d\d/],
+	        ['HH:mm', /(T| )\d\d:\d\d/],
+	        ['HH', /(T| )\d\d/]
+	    ];
+
+	    var aspNetJsonRegex = /^\/?Date\((\-?\d+)/i;
+
+	    // date from iso format
+	    function configFromISO(config) {
+	        var i, l,
+	            string = config._i,
+	            match = from_string__isoRegex.exec(string);
+
+	        if (match) {
+	            config._pf.iso = true;
+	            for (i = 0, l = isoDates.length; i < l; i++) {
+	                if (isoDates[i][1].exec(string)) {
+	                    // match[5] should be 'T' or undefined
+	                    config._f = isoDates[i][0] + (match[6] || ' ');
+	                    break;
+	                }
+	            }
+	            for (i = 0, l = isoTimes.length; i < l; i++) {
+	                if (isoTimes[i][1].exec(string)) {
+	                    config._f += isoTimes[i][0];
+	                    break;
+	                }
+	            }
+	            if (string.match(matchOffset)) {
+	                config._f += 'Z';
+	            }
+	            configFromStringAndFormat(config);
+	        } else {
+	            config._isValid = false;
+	        }
+	    }
+
+	    // date from iso format or fallback
+	    function configFromString(config) {
+	        var matched = aspNetJsonRegex.exec(config._i);
+
+	        if (matched !== null) {
+	            config._d = new Date(+matched[1]);
+	            return;
+	        }
+
+	        configFromISO(config);
+	        if (config._isValid === false) {
+	            delete config._isValid;
+	            utils_hooks__hooks.createFromInputFallback(config);
+	        }
+	    }
+
+	    utils_hooks__hooks.createFromInputFallback = deprecate(
+	        'moment construction falls back to js Date. This is ' +
+	        'discouraged and will be removed in upcoming major ' +
+	        'release. Please refer to ' +
+	        'https://github.com/moment/moment/issues/1407 for more info.',
+	        function (config) {
+	            config._d = new Date(config._i + (config._useUTC ? ' UTC' : ''));
+	        }
+	    );
+
+	    function createDate (y, m, d, h, M, s, ms) {
+	        //can't just apply() to create a date:
+	        //http://stackoverflow.com/questions/181348/instantiating-a-javascript-object-by-calling-prototype-constructor-apply
+	        var date = new Date(y, m, d, h, M, s, ms);
+
+	        //the date constructor doesn't accept years < 1970
+	        if (y < 1970) {
+	            date.setFullYear(y);
+	        }
+	        return date;
+	    }
+
+	    function createUTCDate (y) {
+	        var date = new Date(Date.UTC.apply(null, arguments));
+	        if (y < 1970) {
+	            date.setUTCFullYear(y);
+	        }
+	        return date;
+	    }
+
+	    addFormatToken(0, ['YY', 2], 0, function () {
+	        return this.year() % 100;
+	    });
+
+	    addFormatToken(0, ['YYYY',   4],       0, 'year');
+	    addFormatToken(0, ['YYYYY',  5],       0, 'year');
+	    addFormatToken(0, ['YYYYYY', 6, true], 0, 'year');
+
+	    // ALIASES
+
+	    addUnitAlias('year', 'y');
+
+	    // PARSING
+
+	    addRegexToken('Y',      matchSigned);
+	    addRegexToken('YY',     match1to2, match2);
+	    addRegexToken('YYYY',   match1to4, match4);
+	    addRegexToken('YYYYY',  match1to6, match6);
+	    addRegexToken('YYYYYY', match1to6, match6);
+
+	    addParseToken(['YYYY', 'YYYYY', 'YYYYYY'], YEAR);
+	    addParseToken('YY', function (input, array) {
+	        array[YEAR] = utils_hooks__hooks.parseTwoDigitYear(input);
+	    });
+
+	    // HELPERS
+
+	    function daysInYear(year) {
+	        return isLeapYear(year) ? 366 : 365;
+	    }
+
+	    function isLeapYear(year) {
+	        return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+	    }
+
+	    // HOOKS
+
+	    utils_hooks__hooks.parseTwoDigitYear = function (input) {
+	        return toInt(input) + (toInt(input) > 68 ? 1900 : 2000);
+	    };
+
+	    // MOMENTS
+
+	    var getSetYear = makeGetSet('FullYear', false);
+
+	    function getIsLeapYear () {
+	        return isLeapYear(this.year());
+	    }
+
+	    addFormatToken('w', ['ww', 2], 'wo', 'week');
+	    addFormatToken('W', ['WW', 2], 'Wo', 'isoWeek');
+
+	    // ALIASES
+
+	    addUnitAlias('week', 'w');
+	    addUnitAlias('isoWeek', 'W');
+
+	    // PARSING
+
+	    addRegexToken('w',  match1to2);
+	    addRegexToken('ww', match1to2, match2);
+	    addRegexToken('W',  match1to2);
+	    addRegexToken('WW', match1to2, match2);
+
+	    addWeekParseToken(['w', 'ww', 'W', 'WW'], function (input, week, config, token) {
+	        week[token.substr(0, 1)] = toInt(input);
+	    });
+
+	    // HELPERS
+
+	    // firstDayOfWeek       0 = sun, 6 = sat
+	    //                      the day of the week that starts the week
+	    //                      (usually sunday or monday)
+	    // firstDayOfWeekOfYear 0 = sun, 6 = sat
+	    //                      the first week is the week that contains the first
+	    //                      of this day of the week
+	    //                      (eg. ISO weeks use thursday (4))
+	    function weekOfYear(mom, firstDayOfWeek, firstDayOfWeekOfYear) {
+	        var end = firstDayOfWeekOfYear - firstDayOfWeek,
+	            daysToDayOfWeek = firstDayOfWeekOfYear - mom.day(),
+	            adjustedMoment;
+
+
+	        if (daysToDayOfWeek > end) {
+	            daysToDayOfWeek -= 7;
+	        }
+
+	        if (daysToDayOfWeek < end - 7) {
+	            daysToDayOfWeek += 7;
+	        }
+
+	        adjustedMoment = local__createLocal(mom).add(daysToDayOfWeek, 'd');
+	        return {
+	            week: Math.ceil(adjustedMoment.dayOfYear() / 7),
+	            year: adjustedMoment.year()
+	        };
+	    }
+
+	    // LOCALES
+
+	    function localeWeek (mom) {
+	        return weekOfYear(mom, this._week.dow, this._week.doy).week;
+	    }
+
+	    var defaultLocaleWeek = {
+	        dow : 0, // Sunday is the first day of the week.
+	        doy : 6  // The week that contains Jan 1st is the first week of the year.
+	    };
+
+	    function localeFirstDayOfWeek () {
+	        return this._week.dow;
+	    }
+
+	    function localeFirstDayOfYear () {
+	        return this._week.doy;
+	    }
+
+	    // MOMENTS
+
+	    function getSetWeek (input) {
+	        var week = this.localeData().week(this);
+	        return input == null ? week : this.add((input - week) * 7, 'd');
+	    }
+
+	    function getSetISOWeek (input) {
+	        var week = weekOfYear(this, 1, 4).week;
+	        return input == null ? week : this.add((input - week) * 7, 'd');
+	    }
+
+	    addFormatToken('DDD', ['DDDD', 3], 'DDDo', 'dayOfYear');
+
+	    // ALIASES
+
+	    addUnitAlias('dayOfYear', 'DDD');
+
+	    // PARSING
+
+	    addRegexToken('DDD',  match1to3);
+	    addRegexToken('DDDD', match3);
+	    addParseToken(['DDD', 'DDDD'], function (input, array, config) {
+	        config._dayOfYear = toInt(input);
+	    });
+
+	    // HELPERS
+
+	    //http://en.wikipedia.org/wiki/ISO_week_date#Calculating_a_date_given_the_year.2C_week_number_and_weekday
+	    function dayOfYearFromWeeks(year, week, weekday, firstDayOfWeekOfYear, firstDayOfWeek) {
+	        var d = createUTCDate(year, 0, 1).getUTCDay();
+	        var daysToAdd;
+	        var dayOfYear;
+
+	        d = d === 0 ? 7 : d;
+	        weekday = weekday != null ? weekday : firstDayOfWeek;
+	        daysToAdd = firstDayOfWeek - d + (d > firstDayOfWeekOfYear ? 7 : 0) - (d < firstDayOfWeek ? 7 : 0);
+	        dayOfYear = 7 * (week - 1) + (weekday - firstDayOfWeek) + daysToAdd + 1;
+
+	        return {
+	            year      : dayOfYear > 0 ? year      : year - 1,
+	            dayOfYear : dayOfYear > 0 ? dayOfYear : daysInYear(year - 1) + dayOfYear
+	        };
+	    }
+
+	    // MOMENTS
+
+	    function getSetDayOfYear (input) {
+	        var dayOfYear = Math.round((this.clone().startOf('day') - this.clone().startOf('year')) / 864e5) + 1;
+	        return input == null ? dayOfYear : this.add((input - dayOfYear), 'd');
+	    }
+
+	    // Pick the first defined of two or three arguments.
+	    function defaults(a, b, c) {
+	        if (a != null) {
+	            return a;
+	        }
+	        if (b != null) {
+	            return b;
+	        }
+	        return c;
+	    }
+
+	    function currentDateArray(config) {
+	        var now = new Date();
+	        if (config._useUTC) {
+	            return [now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()];
+	        }
+	        return [now.getFullYear(), now.getMonth(), now.getDate()];
+	    }
+
+	    // convert an array to a date.
+	    // the array should mirror the parameters below
+	    // note: all values past the year are optional and will default to the lowest possible value.
+	    // [year, month, day , hour, minute, second, millisecond]
+	    function configFromArray (config) {
+	        var i, date, input = [], currentDate, yearToUse;
+
+	        if (config._d) {
+	            return;
+	        }
+
+	        currentDate = currentDateArray(config);
+
+	        //compute day of the year from weeks and weekdays
+	        if (config._w && config._a[DATE] == null && config._a[MONTH] == null) {
+	            dayOfYearFromWeekInfo(config);
+	        }
+
+	        //if the day of the year is set, figure out what it is
+	        if (config._dayOfYear) {
+	            yearToUse = defaults(config._a[YEAR], currentDate[YEAR]);
+
+	            if (config._dayOfYear > daysInYear(yearToUse)) {
+	                config._pf._overflowDayOfYear = true;
+	            }
+
+	            date = createUTCDate(yearToUse, 0, config._dayOfYear);
+	            config._a[MONTH] = date.getUTCMonth();
+	            config._a[DATE] = date.getUTCDate();
+	        }
+
+	        // Default to current date.
+	        // * if no year, month, day of month are given, default to today
+	        // * if day of month is given, default month and year
+	        // * if month is given, default only year
+	        // * if year is given, don't default anything
+	        for (i = 0; i < 3 && config._a[i] == null; ++i) {
+	            config._a[i] = input[i] = currentDate[i];
+	        }
+
+	        // Zero out whatever was not defaulted, including time
+	        for (; i < 7; i++) {
+	            config._a[i] = input[i] = (config._a[i] == null) ? (i === 2 ? 1 : 0) : config._a[i];
+	        }
+
+	        // Check for 24:00:00.000
+	        if (config._a[HOUR] === 24 &&
+	                config._a[MINUTE] === 0 &&
+	                config._a[SECOND] === 0 &&
+	                config._a[MILLISECOND] === 0) {
+	            config._nextDay = true;
+	            config._a[HOUR] = 0;
+	        }
+
+	        config._d = (config._useUTC ? createUTCDate : createDate).apply(null, input);
+	        // Apply timezone offset from input. The actual utcOffset can be changed
+	        // with parseZone.
+	        if (config._tzm != null) {
+	            config._d.setUTCMinutes(config._d.getUTCMinutes() - config._tzm);
+	        }
+
+	        if (config._nextDay) {
+	            config._a[HOUR] = 24;
+	        }
+	    }
+
+	    function dayOfYearFromWeekInfo(config) {
+	        var w, weekYear, week, weekday, dow, doy, temp;
+
+	        w = config._w;
+	        if (w.GG != null || w.W != null || w.E != null) {
+	            dow = 1;
+	            doy = 4;
+
+	            // TODO: We need to take the current isoWeekYear, but that depends on
+	            // how we interpret now (local, utc, fixed offset). So create
+	            // a now version of current config (take local/utc/offset flags, and
+	            // create now).
+	            weekYear = defaults(w.GG, config._a[YEAR], weekOfYear(local__createLocal(), 1, 4).year);
+	            week = defaults(w.W, 1);
+	            weekday = defaults(w.E, 1);
+	        } else {
+	            dow = config._locale._week.dow;
+	            doy = config._locale._week.doy;
+
+	            weekYear = defaults(w.gg, config._a[YEAR], weekOfYear(local__createLocal(), dow, doy).year);
+	            week = defaults(w.w, 1);
+
+	            if (w.d != null) {
+	                // weekday -- low day numbers are considered next week
+	                weekday = w.d;
+	                if (weekday < dow) {
+	                    ++week;
+	                }
+	            } else if (w.e != null) {
+	                // local weekday -- counting starts from begining of week
+	                weekday = w.e + dow;
+	            } else {
+	                // default to begining of week
+	                weekday = dow;
+	            }
+	        }
+	        temp = dayOfYearFromWeeks(weekYear, week, weekday, doy, dow);
+
+	        config._a[YEAR] = temp.year;
+	        config._dayOfYear = temp.dayOfYear;
+	    }
+
+	    utils_hooks__hooks.ISO_8601 = function () {};
+
+	    // date from string and format string
+	    function configFromStringAndFormat(config) {
+	        // TODO: Move this to another part of the creation flow to prevent circular deps
+	        if (config._f === utils_hooks__hooks.ISO_8601) {
+	            configFromISO(config);
+	            return;
+	        }
+
+	        config._a = [];
+	        config._pf.empty = true;
+
+	        // This array is used to make a Date, either with `new Date` or `Date.UTC`
+	        var string = '' + config._i,
+	            i, parsedInput, tokens, token, skipped,
+	            stringLength = string.length,
+	            totalParsedInputLength = 0;
+
+	        tokens = expandFormat(config._f, config._locale).match(formattingTokens) || [];
+
+	        for (i = 0; i < tokens.length; i++) {
+	            token = tokens[i];
+	            parsedInput = (string.match(getParseRegexForToken(token, config)) || [])[0];
+	            if (parsedInput) {
+	                skipped = string.substr(0, string.indexOf(parsedInput));
+	                if (skipped.length > 0) {
+	                    config._pf.unusedInput.push(skipped);
+	                }
+	                string = string.slice(string.indexOf(parsedInput) + parsedInput.length);
+	                totalParsedInputLength += parsedInput.length;
+	            }
+	            // don't parse if it's not a known token
+	            if (formatTokenFunctions[token]) {
+	                if (parsedInput) {
+	                    config._pf.empty = false;
+	                }
+	                else {
+	                    config._pf.unusedTokens.push(token);
+	                }
+	                addTimeToArrayFromToken(token, parsedInput, config);
+	            }
+	            else if (config._strict && !parsedInput) {
+	                config._pf.unusedTokens.push(token);
+	            }
+	        }
+
+	        // add remaining unparsed input length to the string
+	        config._pf.charsLeftOver = stringLength - totalParsedInputLength;
+	        if (string.length > 0) {
+	            config._pf.unusedInput.push(string);
+	        }
+
+	        // clear _12h flag if hour is <= 12
+	        if (config._pf.bigHour === true && config._a[HOUR] <= 12) {
+	            config._pf.bigHour = undefined;
+	        }
+	        // handle meridiem
+	        config._a[HOUR] = meridiemFixWrap(config._locale, config._a[HOUR], config._meridiem);
+
+	        configFromArray(config);
+	        checkOverflow(config);
+	    }
+
+
+	    function meridiemFixWrap (locale, hour, meridiem) {
+	        var isPm;
+
+	        if (meridiem == null) {
+	            // nothing to do
+	            return hour;
+	        }
+	        if (locale.meridiemHour != null) {
+	            return locale.meridiemHour(hour, meridiem);
+	        } else if (locale.isPM != null) {
+	            // Fallback
+	            isPm = locale.isPM(meridiem);
+	            if (isPm && hour < 12) {
+	                hour += 12;
+	            }
+	            if (!isPm && hour === 12) {
+	                hour = 0;
+	            }
+	            return hour;
+	        } else {
+	            // this is not supposed to happen
+	            return hour;
+	        }
+	    }
+
+	    function configFromStringAndArray(config) {
+	        var tempConfig,
+	            bestMoment,
+
+	            scoreToBeat,
+	            i,
+	            currentScore;
+
+	        if (config._f.length === 0) {
+	            config._pf.invalidFormat = true;
+	            config._d = new Date(NaN);
+	            return;
+	        }
+
+	        for (i = 0; i < config._f.length; i++) {
+	            currentScore = 0;
+	            tempConfig = copyConfig({}, config);
+	            if (config._useUTC != null) {
+	                tempConfig._useUTC = config._useUTC;
+	            }
+	            tempConfig._pf = defaultParsingFlags();
+	            tempConfig._f = config._f[i];
+	            configFromStringAndFormat(tempConfig);
+
+	            if (!valid__isValid(tempConfig)) {
+	                continue;
+	            }
+
+	            // if there is any input that was not parsed add a penalty for that format
+	            currentScore += tempConfig._pf.charsLeftOver;
+
+	            //or tokens
+	            currentScore += tempConfig._pf.unusedTokens.length * 10;
+
+	            tempConfig._pf.score = currentScore;
+
+	            if (scoreToBeat == null || currentScore < scoreToBeat) {
+	                scoreToBeat = currentScore;
+	                bestMoment = tempConfig;
+	            }
+	        }
+
+	        extend(config, bestMoment || tempConfig);
+	    }
+
+	    function configFromObject(config) {
+	        if (config._d) {
+	            return;
+	        }
+
+	        var i = normalizeObjectUnits(config._i);
+	        config._a = [i.year, i.month, i.day || i.date, i.hour, i.minute, i.second, i.millisecond];
+
+	        configFromArray(config);
+	    }
+
+	    function createFromConfig (config) {
+	        var input = config._i,
+	            format = config._f,
+	            res;
+
+	        config._locale = config._locale || locale_locales__getLocale(config._l);
+
+	        if (input === null || (format === undefined && input === '')) {
+	            return valid__createInvalid({nullInput: true});
+	        }
+
+	        if (typeof input === 'string') {
+	            config._i = input = config._locale.preparse(input);
+	        }
+
+	        if (isMoment(input)) {
+	            return new Moment(checkOverflow(input));
+	        } else if (isArray(format)) {
+	            configFromStringAndArray(config);
+	        } else if (format) {
+	            configFromStringAndFormat(config);
+	        } else {
+	            configFromInput(config);
+	        }
+
+	        res = new Moment(checkOverflow(config));
+	        if (res._nextDay) {
+	            // Adding is smart enough around DST
+	            res.add(1, 'd');
+	            res._nextDay = undefined;
+	        }
+
+	        return res;
+	    }
+
+	    function configFromInput(config) {
+	        var input = config._i;
+	        if (input === undefined) {
+	            config._d = new Date();
+	        } else if (isDate(input)) {
+	            config._d = new Date(+input);
+	        } else if (typeof input === 'string') {
+	            configFromString(config);
+	        } else if (isArray(input)) {
+	            config._a = map(input.slice(0), function (obj) {
+	                return parseInt(obj, 10);
+	            });
+	            configFromArray(config);
+	        } else if (typeof(input) === 'object') {
+	            configFromObject(config);
+	        } else if (typeof(input) === 'number') {
+	            // from milliseconds
+	            config._d = new Date(input);
+	        } else {
+	            utils_hooks__hooks.createFromInputFallback(config);
+	        }
+	    }
+
+	    function createLocalOrUTC (input, format, locale, strict, isUTC) {
+	        var c = {};
+
+	        if (typeof(locale) === 'boolean') {
+	            strict = locale;
+	            locale = undefined;
+	        }
+	        // object construction must be done this way.
+	        // https://github.com/moment/moment/issues/1423
+	        c._isAMomentObject = true;
+	        c._useUTC = c._isUTC = isUTC;
+	        c._l = locale;
+	        c._i = input;
+	        c._f = format;
+	        c._strict = strict;
+	        c._pf = defaultParsingFlags();
+
+	        return createFromConfig(c);
+	    }
+
+	    function local__createLocal (input, format, locale, strict) {
+	        return createLocalOrUTC(input, format, locale, strict, false);
+	    }
+
+	    var prototypeMin = deprecate(
+	         'moment().min is deprecated, use moment.min instead. https://github.com/moment/moment/issues/1548',
+	         function () {
+	             var other = local__createLocal.apply(null, arguments);
+	             return other < this ? this : other;
+	         }
+	     );
+
+	    var prototypeMax = deprecate(
+	        'moment().max is deprecated, use moment.max instead. https://github.com/moment/moment/issues/1548',
+	        function () {
+	            var other = local__createLocal.apply(null, arguments);
+	            return other > this ? this : other;
+	        }
+	    );
+
+	    // Pick a moment m from moments so that m[fn](other) is true for all
+	    // other. This relies on the function fn to be transitive.
+	    //
+	    // moments should either be an array of moment objects or an array, whose
+	    // first element is an array of moment objects.
+	    function pickBy(fn, moments) {
+	        var res, i;
+	        if (moments.length === 1 && isArray(moments[0])) {
+	            moments = moments[0];
+	        }
+	        if (!moments.length) {
+	            return local__createLocal();
+	        }
+	        res = moments[0];
+	        for (i = 1; i < moments.length; ++i) {
+	            if (moments[i][fn](res)) {
+	                res = moments[i];
+	            }
+	        }
+	        return res;
+	    }
+
+	    // TODO: Use [].sort instead?
+	    function min () {
+	        var args = [].slice.call(arguments, 0);
+
+	        return pickBy('isBefore', args);
+	    }
+
+	    function max () {
+	        var args = [].slice.call(arguments, 0);
+
+	        return pickBy('isAfter', args);
+	    }
+
+	    function Duration (duration) {
+	        var normalizedInput = normalizeObjectUnits(duration),
+	            years = normalizedInput.year || 0,
+	            quarters = normalizedInput.quarter || 0,
+	            months = normalizedInput.month || 0,
+	            weeks = normalizedInput.week || 0,
+	            days = normalizedInput.day || 0,
+	            hours = normalizedInput.hour || 0,
+	            minutes = normalizedInput.minute || 0,
+	            seconds = normalizedInput.second || 0,
+	            milliseconds = normalizedInput.millisecond || 0;
+
+	        // representation for dateAddRemove
+	        this._milliseconds = +milliseconds +
+	            seconds * 1e3 + // 1000
+	            minutes * 6e4 + // 1000 * 60
+	            hours * 36e5; // 1000 * 60 * 60
+	        // Because of dateAddRemove treats 24 hours as different from a
+	        // day when working around DST, we need to store them separately
+	        this._days = +days +
+	            weeks * 7;
+	        // It is impossible translate months into days without knowing
+	        // which months you are are talking about, so we have to store
+	        // it separately.
+	        this._months = +months +
+	            quarters * 3 +
+	            years * 12;
+
+	        this._data = {};
+
+	        this._locale = locale_locales__getLocale();
+
+	        this._bubble();
+	    }
+
+	    function isDuration (obj) {
+	        return obj instanceof Duration;
+	    }
+
+	    function offset (token, separator) {
+	        addFormatToken(token, 0, 0, function () {
+	            var offset = this.utcOffset();
+	            var sign = '+';
+	            if (offset < 0) {
+	                offset = -offset;
+	                sign = '-';
+	            }
+	            return sign + zeroFill(~~(offset / 60), 2) + separator + zeroFill(~~(offset) % 60, 2);
+	        });
+	    }
+
+	    offset('Z', ':');
+	    offset('ZZ', '');
+
+	    // PARSING
+
+	    addRegexToken('Z',  matchOffset);
+	    addRegexToken('ZZ', matchOffset);
+	    addParseToken(['Z', 'ZZ'], function (input, array, config) {
+	        config._useUTC = true;
+	        config._tzm = offsetFromString(input);
+	    });
+
+	    // HELPERS
+
+	    // timezone chunker
+	    // '+10:00' > ['10',  '00']
+	    // '-1530'  > ['-15', '30']
+	    var chunkOffset = /([\+\-]|\d\d)/gi;
+
+	    function offsetFromString(string) {
+	        var matches = ((string || '').match(matchOffset) || []);
+	        var chunk   = matches[matches.length - 1] || [];
+	        var parts   = (chunk + '').match(chunkOffset) || ['-', 0, 0];
+	        var minutes = +(parts[1] * 60) + toInt(parts[2]);
+
+	        return parts[0] === '+' ? minutes : -minutes;
+	    }
+
+	    // Return a moment from input, that is local/utc/zone equivalent to model.
+	    function cloneWithOffset(input, model) {
+	        var res, diff;
+	        if (model._isUTC) {
+	            res = model.clone();
+	            diff = (isMoment(input) || isDate(input) ? +input : +local__createLocal(input)) - (+res);
+	            // Use low-level api, because this fn is low-level api.
+	            res._d.setTime(+res._d + diff);
+	            utils_hooks__hooks.updateOffset(res, false);
+	            return res;
+	        } else {
+	            return local__createLocal(input).local();
+	        }
+	        return model._isUTC ? local__createLocal(input).zone(model._offset || 0) : local__createLocal(input).local();
+	    }
+
+	    function getDateOffset (m) {
+	        // On Firefox.24 Date#getTimezoneOffset returns a floating point.
+	        // https://github.com/moment/moment/pull/1871
+	        return -Math.round(m._d.getTimezoneOffset() / 15) * 15;
+	    }
+
+	    // HOOKS
+
+	    // This function will be called whenever a moment is mutated.
+	    // It is intended to keep the offset in sync with the timezone.
+	    utils_hooks__hooks.updateOffset = function () {};
+
+	    // MOMENTS
+
+	    // keepLocalTime = true means only change the timezone, without
+	    // affecting the local hour. So 5:31:26 +0300 --[utcOffset(2, true)]-->
+	    // 5:31:26 +0200 It is possible that 5:31:26 doesn't exist with offset
+	    // +0200, so we adjust the time as needed, to be valid.
+	    //
+	    // Keeping the time actually adds/subtracts (one hour)
+	    // from the actual represented time. That is why we call updateOffset
+	    // a second time. In case it wants us to change the offset again
+	    // _changeInProgress == true case, then we have to adjust, because
+	    // there is no such time in the given timezone.
+	    function getSetOffset (input, keepLocalTime) {
+	        var offset = this._offset || 0,
+	            localAdjust;
+	        if (input != null) {
+	            if (typeof input === 'string') {
+	                input = offsetFromString(input);
+	            }
+	            if (Math.abs(input) < 16) {
+	                input = input * 60;
+	            }
+	            if (!this._isUTC && keepLocalTime) {
+	                localAdjust = getDateOffset(this);
+	            }
+	            this._offset = input;
+	            this._isUTC = true;
+	            if (localAdjust != null) {
+	                this.add(localAdjust, 'm');
+	            }
+	            if (offset !== input) {
+	                if (!keepLocalTime || this._changeInProgress) {
+	                    add_subtract__addSubtract(this, create__createDuration(input - offset, 'm'), 1, false);
+	                } else if (!this._changeInProgress) {
+	                    this._changeInProgress = true;
+	                    utils_hooks__hooks.updateOffset(this, true);
+	                    this._changeInProgress = null;
+	                }
+	            }
+	            return this;
+	        } else {
+	            return this._isUTC ? offset : getDateOffset(this);
+	        }
+	    }
+
+	    function getSetZone (input, keepLocalTime) {
+	        if (input != null) {
+	            if (typeof input !== 'string') {
+	                input = -input;
+	            }
+
+	            this.utcOffset(input, keepLocalTime);
+
+	            return this;
+	        } else {
+	            return -this.utcOffset();
+	        }
+	    }
+
+	    function setOffsetToUTC (keepLocalTime) {
+	        return this.utcOffset(0, keepLocalTime);
+	    }
+
+	    function setOffsetToLocal (keepLocalTime) {
+	        if (this._isUTC) {
+	            this.utcOffset(0, keepLocalTime);
+	            this._isUTC = false;
+
+	            if (keepLocalTime) {
+	                this.subtract(getDateOffset(this), 'm');
+	            }
+	        }
+	        return this;
+	    }
+
+	    function setOffsetToParsedOffset () {
+	        if (this._tzm) {
+	            this.utcOffset(this._tzm);
+	        } else if (typeof this._i === 'string') {
+	            this.utcOffset(offsetFromString(this._i));
+	        }
+	        return this;
+	    }
+
+	    function hasAlignedHourOffset (input) {
+	        if (!input) {
+	            input = 0;
+	        }
+	        else {
+	            input = local__createLocal(input).utcOffset();
+	        }
+
+	        return (this.utcOffset() - input) % 60 === 0;
+	    }
+
+	    function isDaylightSavingTime () {
+	        return (
+	            this.utcOffset() > this.clone().month(0).utcOffset() ||
+	            this.utcOffset() > this.clone().month(5).utcOffset()
+	        );
+	    }
+
+	    function isDaylightSavingTimeShifted () {
+	        if (this._a) {
+	            var other = this._isUTC ? create_utc__createUTC(this._a) : local__createLocal(this._a);
+	            return this.isValid() && compareArrays(this._a, other.toArray()) > 0;
+	        }
+
+	        return false;
+	    }
+
+	    function isLocal () {
+	        return !this._isUTC;
+	    }
+
+	    function isUtcOffset () {
+	        return this._isUTC;
+	    }
+
+	    function isUtc () {
+	        return this._isUTC && this._offset === 0;
+	    }
+
+	    var aspNetRegex = /(\-)?(?:(\d*)\.)?(\d+)\:(\d+)(?:\:(\d+)\.?(\d{3})?)?/;
+
+	    // from http://docs.closure-library.googlecode.com/git/closure_goog_date_date.js.source.html
+	    // somewhat more in line with 4.4.3.2 2004 spec, but allows decimal anywhere
+	    var create__isoRegex = /^(-)?P(?:(?:([0-9,.]*)Y)?(?:([0-9,.]*)M)?(?:([0-9,.]*)D)?(?:T(?:([0-9,.]*)H)?(?:([0-9,.]*)M)?(?:([0-9,.]*)S)?)?|([0-9,.]*)W)$/;
+
+	    function create__createDuration (input, key) {
+	        var duration = input,
+	            // matching against regexp is expensive, do it on demand
+	            match = null,
+	            sign,
+	            ret,
+	            diffRes;
+
+	        if (isDuration(input)) {
+	            duration = {
+	                ms : input._milliseconds,
+	                d  : input._days,
+	                M  : input._months
+	            };
+	        } else if (typeof input === 'number') {
+	            duration = {};
+	            if (key) {
+	                duration[key] = input;
+	            } else {
+	                duration.milliseconds = input;
+	            }
+	        } else if (!!(match = aspNetRegex.exec(input))) {
+	            sign = (match[1] === '-') ? -1 : 1;
+	            duration = {
+	                y  : 0,
+	                d  : toInt(match[DATE])        * sign,
+	                h  : toInt(match[HOUR])        * sign,
+	                m  : toInt(match[MINUTE])      * sign,
+	                s  : toInt(match[SECOND])      * sign,
+	                ms : toInt(match[MILLISECOND]) * sign
+	            };
+	        } else if (!!(match = create__isoRegex.exec(input))) {
+	            sign = (match[1] === '-') ? -1 : 1;
+	            duration = {
+	                y : parseIso(match[2], sign),
+	                M : parseIso(match[3], sign),
+	                d : parseIso(match[4], sign),
+	                h : parseIso(match[5], sign),
+	                m : parseIso(match[6], sign),
+	                s : parseIso(match[7], sign),
+	                w : parseIso(match[8], sign)
+	            };
+	        } else if (duration == null) {// checks for null or undefined
+	            duration = {};
+	        } else if (typeof duration === 'object' && ('from' in duration || 'to' in duration)) {
+	            diffRes = momentsDifference(local__createLocal(duration.from), local__createLocal(duration.to));
+
+	            duration = {};
+	            duration.ms = diffRes.milliseconds;
+	            duration.M = diffRes.months;
+	        }
+
+	        ret = new Duration(duration);
+
+	        if (isDuration(input) && hasOwnProp(input, '_locale')) {
+	            ret._locale = input._locale;
+	        }
+
+	        return ret;
+	    }
+
+	    create__createDuration.fn = Duration.prototype;
+
+	    function parseIso (inp, sign) {
+	        // We'd normally use ~~inp for this, but unfortunately it also
+	        // converts floats to ints.
+	        // inp may be undefined, so careful calling replace on it.
+	        var res = inp && parseFloat(inp.replace(',', '.'));
+	        // apply sign while we're at it
+	        return (isNaN(res) ? 0 : res) * sign;
+	    }
+
+	    function positiveMomentsDifference(base, other) {
+	        var res = {milliseconds: 0, months: 0};
+
+	        res.months = other.month() - base.month() +
+	            (other.year() - base.year()) * 12;
+	        if (base.clone().add(res.months, 'M').isAfter(other)) {
+	            --res.months;
+	        }
+
+	        res.milliseconds = +other - +(base.clone().add(res.months, 'M'));
+
+	        return res;
+	    }
+
+	    function momentsDifference(base, other) {
+	        var res;
+	        other = cloneWithOffset(other, base);
+	        if (base.isBefore(other)) {
+	            res = positiveMomentsDifference(base, other);
+	        } else {
+	            res = positiveMomentsDifference(other, base);
+	            res.milliseconds = -res.milliseconds;
+	            res.months = -res.months;
+	        }
+
+	        return res;
+	    }
+
+	    function createAdder(direction, name) {
+	        return function (val, period) {
+	            var dur, tmp;
+	            //invert the arguments, but complain about it
+	            if (period !== null && !isNaN(+period)) {
+	                deprecateSimple(name, 'moment().' + name  + '(period, number) is deprecated. Please use moment().' + name + '(number, period).');
+	                tmp = val; val = period; period = tmp;
+	            }
+
+	            val = typeof val === 'string' ? +val : val;
+	            dur = create__createDuration(val, period);
+	            add_subtract__addSubtract(this, dur, direction);
+	            return this;
+	        };
+	    }
+
+	    function add_subtract__addSubtract (mom, duration, isAdding, updateOffset) {
+	        var milliseconds = duration._milliseconds,
+	            days = duration._days,
+	            months = duration._months;
+	        updateOffset = updateOffset == null ? true : updateOffset;
+
+	        if (milliseconds) {
+	            mom._d.setTime(+mom._d + milliseconds * isAdding);
+	        }
+	        if (days) {
+	            get_set__set(mom, 'Date', get_set__get(mom, 'Date') + days * isAdding);
+	        }
+	        if (months) {
+	            setMonth(mom, get_set__get(mom, 'Month') + months * isAdding);
+	        }
+	        if (updateOffset) {
+	            utils_hooks__hooks.updateOffset(mom, days || months);
+	        }
+	    }
+
+	    var add_subtract__add      = createAdder(1, 'add');
+	    var add_subtract__subtract = createAdder(-1, 'subtract');
+
+	    function moment_calendar__calendar (time) {
+	        // We want to compare the start of today, vs this.
+	        // Getting start-of-today depends on whether we're local/utc/offset or not.
+	        var now = time || local__createLocal(),
+	            sod = cloneWithOffset(now, this).startOf('day'),
+	            diff = this.diff(sod, 'days', true),
+	            format = diff < -6 ? 'sameElse' :
+	                diff < -1 ? 'lastWeek' :
+	                diff < 0 ? 'lastDay' :
+	                diff < 1 ? 'sameDay' :
+	                diff < 2 ? 'nextDay' :
+	                diff < 7 ? 'nextWeek' : 'sameElse';
+	        return this.format(this.localeData().calendar(format, this, local__createLocal(now)));
+	    }
+
+	    function clone () {
+	        return new Moment(this);
+	    }
+
+	    function isAfter (input, units) {
+	        var inputMs;
+	        units = normalizeUnits(typeof units !== 'undefined' ? units : 'millisecond');
+	        if (units === 'millisecond') {
+	            input = isMoment(input) ? input : local__createLocal(input);
+	            return +this > +input;
+	        } else {
+	            inputMs = isMoment(input) ? +input : +local__createLocal(input);
+	            return inputMs < +this.clone().startOf(units);
+	        }
+	    }
+
+	    function isBefore (input, units) {
+	        var inputMs;
+	        units = normalizeUnits(typeof units !== 'undefined' ? units : 'millisecond');
+	        if (units === 'millisecond') {
+	            input = isMoment(input) ? input : local__createLocal(input);
+	            return +this < +input;
+	        } else {
+	            inputMs = isMoment(input) ? +input : +local__createLocal(input);
+	            return +this.clone().endOf(units) < inputMs;
+	        }
+	    }
+
+	    function isBetween (from, to, units) {
+	        return this.isAfter(from, units) && this.isBefore(to, units);
+	    }
+
+	    function isSame (input, units) {
+	        var inputMs;
+	        units = normalizeUnits(units || 'millisecond');
+	        if (units === 'millisecond') {
+	            input = isMoment(input) ? input : local__createLocal(input);
+	            return +this === +input;
+	        } else {
+	            inputMs = +local__createLocal(input);
+	            return +(this.clone().startOf(units)) <= inputMs && inputMs <= +(this.clone().endOf(units));
+	        }
+	    }
+
+	    function absFloor (number) {
+	        if (number < 0) {
+	            return Math.ceil(number);
+	        } else {
+	            return Math.floor(number);
+	        }
+	    }
+
+	    function diff (input, units, asFloat) {
+	        var that = cloneWithOffset(input, this),
+	            zoneDelta = (that.utcOffset() - this.utcOffset()) * 6e4,
+	            delta, output;
+
+	        units = normalizeUnits(units);
+
+	        if (units === 'year' || units === 'month' || units === 'quarter') {
+	            output = monthDiff(this, that);
+	            if (units === 'quarter') {
+	                output = output / 3;
+	            } else if (units === 'year') {
+	                output = output / 12;
+	            }
+	        } else {
+	            delta = this - that;
+	            output = units === 'second' ? delta / 1e3 : // 1000
+	                units === 'minute' ? delta / 6e4 : // 1000 * 60
+	                units === 'hour' ? delta / 36e5 : // 1000 * 60 * 60
+	                units === 'day' ? (delta - zoneDelta) / 864e5 : // 1000 * 60 * 60 * 24, negate dst
+	                units === 'week' ? (delta - zoneDelta) / 6048e5 : // 1000 * 60 * 60 * 24 * 7, negate dst
+	                delta;
+	        }
+	        return asFloat ? output : absFloor(output);
+	    }
+
+	    function monthDiff (a, b) {
+	        // difference in months
+	        var wholeMonthDiff = ((b.year() - a.year()) * 12) + (b.month() - a.month()),
+	            // b is in (anchor - 1 month, anchor + 1 month)
+	            anchor = a.clone().add(wholeMonthDiff, 'months'),
+	            anchor2, adjust;
+
+	        if (b - anchor < 0) {
+	            anchor2 = a.clone().add(wholeMonthDiff - 1, 'months');
+	            // linear across the month
+	            adjust = (b - anchor) / (anchor - anchor2);
+	        } else {
+	            anchor2 = a.clone().add(wholeMonthDiff + 1, 'months');
+	            // linear across the month
+	            adjust = (b - anchor) / (anchor2 - anchor);
+	        }
+
+	        return -(wholeMonthDiff + adjust);
+	    }
+
+	    utils_hooks__hooks.defaultFormat = 'YYYY-MM-DDTHH:mm:ssZ';
+
+	    function toString () {
+	        return this.clone().locale('en').format('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
+	    }
+
+	    function moment_format__toISOString () {
+	        var m = this.clone().utc();
+	        if (0 < m.year() && m.year() <= 9999) {
+	            if ('function' === typeof Date.prototype.toISOString) {
+	                // native implementation is ~50x faster, use it when we can
+	                return this.toDate().toISOString();
+	            } else {
+	                return formatMoment(m, 'YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+	            }
+	        } else {
+	            return formatMoment(m, 'YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+	        }
+	    }
+
+	    function format (inputString) {
+	        var output = formatMoment(this, inputString || utils_hooks__hooks.defaultFormat);
+	        return this.localeData().postformat(output);
+	    }
+
+	    function from (time, withoutSuffix) {
+	        return create__createDuration({to: this, from: time}).locale(this.locale()).humanize(!withoutSuffix);
+	    }
+
+	    function fromNow (withoutSuffix) {
+	        return this.from(local__createLocal(), withoutSuffix);
+	    }
+
+	    function locale (key) {
+	        var newLocaleData;
+
+	        if (key === undefined) {
+	            return this._locale._abbr;
+	        } else {
+	            newLocaleData = locale_locales__getLocale(key);
+	            if (newLocaleData != null) {
+	                this._locale = newLocaleData;
+	            }
+	            return this;
+	        }
+	    }
+
+	    var lang = deprecate(
+	        'moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.',
+	        function (key) {
+	            if (key === undefined) {
+	                return this.localeData();
+	            } else {
+	                return this.locale(key);
+	            }
+	        }
+	    );
+
+	    function localeData () {
+	        return this._locale;
+	    }
+
+	    function startOf (units) {
+	        units = normalizeUnits(units);
+	        // the following switch intentionally omits break keywords
+	        // to utilize falling through the cases.
+	        switch (units) {
+	        case 'year':
+	            this.month(0);
+	            /* falls through */
+	        case 'quarter':
+	        case 'month':
+	            this.date(1);
+	            /* falls through */
+	        case 'week':
+	        case 'isoWeek':
+	        case 'day':
+	            this.hours(0);
+	            /* falls through */
+	        case 'hour':
+	            this.minutes(0);
+	            /* falls through */
+	        case 'minute':
+	            this.seconds(0);
+	            /* falls through */
+	        case 'second':
+	            this.milliseconds(0);
+	        }
+
+	        // weeks are a special case
+	        if (units === 'week') {
+	            this.weekday(0);
+	        }
+	        if (units === 'isoWeek') {
+	            this.isoWeekday(1);
+	        }
+
+	        // quarters are also special
+	        if (units === 'quarter') {
+	            this.month(Math.floor(this.month() / 3) * 3);
+	        }
+
+	        return this;
+	    }
+
+	    function endOf (units) {
+	        units = normalizeUnits(units);
+	        if (units === undefined || units === 'millisecond') {
+	            return this;
+	        }
+	        return this.startOf(units).add(1, (units === 'isoWeek' ? 'week' : units)).subtract(1, 'ms');
+	    }
+
+	    function to_type__valueOf () {
+	        return +this._d - ((this._offset || 0) * 60000);
+	    }
+
+	    function unix () {
+	        return Math.floor(+this / 1000);
+	    }
+
+	    function toDate () {
+	        return this._offset ? new Date(+this) : this._d;
+	    }
+
+	    function toArray () {
+	        var m = this;
+	        return [m.year(), m.month(), m.date(), m.hour(), m.minute(), m.second(), m.millisecond()];
+	    }
+
+	    function moment_valid__isValid () {
+	        return valid__isValid(this);
+	    }
+
+	    function parsingFlags () {
+	        return extend({}, this._pf);
+	    }
+
+	    function invalidAt () {
+	        return this._pf.overflow;
+	    }
+
+	    addFormatToken(0, ['gg', 2], 0, function () {
+	        return this.weekYear() % 100;
+	    });
+
+	    addFormatToken(0, ['GG', 2], 0, function () {
+	        return this.isoWeekYear() % 100;
+	    });
+
+	    function addWeekYearFormatToken (token, getter) {
+	        addFormatToken(0, [token, token.length], 0, getter);
+	    }
+
+	    addWeekYearFormatToken('gggg',     'weekYear');
+	    addWeekYearFormatToken('ggggg',    'weekYear');
+	    addWeekYearFormatToken('GGGG',  'isoWeekYear');
+	    addWeekYearFormatToken('GGGGG', 'isoWeekYear');
+
+	    // ALIASES
+
+	    addUnitAlias('weekYear', 'gg');
+	    addUnitAlias('isoWeekYear', 'GG');
+
+	    // PARSING
+
+	    addRegexToken('G',      matchSigned);
+	    addRegexToken('g',      matchSigned);
+	    addRegexToken('GG',     match1to2, match2);
+	    addRegexToken('gg',     match1to2, match2);
+	    addRegexToken('GGGG',   match1to4, match4);
+	    addRegexToken('gggg',   match1to4, match4);
+	    addRegexToken('GGGGG',  match1to6, match6);
+	    addRegexToken('ggggg',  match1to6, match6);
+
+	    addWeekParseToken(['gggg', 'ggggg', 'GGGG', 'GGGGG'], function (input, week, config, token) {
+	        week[token.substr(0, 2)] = toInt(input);
+	    });
+
+	    addWeekParseToken(['gg', 'GG'], function (input, week, config, token) {
+	        week[token] = utils_hooks__hooks.parseTwoDigitYear(input);
+	    });
+
+	    // HELPERS
+
+	    function weeksInYear(year, dow, doy) {
+	        return weekOfYear(local__createLocal([year, 11, 31 + dow - doy]), dow, doy).week;
+	    }
+
+	    // MOMENTS
+
+	    function getSetWeekYear (input) {
+	        var year = weekOfYear(this, this.localeData()._week.dow, this.localeData()._week.doy).year;
+	        return input == null ? year : this.add((input - year), 'y');
+	    }
+
+	    function getSetISOWeekYear (input) {
+	        var year = weekOfYear(this, 1, 4).year;
+	        return input == null ? year : this.add((input - year), 'y');
+	    }
+
+	    function getISOWeeksInYear () {
+	        return weeksInYear(this.year(), 1, 4);
+	    }
+
+	    function getWeeksInYear () {
+	        var weekInfo = this.localeData()._week;
+	        return weeksInYear(this.year(), weekInfo.dow, weekInfo.doy);
+	    }
+
+	    addFormatToken('Q', 0, 0, 'quarter');
+
+	    // ALIASES
+
+	    addUnitAlias('quarter', 'Q');
+
+	    // PARSING
+
+	    addRegexToken('Q', match1);
+	    addParseToken('Q', function (input, array) {
+	        array[MONTH] = (toInt(input) - 1) * 3;
+	    });
+
+	    // MOMENTS
+
+	    function getSetQuarter (input) {
+	        return input == null ? Math.ceil((this.month() + 1) / 3) : this.month((input - 1) * 3 + this.month() % 3);
+	    }
+
+	    addFormatToken('D', ['DD', 2], 'Do', 'date');
+
+	    // ALIASES
+
+	    addUnitAlias('date', 'D');
+
+	    // PARSING
+
+	    addRegexToken('D',  match1to2);
+	    addRegexToken('DD', match1to2, match2);
+	    addRegexToken('Do', function (isStrict, locale) {
+	        return isStrict ? locale._ordinalParse : locale._ordinalParseLenient;
+	    });
+
+	    addParseToken(['D', 'DD'], DATE);
+	    addParseToken('Do', function (input, array) {
+	        array[DATE] = toInt(input.match(match1to2)[0], 10);
+	    });
+
+	    // MOMENTS
+
+	    var getSetDayOfMonth = makeGetSet('Date', true);
+
+	    addFormatToken('d', 0, 'do', 'day');
+
+	    addFormatToken('dd', 0, 0, function (format) {
+	        return this.localeData().weekdaysMin(this, format);
+	    });
+
+	    addFormatToken('ddd', 0, 0, function (format) {
+	        return this.localeData().weekdaysShort(this, format);
+	    });
+
+	    addFormatToken('dddd', 0, 0, function (format) {
+	        return this.localeData().weekdays(this, format);
+	    });
+
+	    addFormatToken('e', 0, 0, 'weekday');
+	    addFormatToken('E', 0, 0, 'isoWeekday');
+
+	    // ALIASES
+
+	    addUnitAlias('day', 'd');
+	    addUnitAlias('weekday', 'e');
+	    addUnitAlias('isoWeekday', 'E');
+
+	    // PARSING
+
+	    addRegexToken('d',    match1to2);
+	    addRegexToken('e',    match1to2);
+	    addRegexToken('E',    match1to2);
+	    addRegexToken('dd',   matchWord);
+	    addRegexToken('ddd',  matchWord);
+	    addRegexToken('dddd', matchWord);
+
+	    addWeekParseToken(['dd', 'ddd', 'dddd'], function (input, week, config) {
+	        var weekday = config._locale.weekdaysParse(input);
+	        // if we didn't get a weekday name, mark the date as invalid
+	        if (weekday != null) {
+	            week.d = weekday;
+	        } else {
+	            config._pf.invalidWeekday = input;
+	        }
+	    });
+
+	    addWeekParseToken(['d', 'e', 'E'], function (input, week, config, token) {
+	        week[token] = toInt(input);
+	    });
+
+	    // HELPERS
+
+	    function parseWeekday(input, locale) {
+	        if (typeof input === 'string') {
+	            if (!isNaN(input)) {
+	                input = parseInt(input, 10);
+	            }
+	            else {
+	                input = locale.weekdaysParse(input);
+	                if (typeof input !== 'number') {
+	                    return null;
+	                }
+	            }
+	        }
+	        return input;
+	    }
+
+	    // LOCALES
+
+	    var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_');
+	    function localeWeekdays (m) {
+	        return this._weekdays[m.day()];
+	    }
+
+	    var defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_');
+	    function localeWeekdaysShort (m) {
+	        return this._weekdaysShort[m.day()];
+	    }
+
+	    var defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_');
+	    function localeWeekdaysMin (m) {
+	        return this._weekdaysMin[m.day()];
+	    }
+
+	    function localeWeekdaysParse (weekdayName) {
+	        var i, mom, regex;
+
+	        if (!this._weekdaysParse) {
+	            this._weekdaysParse = [];
+	        }
+
+	        for (i = 0; i < 7; i++) {
+	            // make the regex if we don't have it already
+	            if (!this._weekdaysParse[i]) {
+	                mom = local__createLocal([2000, 1]).day(i);
+	                regex = '^' + this.weekdays(mom, '') + '|^' + this.weekdaysShort(mom, '') + '|^' + this.weekdaysMin(mom, '');
+	                this._weekdaysParse[i] = new RegExp(regex.replace('.', ''), 'i');
+	            }
+	            // test the regex
+	            if (this._weekdaysParse[i].test(weekdayName)) {
+	                return i;
+	            }
+	        }
+	    }
+
+	    // MOMENTS
+
+	    function getSetDayOfWeek (input) {
+	        var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
+	        if (input != null) {
+	            input = parseWeekday(input, this.localeData());
+	            return this.add(input - day, 'd');
+	        } else {
+	            return day;
+	        }
+	    }
+
+	    function getSetLocaleDayOfWeek (input) {
+	        var weekday = (this.day() + 7 - this.localeData()._week.dow) % 7;
+	        return input == null ? weekday : this.add(input - weekday, 'd');
+	    }
+
+	    function getSetISODayOfWeek (input) {
+	        // behaves the same as moment#day except
+	        // as a getter, returns 7 instead of 0 (1-7 range instead of 0-6)
+	        // as a setter, sunday should belong to the previous week.
+	        return input == null ? this.day() || 7 : this.day(this.day() % 7 ? input : input - 7);
+	    }
+
+	    addFormatToken('H', ['HH', 2], 0, 'hour');
+	    addFormatToken('h', ['hh', 2], 0, function () {
+	        return this.hours() % 12 || 12;
+	    });
+
+	    function meridiem (token, lowercase) {
+	        addFormatToken(token, 0, 0, function () {
+	            return this.localeData().meridiem(this.hours(), this.minutes(), lowercase);
+	        });
+	    }
+
+	    meridiem('a', true);
+	    meridiem('A', false);
+
+	    // ALIASES
+
+	    addUnitAlias('hour', 'h');
+
+	    // PARSING
+
+	    function matchMeridiem (isStrict, locale) {
+	        return locale._meridiemParse;
+	    }
+
+	    addRegexToken('a',  matchMeridiem);
+	    addRegexToken('A',  matchMeridiem);
+	    addRegexToken('H',  match1to2);
+	    addRegexToken('h',  match1to2);
+	    addRegexToken('HH', match1to2, match2);
+	    addRegexToken('hh', match1to2, match2);
+
+	    addParseToken(['H', 'HH'], HOUR);
+	    addParseToken(['a', 'A'], function (input, array, config) {
+	        config._isPm = config._locale.isPM(input);
+	        config._meridiem = input;
+	    });
+	    addParseToken(['h', 'hh'], function (input, array, config) {
+	        array[HOUR] = toInt(input);
+	        config._pf.bigHour = true;
+	    });
+
+	    // LOCALES
+
+	    function localeIsPM (input) {
+	        // IE8 Quirks Mode & IE7 Standards Mode do not allow accessing strings like arrays
+	        // Using charAt should be more compatible.
+	        return ((input + '').toLowerCase().charAt(0) === 'p');
+	    }
+
+	    var defaultLocaleMeridiemParse = /[ap]\.?m?\.?/i;
+	    function localeMeridiem (hours, minutes, isLower) {
+	        if (hours > 11) {
+	            return isLower ? 'pm' : 'PM';
+	        } else {
+	            return isLower ? 'am' : 'AM';
+	        }
+	    }
+
+
+	    // MOMENTS
+
+	    // Setting the hour should keep the time, because the user explicitly
+	    // specified which hour he wants. So trying to maintain the same hour (in
+	    // a new timezone) makes sense. Adding/subtracting hours does not follow
+	    // this rule.
+	    var getSetHour = makeGetSet('Hours', true);
+
+	    addFormatToken('m', ['mm', 2], 0, 'minute');
+
+	    // ALIASES
+
+	    addUnitAlias('minute', 'm');
+
+	    // PARSING
+
+	    addRegexToken('m',  match1to2);
+	    addRegexToken('mm', match1to2, match2);
+	    addParseToken(['m', 'mm'], MINUTE);
+
+	    // MOMENTS
+
+	    var getSetMinute = makeGetSet('Minutes', false);
+
+	    addFormatToken('s', ['ss', 2], 0, 'second');
+
+	    // ALIASES
+
+	    addUnitAlias('second', 's');
+
+	    // PARSING
+
+	    addRegexToken('s',  match1to2);
+	    addRegexToken('ss', match1to2, match2);
+	    addParseToken(['s', 'ss'], SECOND);
+
+	    // MOMENTS
+
+	    var getSetSecond = makeGetSet('Seconds', false);
+
+	    addFormatToken('S', 0, 0, function () {
+	        return ~~(this.millisecond() / 100);
+	    });
+
+	    addFormatToken(0, ['SS', 2], 0, function () {
+	        return ~~(this.millisecond() / 10);
+	    });
+
+	    function millisecond__milliseconds (token) {
+	        addFormatToken(0, [token, 3], 0, 'millisecond');
+	    }
+
+	    millisecond__milliseconds('SSS');
+	    millisecond__milliseconds('SSSS');
+
+	    // ALIASES
+
+	    addUnitAlias('millisecond', 'ms');
+
+	    // PARSING
+
+	    addRegexToken('S',    match1to3, match1);
+	    addRegexToken('SS',   match1to3, match2);
+	    addRegexToken('SSS',  match1to3, match3);
+	    addRegexToken('SSSS', matchUnsigned);
+	    addParseToken(['S', 'SS', 'SSS', 'SSSS'], function (input, array) {
+	        array[MILLISECOND] = toInt(('0.' + input) * 1000);
+	    });
+
+	    // MOMENTS
+
+	    var getSetMillisecond = makeGetSet('Milliseconds', false);
+
+	    addFormatToken('z',  0, 0, 'zoneAbbr');
+	    addFormatToken('zz', 0, 0, 'zoneName');
+
+	    // MOMENTS
+
+	    function getZoneAbbr () {
+	        return this._isUTC ? 'UTC' : '';
+	    }
+
+	    function getZoneName () {
+	        return this._isUTC ? 'Coordinated Universal Time' : '';
+	    }
+
+	    var momentPrototype__proto = Moment.prototype;
+
+	    momentPrototype__proto.add          = add_subtract__add;
+	    momentPrototype__proto.calendar     = moment_calendar__calendar;
+	    momentPrototype__proto.clone        = clone;
+	    momentPrototype__proto.diff         = diff;
+	    momentPrototype__proto.endOf        = endOf;
+	    momentPrototype__proto.format       = format;
+	    momentPrototype__proto.from         = from;
+	    momentPrototype__proto.fromNow      = fromNow;
+	    momentPrototype__proto.get          = getSet;
+	    momentPrototype__proto.invalidAt    = invalidAt;
+	    momentPrototype__proto.isAfter      = isAfter;
+	    momentPrototype__proto.isBefore     = isBefore;
+	    momentPrototype__proto.isBetween    = isBetween;
+	    momentPrototype__proto.isSame       = isSame;
+	    momentPrototype__proto.isValid      = moment_valid__isValid;
+	    momentPrototype__proto.lang         = lang;
+	    momentPrototype__proto.locale       = locale;
+	    momentPrototype__proto.localeData   = localeData;
+	    momentPrototype__proto.max          = prototypeMax;
+	    momentPrototype__proto.min          = prototypeMin;
+	    momentPrototype__proto.parsingFlags = parsingFlags;
+	    momentPrototype__proto.set          = getSet;
+	    momentPrototype__proto.startOf      = startOf;
+	    momentPrototype__proto.subtract     = add_subtract__subtract;
+	    momentPrototype__proto.toArray      = toArray;
+	    momentPrototype__proto.toDate       = toDate;
+	    momentPrototype__proto.toISOString  = moment_format__toISOString;
+	    momentPrototype__proto.toJSON       = moment_format__toISOString;
+	    momentPrototype__proto.toString     = toString;
+	    momentPrototype__proto.unix         = unix;
+	    momentPrototype__proto.valueOf      = to_type__valueOf;
+
+	    // Year
+	    momentPrototype__proto.year       = getSetYear;
+	    momentPrototype__proto.isLeapYear = getIsLeapYear;
+
+	    // Week Year
+	    momentPrototype__proto.weekYear    = getSetWeekYear;
+	    momentPrototype__proto.isoWeekYear = getSetISOWeekYear;
+
+	    // Quarter
+	    momentPrototype__proto.quarter = momentPrototype__proto.quarters = getSetQuarter;
+
+	    // Month
+	    momentPrototype__proto.month       = getSetMonth;
+	    momentPrototype__proto.daysInMonth = getDaysInMonth;
+
+	    // Week
+	    momentPrototype__proto.week           = momentPrototype__proto.weeks        = getSetWeek;
+	    momentPrototype__proto.isoWeek        = momentPrototype__proto.isoWeeks     = getSetISOWeek;
+	    momentPrototype__proto.weeksInYear    = getWeeksInYear;
+	    momentPrototype__proto.isoWeeksInYear = getISOWeeksInYear;
+
+	    // Day
+	    momentPrototype__proto.date       = getSetDayOfMonth;
+	    momentPrototype__proto.day        = momentPrototype__proto.days             = getSetDayOfWeek;
+	    momentPrototype__proto.weekday    = getSetLocaleDayOfWeek;
+	    momentPrototype__proto.isoWeekday = getSetISODayOfWeek;
+	    momentPrototype__proto.dayOfYear  = getSetDayOfYear;
+
+	    // Hour
+	    momentPrototype__proto.hour = momentPrototype__proto.hours = getSetHour;
+
+	    // Minute
+	    momentPrototype__proto.minute = momentPrototype__proto.minutes = getSetMinute;
+
+	    // Second
+	    momentPrototype__proto.second = momentPrototype__proto.seconds = getSetSecond;
+
+	    // Millisecond
+	    momentPrototype__proto.millisecond = momentPrototype__proto.milliseconds = getSetMillisecond;
+
+	    // Offset
+	    momentPrototype__proto.utcOffset            = getSetOffset;
+	    momentPrototype__proto.utc                  = setOffsetToUTC;
+	    momentPrototype__proto.local                = setOffsetToLocal;
+	    momentPrototype__proto.parseZone            = setOffsetToParsedOffset;
+	    momentPrototype__proto.hasAlignedHourOffset = hasAlignedHourOffset;
+	    momentPrototype__proto.isDST                = isDaylightSavingTime;
+	    momentPrototype__proto.isDSTShifted         = isDaylightSavingTimeShifted;
+	    momentPrototype__proto.isLocal              = isLocal;
+	    momentPrototype__proto.isUtcOffset          = isUtcOffset;
+	    momentPrototype__proto.isUtc                = isUtc;
+	    momentPrototype__proto.isUTC                = isUtc;
+
+	    // Timezone
+	    momentPrototype__proto.zoneAbbr = getZoneAbbr;
+	    momentPrototype__proto.zoneName = getZoneName;
+
+	    // Deprecations
+	    momentPrototype__proto.dates  = deprecate('dates accessor is deprecated. Use date instead.', getSetDayOfMonth);
+	    momentPrototype__proto.months = deprecate('months accessor is deprecated. Use month instead', getSetMonth);
+	    momentPrototype__proto.years  = deprecate('years accessor is deprecated. Use year instead', getSetYear);
+	    momentPrototype__proto.zone   = deprecate('moment().zone is deprecated, use moment().utcOffset instead. https://github.com/moment/moment/issues/1779', getSetZone);
+
+	    var momentPrototype = momentPrototype__proto;
+
+	    function moment__createUnix (input) {
+	        return local__createLocal(input * 1000);
+	    }
+
+	    function moment__createInZone () {
+	        return local__createLocal.apply(null, arguments).parseZone();
+	    }
+
+	    var defaultCalendar = {
+	        sameDay : '[Today at] LT',
+	        nextDay : '[Tomorrow at] LT',
+	        nextWeek : 'dddd [at] LT',
+	        lastDay : '[Yesterday at] LT',
+	        lastWeek : '[Last] dddd [at] LT',
+	        sameElse : 'L'
+	    };
+
+	    function locale_calendar__calendar (key, mom, now) {
+	        var output = this._calendar[key];
+	        return typeof output === 'function' ? output.call(mom, now) : output;
+	    }
+
+	    var defaultLongDateFormat = {
+	        LTS  : 'h:mm:ss A',
+	        LT   : 'h:mm A',
+	        L    : 'MM/DD/YYYY',
+	        LL   : 'MMMM D, YYYY',
+	        LLL  : 'MMMM D, YYYY LT',
+	        LLLL : 'dddd, MMMM D, YYYY LT'
+	    };
+
+	    function longDateFormat (key) {
+	        var output = this._longDateFormat[key];
+	        if (!output && this._longDateFormat[key.toUpperCase()]) {
+	            output = this._longDateFormat[key.toUpperCase()].replace(/MMMM|MM|DD|dddd/g, function (val) {
+	                return val.slice(1);
+	            });
+	            this._longDateFormat[key] = output;
+	        }
+	        return output;
+	    }
+
+	    var defaultInvalidDate = 'Invalid date';
+
+	    function invalidDate () {
+	        return this._invalidDate;
+	    }
+
+	    var defaultOrdinal = '%d';
+	    var defaultOrdinalParse = /\d{1,2}/;
+
+	    function ordinal (number) {
+	        return this._ordinal.replace('%d', number);
+	    }
+
+	    function preParsePostFormat (string) {
+	        return string;
+	    }
+
+	    var defaultRelativeTime = {
+	        future : 'in %s',
+	        past   : '%s ago',
+	        s  : 'a few seconds',
+	        m  : 'a minute',
+	        mm : '%d minutes',
+	        h  : 'an hour',
+	        hh : '%d hours',
+	        d  : 'a day',
+	        dd : '%d days',
+	        M  : 'a month',
+	        MM : '%d months',
+	        y  : 'a year',
+	        yy : '%d years'
+	    };
+
+	    function relative__relativeTime (number, withoutSuffix, string, isFuture) {
+	        var output = this._relativeTime[string];
+	        return (typeof output === 'function') ?
+	            output(number, withoutSuffix, string, isFuture) :
+	            output.replace(/%d/i, number);
+	    }
+
+	    function pastFuture (diff, output) {
+	        var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
+	        return typeof format === 'function' ? format(output) : format.replace(/%s/i, output);
+	    }
+
+	    function locale_set__set (config) {
+	        var prop, i;
+	        for (i in config) {
+	            prop = config[i];
+	            if (typeof prop === 'function') {
+	                this[i] = prop;
+	            } else {
+	                this['_' + i] = prop;
+	            }
+	        }
+	        // Lenient ordinal parsing accepts just a number in addition to
+	        // number + (possibly) stuff coming from _ordinalParseLenient.
+	        this._ordinalParseLenient = new RegExp(this._ordinalParse.source + '|' + /\d{1,2}/.source);
+	    }
+
+	    var prototype__proto = Locale.prototype;
+
+	    prototype__proto._calendar       = defaultCalendar;
+	    prototype__proto.calendar        = locale_calendar__calendar;
+	    prototype__proto._longDateFormat = defaultLongDateFormat;
+	    prototype__proto.longDateFormat  = longDateFormat;
+	    prototype__proto._invalidDate    = defaultInvalidDate;
+	    prototype__proto.invalidDate     = invalidDate;
+	    prototype__proto._ordinal        = defaultOrdinal;
+	    prototype__proto.ordinal         = ordinal;
+	    prototype__proto._ordinalParse   = defaultOrdinalParse;
+	    prototype__proto.preparse        = preParsePostFormat;
+	    prototype__proto.postformat      = preParsePostFormat;
+	    prototype__proto._relativeTime   = defaultRelativeTime;
+	    prototype__proto.relativeTime    = relative__relativeTime;
+	    prototype__proto.pastFuture      = pastFuture;
+	    prototype__proto.set             = locale_set__set;
+
+	    // Month
+	    prototype__proto.months       =        localeMonths;
+	    prototype__proto._months      = defaultLocaleMonths;
+	    prototype__proto.monthsShort  =        localeMonthsShort;
+	    prototype__proto._monthsShort = defaultLocaleMonthsShort;
+	    prototype__proto.monthsParse  =        localeMonthsParse;
+
+	    // Week
+	    prototype__proto.week = localeWeek;
+	    prototype__proto._week = defaultLocaleWeek;
+	    prototype__proto.firstDayOfYear = localeFirstDayOfYear;
+	    prototype__proto.firstDayOfWeek = localeFirstDayOfWeek;
+
+	    // Day of Week
+	    prototype__proto.weekdays       =        localeWeekdays;
+	    prototype__proto._weekdays      = defaultLocaleWeekdays;
+	    prototype__proto.weekdaysMin    =        localeWeekdaysMin;
+	    prototype__proto._weekdaysMin   = defaultLocaleWeekdaysMin;
+	    prototype__proto.weekdaysShort  =        localeWeekdaysShort;
+	    prototype__proto._weekdaysShort = defaultLocaleWeekdaysShort;
+	    prototype__proto.weekdaysParse  =        localeWeekdaysParse;
+
+	    // Hours
+	    prototype__proto.isPM = localeIsPM;
+	    prototype__proto._meridiemParse = defaultLocaleMeridiemParse;
+	    prototype__proto.meridiem = localeMeridiem;
+
+	    function lists__get (format, index, field, setter) {
+	        var locale = locale_locales__getLocale();
+	        var utc = create_utc__createUTC().set(setter, index);
+	        return locale[field](utc, format);
+	    }
+
+	    function list (format, index, field, count, setter) {
+	        if (typeof format === 'number') {
+	            index = format;
+	            format = undefined;
+	        }
+
+	        format = format || '';
+
+	        if (index != null) {
+	            return lists__get(format, index, field, setter);
+	        }
+
+	        var i;
+	        var out = [];
+	        for (i = 0; i < count; i++) {
+	            out[i] = lists__get(format, i, field, setter);
+	        }
+	        return out;
+	    }
+
+	    function lists__listMonths (format, index) {
+	        return list(format, index, 'months', 12, 'month');
+	    }
+
+	    function lists__listMonthsShort (format, index) {
+	        return list(format, index, 'monthsShort', 12, 'month');
+	    }
+
+	    function lists__listWeekdays (format, index) {
+	        return list(format, index, 'weekdays', 7, 'day');
+	    }
+
+	    function lists__listWeekdaysShort (format, index) {
+	        return list(format, index, 'weekdaysShort', 7, 'day');
+	    }
+
+	    function lists__listWeekdaysMin (format, index) {
+	        return list(format, index, 'weekdaysMin', 7, 'day');
+	    }
+
+	    locale_locales__getSetGlobalLocale('en', {
+	        ordinalParse: /\d{1,2}(th|st|nd|rd)/,
+	        ordinal : function (number) {
+	            var b = number % 10,
+	                output = (toInt(number % 100 / 10) === 1) ? 'th' :
+	                (b === 1) ? 'st' :
+	                (b === 2) ? 'nd' :
+	                (b === 3) ? 'rd' : 'th';
+	            return number + output;
+	        }
+	    });
+
+	    // Side effect imports
+	    utils_hooks__hooks.lang = deprecate('moment.lang is deprecated. Use moment.locale instead.', locale_locales__getSetGlobalLocale);
+	    utils_hooks__hooks.langData = deprecate('moment.langData is deprecated. Use moment.localeData instead.', locale_locales__getLocale);
+
+	    var mathAbs = Math.abs;
+
+	    function duration_abs__abs () {
+	        var data           = this._data;
+
+	        this._milliseconds = mathAbs(this._milliseconds);
+	        this._days         = mathAbs(this._days);
+	        this._months       = mathAbs(this._months);
+
+	        data.milliseconds  = mathAbs(data.milliseconds);
+	        data.seconds       = mathAbs(data.seconds);
+	        data.minutes       = mathAbs(data.minutes);
+	        data.hours         = mathAbs(data.hours);
+	        data.months        = mathAbs(data.months);
+	        data.years         = mathAbs(data.years);
+
+	        return this;
+	    }
+
+	    function duration_add_subtract__addSubtract (duration, input, value, direction) {
+	        var other = create__createDuration(input, value);
+
+	        duration._milliseconds += direction * other._milliseconds;
+	        duration._days         += direction * other._days;
+	        duration._months       += direction * other._months;
+
+	        return duration._bubble();
+	    }
+
+	    // supports only 2.0-style add(1, 's') or add(duration)
+	    function duration_add_subtract__add (input, value) {
+	        return duration_add_subtract__addSubtract(this, input, value, 1);
+	    }
+
+	    // supports only 2.0-style subtract(1, 's') or subtract(duration)
+	    function duration_add_subtract__subtract (input, value) {
+	        return duration_add_subtract__addSubtract(this, input, value, -1);
+	    }
+
+	    function bubble () {
+	        var milliseconds = this._milliseconds;
+	        var days         = this._days;
+	        var months       = this._months;
+	        var data         = this._data;
+	        var seconds, minutes, hours, years = 0;
+
+	        // The following code bubbles up values, see the tests for
+	        // examples of what that means.
+	        data.milliseconds = milliseconds % 1000;
+
+	        seconds           = absFloor(milliseconds / 1000);
+	        data.seconds      = seconds % 60;
+
+	        minutes           = absFloor(seconds / 60);
+	        data.minutes      = minutes % 60;
+
+	        hours             = absFloor(minutes / 60);
+	        data.hours        = hours % 24;
+
+	        days += absFloor(hours / 24);
+
+	        // Accurately convert days to years, assume start from year 0.
+	        years = absFloor(daysToYears(days));
+	        days -= absFloor(yearsToDays(years));
+
+	        // 30 days to a month
+	        // TODO (iskren): Use anchor date (like 1st Jan) to compute this.
+	        months += absFloor(days / 30);
+	        days   %= 30;
+
+	        // 12 months -> 1 year
+	        years  += absFloor(months / 12);
+	        months %= 12;
+
+	        data.days   = days;
+	        data.months = months;
+	        data.years  = years;
+
+	        return this;
+	    }
+
+	    function daysToYears (days) {
+	        // 400 years have 146097 days (taking into account leap year rules)
+	        return days * 400 / 146097;
+	    }
+
+	    function yearsToDays (years) {
+	        // years * 365 + absFloor(years / 4) -
+	        //     absFloor(years / 100) + absFloor(years / 400);
+	        return years * 146097 / 400;
+	    }
+
+	    function as (units) {
+	        var days;
+	        var months;
+	        var milliseconds = this._milliseconds;
+
+	        units = normalizeUnits(units);
+
+	        if (units === 'month' || units === 'year') {
+	            days   = this._days   + milliseconds / 864e5;
+	            months = this._months + daysToYears(days) * 12;
+	            return units === 'month' ? months : months / 12;
+	        } else {
+	            // handle milliseconds separately because of floating point math errors (issue #1867)
+	            days = this._days + Math.round(yearsToDays(this._months / 12));
+	            switch (units) {
+	                case 'week'   : return days / 7            + milliseconds / 6048e5;
+	                case 'day'    : return days                + milliseconds / 864e5;
+	                case 'hour'   : return days * 24           + milliseconds / 36e5;
+	                case 'minute' : return days * 24 * 60      + milliseconds / 6e4;
+	                case 'second' : return days * 24 * 60 * 60 + milliseconds / 1000;
+	                // Math.floor prevents floating point math errors here
+	                case 'millisecond': return Math.floor(days * 24 * 60 * 60 * 1000) + milliseconds;
+	                default: throw new Error('Unknown unit ' + units);
+	            }
+	        }
+	    }
+
+	    // TODO: Use this.as('ms')?
+	    function duration_as__valueOf () {
+	        return (
+	            this._milliseconds +
+	            this._days * 864e5 +
+	            (this._months % 12) * 2592e6 +
+	            toInt(this._months / 12) * 31536e6
+	        );
+	    }
+
+	    function makeAs (alias) {
+	        return function () {
+	            return this.as(alias);
+	        };
+	    }
+
+	    var asMilliseconds = makeAs('ms');
+	    var asSeconds      = makeAs('s');
+	    var asMinutes      = makeAs('m');
+	    var asHours        = makeAs('h');
+	    var asDays         = makeAs('d');
+	    var asWeeks        = makeAs('w');
+	    var asMonths       = makeAs('M');
+	    var asYears        = makeAs('y');
+
+	    function duration_get__get (units) {
+	        units = normalizeUnits(units);
+	        return this[units + 's']();
+	    }
+
+	    function makeGetter(name) {
+	        return function () {
+	            return this._data[name];
+	        };
+	    }
+
+	    var duration_get__milliseconds = makeGetter('milliseconds');
+	    var seconds      = makeGetter('seconds');
+	    var minutes      = makeGetter('minutes');
+	    var hours        = makeGetter('hours');
+	    var days         = makeGetter('days');
+	    var months       = makeGetter('months');
+	    var years        = makeGetter('years');
+
+	    function weeks () {
+	        return absFloor(this.days() / 7);
+	    }
+
+	    var round = Math.round;
+	    var thresholds = {
+	        s: 45,  // seconds to minute
+	        m: 45,  // minutes to hour
+	        h: 22,  // hours to day
+	        d: 26,  // days to month
+	        M: 11   // months to year
+	    };
+
+	    // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
+	    function substituteTimeAgo(string, number, withoutSuffix, isFuture, locale) {
+	        return locale.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
+	    }
+
+	    function duration_humanize__relativeTime (posNegDuration, withoutSuffix, locale) {
+	        var duration = create__createDuration(posNegDuration).abs();
+	        var seconds  = round(duration.as('s'));
+	        var minutes  = round(duration.as('m'));
+	        var hours    = round(duration.as('h'));
+	        var days     = round(duration.as('d'));
+	        var months   = round(duration.as('M'));
+	        var years    = round(duration.as('y'));
+
+	        var a = seconds < thresholds.s && ['s', seconds]  ||
+	                minutes === 1          && ['m']           ||
+	                minutes < thresholds.m && ['mm', minutes] ||
+	                hours   === 1          && ['h']           ||
+	                hours   < thresholds.h && ['hh', hours]   ||
+	                days    === 1          && ['d']           ||
+	                days    < thresholds.d && ['dd', days]    ||
+	                months  === 1          && ['M']           ||
+	                months  < thresholds.M && ['MM', months]  ||
+	                years   === 1          && ['y']           || ['yy', years];
+
+	        a[2] = withoutSuffix;
+	        a[3] = +posNegDuration > 0;
+	        a[4] = locale;
+	        return substituteTimeAgo.apply(null, a);
+	    }
+
+	    // This function allows you to set a threshold for relative time strings
+	    function duration_humanize__getSetRelativeTimeThreshold (threshold, limit) {
+	        if (thresholds[threshold] === undefined) {
+	            return false;
+	        }
+	        if (limit === undefined) {
+	            return thresholds[threshold];
+	        }
+	        thresholds[threshold] = limit;
+	        return true;
+	    }
+
+	    function humanize (withSuffix) {
+	        var locale = this.localeData();
+	        var output = duration_humanize__relativeTime(this, !withSuffix, locale);
+
+	        if (withSuffix) {
+	            output = locale.pastFuture(+this, output);
+	        }
+
+	        return locale.postformat(output);
+	    }
+
+	    var iso_string__abs = Math.abs;
+
+	    function iso_string__toISOString() {
+	        // inspired by https://github.com/dordille/moment-isoduration/blob/master/moment.isoduration.js
+	        var Y = iso_string__abs(this.years());
+	        var M = iso_string__abs(this.months());
+	        var D = iso_string__abs(this.days());
+	        var h = iso_string__abs(this.hours());
+	        var m = iso_string__abs(this.minutes());
+	        var s = iso_string__abs(this.seconds() + this.milliseconds() / 1000);
+	        var total = this.asSeconds();
+
+	        if (!total) {
+	            // this is the same as C#'s (Noda) and python (isodate)...
+	            // but not other JS (goog.date)
+	            return 'P0D';
+	        }
+
+	        return (total < 0 ? '-' : '') +
+	            'P' +
+	            (Y ? Y + 'Y' : '') +
+	            (M ? M + 'M' : '') +
+	            (D ? D + 'D' : '') +
+	            ((h || m || s) ? 'T' : '') +
+	            (h ? h + 'H' : '') +
+	            (m ? m + 'M' : '') +
+	            (s ? s + 'S' : '');
+	    }
+
+	    var duration_prototype__proto = Duration.prototype;
+
+	    duration_prototype__proto.abs            = duration_abs__abs;
+	    duration_prototype__proto.add            = duration_add_subtract__add;
+	    duration_prototype__proto.subtract       = duration_add_subtract__subtract;
+	    duration_prototype__proto.as             = as;
+	    duration_prototype__proto.asMilliseconds = asMilliseconds;
+	    duration_prototype__proto.asSeconds      = asSeconds;
+	    duration_prototype__proto.asMinutes      = asMinutes;
+	    duration_prototype__proto.asHours        = asHours;
+	    duration_prototype__proto.asDays         = asDays;
+	    duration_prototype__proto.asWeeks        = asWeeks;
+	    duration_prototype__proto.asMonths       = asMonths;
+	    duration_prototype__proto.asYears        = asYears;
+	    duration_prototype__proto.valueOf        = duration_as__valueOf;
+	    duration_prototype__proto._bubble        = bubble;
+	    duration_prototype__proto.get            = duration_get__get;
+	    duration_prototype__proto.milliseconds   = duration_get__milliseconds;
+	    duration_prototype__proto.seconds        = seconds;
+	    duration_prototype__proto.minutes        = minutes;
+	    duration_prototype__proto.hours          = hours;
+	    duration_prototype__proto.days           = days;
+	    duration_prototype__proto.weeks          = weeks;
+	    duration_prototype__proto.months         = months;
+	    duration_prototype__proto.years          = years;
+	    duration_prototype__proto.humanize       = humanize;
+	    duration_prototype__proto.toISOString    = iso_string__toISOString;
+	    duration_prototype__proto.toString       = iso_string__toISOString;
+	    duration_prototype__proto.toJSON         = iso_string__toISOString;
+	    duration_prototype__proto.locale         = locale;
+	    duration_prototype__proto.localeData     = localeData;
+
+	    // Deprecations
+	    duration_prototype__proto.toIsoString = deprecate('toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)', iso_string__toISOString);
+	    duration_prototype__proto.lang = lang;
+
+	    // Side effect imports
+
+	    addFormatToken('X', 0, 0, 'unix');
+	    addFormatToken('x', 0, 0, 'valueOf');
+
+	    // PARSING
+
+	    addRegexToken('x', matchSigned);
+	    addRegexToken('X', matchTimestamp);
+	    addParseToken('X', function (input, array, config) {
+	        config._d = new Date(parseFloat(input, 10) * 1000);
+	    });
+	    addParseToken('x', function (input, array, config) {
+	        config._d = new Date(toInt(input));
+	    });
+
+	    // Side effect imports
+
+
+	    utils_hooks__hooks.version = '2.10.2';
+
+	    setHookCallback(local__createLocal);
+
+	    utils_hooks__hooks.fn                    = momentPrototype;
+	    utils_hooks__hooks.min                   = min;
+	    utils_hooks__hooks.max                   = max;
+	    utils_hooks__hooks.utc                   = create_utc__createUTC;
+	    utils_hooks__hooks.unix                  = moment__createUnix;
+	    utils_hooks__hooks.months                = lists__listMonths;
+	    utils_hooks__hooks.isDate                = isDate;
+	    utils_hooks__hooks.locale                = locale_locales__getSetGlobalLocale;
+	    utils_hooks__hooks.invalid               = valid__createInvalid;
+	    utils_hooks__hooks.duration              = create__createDuration;
+	    utils_hooks__hooks.isMoment              = isMoment;
+	    utils_hooks__hooks.weekdays              = lists__listWeekdays;
+	    utils_hooks__hooks.parseZone             = moment__createInZone;
+	    utils_hooks__hooks.localeData            = locale_locales__getLocale;
+	    utils_hooks__hooks.isDuration            = isDuration;
+	    utils_hooks__hooks.monthsShort           = lists__listMonthsShort;
+	    utils_hooks__hooks.weekdaysMin           = lists__listWeekdaysMin;
+	    utils_hooks__hooks.defineLocale          = defineLocale;
+	    utils_hooks__hooks.weekdaysShort         = lists__listWeekdaysShort;
+	    utils_hooks__hooks.normalizeUnits        = normalizeUnits;
+	    utils_hooks__hooks.relativeTimeThreshold = duration_humanize__getSetRelativeTimeThreshold;
+
+	    var _moment = utils_hooks__hooks;
+
+	    return _moment;
+
+	}));
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(182)(module)))
+
+/***/ },
+/* 370 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var map = {
+		"./af": 371,
+		"./af.js": 371,
+		"./ar": 375,
+		"./ar-ma": 372,
+		"./ar-ma.js": 372,
+		"./ar-sa": 373,
+		"./ar-sa.js": 373,
+		"./ar-tn": 374,
+		"./ar-tn.js": 374,
+		"./ar.js": 375,
+		"./az": 376,
+		"./az.js": 376,
+		"./be": 377,
+		"./be.js": 377,
+		"./bg": 378,
+		"./bg.js": 378,
+		"./bn": 379,
+		"./bn.js": 379,
+		"./bo": 380,
+		"./bo.js": 380,
+		"./br": 381,
+		"./br.js": 381,
+		"./bs": 382,
+		"./bs.js": 382,
+		"./ca": 383,
+		"./ca.js": 383,
+		"./cs": 384,
+		"./cs.js": 384,
+		"./cv": 385,
+		"./cv.js": 385,
+		"./cy": 386,
+		"./cy.js": 386,
+		"./da": 387,
+		"./da.js": 387,
+		"./de": 389,
+		"./de-at": 388,
+		"./de-at.js": 388,
+		"./de.js": 389,
+		"./el": 390,
+		"./el.js": 390,
+		"./en-au": 391,
+		"./en-au.js": 391,
+		"./en-ca": 392,
+		"./en-ca.js": 392,
+		"./en-gb": 393,
+		"./en-gb.js": 393,
+		"./eo": 394,
+		"./eo.js": 394,
+		"./es": 395,
+		"./es.js": 395,
+		"./et": 396,
+		"./et.js": 396,
+		"./eu": 397,
+		"./eu.js": 397,
+		"./fa": 398,
+		"./fa.js": 398,
+		"./fi": 399,
+		"./fi.js": 399,
+		"./fo": 400,
+		"./fo.js": 400,
+		"./fr": 402,
+		"./fr-ca": 401,
+		"./fr-ca.js": 401,
+		"./fr.js": 402,
+		"./fy": 403,
+		"./fy.js": 403,
+		"./gl": 404,
+		"./gl.js": 404,
+		"./he": 405,
+		"./he.js": 405,
+		"./hi": 406,
+		"./hi.js": 406,
+		"./hr": 407,
+		"./hr.js": 407,
+		"./hu": 408,
+		"./hu.js": 408,
+		"./hy-am": 409,
+		"./hy-am.js": 409,
+		"./id": 410,
+		"./id.js": 410,
+		"./is": 411,
+		"./is.js": 411,
+		"./it": 412,
+		"./it.js": 412,
+		"./ja": 413,
+		"./ja.js": 413,
+		"./ka": 414,
+		"./ka.js": 414,
+		"./km": 415,
+		"./km.js": 415,
+		"./ko": 416,
+		"./ko.js": 416,
+		"./lb": 417,
+		"./lb.js": 417,
+		"./lt": 418,
+		"./lt.js": 418,
+		"./lv": 419,
+		"./lv.js": 419,
+		"./mk": 420,
+		"./mk.js": 420,
+		"./ml": 421,
+		"./ml.js": 421,
+		"./mr": 422,
+		"./mr.js": 422,
+		"./ms-my": 423,
+		"./ms-my.js": 423,
+		"./my": 424,
+		"./my.js": 424,
+		"./nb": 425,
+		"./nb.js": 425,
+		"./ne": 426,
+		"./ne.js": 426,
+		"./nl": 427,
+		"./nl.js": 427,
+		"./nn": 428,
+		"./nn.js": 428,
+		"./pl": 429,
+		"./pl.js": 429,
+		"./pt": 431,
+		"./pt-br": 430,
+		"./pt-br.js": 430,
+		"./pt.js": 431,
+		"./ro": 432,
+		"./ro.js": 432,
+		"./ru": 433,
+		"./ru.js": 433,
+		"./sk": 434,
+		"./sk.js": 434,
+		"./sl": 435,
+		"./sl.js": 435,
+		"./sq": 436,
+		"./sq.js": 436,
+		"./sr": 438,
+		"./sr-cyrl": 437,
+		"./sr-cyrl.js": 437,
+		"./sr.js": 438,
+		"./sv": 439,
+		"./sv.js": 439,
+		"./ta": 440,
+		"./ta.js": 440,
+		"./th": 441,
+		"./th.js": 441,
+		"./tl-ph": 442,
+		"./tl-ph.js": 442,
+		"./tr": 443,
+		"./tr.js": 443,
+		"./tzm": 445,
+		"./tzm-latn": 444,
+		"./tzm-latn.js": 444,
+		"./tzm.js": 445,
+		"./uk": 446,
+		"./uk.js": 446,
+		"./uz": 447,
+		"./uz.js": 447,
+		"./vi": 448,
+		"./vi.js": 448,
+		"./zh-cn": 449,
+		"./zh-cn.js": 449,
+		"./zh-tw": 450,
+		"./zh-tw.js": 450
+	};
+	function webpackContext(req) {
+		return __webpack_require__(webpackContextResolve(req));
+	};
+	function webpackContextResolve(req) {
+		return map[req] || (function() { throw new Error("Cannot find module '" + req + "'.") }());
+	};
+	webpackContext.keys = function webpackContextKeys() {
+		return Object.keys(map);
+	};
+	webpackContext.resolve = webpackContextResolve;
+	module.exports = webpackContext;
+	webpackContext.id = 370;
+
+
+/***/ },
+/* 371 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : afrikaans (af)
+	//! author : Werner Mollentze : https://github.com/wernerm
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var af = moment.defineLocale('af', {
+	        months : 'Januarie_Februarie_Maart_April_Mei_Junie_Julie_Augustus_September_Oktober_November_Desember'.split('_'),
+	        monthsShort : 'Jan_Feb_Mar_Apr_Mei_Jun_Jul_Aug_Sep_Okt_Nov_Des'.split('_'),
+	        weekdays : 'Sondag_Maandag_Dinsdag_Woensdag_Donderdag_Vrydag_Saterdag'.split('_'),
+	        weekdaysShort : 'Son_Maa_Din_Woe_Don_Vry_Sat'.split('_'),
+	        weekdaysMin : 'So_Ma_Di_Wo_Do_Vr_Sa'.split('_'),
+	        meridiemParse: /vm|nm/i,
+	        isPM : function (input) {
+	            return /^nm$/i.test(input);
+	        },
+	        meridiem : function (hours, minutes, isLower) {
+	            if (hours < 12) {
+	                return isLower ? 'vm' : 'VM';
+	            } else {
+	                return isLower ? 'nm' : 'NM';
+	            }
+	        },
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[Vandag om] LT',
+	            nextDay : '[Môre om] LT',
+	            nextWeek : 'dddd [om] LT',
+	            lastDay : '[Gister om] LT',
+	            lastWeek : '[Laas] dddd [om] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'oor %s',
+	            past : '%s gelede',
+	            s : '\'n paar sekondes',
+	            m : '\'n minuut',
+	            mm : '%d minute',
+	            h : '\'n uur',
+	            hh : '%d ure',
+	            d : '\'n dag',
+	            dd : '%d dae',
+	            M : '\'n maand',
+	            MM : '%d maande',
+	            y : '\'n jaar',
+	            yy : '%d jaar'
+	        },
+	        ordinalParse: /\d{1,2}(ste|de)/,
+	        ordinal : function (number) {
+	            return number + ((number === 1 || number === 8 || number >= 20) ? 'ste' : 'de'); // Thanks to Joris Röling : https://github.com/jjupiter
+	        },
+	        week : {
+	            dow : 1, // Maandag is die eerste dag van die week.
+	            doy : 4  // Die week wat die 4de Januarie bevat is die eerste week van die jaar.
+	        }
+	    });
+
+	    return af;
+
+	}));
+
+/***/ },
+/* 372 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Moroccan Arabic (ar-ma)
+	//! author : ElFadili Yassine : https://github.com/ElFadiliY
+	//! author : Abdel Said : https://github.com/abdelsaid
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var ar_ma = moment.defineLocale('ar-ma', {
+	        months : 'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split('_'),
+	        monthsShort : 'يناير_فبراير_مارس_أبريل_ماي_يونيو_يوليوز_غشت_شتنبر_أكتوبر_نونبر_دجنبر'.split('_'),
+	        weekdays : 'الأحد_الإتنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
+	        weekdaysShort : 'احد_اتنين_ثلاثاء_اربعاء_خميس_جمعة_سبت'.split('_'),
+	        weekdaysMin : 'ح_ن_ث_ر_خ_ج_س'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[اليوم على الساعة] LT',
+	            nextDay: '[غدا على الساعة] LT',
+	            nextWeek: 'dddd [على الساعة] LT',
+	            lastDay: '[أمس على الساعة] LT',
+	            lastWeek: 'dddd [على الساعة] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'في %s',
+	            past : 'منذ %s',
+	            s : 'ثوان',
+	            m : 'دقيقة',
+	            mm : '%d دقائق',
+	            h : 'ساعة',
+	            hh : '%d ساعات',
+	            d : 'يوم',
+	            dd : '%d أيام',
+	            M : 'شهر',
+	            MM : '%d أشهر',
+	            y : 'سنة',
+	            yy : '%d سنوات'
+	        },
+	        week : {
+	            dow : 6, // Saturday is the first day of the week.
+	            doy : 12  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return ar_ma;
+
+	}));
+
+/***/ },
+/* 373 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Arabic Saudi Arabia (ar-sa)
+	//! author : Suhail Alkowaileet : https://github.com/xsoh
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var symbolMap = {
+	        '1': '١',
+	        '2': '٢',
+	        '3': '٣',
+	        '4': '٤',
+	        '5': '٥',
+	        '6': '٦',
+	        '7': '٧',
+	        '8': '٨',
+	        '9': '٩',
+	        '0': '٠'
+	    }, numberMap = {
+	        '١': '1',
+	        '٢': '2',
+	        '٣': '3',
+	        '٤': '4',
+	        '٥': '5',
+	        '٦': '6',
+	        '٧': '7',
+	        '٨': '8',
+	        '٩': '9',
+	        '٠': '0'
+	    };
+
+	    var ar_sa = moment.defineLocale('ar-sa', {
+	        months : 'يناير_فبراير_مارس_أبريل_مايو_يونيو_يوليو_أغسطس_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split('_'),
+	        monthsShort : 'يناير_فبراير_مارس_أبريل_مايو_يونيو_يوليو_أغسطس_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split('_'),
+	        weekdays : 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
+	        weekdaysShort : 'أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت'.split('_'),
+	        weekdaysMin : 'ح_ن_ث_ر_خ_ج_س'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'HH:mm:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        meridiemParse: /ص|م/,
+	        isPM : function (input) {
+	            return 'م' === input;
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 12) {
+	                return 'ص';
+	            } else {
+	                return 'م';
+	            }
+	        },
+	        calendar : {
+	            sameDay: '[اليوم على الساعة] LT',
+	            nextDay: '[غدا على الساعة] LT',
+	            nextWeek: 'dddd [على الساعة] LT',
+	            lastDay: '[أمس على الساعة] LT',
+	            lastWeek: 'dddd [على الساعة] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'في %s',
+	            past : 'منذ %s',
+	            s : 'ثوان',
+	            m : 'دقيقة',
+	            mm : '%d دقائق',
+	            h : 'ساعة',
+	            hh : '%d ساعات',
+	            d : 'يوم',
+	            dd : '%d أيام',
+	            M : 'شهر',
+	            MM : '%d أشهر',
+	            y : 'سنة',
+	            yy : '%d سنوات'
+	        },
+	        preparse: function (string) {
+	            return string.replace(/[١٢٣٤٥٦٧٨٩٠]/g, function (match) {
+	                return numberMap[match];
+	            }).replace(/،/g, ',');
+	        },
+	        postformat: function (string) {
+	            return string.replace(/\d/g, function (match) {
+	                return symbolMap[match];
+	            }).replace(/,/g, '،');
+	        },
+	        week : {
+	            dow : 6, // Saturday is the first day of the week.
+	            doy : 12  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return ar_sa;
+
+	}));
+
+/***/ },
+/* 374 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale  : Tunisian Arabic (ar-tn)
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var ar_tn = moment.defineLocale('ar-tn', {
+	        months: 'جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split('_'),
+	        monthsShort: 'جانفي_فيفري_مارس_أفريل_ماي_جوان_جويلية_أوت_سبتمبر_أكتوبر_نوفمبر_ديسمبر'.split('_'),
+	        weekdays: 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
+	        weekdaysShort: 'أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت'.split('_'),
+	        weekdaysMin: 'ح_ن_ث_ر_خ_ج_س'.split('_'),
+	        longDateFormat: {
+	            LT: 'HH:mm',
+	            LTS: 'LT:ss',
+	            L: 'DD/MM/YYYY',
+	            LL: 'D MMMM YYYY',
+	            LLL: 'D MMMM YYYY LT',
+	            LLLL: 'dddd D MMMM YYYY LT'
+	        },
+	        calendar: {
+	            sameDay: '[اليوم على الساعة] LT',
+	            nextDay: '[غدا على الساعة] LT',
+	            nextWeek: 'dddd [على الساعة] LT',
+	            lastDay: '[أمس على الساعة] LT',
+	            lastWeek: 'dddd [على الساعة] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime: {
+	            future: 'في %s',
+	            past: 'منذ %s',
+	            s: 'ثوان',
+	            m: 'دقيقة',
+	            mm: '%d دقائق',
+	            h: 'ساعة',
+	            hh: '%d ساعات',
+	            d: 'يوم',
+	            dd: '%d أيام',
+	            M: 'شهر',
+	            MM: '%d أشهر',
+	            y: 'سنة',
+	            yy: '%d سنوات'
+	        },
+	        week: {
+	            dow: 1, // Monday is the first day of the week.
+	            doy: 4 // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return ar_tn;
+
+	}));
+
+/***/ },
+/* 375 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! Locale: Arabic (ar)
+	//! Author: Abdel Said: https://github.com/abdelsaid
+	//! Changes in months, weekdays: Ahmed Elkhatib
+	//! Native plural forms: forabi https://github.com/forabi
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var symbolMap = {
+	        '1': '١',
+	        '2': '٢',
+	        '3': '٣',
+	        '4': '٤',
+	        '5': '٥',
+	        '6': '٦',
+	        '7': '٧',
+	        '8': '٨',
+	        '9': '٩',
+	        '0': '٠'
+	    }, numberMap = {
+	        '١': '1',
+	        '٢': '2',
+	        '٣': '3',
+	        '٤': '4',
+	        '٥': '5',
+	        '٦': '6',
+	        '٧': '7',
+	        '٨': '8',
+	        '٩': '9',
+	        '٠': '0'
+	    }, pluralForm = function (n) {
+	        return n === 0 ? 0 : n === 1 ? 1 : n === 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5;
+	    }, plurals = {
+	        s : ['أقل من ثانية', 'ثانية واحدة', ['ثانيتان', 'ثانيتين'], '%d ثوان', '%d ثانية', '%d ثانية'],
+	        m : ['أقل من دقيقة', 'دقيقة واحدة', ['دقيقتان', 'دقيقتين'], '%d دقائق', '%d دقيقة', '%d دقيقة'],
+	        h : ['أقل من ساعة', 'ساعة واحدة', ['ساعتان', 'ساعتين'], '%d ساعات', '%d ساعة', '%d ساعة'],
+	        d : ['أقل من يوم', 'يوم واحد', ['يومان', 'يومين'], '%d أيام', '%d يومًا', '%d يوم'],
+	        M : ['أقل من شهر', 'شهر واحد', ['شهران', 'شهرين'], '%d أشهر', '%d شهرا', '%d شهر'],
+	        y : ['أقل من عام', 'عام واحد', ['عامان', 'عامين'], '%d أعوام', '%d عامًا', '%d عام']
+	    }, pluralize = function (u) {
+	        return function (number, withoutSuffix, string, isFuture) {
+	            var f = pluralForm(number),
+	                str = plurals[u][pluralForm(number)];
+	            if (f === 2) {
+	                str = str[withoutSuffix ? 0 : 1];
+	            }
+	            return str.replace(/%d/i, number);
+	        };
+	    }, months = [
+	        'كانون الثاني يناير',
+	        'شباط فبراير',
+	        'آذار مارس',
+	        'نيسان أبريل',
+	        'أيار مايو',
+	        'حزيران يونيو',
+	        'تموز يوليو',
+	        'آب أغسطس',
+	        'أيلول سبتمبر',
+	        'تشرين الأول أكتوبر',
+	        'تشرين الثاني نوفمبر',
+	        'كانون الأول ديسمبر'
+	    ];
+
+	    var ar = moment.defineLocale('ar', {
+	        months : months,
+	        monthsShort : months,
+	        weekdays : 'الأحد_الإثنين_الثلاثاء_الأربعاء_الخميس_الجمعة_السبت'.split('_'),
+	        weekdaysShort : 'أحد_إثنين_ثلاثاء_أربعاء_خميس_جمعة_سبت'.split('_'),
+	        weekdaysMin : 'ح_ن_ث_ر_خ_ج_س'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'HH:mm:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        meridiemParse: /ص|م/,
+	        isPM : function (input) {
+	            return 'م' === input;
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 12) {
+	                return 'ص';
+	            } else {
+	                return 'م';
+	            }
+	        },
+	        calendar : {
+	            sameDay: '[اليوم عند الساعة] LT',
+	            nextDay: '[غدًا عند الساعة] LT',
+	            nextWeek: 'dddd [عند الساعة] LT',
+	            lastDay: '[أمس عند الساعة] LT',
+	            lastWeek: 'dddd [عند الساعة] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'بعد %s',
+	            past : 'منذ %s',
+	            s : pluralize('s'),
+	            m : pluralize('m'),
+	            mm : pluralize('m'),
+	            h : pluralize('h'),
+	            hh : pluralize('h'),
+	            d : pluralize('d'),
+	            dd : pluralize('d'),
+	            M : pluralize('M'),
+	            MM : pluralize('M'),
+	            y : pluralize('y'),
+	            yy : pluralize('y')
+	        },
+	        preparse: function (string) {
+	            return string.replace(/[١٢٣٤٥٦٧٨٩٠]/g, function (match) {
+	                return numberMap[match];
+	            }).replace(/،/g, ',');
+	        },
+	        postformat: function (string) {
+	            return string.replace(/\d/g, function (match) {
+	                return symbolMap[match];
+	            }).replace(/,/g, '،');
+	        },
+	        week : {
+	            dow : 6, // Saturday is the first day of the week.
+	            doy : 12  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return ar;
+
+	}));
+
+/***/ },
+/* 376 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : azerbaijani (az)
+	//! author : topchiyev : https://github.com/topchiyev
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var suffixes = {
+	        1: '-inci',
+	        5: '-inci',
+	        8: '-inci',
+	        70: '-inci',
+	        80: '-inci',
+	        2: '-nci',
+	        7: '-nci',
+	        20: '-nci',
+	        50: '-nci',
+	        3: '-üncü',
+	        4: '-üncü',
+	        100: '-üncü',
+	        6: '-ncı',
+	        9: '-uncu',
+	        10: '-uncu',
+	        30: '-uncu',
+	        60: '-ıncı',
+	        90: '-ıncı'
+	    };
+
+	    var az = moment.defineLocale('az', {
+	        months : 'yanvar_fevral_mart_aprel_may_iyun_iyul_avqust_sentyabr_oktyabr_noyabr_dekabr'.split('_'),
+	        monthsShort : 'yan_fev_mar_apr_may_iyn_iyl_avq_sen_okt_noy_dek'.split('_'),
+	        weekdays : 'Bazar_Bazar ertəsi_Çərşənbə axşamı_Çərşənbə_Cümə axşamı_Cümə_Şənbə'.split('_'),
+	        weekdaysShort : 'Baz_BzE_ÇAx_Çər_CAx_Cüm_Şən'.split('_'),
+	        weekdaysMin : 'Bz_BE_ÇA_Çə_CA_Cü_Şə'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[bugün saat] LT',
+	            nextDay : '[sabah saat] LT',
+	            nextWeek : '[gələn həftə] dddd [saat] LT',
+	            lastDay : '[dünən] LT',
+	            lastWeek : '[keçən həftə] dddd [saat] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s sonra',
+	            past : '%s əvvəl',
+	            s : 'birneçə saniyyə',
+	            m : 'bir dəqiqə',
+	            mm : '%d dəqiqə',
+	            h : 'bir saat',
+	            hh : '%d saat',
+	            d : 'bir gün',
+	            dd : '%d gün',
+	            M : 'bir ay',
+	            MM : '%d ay',
+	            y : 'bir il',
+	            yy : '%d il'
+	        },
+	        meridiemParse: /gecə|səhər|gündüz|axşam/,
+	        isPM : function (input) {
+	            return /^(gündüz|axşam)$/.test(input);
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 4) {
+	                return 'gecə';
+	            } else if (hour < 12) {
+	                return 'səhər';
+	            } else if (hour < 17) {
+	                return 'gündüz';
+	            } else {
+	                return 'axşam';
+	            }
+	        },
+	        ordinalParse: /\d{1,2}-(ıncı|inci|nci|üncü|ncı|uncu)/,
+	        ordinal : function (number) {
+	            if (number === 0) {  // special case for zero
+	                return number + '-ıncı';
+	            }
+	            var a = number % 10,
+	                b = number % 100 - a,
+	                c = number >= 100 ? 100 : null;
+	            return number + (suffixes[a] || suffixes[b] || suffixes[c]);
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return az;
+
+	}));
+
+/***/ },
+/* 377 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : belarusian (be)
+	//! author : Dmitry Demidov : https://github.com/demidov91
+	//! author: Praleska: http://praleska.pro/
+	//! Author : Menelion Elensúle : https://github.com/Oire
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function plural(word, num) {
+	        var forms = word.split('_');
+	        return num % 10 === 1 && num % 100 !== 11 ? forms[0] : (num % 10 >= 2 && num % 10 <= 4 && (num % 100 < 10 || num % 100 >= 20) ? forms[1] : forms[2]);
+	    }
+	    function relativeTimeWithPlural(number, withoutSuffix, key) {
+	        var format = {
+	            'mm': withoutSuffix ? 'хвіліна_хвіліны_хвілін' : 'хвіліну_хвіліны_хвілін',
+	            'hh': withoutSuffix ? 'гадзіна_гадзіны_гадзін' : 'гадзіну_гадзіны_гадзін',
+	            'dd': 'дзень_дні_дзён',
+	            'MM': 'месяц_месяцы_месяцаў',
+	            'yy': 'год_гады_гадоў'
+	        };
+	        if (key === 'm') {
+	            return withoutSuffix ? 'хвіліна' : 'хвіліну';
+	        }
+	        else if (key === 'h') {
+	            return withoutSuffix ? 'гадзіна' : 'гадзіну';
+	        }
+	        else {
+	            return number + ' ' + plural(format[key], +number);
+	        }
+	    }
+	    function monthsCaseReplace(m, format) {
+	        var months = {
+	            'nominative': 'студзень_люты_сакавік_красавік_травень_чэрвень_ліпень_жнівень_верасень_кастрычнік_лістапад_снежань'.split('_'),
+	            'accusative': 'студзеня_лютага_сакавіка_красавіка_траўня_чэрвеня_ліпеня_жніўня_верасня_кастрычніка_лістапада_снежня'.split('_')
+	        },
+	        nounCase = (/D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/).test(format) ?
+	            'accusative' :
+	            'nominative';
+	        return months[nounCase][m.month()];
+	    }
+	    function weekdaysCaseReplace(m, format) {
+	        var weekdays = {
+	            'nominative': 'нядзеля_панядзелак_аўторак_серада_чацвер_пятніца_субота'.split('_'),
+	            'accusative': 'нядзелю_панядзелак_аўторак_сераду_чацвер_пятніцу_суботу'.split('_')
+	        },
+	        nounCase = (/\[ ?[Вв] ?(?:мінулую|наступную)? ?\] ?dddd/).test(format) ?
+	            'accusative' :
+	            'nominative';
+	        return weekdays[nounCase][m.day()];
+	    }
+
+	    var be = moment.defineLocale('be', {
+	        months : monthsCaseReplace,
+	        monthsShort : 'студ_лют_сак_крас_трав_чэрв_ліп_жнів_вер_каст_ліст_снеж'.split('_'),
+	        weekdays : weekdaysCaseReplace,
+	        weekdaysShort : 'нд_пн_ат_ср_чц_пт_сб'.split('_'),
+	        weekdaysMin : 'нд_пн_ат_ср_чц_пт_сб'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D MMMM YYYY г.',
+	            LLL : 'D MMMM YYYY г., LT',
+	            LLLL : 'dddd, D MMMM YYYY г., LT'
+	        },
+	        calendar : {
+	            sameDay: '[Сёння ў] LT',
+	            nextDay: '[Заўтра ў] LT',
+	            lastDay: '[Учора ў] LT',
+	            nextWeek: function () {
+	                return '[У] dddd [ў] LT';
+	            },
+	            lastWeek: function () {
+	                switch (this.day()) {
+	                case 0:
+	                case 3:
+	                case 5:
+	                case 6:
+	                    return '[У мінулую] dddd [ў] LT';
+	                case 1:
+	                case 2:
+	                case 4:
+	                    return '[У мінулы] dddd [ў] LT';
+	                }
+	            },
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'праз %s',
+	            past : '%s таму',
+	            s : 'некалькі секунд',
+	            m : relativeTimeWithPlural,
+	            mm : relativeTimeWithPlural,
+	            h : relativeTimeWithPlural,
+	            hh : relativeTimeWithPlural,
+	            d : 'дзень',
+	            dd : relativeTimeWithPlural,
+	            M : 'месяц',
+	            MM : relativeTimeWithPlural,
+	            y : 'год',
+	            yy : relativeTimeWithPlural
+	        },
+	        meridiemParse: /ночы|раніцы|дня|вечара/,
+	        isPM : function (input) {
+	            return /^(дня|вечара)$/.test(input);
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 4) {
+	                return 'ночы';
+	            } else if (hour < 12) {
+	                return 'раніцы';
+	            } else if (hour < 17) {
+	                return 'дня';
+	            } else {
+	                return 'вечара';
+	            }
+	        },
+	        ordinalParse: /\d{1,2}-(і|ы|га)/,
+	        ordinal: function (number, period) {
+	            switch (period) {
+	            case 'M':
+	            case 'd':
+	            case 'DDD':
+	            case 'w':
+	            case 'W':
+	                return (number % 10 === 2 || number % 10 === 3) && (number % 100 !== 12 && number % 100 !== 13) ? number + '-і' : number + '-ы';
+	            case 'D':
+	                return number + '-га';
+	            default:
+	                return number;
+	            }
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return be;
+
+	}));
+
+/***/ },
+/* 378 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : bulgarian (bg)
+	//! author : Krasen Borisov : https://github.com/kraz
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var bg = moment.defineLocale('bg', {
+	        months : 'януари_февруари_март_април_май_юни_юли_август_септември_октомври_ноември_декември'.split('_'),
+	        monthsShort : 'янр_фев_мар_апр_май_юни_юли_авг_сеп_окт_ное_дек'.split('_'),
+	        weekdays : 'неделя_понеделник_вторник_сряда_четвъртък_петък_събота'.split('_'),
+	        weekdaysShort : 'нед_пон_вто_сря_чет_пет_съб'.split('_'),
+	        weekdaysMin : 'нд_пн_вт_ср_чт_пт_сб'.split('_'),
+	        longDateFormat : {
+	            LT : 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'D.MM.YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[Днес в] LT',
+	            nextDay : '[Утре в] LT',
+	            nextWeek : 'dddd [в] LT',
+	            lastDay : '[Вчера в] LT',
+	            lastWeek : function () {
+	                switch (this.day()) {
+	                case 0:
+	                case 3:
+	                case 6:
+	                    return '[В изминалата] dddd [в] LT';
+	                case 1:
+	                case 2:
+	                case 4:
+	                case 5:
+	                    return '[В изминалия] dddd [в] LT';
+	                }
+	            },
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'след %s',
+	            past : 'преди %s',
+	            s : 'няколко секунди',
+	            m : 'минута',
+	            mm : '%d минути',
+	            h : 'час',
+	            hh : '%d часа',
+	            d : 'ден',
+	            dd : '%d дни',
+	            M : 'месец',
+	            MM : '%d месеца',
+	            y : 'година',
+	            yy : '%d години'
+	        },
+	        ordinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
+	        ordinal : function (number) {
+	            var lastDigit = number % 10,
+	                last2Digits = number % 100;
+	            if (number === 0) {
+	                return number + '-ев';
+	            } else if (last2Digits === 0) {
+	                return number + '-ен';
+	            } else if (last2Digits > 10 && last2Digits < 20) {
+	                return number + '-ти';
+	            } else if (lastDigit === 1) {
+	                return number + '-ви';
+	            } else if (lastDigit === 2) {
+	                return number + '-ри';
+	            } else if (lastDigit === 7 || lastDigit === 8) {
+	                return number + '-ми';
+	            } else {
+	                return number + '-ти';
+	            }
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return bg;
+
+	}));
+
+/***/ },
+/* 379 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Bengali (bn)
+	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var symbolMap = {
+	        '1': '১',
+	        '2': '২',
+	        '3': '৩',
+	        '4': '৪',
+	        '5': '৫',
+	        '6': '৬',
+	        '7': '৭',
+	        '8': '৮',
+	        '9': '৯',
+	        '0': '০'
+	    },
+	    numberMap = {
+	        '১': '1',
+	        '২': '2',
+	        '৩': '3',
+	        '৪': '4',
+	        '৫': '5',
+	        '৬': '6',
+	        '৭': '7',
+	        '৮': '8',
+	        '৯': '9',
+	        '০': '0'
+	    };
+
+	    var bn = moment.defineLocale('bn', {
+	        months : 'জানুয়ারী_ফেবুয়ারী_মার্চ_এপ্রিল_মে_জুন_জুলাই_অগাস্ট_সেপ্টেম্বর_অক্টোবর_নভেম্বর_ডিসেম্বর'.split('_'),
+	        monthsShort : 'জানু_ফেব_মার্চ_এপর_মে_জুন_জুল_অগ_সেপ্ট_অক্টো_নভ_ডিসেম্'.split('_'),
+	        weekdays : 'রবিবার_সোমবার_মঙ্গলবার_বুধবার_বৃহস্পত্তিবার_শুক্রুবার_শনিবার'.split('_'),
+	        weekdaysShort : 'রবি_সোম_মঙ্গল_বুধ_বৃহস্পত্তি_শুক্রু_শনি'.split('_'),
+	        weekdaysMin : 'রব_সম_মঙ্গ_বু_ব্রিহ_শু_শনি'.split('_'),
+	        longDateFormat : {
+	            LT : 'A h:mm সময়',
+	            LTS : 'A h:mm:ss সময়',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY, LT',
+	            LLLL : 'dddd, D MMMM YYYY, LT'
+	        },
+	        calendar : {
+	            sameDay : '[আজ] LT',
+	            nextDay : '[আগামীকাল] LT',
+	            nextWeek : 'dddd, LT',
+	            lastDay : '[গতকাল] LT',
+	            lastWeek : '[গত] dddd, LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s পরে',
+	            past : '%s আগে',
+	            s : 'কএক সেকেন্ড',
+	            m : 'এক মিনিট',
+	            mm : '%d মিনিট',
+	            h : 'এক ঘন্টা',
+	            hh : '%d ঘন্টা',
+	            d : 'এক দিন',
+	            dd : '%d দিন',
+	            M : 'এক মাস',
+	            MM : '%d মাস',
+	            y : 'এক বছর',
+	            yy : '%d বছর'
+	        },
+	        preparse: function (string) {
+	            return string.replace(/[১২৩৪৫৬৭৮৯০]/g, function (match) {
+	                return numberMap[match];
+	            });
+	        },
+	        postformat: function (string) {
+	            return string.replace(/\d/g, function (match) {
+	                return symbolMap[match];
+	            });
+	        },
+	        meridiemParse: /রাত|শকাল|দুপুর|বিকেল|রাত/,
+	        isPM: function (input) {
+	            return /^(দুপুর|বিকেল|রাত)$/.test(input);
+	        },
+	        //Bengali is a vast language its spoken
+	        //in different forms in various parts of the world.
+	        //I have just generalized with most common one used
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 4) {
+	                return 'রাত';
+	            } else if (hour < 10) {
+	                return 'শকাল';
+	            } else if (hour < 17) {
+	                return 'দুপুর';
+	            } else if (hour < 20) {
+	                return 'বিকেল';
+	            } else {
+	                return 'রাত';
+	            }
+	        },
+	        week : {
+	            dow : 0, // Sunday is the first day of the week.
+	            doy : 6  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return bn;
+
+	}));
+
+/***/ },
+/* 380 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : tibetan (bo)
+	//! author : Thupten N. Chakrishar : https://github.com/vajradog
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var symbolMap = {
+	        '1': '༡',
+	        '2': '༢',
+	        '3': '༣',
+	        '4': '༤',
+	        '5': '༥',
+	        '6': '༦',
+	        '7': '༧',
+	        '8': '༨',
+	        '9': '༩',
+	        '0': '༠'
+	    },
+	    numberMap = {
+	        '༡': '1',
+	        '༢': '2',
+	        '༣': '3',
+	        '༤': '4',
+	        '༥': '5',
+	        '༦': '6',
+	        '༧': '7',
+	        '༨': '8',
+	        '༩': '9',
+	        '༠': '0'
+	    };
+
+	    var bo = moment.defineLocale('bo', {
+	        months : 'ཟླ་བ་དང་པོ_ཟླ་བ་གཉིས་པ_ཟླ་བ་གསུམ་པ_ཟླ་བ་བཞི་པ_ཟླ་བ་ལྔ་པ_ཟླ་བ་དྲུག་པ_ཟླ་བ་བདུན་པ_ཟླ་བ་བརྒྱད་པ_ཟླ་བ་དགུ་པ_ཟླ་བ་བཅུ་པ_ཟླ་བ་བཅུ་གཅིག་པ_ཟླ་བ་བཅུ་གཉིས་པ'.split('_'),
+	        monthsShort : 'ཟླ་བ་དང་པོ_ཟླ་བ་གཉིས་པ_ཟླ་བ་གསུམ་པ_ཟླ་བ་བཞི་པ_ཟླ་བ་ལྔ་པ_ཟླ་བ་དྲུག་པ_ཟླ་བ་བདུན་པ_ཟླ་བ་བརྒྱད་པ_ཟླ་བ་དགུ་པ_ཟླ་བ་བཅུ་པ_ཟླ་བ་བཅུ་གཅིག་པ_ཟླ་བ་བཅུ་གཉིས་པ'.split('_'),
+	        weekdays : 'གཟའ་ཉི་མ་_གཟའ་ཟླ་བ་_གཟའ་མིག་དམར་_གཟའ་ལྷག་པ་_གཟའ་ཕུར་བུ_གཟའ་པ་སངས་_གཟའ་སྤེན་པ་'.split('_'),
+	        weekdaysShort : 'ཉི་མ་_ཟླ་བ་_མིག་དམར་_ལྷག་པ་_ཕུར་བུ_པ་སངས་_སྤེན་པ་'.split('_'),
+	        weekdaysMin : 'ཉི་མ་_ཟླ་བ་_མིག་དམར་_ལྷག་པ་_ཕུར་བུ_པ་སངས་_སྤེན་པ་'.split('_'),
+	        longDateFormat : {
+	            LT : 'A h:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY, LT',
+	            LLLL : 'dddd, D MMMM YYYY, LT'
+	        },
+	        calendar : {
+	            sameDay : '[དི་རིང] LT',
+	            nextDay : '[སང་ཉིན] LT',
+	            nextWeek : '[བདུན་ཕྲག་རྗེས་མ], LT',
+	            lastDay : '[ཁ་སང] LT',
+	            lastWeek : '[བདུན་ཕྲག་མཐའ་མ] dddd, LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s ལ་',
+	            past : '%s སྔན་ལ',
+	            s : 'ལམ་སང',
+	            m : 'སྐར་མ་གཅིག',
+	            mm : '%d སྐར་མ',
+	            h : 'ཆུ་ཚོད་གཅིག',
+	            hh : '%d ཆུ་ཚོད',
+	            d : 'ཉིན་གཅིག',
+	            dd : '%d ཉིན་',
+	            M : 'ཟླ་བ་གཅིག',
+	            MM : '%d ཟླ་བ',
+	            y : 'ལོ་གཅིག',
+	            yy : '%d ལོ'
+	        },
+	        preparse: function (string) {
+	            return string.replace(/[༡༢༣༤༥༦༧༨༩༠]/g, function (match) {
+	                return numberMap[match];
+	            });
+	        },
+	        postformat: function (string) {
+	            return string.replace(/\d/g, function (match) {
+	                return symbolMap[match];
+	            });
+	        },
+	        meridiemParse: /མཚན་མོ|ཞོགས་ཀས|ཉིན་གུང|དགོང་དག|མཚན་མོ/,
+	        isPM: function (input) {
+	            return /^(ཉིན་གུང|དགོང་དག|མཚན་མོ)$/.test(input);
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 4) {
+	                return 'མཚན་མོ';
+	            } else if (hour < 10) {
+	                return 'ཞོགས་ཀས';
+	            } else if (hour < 17) {
+	                return 'ཉིན་གུང';
+	            } else if (hour < 20) {
+	                return 'དགོང་དག';
+	            } else {
+	                return 'མཚན་མོ';
+	            }
+	        },
+	        week : {
+	            dow : 0, // Sunday is the first day of the week.
+	            doy : 6  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return bo;
+
+	}));
+
+/***/ },
+/* 381 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : breton (br)
+	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function relativeTimeWithMutation(number, withoutSuffix, key) {
+	        var format = {
+	            'mm': 'munutenn',
+	            'MM': 'miz',
+	            'dd': 'devezh'
+	        };
+	        return number + ' ' + mutation(format[key], number);
+	    }
+	    function specialMutationForYears(number) {
+	        switch (lastNumber(number)) {
+	        case 1:
+	        case 3:
+	        case 4:
+	        case 5:
+	        case 9:
+	            return number + ' bloaz';
+	        default:
+	            return number + ' vloaz';
+	        }
+	    }
+	    function lastNumber(number) {
+	        if (number > 9) {
+	            return lastNumber(number % 10);
+	        }
+	        return number;
+	    }
+	    function mutation(text, number) {
+	        if (number === 2) {
+	            return softMutation(text);
+	        }
+	        return text;
+	    }
+	    function softMutation(text) {
+	        var mutationTable = {
+	            'm': 'v',
+	            'b': 'v',
+	            'd': 'z'
+	        };
+	        if (mutationTable[text.charAt(0)] === undefined) {
+	            return text;
+	        }
+	        return mutationTable[text.charAt(0)] + text.substring(1);
+	    }
+
+	    var br = moment.defineLocale('br', {
+	        months : 'Genver_C\'hwevrer_Meurzh_Ebrel_Mae_Mezheven_Gouere_Eost_Gwengolo_Here_Du_Kerzu'.split('_'),
+	        monthsShort : 'Gen_C\'hwe_Meu_Ebr_Mae_Eve_Gou_Eos_Gwe_Her_Du_Ker'.split('_'),
+	        weekdays : 'Sul_Lun_Meurzh_Merc\'her_Yaou_Gwener_Sadorn'.split('_'),
+	        weekdaysShort : 'Sul_Lun_Meu_Mer_Yao_Gwe_Sad'.split('_'),
+	        weekdaysMin : 'Su_Lu_Me_Mer_Ya_Gw_Sa'.split('_'),
+	        longDateFormat : {
+	            LT : 'h[e]mm A',
+	            LTS : 'h[e]mm:ss A',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D [a viz] MMMM YYYY',
+	            LLL : 'D [a viz] MMMM YYYY LT',
+	            LLLL : 'dddd, D [a viz] MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[Hiziv da] LT',
+	            nextDay : '[Warc\'hoazh da] LT',
+	            nextWeek : 'dddd [da] LT',
+	            lastDay : '[Dec\'h da] LT',
+	            lastWeek : 'dddd [paset da] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'a-benn %s',
+	            past : '%s \'zo',
+	            s : 'un nebeud segondennoù',
+	            m : 'ur vunutenn',
+	            mm : relativeTimeWithMutation,
+	            h : 'un eur',
+	            hh : '%d eur',
+	            d : 'un devezh',
+	            dd : relativeTimeWithMutation,
+	            M : 'ur miz',
+	            MM : relativeTimeWithMutation,
+	            y : 'ur bloaz',
+	            yy : specialMutationForYears
+	        },
+	        ordinalParse: /\d{1,2}(añ|vet)/,
+	        ordinal : function (number) {
+	            var output = (number === 1) ? 'añ' : 'vet';
+	            return number + output;
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return br;
+
+	}));
+
+/***/ },
+/* 382 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : bosnian (bs)
+	//! author : Nedim Cholich : https://github.com/frontyard
+	//! based on (hr) translation by Bojan Marković
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function translate(number, withoutSuffix, key) {
+	        var result = number + ' ';
+	        switch (key) {
+	        case 'm':
+	            return withoutSuffix ? 'jedna minuta' : 'jedne minute';
+	        case 'mm':
+	            if (number === 1) {
+	                result += 'minuta';
+	            } else if (number === 2 || number === 3 || number === 4) {
+	                result += 'minute';
+	            } else {
+	                result += 'minuta';
+	            }
+	            return result;
+	        case 'h':
+	            return withoutSuffix ? 'jedan sat' : 'jednog sata';
+	        case 'hh':
+	            if (number === 1) {
+	                result += 'sat';
+	            } else if (number === 2 || number === 3 || number === 4) {
+	                result += 'sata';
+	            } else {
+	                result += 'sati';
+	            }
+	            return result;
+	        case 'dd':
+	            if (number === 1) {
+	                result += 'dan';
+	            } else {
+	                result += 'dana';
+	            }
+	            return result;
+	        case 'MM':
+	            if (number === 1) {
+	                result += 'mjesec';
+	            } else if (number === 2 || number === 3 || number === 4) {
+	                result += 'mjeseca';
+	            } else {
+	                result += 'mjeseci';
+	            }
+	            return result;
+	        case 'yy':
+	            if (number === 1) {
+	                result += 'godina';
+	            } else if (number === 2 || number === 3 || number === 4) {
+	                result += 'godine';
+	            } else {
+	                result += 'godina';
+	            }
+	            return result;
+	        }
+	    }
+
+	    var bs = moment.defineLocale('bs', {
+	        months : 'januar_februar_mart_april_maj_juni_juli_august_septembar_oktobar_novembar_decembar'.split('_'),
+	        monthsShort : 'jan._feb._mar._apr._maj._jun._jul._aug._sep._okt._nov._dec.'.split('_'),
+	        weekdays : 'nedjelja_ponedjeljak_utorak_srijeda_četvrtak_petak_subota'.split('_'),
+	        weekdaysShort : 'ned._pon._uto._sri._čet._pet._sub.'.split('_'),
+	        weekdaysMin : 'ne_po_ut_sr_če_pe_su'.split('_'),
+	        longDateFormat : {
+	            LT : 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD. MM. YYYY',
+	            LL : 'D. MMMM YYYY',
+	            LLL : 'D. MMMM YYYY LT',
+	            LLLL : 'dddd, D. MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay  : '[danas u] LT',
+	            nextDay  : '[sutra u] LT',
+	            nextWeek : function () {
+	                switch (this.day()) {
+	                case 0:
+	                    return '[u] [nedjelju] [u] LT';
+	                case 3:
+	                    return '[u] [srijedu] [u] LT';
+	                case 6:
+	                    return '[u] [subotu] [u] LT';
+	                case 1:
+	                case 2:
+	                case 4:
+	                case 5:
+	                    return '[u] dddd [u] LT';
+	                }
+	            },
+	            lastDay  : '[jučer u] LT',
+	            lastWeek : function () {
+	                switch (this.day()) {
+	                case 0:
+	                case 3:
+	                    return '[prošlu] dddd [u] LT';
+	                case 6:
+	                    return '[prošle] [subote] [u] LT';
+	                case 1:
+	                case 2:
+	                case 4:
+	                case 5:
+	                    return '[prošli] dddd [u] LT';
+	                }
+	            },
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'za %s',
+	            past   : 'prije %s',
+	            s      : 'par sekundi',
+	            m      : translate,
+	            mm     : translate,
+	            h      : translate,
+	            hh     : translate,
+	            d      : 'dan',
+	            dd     : translate,
+	            M      : 'mjesec',
+	            MM     : translate,
+	            y      : 'godinu',
+	            yy     : translate
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return bs;
+
+	}));
+
+/***/ },
+/* 383 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : catalan (ca)
+	//! author : Juan G. Hurtado : https://github.com/juanghurtado
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var ca = moment.defineLocale('ca', {
+	        months : 'gener_febrer_març_abril_maig_juny_juliol_agost_setembre_octubre_novembre_desembre'.split('_'),
+	        monthsShort : 'gen._febr._mar._abr._mai._jun._jul._ag._set._oct._nov._des.'.split('_'),
+	        weekdays : 'diumenge_dilluns_dimarts_dimecres_dijous_divendres_dissabte'.split('_'),
+	        weekdaysShort : 'dg._dl._dt._dc._dj._dv._ds.'.split('_'),
+	        weekdaysMin : 'Dg_Dl_Dt_Dc_Dj_Dv_Ds'.split('_'),
+	        longDateFormat : {
+	            LT : 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : function () {
+	                return '[avui a ' + ((this.hours() !== 1) ? 'les' : 'la') + '] LT';
+	            },
+	            nextDay : function () {
+	                return '[demà a ' + ((this.hours() !== 1) ? 'les' : 'la') + '] LT';
+	            },
+	            nextWeek : function () {
+	                return 'dddd [a ' + ((this.hours() !== 1) ? 'les' : 'la') + '] LT';
+	            },
+	            lastDay : function () {
+	                return '[ahir a ' + ((this.hours() !== 1) ? 'les' : 'la') + '] LT';
+	            },
+	            lastWeek : function () {
+	                return '[el] dddd [passat a ' + ((this.hours() !== 1) ? 'les' : 'la') + '] LT';
+	            },
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'en %s',
+	            past : 'fa %s',
+	            s : 'uns segons',
+	            m : 'un minut',
+	            mm : '%d minuts',
+	            h : 'una hora',
+	            hh : '%d hores',
+	            d : 'un dia',
+	            dd : '%d dies',
+	            M : 'un mes',
+	            MM : '%d mesos',
+	            y : 'un any',
+	            yy : '%d anys'
+	        },
+	        ordinalParse: /\d{1,2}(r|n|t|è|a)/,
+	        ordinal : function (number, period) {
+	            var output = (number === 1) ? 'r' :
+	                (number === 2) ? 'n' :
+	                (number === 3) ? 'r' :
+	                (number === 4) ? 't' : 'è';
+	            if (period === 'w' || period === 'W') {
+	                output = 'a';
+	            }
+	            return number + output;
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return ca;
+
+	}));
+
+/***/ },
+/* 384 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : czech (cs)
+	//! author : petrbela : https://github.com/petrbela
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var months = 'leden_únor_březen_duben_květen_červen_červenec_srpen_září_říjen_listopad_prosinec'.split('_'),
+	        monthsShort = 'led_úno_bře_dub_kvě_čvn_čvc_srp_zář_říj_lis_pro'.split('_');
+	    function plural(n) {
+	        return (n > 1) && (n < 5) && (~~(n / 10) !== 1);
+	    }
+	    function translate(number, withoutSuffix, key, isFuture) {
+	        var result = number + ' ';
+	        switch (key) {
+	        case 's':  // a few seconds / in a few seconds / a few seconds ago
+	            return (withoutSuffix || isFuture) ? 'pár sekund' : 'pár sekundami';
+	        case 'm':  // a minute / in a minute / a minute ago
+	            return withoutSuffix ? 'minuta' : (isFuture ? 'minutu' : 'minutou');
+	        case 'mm': // 9 minutes / in 9 minutes / 9 minutes ago
+	            if (withoutSuffix || isFuture) {
+	                return result + (plural(number) ? 'minuty' : 'minut');
+	            } else {
+	                return result + 'minutami';
+	            }
+	            break;
+	        case 'h':  // an hour / in an hour / an hour ago
+	            return withoutSuffix ? 'hodina' : (isFuture ? 'hodinu' : 'hodinou');
+	        case 'hh': // 9 hours / in 9 hours / 9 hours ago
+	            if (withoutSuffix || isFuture) {
+	                return result + (plural(number) ? 'hodiny' : 'hodin');
+	            } else {
+	                return result + 'hodinami';
+	            }
+	            break;
+	        case 'd':  // a day / in a day / a day ago
+	            return (withoutSuffix || isFuture) ? 'den' : 'dnem';
+	        case 'dd': // 9 days / in 9 days / 9 days ago
+	            if (withoutSuffix || isFuture) {
+	                return result + (plural(number) ? 'dny' : 'dní');
+	            } else {
+	                return result + 'dny';
+	            }
+	            break;
+	        case 'M':  // a month / in a month / a month ago
+	            return (withoutSuffix || isFuture) ? 'měsíc' : 'měsícem';
+	        case 'MM': // 9 months / in 9 months / 9 months ago
+	            if (withoutSuffix || isFuture) {
+	                return result + (plural(number) ? 'měsíce' : 'měsíců');
+	            } else {
+	                return result + 'měsíci';
+	            }
+	            break;
+	        case 'y':  // a year / in a year / a year ago
+	            return (withoutSuffix || isFuture) ? 'rok' : 'rokem';
+	        case 'yy': // 9 years / in 9 years / 9 years ago
+	            if (withoutSuffix || isFuture) {
+	                return result + (plural(number) ? 'roky' : 'let');
+	            } else {
+	                return result + 'lety';
+	            }
+	            break;
+	        }
+	    }
+
+	    var cs = moment.defineLocale('cs', {
+	        months : months,
+	        monthsShort : monthsShort,
+	        monthsParse : (function (months, monthsShort) {
+	            var i, _monthsParse = [];
+	            for (i = 0; i < 12; i++) {
+	                // use custom parser to solve problem with July (červenec)
+	                _monthsParse[i] = new RegExp('^' + months[i] + '$|^' + monthsShort[i] + '$', 'i');
+	            }
+	            return _monthsParse;
+	        }(months, monthsShort)),
+	        weekdays : 'neděle_pondělí_úterý_středa_čtvrtek_pátek_sobota'.split('_'),
+	        weekdaysShort : 'ne_po_út_st_čt_pá_so'.split('_'),
+	        weekdaysMin : 'ne_po_út_st_čt_pá_so'.split('_'),
+	        longDateFormat : {
+	            LT: 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D. MMMM YYYY',
+	            LLL : 'D. MMMM YYYY LT',
+	            LLLL : 'dddd D. MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[dnes v] LT',
+	            nextDay: '[zítra v] LT',
+	            nextWeek: function () {
+	                switch (this.day()) {
+	                case 0:
+	                    return '[v neděli v] LT';
+	                case 1:
+	                case 2:
+	                    return '[v] dddd [v] LT';
+	                case 3:
+	                    return '[ve středu v] LT';
+	                case 4:
+	                    return '[ve čtvrtek v] LT';
+	                case 5:
+	                    return '[v pátek v] LT';
+	                case 6:
+	                    return '[v sobotu v] LT';
+	                }
+	            },
+	            lastDay: '[včera v] LT',
+	            lastWeek: function () {
+	                switch (this.day()) {
+	                case 0:
+	                    return '[minulou neděli v] LT';
+	                case 1:
+	                case 2:
+	                    return '[minulé] dddd [v] LT';
+	                case 3:
+	                    return '[minulou středu v] LT';
+	                case 4:
+	                case 5:
+	                    return '[minulý] dddd [v] LT';
+	                case 6:
+	                    return '[minulou sobotu v] LT';
+	                }
+	            },
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'za %s',
+	            past : 'před %s',
+	            s : translate,
+	            m : translate,
+	            mm : translate,
+	            h : translate,
+	            hh : translate,
+	            d : translate,
+	            dd : translate,
+	            M : translate,
+	            MM : translate,
+	            y : translate,
+	            yy : translate
+	        },
+	        ordinalParse : /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return cs;
+
+	}));
+
+/***/ },
+/* 385 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : chuvash (cv)
+	//! author : Anatoly Mironov : https://github.com/mirontoli
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var cv = moment.defineLocale('cv', {
+	        months : 'кăрлач_нарăс_пуш_ака_май_çĕртме_утă_çурла_авăн_юпа_чӳк_раштав'.split('_'),
+	        monthsShort : 'кăр_нар_пуш_ака_май_çĕр_утă_çур_ав_юпа_чӳк_раш'.split('_'),
+	        weekdays : 'вырсарникун_тунтикун_ытларикун_юнкун_кĕçнерникун_эрнекун_шăматкун'.split('_'),
+	        weekdaysShort : 'выр_тун_ытл_юн_кĕç_эрн_шăм'.split('_'),
+	        weekdaysMin : 'вр_тн_ыт_юн_кç_эр_шм'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD-MM-YYYY',
+	            LL : 'YYYY [çулхи] MMMM [уйăхĕн] D[-мĕшĕ]',
+	            LLL : 'YYYY [çулхи] MMMM [уйăхĕн] D[-мĕшĕ], LT',
+	            LLLL : 'dddd, YYYY [çулхи] MMMM [уйăхĕн] D[-мĕшĕ], LT'
+	        },
+	        calendar : {
+	            sameDay: '[Паян] LT [сехетре]',
+	            nextDay: '[Ыран] LT [сехетре]',
+	            lastDay: '[Ĕнер] LT [сехетре]',
+	            nextWeek: '[Çитес] dddd LT [сехетре]',
+	            lastWeek: '[Иртнĕ] dddd LT [сехетре]',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : function (output) {
+	                var affix = /сехет$/i.exec(output) ? 'рен' : /çул$/i.exec(output) ? 'тан' : 'ран';
+	                return output + affix;
+	            },
+	            past : '%s каялла',
+	            s : 'пĕр-ик çеккунт',
+	            m : 'пĕр минут',
+	            mm : '%d минут',
+	            h : 'пĕр сехет',
+	            hh : '%d сехет',
+	            d : 'пĕр кун',
+	            dd : '%d кун',
+	            M : 'пĕр уйăх',
+	            MM : '%d уйăх',
+	            y : 'пĕр çул',
+	            yy : '%d çул'
+	        },
+	        ordinalParse: /\d{1,2}-мĕш/,
+	        ordinal : '%d-мĕш',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return cv;
+
+	}));
+
+/***/ },
+/* 386 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Welsh (cy)
+	//! author : Robert Allen
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var cy = moment.defineLocale('cy', {
+	        months: 'Ionawr_Chwefror_Mawrth_Ebrill_Mai_Mehefin_Gorffennaf_Awst_Medi_Hydref_Tachwedd_Rhagfyr'.split('_'),
+	        monthsShort: 'Ion_Chwe_Maw_Ebr_Mai_Meh_Gor_Aws_Med_Hyd_Tach_Rhag'.split('_'),
+	        weekdays: 'Dydd Sul_Dydd Llun_Dydd Mawrth_Dydd Mercher_Dydd Iau_Dydd Gwener_Dydd Sadwrn'.split('_'),
+	        weekdaysShort: 'Sul_Llun_Maw_Mer_Iau_Gwe_Sad'.split('_'),
+	        weekdaysMin: 'Su_Ll_Ma_Me_Ia_Gw_Sa'.split('_'),
+	        // time formats are the same as en-gb
+	        longDateFormat: {
+	            LT: 'HH:mm',
+	            LTS : 'LT:ss',
+	            L: 'DD/MM/YYYY',
+	            LL: 'D MMMM YYYY',
+	            LLL: 'D MMMM YYYY LT',
+	            LLLL: 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar: {
+	            sameDay: '[Heddiw am] LT',
+	            nextDay: '[Yfory am] LT',
+	            nextWeek: 'dddd [am] LT',
+	            lastDay: '[Ddoe am] LT',
+	            lastWeek: 'dddd [diwethaf am] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime: {
+	            future: 'mewn %s',
+	            past: '%s yn ôl',
+	            s: 'ychydig eiliadau',
+	            m: 'munud',
+	            mm: '%d munud',
+	            h: 'awr',
+	            hh: '%d awr',
+	            d: 'diwrnod',
+	            dd: '%d diwrnod',
+	            M: 'mis',
+	            MM: '%d mis',
+	            y: 'blwyddyn',
+	            yy: '%d flynedd'
+	        },
+	        ordinalParse: /\d{1,2}(fed|ain|af|il|ydd|ed|eg)/,
+	        // traditional ordinal numbers above 31 are not commonly used in colloquial Welsh
+	        ordinal: function (number) {
+	            var b = number,
+	                output = '',
+	                lookup = [
+	                    '', 'af', 'il', 'ydd', 'ydd', 'ed', 'ed', 'ed', 'fed', 'fed', 'fed', // 1af to 10fed
+	                    'eg', 'fed', 'eg', 'eg', 'fed', 'eg', 'eg', 'fed', 'eg', 'fed' // 11eg to 20fed
+	                ];
+	            if (b > 20) {
+	                if (b === 40 || b === 50 || b === 60 || b === 80 || b === 100) {
+	                    output = 'fed'; // not 30ain, 70ain or 90ain
+	                } else {
+	                    output = 'ain';
+	                }
+	            } else if (b > 0) {
+	                output = lookup[b];
+	            }
+	            return number + output;
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return cy;
+
+	}));
+
+/***/ },
+/* 387 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : danish (da)
+	//! author : Ulrik Nielsen : https://github.com/mrbase
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var da = moment.defineLocale('da', {
+	        months : 'januar_februar_marts_april_maj_juni_juli_august_september_oktober_november_december'.split('_'),
+	        monthsShort : 'jan_feb_mar_apr_maj_jun_jul_aug_sep_okt_nov_dec'.split('_'),
+	        weekdays : 'søndag_mandag_tirsdag_onsdag_torsdag_fredag_lørdag'.split('_'),
+	        weekdaysShort : 'søn_man_tir_ons_tor_fre_lør'.split('_'),
+	        weekdaysMin : 'sø_ma_ti_on_to_fr_lø'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D. MMMM YYYY',
+	            LLL : 'D. MMMM YYYY LT',
+	            LLLL : 'dddd [d.] D. MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[I dag kl.] LT',
+	            nextDay : '[I morgen kl.] LT',
+	            nextWeek : 'dddd [kl.] LT',
+	            lastDay : '[I går kl.] LT',
+	            lastWeek : '[sidste] dddd [kl] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'om %s',
+	            past : '%s siden',
+	            s : 'få sekunder',
+	            m : 'et minut',
+	            mm : '%d minutter',
+	            h : 'en time',
+	            hh : '%d timer',
+	            d : 'en dag',
+	            dd : '%d dage',
+	            M : 'en måned',
+	            MM : '%d måneder',
+	            y : 'et år',
+	            yy : '%d år'
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return da;
+
+	}));
+
+/***/ },
+/* 388 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : austrian german (de-at)
+	//! author : lluchs : https://github.com/lluchs
+	//! author: Menelion Elensúle: https://github.com/Oire
+	//! author : Martin Groller : https://github.com/MadMG
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function processRelativeTime(number, withoutSuffix, key, isFuture) {
+	        var format = {
+	            'm': ['eine Minute', 'einer Minute'],
+	            'h': ['eine Stunde', 'einer Stunde'],
+	            'd': ['ein Tag', 'einem Tag'],
+	            'dd': [number + ' Tage', number + ' Tagen'],
+	            'M': ['ein Monat', 'einem Monat'],
+	            'MM': [number + ' Monate', number + ' Monaten'],
+	            'y': ['ein Jahr', 'einem Jahr'],
+	            'yy': [number + ' Jahre', number + ' Jahren']
+	        };
+	        return withoutSuffix ? format[key][0] : format[key][1];
+	    }
+
+	    var de_at = moment.defineLocale('de-at', {
+	        months : 'Jänner_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split('_'),
+	        monthsShort : 'Jän._Febr._Mrz._Apr._Mai_Jun._Jul._Aug._Sept._Okt._Nov._Dez.'.split('_'),
+	        weekdays : 'Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag'.split('_'),
+	        weekdaysShort : 'So._Mo._Di._Mi._Do._Fr._Sa.'.split('_'),
+	        weekdaysMin : 'So_Mo_Di_Mi_Do_Fr_Sa'.split('_'),
+	        longDateFormat : {
+	            LT: 'HH:mm',
+	            LTS: 'HH:mm:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D. MMMM YYYY',
+	            LLL : 'D. MMMM YYYY LT',
+	            LLLL : 'dddd, D. MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[Heute um] LT [Uhr]',
+	            sameElse: 'L',
+	            nextDay: '[Morgen um] LT [Uhr]',
+	            nextWeek: 'dddd [um] LT [Uhr]',
+	            lastDay: '[Gestern um] LT [Uhr]',
+	            lastWeek: '[letzten] dddd [um] LT [Uhr]'
+	        },
+	        relativeTime : {
+	            future : 'in %s',
+	            past : 'vor %s',
+	            s : 'ein paar Sekunden',
+	            m : processRelativeTime,
+	            mm : '%d Minuten',
+	            h : processRelativeTime,
+	            hh : '%d Stunden',
+	            d : processRelativeTime,
+	            dd : processRelativeTime,
+	            M : processRelativeTime,
+	            MM : processRelativeTime,
+	            y : processRelativeTime,
+	            yy : processRelativeTime
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return de_at;
+
+	}));
+
+/***/ },
+/* 389 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : german (de)
+	//! author : lluchs : https://github.com/lluchs
+	//! author: Menelion Elensúle: https://github.com/Oire
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function processRelativeTime(number, withoutSuffix, key, isFuture) {
+	        var format = {
+	            'm': ['eine Minute', 'einer Minute'],
+	            'h': ['eine Stunde', 'einer Stunde'],
+	            'd': ['ein Tag', 'einem Tag'],
+	            'dd': [number + ' Tage', number + ' Tagen'],
+	            'M': ['ein Monat', 'einem Monat'],
+	            'MM': [number + ' Monate', number + ' Monaten'],
+	            'y': ['ein Jahr', 'einem Jahr'],
+	            'yy': [number + ' Jahre', number + ' Jahren']
+	        };
+	        return withoutSuffix ? format[key][0] : format[key][1];
+	    }
+
+	    var de = moment.defineLocale('de', {
+	        months : 'Januar_Februar_März_April_Mai_Juni_Juli_August_September_Oktober_November_Dezember'.split('_'),
+	        monthsShort : 'Jan._Febr._Mrz._Apr._Mai_Jun._Jul._Aug._Sept._Okt._Nov._Dez.'.split('_'),
+	        weekdays : 'Sonntag_Montag_Dienstag_Mittwoch_Donnerstag_Freitag_Samstag'.split('_'),
+	        weekdaysShort : 'So._Mo._Di._Mi._Do._Fr._Sa.'.split('_'),
+	        weekdaysMin : 'So_Mo_Di_Mi_Do_Fr_Sa'.split('_'),
+	        longDateFormat : {
+	            LT: 'HH:mm',
+	            LTS: 'HH:mm:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D. MMMM YYYY',
+	            LLL : 'D. MMMM YYYY LT',
+	            LLLL : 'dddd, D. MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[Heute um] LT [Uhr]',
+	            sameElse: 'L',
+	            nextDay: '[Morgen um] LT [Uhr]',
+	            nextWeek: 'dddd [um] LT [Uhr]',
+	            lastDay: '[Gestern um] LT [Uhr]',
+	            lastWeek: '[letzten] dddd [um] LT [Uhr]'
+	        },
+	        relativeTime : {
+	            future : 'in %s',
+	            past : 'vor %s',
+	            s : 'ein paar Sekunden',
+	            m : processRelativeTime,
+	            mm : '%d Minuten',
+	            h : processRelativeTime,
+	            hh : '%d Stunden',
+	            d : processRelativeTime,
+	            dd : processRelativeTime,
+	            M : processRelativeTime,
+	            MM : processRelativeTime,
+	            y : processRelativeTime,
+	            yy : processRelativeTime
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return de;
+
+	}));
+
+/***/ },
+/* 390 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : modern greek (el)
+	//! author : Aggelos Karalias : https://github.com/mehiel
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var el = moment.defineLocale('el', {
+	        monthsNominativeEl : 'Ιανουάριος_Φεβρουάριος_Μάρτιος_Απρίλιος_Μάιος_Ιούνιος_Ιούλιος_Αύγουστος_Σεπτέμβριος_Οκτώβριος_Νοέμβριος_Δεκέμβριος'.split('_'),
+	        monthsGenitiveEl : 'Ιανουαρίου_Φεβρουαρίου_Μαρτίου_Απριλίου_Μαΐου_Ιουνίου_Ιουλίου_Αυγούστου_Σεπτεμβρίου_Οκτωβρίου_Νοεμβρίου_Δεκεμβρίου'.split('_'),
+	        months : function (momentToFormat, format) {
+	            if (/D/.test(format.substring(0, format.indexOf('MMMM')))) { // if there is a day number before 'MMMM'
+	                return this._monthsGenitiveEl[momentToFormat.month()];
+	            } else {
+	                return this._monthsNominativeEl[momentToFormat.month()];
+	            }
+	        },
+	        monthsShort : 'Ιαν_Φεβ_Μαρ_Απρ_Μαϊ_Ιουν_Ιουλ_Αυγ_Σεπ_Οκτ_Νοε_Δεκ'.split('_'),
+	        weekdays : 'Κυριακή_Δευτέρα_Τρίτη_Τετάρτη_Πέμπτη_Παρασκευή_Σάββατο'.split('_'),
+	        weekdaysShort : 'Κυρ_Δευ_Τρι_Τετ_Πεμ_Παρ_Σαβ'.split('_'),
+	        weekdaysMin : 'Κυ_Δε_Τρ_Τε_Πε_Πα_Σα'.split('_'),
+	        meridiem : function (hours, minutes, isLower) {
+	            if (hours > 11) {
+	                return isLower ? 'μμ' : 'ΜΜ';
+	            } else {
+	                return isLower ? 'πμ' : 'ΠΜ';
+	            }
+	        },
+	        isPM : function (input) {
+	            return ((input + '').toLowerCase()[0] === 'μ');
+	        },
+	        meridiemParse : /[ΠΜ]\.?Μ?\.?/i,
+	        longDateFormat : {
+	            LT : 'h:mm A',
+	            LTS : 'h:mm:ss A',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendarEl : {
+	            sameDay : '[Σήμερα {}] LT',
+	            nextDay : '[Αύριο {}] LT',
+	            nextWeek : 'dddd [{}] LT',
+	            lastDay : '[Χθες {}] LT',
+	            lastWeek : function () {
+	                switch (this.day()) {
+	                    case 6:
+	                        return '[το προηγούμενο] dddd [{}] LT';
+	                    default:
+	                        return '[την προηγούμενη] dddd [{}] LT';
+	                }
+	            },
+	            sameElse : 'L'
+	        },
+	        calendar : function (key, mom) {
+	            var output = this._calendarEl[key],
+	                hours = mom && mom.hours();
+	            if (typeof output === 'function') {
+	                output = output.apply(mom);
+	            }
+	            return output.replace('{}', (hours % 12 === 1 ? 'στη' : 'στις'));
+	        },
+	        relativeTime : {
+	            future : 'σε %s',
+	            past : '%s πριν',
+	            s : 'λίγα δευτερόλεπτα',
+	            m : 'ένα λεπτό',
+	            mm : '%d λεπτά',
+	            h : 'μία ώρα',
+	            hh : '%d ώρες',
+	            d : 'μία μέρα',
+	            dd : '%d μέρες',
+	            M : 'ένας μήνας',
+	            MM : '%d μήνες',
+	            y : 'ένας χρόνος',
+	            yy : '%d χρόνια'
+	        },
+	        ordinalParse: /\d{1,2}η/,
+	        ordinal: '%dη',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4st is the first week of the year.
+	        }
+	    });
+
+	    return el;
+
+	}));
+
+/***/ },
+/* 391 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : australian english (en-au)
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var en_au = moment.defineLocale('en-au', {
+	        months : 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
+	        monthsShort : 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
+	        weekdays : 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_'),
+	        weekdaysShort : 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
+	        weekdaysMin : 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
+	        longDateFormat : {
+	            LT : 'h:mm A',
+	            LTS : 'h:mm:ss A',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[Today at] LT',
+	            nextDay : '[Tomorrow at] LT',
+	            nextWeek : 'dddd [at] LT',
+	            lastDay : '[Yesterday at] LT',
+	            lastWeek : '[Last] dddd [at] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'in %s',
+	            past : '%s ago',
+	            s : 'a few seconds',
+	            m : 'a minute',
+	            mm : '%d minutes',
+	            h : 'an hour',
+	            hh : '%d hours',
+	            d : 'a day',
+	            dd : '%d days',
+	            M : 'a month',
+	            MM : '%d months',
+	            y : 'a year',
+	            yy : '%d years'
+	        },
+	        ordinalParse: /\d{1,2}(st|nd|rd|th)/,
+	        ordinal : function (number) {
+	            var b = number % 10,
+	                output = (~~(number % 100 / 10) === 1) ? 'th' :
+	                (b === 1) ? 'st' :
+	                (b === 2) ? 'nd' :
+	                (b === 3) ? 'rd' : 'th';
+	            return number + output;
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return en_au;
+
+	}));
+
+/***/ },
+/* 392 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : canadian english (en-ca)
+	//! author : Jonathan Abourbih : https://github.com/jonbca
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var en_ca = moment.defineLocale('en-ca', {
+	        months : 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
+	        monthsShort : 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
+	        weekdays : 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_'),
+	        weekdaysShort : 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
+	        weekdaysMin : 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
+	        longDateFormat : {
+	            LT : 'h:mm A',
+	            LTS : 'h:mm:ss A',
+	            L : 'YYYY-MM-DD',
+	            LL : 'D MMMM, YYYY',
+	            LLL : 'D MMMM, YYYY LT',
+	            LLLL : 'dddd, D MMMM, YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[Today at] LT',
+	            nextDay : '[Tomorrow at] LT',
+	            nextWeek : 'dddd [at] LT',
+	            lastDay : '[Yesterday at] LT',
+	            lastWeek : '[Last] dddd [at] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'in %s',
+	            past : '%s ago',
+	            s : 'a few seconds',
+	            m : 'a minute',
+	            mm : '%d minutes',
+	            h : 'an hour',
+	            hh : '%d hours',
+	            d : 'a day',
+	            dd : '%d days',
+	            M : 'a month',
+	            MM : '%d months',
+	            y : 'a year',
+	            yy : '%d years'
+	        },
+	        ordinalParse: /\d{1,2}(st|nd|rd|th)/,
+	        ordinal : function (number) {
+	            var b = number % 10,
+	                output = (~~(number % 100 / 10) === 1) ? 'th' :
+	                (b === 1) ? 'st' :
+	                (b === 2) ? 'nd' :
+	                (b === 3) ? 'rd' : 'th';
+	            return number + output;
+	        }
+	    });
+
+	    return en_ca;
+
+	}));
+
+/***/ },
+/* 393 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : great britain english (en-gb)
+	//! author : Chris Gedrim : https://github.com/chrisgedrim
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var en_gb = moment.defineLocale('en-gb', {
+	        months : 'January_February_March_April_May_June_July_August_September_October_November_December'.split('_'),
+	        monthsShort : 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split('_'),
+	        weekdays : 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split('_'),
+	        weekdaysShort : 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
+	        weekdaysMin : 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'HH:mm:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[Today at] LT',
+	            nextDay : '[Tomorrow at] LT',
+	            nextWeek : 'dddd [at] LT',
+	            lastDay : '[Yesterday at] LT',
+	            lastWeek : '[Last] dddd [at] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'in %s',
+	            past : '%s ago',
+	            s : 'a few seconds',
+	            m : 'a minute',
+	            mm : '%d minutes',
+	            h : 'an hour',
+	            hh : '%d hours',
+	            d : 'a day',
+	            dd : '%d days',
+	            M : 'a month',
+	            MM : '%d months',
+	            y : 'a year',
+	            yy : '%d years'
+	        },
+	        ordinalParse: /\d{1,2}(st|nd|rd|th)/,
+	        ordinal : function (number) {
+	            var b = number % 10,
+	                output = (~~(number % 100 / 10) === 1) ? 'th' :
+	                (b === 1) ? 'st' :
+	                (b === 2) ? 'nd' :
+	                (b === 3) ? 'rd' : 'th';
+	            return number + output;
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return en_gb;
+
+	}));
+
+/***/ },
+/* 394 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : esperanto (eo)
+	//! author : Colin Dean : https://github.com/colindean
+	//! komento: Mi estas malcerta se mi korekte traktis akuzativojn en tiu traduko.
+	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var eo = moment.defineLocale('eo', {
+	        months : 'januaro_februaro_marto_aprilo_majo_junio_julio_aŭgusto_septembro_oktobro_novembro_decembro'.split('_'),
+	        monthsShort : 'jan_feb_mar_apr_maj_jun_jul_aŭg_sep_okt_nov_dec'.split('_'),
+	        weekdays : 'Dimanĉo_Lundo_Mardo_Merkredo_Ĵaŭdo_Vendredo_Sabato'.split('_'),
+	        weekdaysShort : 'Dim_Lun_Mard_Merk_Ĵaŭ_Ven_Sab'.split('_'),
+	        weekdaysMin : 'Di_Lu_Ma_Me_Ĵa_Ve_Sa'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'YYYY-MM-DD',
+	            LL : 'D[-an de] MMMM, YYYY',
+	            LLL : 'D[-an de] MMMM, YYYY LT',
+	            LLLL : 'dddd, [la] D[-an de] MMMM, YYYY LT'
+	        },
+	        meridiemParse: /[ap]\.t\.m/i,
+	        isPM: function (input) {
+	            return input.charAt(0).toLowerCase() === 'p';
+	        },
+	        meridiem : function (hours, minutes, isLower) {
+	            if (hours > 11) {
+	                return isLower ? 'p.t.m.' : 'P.T.M.';
+	            } else {
+	                return isLower ? 'a.t.m.' : 'A.T.M.';
+	            }
+	        },
+	        calendar : {
+	            sameDay : '[Hodiaŭ je] LT',
+	            nextDay : '[Morgaŭ je] LT',
+	            nextWeek : 'dddd [je] LT',
+	            lastDay : '[Hieraŭ je] LT',
+	            lastWeek : '[pasinta] dddd [je] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'je %s',
+	            past : 'antaŭ %s',
+	            s : 'sekundoj',
+	            m : 'minuto',
+	            mm : '%d minutoj',
+	            h : 'horo',
+	            hh : '%d horoj',
+	            d : 'tago',//ne 'diurno', ĉar estas uzita por proksimumo
+	            dd : '%d tagoj',
+	            M : 'monato',
+	            MM : '%d monatoj',
+	            y : 'jaro',
+	            yy : '%d jaroj'
+	        },
+	        ordinalParse: /\d{1,2}a/,
+	        ordinal : '%da',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return eo;
+
+	}));
+
+/***/ },
+/* 395 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : spanish (es)
+	//! author : Julio Napurí : https://github.com/julionc
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var monthsShortDot = 'ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.'.split('_'),
+	        monthsShort = 'ene_feb_mar_abr_may_jun_jul_ago_sep_oct_nov_dic'.split('_');
+
+	    var es = moment.defineLocale('es', {
+	        months : 'enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre'.split('_'),
+	        monthsShort : function (m, format) {
+	            if (/-MMM-/.test(format)) {
+	                return monthsShort[m.month()];
+	            } else {
+	                return monthsShortDot[m.month()];
+	            }
+	        },
+	        weekdays : 'domingo_lunes_martes_miércoles_jueves_viernes_sábado'.split('_'),
+	        weekdaysShort : 'dom._lun._mar._mié._jue._vie._sáb.'.split('_'),
+	        weekdaysMin : 'Do_Lu_Ma_Mi_Ju_Vi_Sá'.split('_'),
+	        longDateFormat : {
+	            LT : 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D [de] MMMM [de] YYYY',
+	            LLL : 'D [de] MMMM [de] YYYY LT',
+	            LLLL : 'dddd, D [de] MMMM [de] YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : function () {
+	                return '[hoy a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
+	            },
+	            nextDay : function () {
+	                return '[mañana a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
+	            },
+	            nextWeek : function () {
+	                return 'dddd [a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
+	            },
+	            lastDay : function () {
+	                return '[ayer a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
+	            },
+	            lastWeek : function () {
+	                return '[el] dddd [pasado a la' + ((this.hours() !== 1) ? 's' : '') + '] LT';
+	            },
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'en %s',
+	            past : 'hace %s',
+	            s : 'unos segundos',
+	            m : 'un minuto',
+	            mm : '%d minutos',
+	            h : 'una hora',
+	            hh : '%d horas',
+	            d : 'un día',
+	            dd : '%d días',
+	            M : 'un mes',
+	            MM : '%d meses',
+	            y : 'un año',
+	            yy : '%d años'
+	        },
+	        ordinalParse : /\d{1,2}º/,
+	        ordinal : '%dº',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return es;
+
+	}));
+
+/***/ },
+/* 396 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : estonian (et)
+	//! author : Henry Kehlmann : https://github.com/madhenry
+	//! improvements : Illimar Tambek : https://github.com/ragulka
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function processRelativeTime(number, withoutSuffix, key, isFuture) {
+	        var format = {
+	            's' : ['mõne sekundi', 'mõni sekund', 'paar sekundit'],
+	            'm' : ['ühe minuti', 'üks minut'],
+	            'mm': [number + ' minuti', number + ' minutit'],
+	            'h' : ['ühe tunni', 'tund aega', 'üks tund'],
+	            'hh': [number + ' tunni', number + ' tundi'],
+	            'd' : ['ühe päeva', 'üks päev'],
+	            'M' : ['kuu aja', 'kuu aega', 'üks kuu'],
+	            'MM': [number + ' kuu', number + ' kuud'],
+	            'y' : ['ühe aasta', 'aasta', 'üks aasta'],
+	            'yy': [number + ' aasta', number + ' aastat']
+	        };
+	        if (withoutSuffix) {
+	            return format[key][2] ? format[key][2] : format[key][1];
+	        }
+	        return isFuture ? format[key][0] : format[key][1];
+	    }
+
+	    var et = moment.defineLocale('et', {
+	        months        : 'jaanuar_veebruar_märts_aprill_mai_juuni_juuli_august_september_oktoober_november_detsember'.split('_'),
+	        monthsShort   : 'jaan_veebr_märts_apr_mai_juuni_juuli_aug_sept_okt_nov_dets'.split('_'),
+	        weekdays      : 'pühapäev_esmaspäev_teisipäev_kolmapäev_neljapäev_reede_laupäev'.split('_'),
+	        weekdaysShort : 'P_E_T_K_N_R_L'.split('_'),
+	        weekdaysMin   : 'P_E_T_K_N_R_L'.split('_'),
+	        longDateFormat : {
+	            LT   : 'H:mm',
+	            LTS : 'LT:ss',
+	            L    : 'DD.MM.YYYY',
+	            LL   : 'D. MMMM YYYY',
+	            LLL  : 'D. MMMM YYYY LT',
+	            LLLL : 'dddd, D. MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay  : '[Täna,] LT',
+	            nextDay  : '[Homme,] LT',
+	            nextWeek : '[Järgmine] dddd LT',
+	            lastDay  : '[Eile,] LT',
+	            lastWeek : '[Eelmine] dddd LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s pärast',
+	            past   : '%s tagasi',
+	            s      : processRelativeTime,
+	            m      : processRelativeTime,
+	            mm     : processRelativeTime,
+	            h      : processRelativeTime,
+	            hh     : processRelativeTime,
+	            d      : processRelativeTime,
+	            dd     : '%d päeva',
+	            M      : processRelativeTime,
+	            MM     : processRelativeTime,
+	            y      : processRelativeTime,
+	            yy     : processRelativeTime
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return et;
+
+	}));
+
+/***/ },
+/* 397 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : euskara (eu)
+	//! author : Eneko Illarramendi : https://github.com/eillarra
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var eu = moment.defineLocale('eu', {
+	        months : 'urtarrila_otsaila_martxoa_apirila_maiatza_ekaina_uztaila_abuztua_iraila_urria_azaroa_abendua'.split('_'),
+	        monthsShort : 'urt._ots._mar._api._mai._eka._uzt._abu._ira._urr._aza._abe.'.split('_'),
+	        weekdays : 'igandea_astelehena_asteartea_asteazkena_osteguna_ostirala_larunbata'.split('_'),
+	        weekdaysShort : 'ig._al._ar._az._og._ol._lr.'.split('_'),
+	        weekdaysMin : 'ig_al_ar_az_og_ol_lr'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'YYYY-MM-DD',
+	            LL : 'YYYY[ko] MMMM[ren] D[a]',
+	            LLL : 'YYYY[ko] MMMM[ren] D[a] LT',
+	            LLLL : 'dddd, YYYY[ko] MMMM[ren] D[a] LT',
+	            l : 'YYYY-M-D',
+	            ll : 'YYYY[ko] MMM D[a]',
+	            lll : 'YYYY[ko] MMM D[a] LT',
+	            llll : 'ddd, YYYY[ko] MMM D[a] LT'
+	        },
+	        calendar : {
+	            sameDay : '[gaur] LT[etan]',
+	            nextDay : '[bihar] LT[etan]',
+	            nextWeek : 'dddd LT[etan]',
+	            lastDay : '[atzo] LT[etan]',
+	            lastWeek : '[aurreko] dddd LT[etan]',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s barru',
+	            past : 'duela %s',
+	            s : 'segundo batzuk',
+	            m : 'minutu bat',
+	            mm : '%d minutu',
+	            h : 'ordu bat',
+	            hh : '%d ordu',
+	            d : 'egun bat',
+	            dd : '%d egun',
+	            M : 'hilabete bat',
+	            MM : '%d hilabete',
+	            y : 'urte bat',
+	            yy : '%d urte'
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return eu;
+
+	}));
+
+/***/ },
+/* 398 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Persian (fa)
+	//! author : Ebrahim Byagowi : https://github.com/ebraminio
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var symbolMap = {
+	        '1': '۱',
+	        '2': '۲',
+	        '3': '۳',
+	        '4': '۴',
+	        '5': '۵',
+	        '6': '۶',
+	        '7': '۷',
+	        '8': '۸',
+	        '9': '۹',
+	        '0': '۰'
+	    }, numberMap = {
+	        '۱': '1',
+	        '۲': '2',
+	        '۳': '3',
+	        '۴': '4',
+	        '۵': '5',
+	        '۶': '6',
+	        '۷': '7',
+	        '۸': '8',
+	        '۹': '9',
+	        '۰': '0'
+	    };
+
+	    var fa = moment.defineLocale('fa', {
+	        months : 'ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر'.split('_'),
+	        monthsShort : 'ژانویه_فوریه_مارس_آوریل_مه_ژوئن_ژوئیه_اوت_سپتامبر_اکتبر_نوامبر_دسامبر'.split('_'),
+	        weekdays : 'یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه'.split('_'),
+	        weekdaysShort : 'یک\u200cشنبه_دوشنبه_سه\u200cشنبه_چهارشنبه_پنج\u200cشنبه_جمعه_شنبه'.split('_'),
+	        weekdaysMin : 'ی_د_س_چ_پ_ج_ش'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        meridiemParse: /قبل از ظهر|بعد از ظهر/,
+	        isPM: function (input) {
+	            return /بعد از ظهر/.test(input);
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 12) {
+	                return 'قبل از ظهر';
+	            } else {
+	                return 'بعد از ظهر';
+	            }
+	        },
+	        calendar : {
+	            sameDay : '[امروز ساعت] LT',
+	            nextDay : '[فردا ساعت] LT',
+	            nextWeek : 'dddd [ساعت] LT',
+	            lastDay : '[دیروز ساعت] LT',
+	            lastWeek : 'dddd [پیش] [ساعت] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'در %s',
+	            past : '%s پیش',
+	            s : 'چندین ثانیه',
+	            m : 'یک دقیقه',
+	            mm : '%d دقیقه',
+	            h : 'یک ساعت',
+	            hh : '%d ساعت',
+	            d : 'یک روز',
+	            dd : '%d روز',
+	            M : 'یک ماه',
+	            MM : '%d ماه',
+	            y : 'یک سال',
+	            yy : '%d سال'
+	        },
+	        preparse: function (string) {
+	            return string.replace(/[۰-۹]/g, function (match) {
+	                return numberMap[match];
+	            }).replace(/،/g, ',');
+	        },
+	        postformat: function (string) {
+	            return string.replace(/\d/g, function (match) {
+	                return symbolMap[match];
+	            }).replace(/,/g, '،');
+	        },
+	        ordinalParse: /\d{1,2}م/,
+	        ordinal : '%dم',
+	        week : {
+	            dow : 6, // Saturday is the first day of the week.
+	            doy : 12 // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return fa;
+
+	}));
+
+/***/ },
+/* 399 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : finnish (fi)
+	//! author : Tarmo Aidantausta : https://github.com/bleadof
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var numbersPast = 'nolla yksi kaksi kolme neljä viisi kuusi seitsemän kahdeksan yhdeksän'.split(' '),
+	        numbersFuture = [
+	            'nolla', 'yhden', 'kahden', 'kolmen', 'neljän', 'viiden', 'kuuden',
+	            numbersPast[7], numbersPast[8], numbersPast[9]
+	        ];
+	    function translate(number, withoutSuffix, key, isFuture) {
+	        var result = '';
+	        switch (key) {
+	        case 's':
+	            return isFuture ? 'muutaman sekunnin' : 'muutama sekunti';
+	        case 'm':
+	            return isFuture ? 'minuutin' : 'minuutti';
+	        case 'mm':
+	            result = isFuture ? 'minuutin' : 'minuuttia';
+	            break;
+	        case 'h':
+	            return isFuture ? 'tunnin' : 'tunti';
+	        case 'hh':
+	            result = isFuture ? 'tunnin' : 'tuntia';
+	            break;
+	        case 'd':
+	            return isFuture ? 'päivän' : 'päivä';
+	        case 'dd':
+	            result = isFuture ? 'päivän' : 'päivää';
+	            break;
+	        case 'M':
+	            return isFuture ? 'kuukauden' : 'kuukausi';
+	        case 'MM':
+	            result = isFuture ? 'kuukauden' : 'kuukautta';
+	            break;
+	        case 'y':
+	            return isFuture ? 'vuoden' : 'vuosi';
+	        case 'yy':
+	            result = isFuture ? 'vuoden' : 'vuotta';
+	            break;
+	        }
+	        result = verbalNumber(number, isFuture) + ' ' + result;
+	        return result;
+	    }
+	    function verbalNumber(number, isFuture) {
+	        return number < 10 ? (isFuture ? numbersFuture[number] : numbersPast[number]) : number;
+	    }
+
+	    var fi = moment.defineLocale('fi', {
+	        months : 'tammikuu_helmikuu_maaliskuu_huhtikuu_toukokuu_kesäkuu_heinäkuu_elokuu_syyskuu_lokakuu_marraskuu_joulukuu'.split('_'),
+	        monthsShort : 'tammi_helmi_maalis_huhti_touko_kesä_heinä_elo_syys_loka_marras_joulu'.split('_'),
+	        weekdays : 'sunnuntai_maanantai_tiistai_keskiviikko_torstai_perjantai_lauantai'.split('_'),
+	        weekdaysShort : 'su_ma_ti_ke_to_pe_la'.split('_'),
+	        weekdaysMin : 'su_ma_ti_ke_to_pe_la'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH.mm',
+	            LTS : 'HH.mm.ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'Do MMMM[ta] YYYY',
+	            LLL : 'Do MMMM[ta] YYYY, [klo] LT',
+	            LLLL : 'dddd, Do MMMM[ta] YYYY, [klo] LT',
+	            l : 'D.M.YYYY',
+	            ll : 'Do MMM YYYY',
+	            lll : 'Do MMM YYYY, [klo] LT',
+	            llll : 'ddd, Do MMM YYYY, [klo] LT'
+	        },
+	        calendar : {
+	            sameDay : '[tänään] [klo] LT',
+	            nextDay : '[huomenna] [klo] LT',
+	            nextWeek : 'dddd [klo] LT',
+	            lastDay : '[eilen] [klo] LT',
+	            lastWeek : '[viime] dddd[na] [klo] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s päästä',
+	            past : '%s sitten',
+	            s : translate,
+	            m : translate,
+	            mm : translate,
+	            h : translate,
+	            hh : translate,
+	            d : translate,
+	            dd : translate,
+	            M : translate,
+	            MM : translate,
+	            y : translate,
+	            yy : translate
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return fi;
+
+	}));
+
+/***/ },
+/* 400 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : faroese (fo)
+	//! author : Ragnar Johannesen : https://github.com/ragnar123
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var fo = moment.defineLocale('fo', {
+	        months : 'januar_februar_mars_apríl_mai_juni_juli_august_september_oktober_november_desember'.split('_'),
+	        monthsShort : 'jan_feb_mar_apr_mai_jun_jul_aug_sep_okt_nov_des'.split('_'),
+	        weekdays : 'sunnudagur_mánadagur_týsdagur_mikudagur_hósdagur_fríggjadagur_leygardagur'.split('_'),
+	        weekdaysShort : 'sun_mán_týs_mik_hós_frí_ley'.split('_'),
+	        weekdaysMin : 'su_má_tý_mi_hó_fr_le'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D. MMMM, YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[Í dag kl.] LT',
+	            nextDay : '[Í morgin kl.] LT',
+	            nextWeek : 'dddd [kl.] LT',
+	            lastDay : '[Í gjár kl.] LT',
+	            lastWeek : '[síðstu] dddd [kl] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'um %s',
+	            past : '%s síðani',
+	            s : 'fá sekund',
+	            m : 'ein minutt',
+	            mm : '%d minuttir',
+	            h : 'ein tími',
+	            hh : '%d tímar',
+	            d : 'ein dagur',
+	            dd : '%d dagar',
+	            M : 'ein mánaði',
+	            MM : '%d mánaðir',
+	            y : 'eitt ár',
+	            yy : '%d ár'
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return fo;
+
+	}));
+
+/***/ },
+/* 401 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : canadian french (fr-ca)
+	//! author : Jonathan Abourbih : https://github.com/jonbca
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var fr_ca = moment.defineLocale('fr-ca', {
+	        months : 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split('_'),
+	        monthsShort : 'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split('_'),
+	        weekdays : 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
+	        weekdaysShort : 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
+	        weekdaysMin : 'Di_Lu_Ma_Me_Je_Ve_Sa'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'YYYY-MM-DD',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[Aujourd\'hui à] LT',
+	            nextDay: '[Demain à] LT',
+	            nextWeek: 'dddd [à] LT',
+	            lastDay: '[Hier à] LT',
+	            lastWeek: 'dddd [dernier à] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'dans %s',
+	            past : 'il y a %s',
+	            s : 'quelques secondes',
+	            m : 'une minute',
+	            mm : '%d minutes',
+	            h : 'une heure',
+	            hh : '%d heures',
+	            d : 'un jour',
+	            dd : '%d jours',
+	            M : 'un mois',
+	            MM : '%d mois',
+	            y : 'un an',
+	            yy : '%d ans'
+	        },
+	        ordinalParse: /\d{1,2}(er|)/,
+	        ordinal : function (number) {
+	            return number + (number === 1 ? 'er' : '');
+	        }
+	    });
+
+	    return fr_ca;
+
+	}));
+
+/***/ },
+/* 402 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : french (fr)
+	//! author : John Fischer : https://github.com/jfroffice
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var fr = moment.defineLocale('fr', {
+	        months : 'janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre'.split('_'),
+	        monthsShort : 'janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.'.split('_'),
+	        weekdays : 'dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi'.split('_'),
+	        weekdaysShort : 'dim._lun._mar._mer._jeu._ven._sam.'.split('_'),
+	        weekdaysMin : 'Di_Lu_Ma_Me_Je_Ve_Sa'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[Aujourd\'hui à] LT',
+	            nextDay: '[Demain à] LT',
+	            nextWeek: 'dddd [à] LT',
+	            lastDay: '[Hier à] LT',
+	            lastWeek: 'dddd [dernier à] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'dans %s',
+	            past : 'il y a %s',
+	            s : 'quelques secondes',
+	            m : 'une minute',
+	            mm : '%d minutes',
+	            h : 'une heure',
+	            hh : '%d heures',
+	            d : 'un jour',
+	            dd : '%d jours',
+	            M : 'un mois',
+	            MM : '%d mois',
+	            y : 'un an',
+	            yy : '%d ans'
+	        },
+	        ordinalParse: /\d{1,2}(er|)/,
+	        ordinal : function (number) {
+	            return number + (number === 1 ? 'er' : '');
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return fr;
+
+	}));
+
+/***/ },
+/* 403 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : frisian (fy)
+	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var monthsShortWithDots = 'jan._feb._mrt._apr._mai_jun._jul._aug._sep._okt._nov._des.'.split('_'),
+	        monthsShortWithoutDots = 'jan_feb_mrt_apr_mai_jun_jul_aug_sep_okt_nov_des'.split('_');
+
+	    var fy = moment.defineLocale('fy', {
+	        months : 'jannewaris_febrewaris_maart_april_maaie_juny_july_augustus_septimber_oktober_novimber_desimber'.split('_'),
+	        monthsShort : function (m, format) {
+	            if (/-MMM-/.test(format)) {
+	                return monthsShortWithoutDots[m.month()];
+	            } else {
+	                return monthsShortWithDots[m.month()];
+	            }
+	        },
+	        weekdays : 'snein_moandei_tiisdei_woansdei_tongersdei_freed_sneon'.split('_'),
+	        weekdaysShort : 'si._mo._ti._wo._to._fr._so.'.split('_'),
+	        weekdaysMin : 'Si_Mo_Ti_Wo_To_Fr_So'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD-MM-YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[hjoed om] LT',
+	            nextDay: '[moarn om] LT',
+	            nextWeek: 'dddd [om] LT',
+	            lastDay: '[juster om] LT',
+	            lastWeek: '[ôfrûne] dddd [om] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'oer %s',
+	            past : '%s lyn',
+	            s : 'in pear sekonden',
+	            m : 'ien minút',
+	            mm : '%d minuten',
+	            h : 'ien oere',
+	            hh : '%d oeren',
+	            d : 'ien dei',
+	            dd : '%d dagen',
+	            M : 'ien moanne',
+	            MM : '%d moannen',
+	            y : 'ien jier',
+	            yy : '%d jierren'
+	        },
+	        ordinalParse: /\d{1,2}(ste|de)/,
+	        ordinal : function (number) {
+	            return number + ((number === 1 || number === 8 || number >= 20) ? 'ste' : 'de');
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return fy;
+
+	}));
+
+/***/ },
+/* 404 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : galician (gl)
+	//! author : Juan G. Hurtado : https://github.com/juanghurtado
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var gl = moment.defineLocale('gl', {
+	        months : 'Xaneiro_Febreiro_Marzo_Abril_Maio_Xuño_Xullo_Agosto_Setembro_Outubro_Novembro_Decembro'.split('_'),
+	        monthsShort : 'Xan._Feb._Mar._Abr._Mai._Xuñ._Xul._Ago._Set._Out._Nov._Dec.'.split('_'),
+	        weekdays : 'Domingo_Luns_Martes_Mércores_Xoves_Venres_Sábado'.split('_'),
+	        weekdaysShort : 'Dom._Lun._Mar._Mér._Xov._Ven._Sáb.'.split('_'),
+	        weekdaysMin : 'Do_Lu_Ma_Mé_Xo_Ve_Sá'.split('_'),
+	        longDateFormat : {
+	            LT : 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : function () {
+	                return '[hoxe ' + ((this.hours() !== 1) ? 'ás' : 'á') + '] LT';
+	            },
+	            nextDay : function () {
+	                return '[mañá ' + ((this.hours() !== 1) ? 'ás' : 'á') + '] LT';
+	            },
+	            nextWeek : function () {
+	                return 'dddd [' + ((this.hours() !== 1) ? 'ás' : 'a') + '] LT';
+	            },
+	            lastDay : function () {
+	                return '[onte ' + ((this.hours() !== 1) ? 'á' : 'a') + '] LT';
+	            },
+	            lastWeek : function () {
+	                return '[o] dddd [pasado ' + ((this.hours() !== 1) ? 'ás' : 'a') + '] LT';
+	            },
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : function (str) {
+	                if (str === 'uns segundos') {
+	                    return 'nuns segundos';
+	                }
+	                return 'en ' + str;
+	            },
+	            past : 'hai %s',
+	            s : 'uns segundos',
+	            m : 'un minuto',
+	            mm : '%d minutos',
+	            h : 'unha hora',
+	            hh : '%d horas',
+	            d : 'un día',
+	            dd : '%d días',
+	            M : 'un mes',
+	            MM : '%d meses',
+	            y : 'un ano',
+	            yy : '%d anos'
+	        },
+	        ordinalParse : /\d{1,2}º/,
+	        ordinal : '%dº',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return gl;
+
+	}));
+
+/***/ },
+/* 405 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Hebrew (he)
+	//! author : Tomer Cohen : https://github.com/tomer
+	//! author : Moshe Simantov : https://github.com/DevelopmentIL
+	//! author : Tal Ater : https://github.com/TalAter
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var he = moment.defineLocale('he', {
+	        months : 'ינואר_פברואר_מרץ_אפריל_מאי_יוני_יולי_אוגוסט_ספטמבר_אוקטובר_נובמבר_דצמבר'.split('_'),
+	        monthsShort : 'ינו׳_פבר׳_מרץ_אפר׳_מאי_יוני_יולי_אוג׳_ספט׳_אוק׳_נוב׳_דצמ׳'.split('_'),
+	        weekdays : 'ראשון_שני_שלישי_רביעי_חמישי_שישי_שבת'.split('_'),
+	        weekdaysShort : 'א׳_ב׳_ג׳_ד׳_ה׳_ו׳_ש׳'.split('_'),
+	        weekdaysMin : 'א_ב_ג_ד_ה_ו_ש'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D [ב]MMMM YYYY',
+	            LLL : 'D [ב]MMMM YYYY LT',
+	            LLLL : 'dddd, D [ב]MMMM YYYY LT',
+	            l : 'D/M/YYYY',
+	            ll : 'D MMM YYYY',
+	            lll : 'D MMM YYYY LT',
+	            llll : 'ddd, D MMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[היום ב־]LT',
+	            nextDay : '[מחר ב־]LT',
+	            nextWeek : 'dddd [בשעה] LT',
+	            lastDay : '[אתמול ב־]LT',
+	            lastWeek : '[ביום] dddd [האחרון בשעה] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'בעוד %s',
+	            past : 'לפני %s',
+	            s : 'מספר שניות',
+	            m : 'דקה',
+	            mm : '%d דקות',
+	            h : 'שעה',
+	            hh : function (number) {
+	                if (number === 2) {
+	                    return 'שעתיים';
+	                }
+	                return number + ' שעות';
+	            },
+	            d : 'יום',
+	            dd : function (number) {
+	                if (number === 2) {
+	                    return 'יומיים';
+	                }
+	                return number + ' ימים';
+	            },
+	            M : 'חודש',
+	            MM : function (number) {
+	                if (number === 2) {
+	                    return 'חודשיים';
+	                }
+	                return number + ' חודשים';
+	            },
+	            y : 'שנה',
+	            yy : function (number) {
+	                if (number === 2) {
+	                    return 'שנתיים';
+	                } else if (number % 10 === 0 && number !== 10) {
+	                    return number + ' שנה';
+	                }
+	                return number + ' שנים';
+	            }
+	        }
+	    });
+
+	    return he;
+
+	}));
+
+/***/ },
+/* 406 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : hindi (hi)
+	//! author : Mayank Singhal : https://github.com/mayanksinghal
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var symbolMap = {
+	        '1': '१',
+	        '2': '२',
+	        '3': '३',
+	        '4': '४',
+	        '5': '५',
+	        '6': '६',
+	        '7': '७',
+	        '8': '८',
+	        '9': '९',
+	        '0': '०'
+	    },
+	    numberMap = {
+	        '१': '1',
+	        '२': '2',
+	        '३': '3',
+	        '४': '4',
+	        '५': '5',
+	        '६': '6',
+	        '७': '7',
+	        '८': '8',
+	        '९': '9',
+	        '०': '0'
+	    };
+
+	    var hi = moment.defineLocale('hi', {
+	        months : 'जनवरी_फ़रवरी_मार्च_अप्रैल_मई_जून_जुलाई_अगस्त_सितम्बर_अक्टूबर_नवम्बर_दिसम्बर'.split('_'),
+	        monthsShort : 'जन._फ़र._मार्च_अप्रै._मई_जून_जुल._अग._सित._अक्टू._नव._दिस.'.split('_'),
+	        weekdays : 'रविवार_सोमवार_मंगलवार_बुधवार_गुरूवार_शुक्रवार_शनिवार'.split('_'),
+	        weekdaysShort : 'रवि_सोम_मंगल_बुध_गुरू_शुक्र_शनि'.split('_'),
+	        weekdaysMin : 'र_सो_मं_बु_गु_शु_श'.split('_'),
+	        longDateFormat : {
+	            LT : 'A h:mm बजे',
+	            LTS : 'A h:mm:ss बजे',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY, LT',
+	            LLLL : 'dddd, D MMMM YYYY, LT'
+	        },
+	        calendar : {
+	            sameDay : '[आज] LT',
+	            nextDay : '[कल] LT',
+	            nextWeek : 'dddd, LT',
+	            lastDay : '[कल] LT',
+	            lastWeek : '[पिछले] dddd, LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s में',
+	            past : '%s पहले',
+	            s : 'कुछ ही क्षण',
+	            m : 'एक मिनट',
+	            mm : '%d मिनट',
+	            h : 'एक घंटा',
+	            hh : '%d घंटे',
+	            d : 'एक दिन',
+	            dd : '%d दिन',
+	            M : 'एक महीने',
+	            MM : '%d महीने',
+	            y : 'एक वर्ष',
+	            yy : '%d वर्ष'
+	        },
+	        preparse: function (string) {
+	            return string.replace(/[१२३४५६७८९०]/g, function (match) {
+	                return numberMap[match];
+	            });
+	        },
+	        postformat: function (string) {
+	            return string.replace(/\d/g, function (match) {
+	                return symbolMap[match];
+	            });
+	        },
+	        // Hindi notation for meridiems are quite fuzzy in practice. While there exists
+	        // a rigid notion of a 'Pahar' it is not used as rigidly in modern Hindi.
+	        meridiemParse: /रात|सुबह|दोपहर|शाम/,
+	        meridiemHour : function (hour, meridiem) {
+	            if (hour === 12) {
+	                hour = 0;
+	            }
+	            if (meridiem === 'रात') {
+	                return hour < 4 ? hour : hour + 12;
+	            } else if (meridiem === 'सुबह') {
+	                return hour;
+	            } else if (meridiem === 'दोपहर') {
+	                return hour >= 10 ? hour : hour + 12;
+	            } else if (meridiem === 'शाम') {
+	                return hour + 12;
+	            }
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 4) {
+	                return 'रात';
+	            } else if (hour < 10) {
+	                return 'सुबह';
+	            } else if (hour < 17) {
+	                return 'दोपहर';
+	            } else if (hour < 20) {
+	                return 'शाम';
+	            } else {
+	                return 'रात';
+	            }
+	        },
+	        week : {
+	            dow : 0, // Sunday is the first day of the week.
+	            doy : 6  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return hi;
+
+	}));
+
+/***/ },
+/* 407 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : hrvatski (hr)
+	//! author : Bojan Marković : https://github.com/bmarkovic
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function translate(number, withoutSuffix, key) {
+	        var result = number + ' ';
+	        switch (key) {
+	        case 'm':
+	            return withoutSuffix ? 'jedna minuta' : 'jedne minute';
+	        case 'mm':
+	            if (number === 1) {
+	                result += 'minuta';
+	            } else if (number === 2 || number === 3 || number === 4) {
+	                result += 'minute';
+	            } else {
+	                result += 'minuta';
+	            }
+	            return result;
+	        case 'h':
+	            return withoutSuffix ? 'jedan sat' : 'jednog sata';
+	        case 'hh':
+	            if (number === 1) {
+	                result += 'sat';
+	            } else if (number === 2 || number === 3 || number === 4) {
+	                result += 'sata';
+	            } else {
+	                result += 'sati';
+	            }
+	            return result;
+	        case 'dd':
+	            if (number === 1) {
+	                result += 'dan';
+	            } else {
+	                result += 'dana';
+	            }
+	            return result;
+	        case 'MM':
+	            if (number === 1) {
+	                result += 'mjesec';
+	            } else if (number === 2 || number === 3 || number === 4) {
+	                result += 'mjeseca';
+	            } else {
+	                result += 'mjeseci';
+	            }
+	            return result;
+	        case 'yy':
+	            if (number === 1) {
+	                result += 'godina';
+	            } else if (number === 2 || number === 3 || number === 4) {
+	                result += 'godine';
+	            } else {
+	                result += 'godina';
+	            }
+	            return result;
+	        }
+	    }
+
+	    var hr = moment.defineLocale('hr', {
+	        months : 'sječanj_veljača_ožujak_travanj_svibanj_lipanj_srpanj_kolovoz_rujan_listopad_studeni_prosinac'.split('_'),
+	        monthsShort : 'sje._vel._ožu._tra._svi._lip._srp._kol._ruj._lis._stu._pro.'.split('_'),
+	        weekdays : 'nedjelja_ponedjeljak_utorak_srijeda_četvrtak_petak_subota'.split('_'),
+	        weekdaysShort : 'ned._pon._uto._sri._čet._pet._sub.'.split('_'),
+	        weekdaysMin : 'ne_po_ut_sr_če_pe_su'.split('_'),
+	        longDateFormat : {
+	            LT : 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD. MM. YYYY',
+	            LL : 'D. MMMM YYYY',
+	            LLL : 'D. MMMM YYYY LT',
+	            LLLL : 'dddd, D. MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay  : '[danas u] LT',
+	            nextDay  : '[sutra u] LT',
+	            nextWeek : function () {
+	                switch (this.day()) {
+	                case 0:
+	                    return '[u] [nedjelju] [u] LT';
+	                case 3:
+	                    return '[u] [srijedu] [u] LT';
+	                case 6:
+	                    return '[u] [subotu] [u] LT';
+	                case 1:
+	                case 2:
+	                case 4:
+	                case 5:
+	                    return '[u] dddd [u] LT';
+	                }
+	            },
+	            lastDay  : '[jučer u] LT',
+	            lastWeek : function () {
+	                switch (this.day()) {
+	                case 0:
+	                case 3:
+	                    return '[prošlu] dddd [u] LT';
+	                case 6:
+	                    return '[prošle] [subote] [u] LT';
+	                case 1:
+	                case 2:
+	                case 4:
+	                case 5:
+	                    return '[prošli] dddd [u] LT';
+	                }
+	            },
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'za %s',
+	            past   : 'prije %s',
+	            s      : 'par sekundi',
+	            m      : translate,
+	            mm     : translate,
+	            h      : translate,
+	            hh     : translate,
+	            d      : 'dan',
+	            dd     : translate,
+	            M      : 'mjesec',
+	            MM     : translate,
+	            y      : 'godinu',
+	            yy     : translate
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return hr;
+
+	}));
+
+/***/ },
+/* 408 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : hungarian (hu)
+	//! author : Adam Brunner : https://github.com/adambrunner
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var weekEndings = 'vasárnap hétfőn kedden szerdán csütörtökön pénteken szombaton'.split(' ');
+	    function translate(number, withoutSuffix, key, isFuture) {
+	        var num = number,
+	            suffix;
+	        switch (key) {
+	        case 's':
+	            return (isFuture || withoutSuffix) ? 'néhány másodperc' : 'néhány másodperce';
+	        case 'm':
+	            return 'egy' + (isFuture || withoutSuffix ? ' perc' : ' perce');
+	        case 'mm':
+	            return num + (isFuture || withoutSuffix ? ' perc' : ' perce');
+	        case 'h':
+	            return 'egy' + (isFuture || withoutSuffix ? ' óra' : ' órája');
+	        case 'hh':
+	            return num + (isFuture || withoutSuffix ? ' óra' : ' órája');
+	        case 'd':
+	            return 'egy' + (isFuture || withoutSuffix ? ' nap' : ' napja');
+	        case 'dd':
+	            return num + (isFuture || withoutSuffix ? ' nap' : ' napja');
+	        case 'M':
+	            return 'egy' + (isFuture || withoutSuffix ? ' hónap' : ' hónapja');
+	        case 'MM':
+	            return num + (isFuture || withoutSuffix ? ' hónap' : ' hónapja');
+	        case 'y':
+	            return 'egy' + (isFuture || withoutSuffix ? ' év' : ' éve');
+	        case 'yy':
+	            return num + (isFuture || withoutSuffix ? ' év' : ' éve');
+	        }
+	        return '';
+	    }
+	    function week(isFuture) {
+	        return (isFuture ? '' : '[múlt] ') + '[' + weekEndings[this.day()] + '] LT[-kor]';
+	    }
+
+	    var hu = moment.defineLocale('hu', {
+	        months : 'január_február_március_április_május_június_július_augusztus_szeptember_október_november_december'.split('_'),
+	        monthsShort : 'jan_feb_márc_ápr_máj_jún_júl_aug_szept_okt_nov_dec'.split('_'),
+	        weekdays : 'vasárnap_hétfő_kedd_szerda_csütörtök_péntek_szombat'.split('_'),
+	        weekdaysShort : 'vas_hét_kedd_sze_csüt_pén_szo'.split('_'),
+	        weekdaysMin : 'v_h_k_sze_cs_p_szo'.split('_'),
+	        longDateFormat : {
+	            LT : 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'YYYY.MM.DD.',
+	            LL : 'YYYY. MMMM D.',
+	            LLL : 'YYYY. MMMM D., LT',
+	            LLLL : 'YYYY. MMMM D., dddd LT'
+	        },
+	        meridiemParse: /de|du/i,
+	        isPM: function (input) {
+	            return input.charAt(1).toLowerCase() === 'u';
+	        },
+	        meridiem : function (hours, minutes, isLower) {
+	            if (hours < 12) {
+	                return isLower === true ? 'de' : 'DE';
+	            } else {
+	                return isLower === true ? 'du' : 'DU';
+	            }
+	        },
+	        calendar : {
+	            sameDay : '[ma] LT[-kor]',
+	            nextDay : '[holnap] LT[-kor]',
+	            nextWeek : function () {
+	                return week.call(this, true);
+	            },
+	            lastDay : '[tegnap] LT[-kor]',
+	            lastWeek : function () {
+	                return week.call(this, false);
+	            },
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s múlva',
+	            past : '%s',
+	            s : translate,
+	            m : translate,
+	            mm : translate,
+	            h : translate,
+	            hh : translate,
+	            d : translate,
+	            dd : translate,
+	            M : translate,
+	            MM : translate,
+	            y : translate,
+	            yy : translate
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return hu;
+
+	}));
+
+/***/ },
+/* 409 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Armenian (hy-am)
+	//! author : Armendarabyan : https://github.com/armendarabyan
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function monthsCaseReplace(m, format) {
+	        var months = {
+	            'nominative': 'հունվար_փետրվար_մարտ_ապրիլ_մայիս_հունիս_հուլիս_օգոստոս_սեպտեմբեր_հոկտեմբեր_նոյեմբեր_դեկտեմբեր'.split('_'),
+	            'accusative': 'հունվարի_փետրվարի_մարտի_ապրիլի_մայիսի_հունիսի_հուլիսի_օգոստոսի_սեպտեմբերի_հոկտեմբերի_նոյեմբերի_դեկտեմբերի'.split('_')
+	        },
+	        nounCase = (/D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/).test(format) ?
+	            'accusative' :
+	            'nominative';
+	        return months[nounCase][m.month()];
+	    }
+	    function monthsShortCaseReplace(m, format) {
+	        var monthsShort = 'հնվ_փտր_մրտ_ապր_մյս_հնս_հլս_օգս_սպտ_հկտ_նմբ_դկտ'.split('_');
+	        return monthsShort[m.month()];
+	    }
+	    function weekdaysCaseReplace(m, format) {
+	        var weekdays = 'կիրակի_երկուշաբթի_երեքշաբթի_չորեքշաբթի_հինգշաբթի_ուրբաթ_շաբաթ'.split('_');
+	        return weekdays[m.day()];
+	    }
+
+	    var hy_am = moment.defineLocale('hy-am', {
+	        months : monthsCaseReplace,
+	        monthsShort : monthsShortCaseReplace,
+	        weekdays : weekdaysCaseReplace,
+	        weekdaysShort : 'կրկ_երկ_երք_չրք_հնգ_ուրբ_շբթ'.split('_'),
+	        weekdaysMin : 'կրկ_երկ_երք_չրք_հնգ_ուրբ_շբթ'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D MMMM YYYY թ.',
+	            LLL : 'D MMMM YYYY թ., LT',
+	            LLLL : 'dddd, D MMMM YYYY թ., LT'
+	        },
+	        calendar : {
+	            sameDay: '[այսօր] LT',
+	            nextDay: '[վաղը] LT',
+	            lastDay: '[երեկ] LT',
+	            nextWeek: function () {
+	                return 'dddd [օրը ժամը] LT';
+	            },
+	            lastWeek: function () {
+	                return '[անցած] dddd [օրը ժամը] LT';
+	            },
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : '%s հետո',
+	            past : '%s առաջ',
+	            s : 'մի քանի վայրկյան',
+	            m : 'րոպե',
+	            mm : '%d րոպե',
+	            h : 'ժամ',
+	            hh : '%d ժամ',
+	            d : 'օր',
+	            dd : '%d օր',
+	            M : 'ամիս',
+	            MM : '%d ամիս',
+	            y : 'տարի',
+	            yy : '%d տարի'
+	        },
+	        meridiemParse: /գիշերվա|առավոտվա|ցերեկվա|երեկոյան/,
+	        isPM: function (input) {
+	            return /^(ցերեկվա|երեկոյան)$/.test(input);
+	        },
+	        meridiem : function (hour) {
+	            if (hour < 4) {
+	                return 'գիշերվա';
+	            } else if (hour < 12) {
+	                return 'առավոտվա';
+	            } else if (hour < 17) {
+	                return 'ցերեկվա';
+	            } else {
+	                return 'երեկոյան';
+	            }
+	        },
+	        ordinalParse: /\d{1,2}|\d{1,2}-(ին|րդ)/,
+	        ordinal: function (number, period) {
+	            switch (period) {
+	            case 'DDD':
+	            case 'w':
+	            case 'W':
+	            case 'DDDo':
+	                if (number === 1) {
+	                    return number + '-ին';
+	                }
+	                return number + '-րդ';
+	            default:
+	                return number;
+	            }
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return hy_am;
+
+	}));
+
+/***/ },
+/* 410 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Bahasa Indonesia (id)
+	//! author : Mohammad Satrio Utomo : https://github.com/tyok
+	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var id = moment.defineLocale('id', {
+	        months : 'Januari_Februari_Maret_April_Mei_Juni_Juli_Agustus_September_Oktober_November_Desember'.split('_'),
+	        monthsShort : 'Jan_Feb_Mar_Apr_Mei_Jun_Jul_Ags_Sep_Okt_Nov_Des'.split('_'),
+	        weekdays : 'Minggu_Senin_Selasa_Rabu_Kamis_Jumat_Sabtu'.split('_'),
+	        weekdaysShort : 'Min_Sen_Sel_Rab_Kam_Jum_Sab'.split('_'),
+	        weekdaysMin : 'Mg_Sn_Sl_Rb_Km_Jm_Sb'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH.mm',
+	            LTS : 'LT.ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY [pukul] LT',
+	            LLLL : 'dddd, D MMMM YYYY [pukul] LT'
+	        },
+	        meridiemParse: /pagi|siang|sore|malam/,
+	        meridiemHour : function (hour, meridiem) {
+	            if (hour === 12) {
+	                hour = 0;
+	            }
+	            if (meridiem === 'pagi') {
+	                return hour;
+	            } else if (meridiem === 'siang') {
+	                return hour >= 11 ? hour : hour + 12;
+	            } else if (meridiem === 'sore' || meridiem === 'malam') {
+	                return hour + 12;
+	            }
+	        },
+	        meridiem : function (hours, minutes, isLower) {
+	            if (hours < 11) {
+	                return 'pagi';
+	            } else if (hours < 15) {
+	                return 'siang';
+	            } else if (hours < 19) {
+	                return 'sore';
+	            } else {
+	                return 'malam';
+	            }
+	        },
+	        calendar : {
+	            sameDay : '[Hari ini pukul] LT',
+	            nextDay : '[Besok pukul] LT',
+	            nextWeek : 'dddd [pukul] LT',
+	            lastDay : '[Kemarin pukul] LT',
+	            lastWeek : 'dddd [lalu pukul] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'dalam %s',
+	            past : '%s yang lalu',
+	            s : 'beberapa detik',
+	            m : 'semenit',
+	            mm : '%d menit',
+	            h : 'sejam',
+	            hh : '%d jam',
+	            d : 'sehari',
+	            dd : '%d hari',
+	            M : 'sebulan',
+	            MM : '%d bulan',
+	            y : 'setahun',
+	            yy : '%d tahun'
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return id;
+
+	}));
+
+/***/ },
+/* 411 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : icelandic (is)
+	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function plural(n) {
+	        if (n % 100 === 11) {
+	            return true;
+	        } else if (n % 10 === 1) {
+	            return false;
+	        }
+	        return true;
+	    }
+	    function translate(number, withoutSuffix, key, isFuture) {
+	        var result = number + ' ';
+	        switch (key) {
+	        case 's':
+	            return withoutSuffix || isFuture ? 'nokkrar sekúndur' : 'nokkrum sekúndum';
+	        case 'm':
+	            return withoutSuffix ? 'mínúta' : 'mínútu';
+	        case 'mm':
+	            if (plural(number)) {
+	                return result + (withoutSuffix || isFuture ? 'mínútur' : 'mínútum');
+	            } else if (withoutSuffix) {
+	                return result + 'mínúta';
+	            }
+	            return result + 'mínútu';
+	        case 'hh':
+	            if (plural(number)) {
+	                return result + (withoutSuffix || isFuture ? 'klukkustundir' : 'klukkustundum');
+	            }
+	            return result + 'klukkustund';
+	        case 'd':
+	            if (withoutSuffix) {
+	                return 'dagur';
+	            }
+	            return isFuture ? 'dag' : 'degi';
+	        case 'dd':
+	            if (plural(number)) {
+	                if (withoutSuffix) {
+	                    return result + 'dagar';
+	                }
+	                return result + (isFuture ? 'daga' : 'dögum');
+	            } else if (withoutSuffix) {
+	                return result + 'dagur';
+	            }
+	            return result + (isFuture ? 'dag' : 'degi');
+	        case 'M':
+	            if (withoutSuffix) {
+	                return 'mánuður';
+	            }
+	            return isFuture ? 'mánuð' : 'mánuði';
+	        case 'MM':
+	            if (plural(number)) {
+	                if (withoutSuffix) {
+	                    return result + 'mánuðir';
+	                }
+	                return result + (isFuture ? 'mánuði' : 'mánuðum');
+	            } else if (withoutSuffix) {
+	                return result + 'mánuður';
+	            }
+	            return result + (isFuture ? 'mánuð' : 'mánuði');
+	        case 'y':
+	            return withoutSuffix || isFuture ? 'ár' : 'ári';
+	        case 'yy':
+	            if (plural(number)) {
+	                return result + (withoutSuffix || isFuture ? 'ár' : 'árum');
+	            }
+	            return result + (withoutSuffix || isFuture ? 'ár' : 'ári');
+	        }
+	    }
+
+	    var is = moment.defineLocale('is', {
+	        months : 'janúar_febrúar_mars_apríl_maí_júní_júlí_ágúst_september_október_nóvember_desember'.split('_'),
+	        monthsShort : 'jan_feb_mar_apr_maí_jún_júl_ágú_sep_okt_nóv_des'.split('_'),
+	        weekdays : 'sunnudagur_mánudagur_þriðjudagur_miðvikudagur_fimmtudagur_föstudagur_laugardagur'.split('_'),
+	        weekdaysShort : 'sun_mán_þri_mið_fim_fös_lau'.split('_'),
+	        weekdaysMin : 'Su_Má_Þr_Mi_Fi_Fö_La'.split('_'),
+	        longDateFormat : {
+	            LT : 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D. MMMM YYYY',
+	            LLL : 'D. MMMM YYYY [kl.] LT',
+	            LLLL : 'dddd, D. MMMM YYYY [kl.] LT'
+	        },
+	        calendar : {
+	            sameDay : '[í dag kl.] LT',
+	            nextDay : '[á morgun kl.] LT',
+	            nextWeek : 'dddd [kl.] LT',
+	            lastDay : '[í gær kl.] LT',
+	            lastWeek : '[síðasta] dddd [kl.] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'eftir %s',
+	            past : 'fyrir %s síðan',
+	            s : translate,
+	            m : translate,
+	            mm : translate,
+	            h : 'klukkustund',
+	            hh : translate,
+	            d : translate,
+	            dd : translate,
+	            M : translate,
+	            MM : translate,
+	            y : translate,
+	            yy : translate
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return is;
+
+	}));
+
+/***/ },
+/* 412 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : italian (it)
+	//! author : Lorenzo : https://github.com/aliem
+	//! author: Mattia Larentis: https://github.com/nostalgiaz
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var it = moment.defineLocale('it', {
+	        months : 'gennaio_febbraio_marzo_aprile_maggio_giugno_luglio_agosto_settembre_ottobre_novembre_dicembre'.split('_'),
+	        monthsShort : 'gen_feb_mar_apr_mag_giu_lug_ago_set_ott_nov_dic'.split('_'),
+	        weekdays : 'Domenica_Lunedì_Martedì_Mercoledì_Giovedì_Venerdì_Sabato'.split('_'),
+	        weekdaysShort : 'Dom_Lun_Mar_Mer_Gio_Ven_Sab'.split('_'),
+	        weekdaysMin : 'D_L_Ma_Me_G_V_S'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[Oggi alle] LT',
+	            nextDay: '[Domani alle] LT',
+	            nextWeek: 'dddd [alle] LT',
+	            lastDay: '[Ieri alle] LT',
+	            lastWeek: function () {
+	                switch (this.day()) {
+	                    case 0:
+	                        return '[la scorsa] dddd [alle] LT';
+	                    default:
+	                        return '[lo scorso] dddd [alle] LT';
+	                }
+	            },
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : function (s) {
+	                return ((/^[0-9].+$/).test(s) ? 'tra' : 'in') + ' ' + s;
+	            },
+	            past : '%s fa',
+	            s : 'alcuni secondi',
+	            m : 'un minuto',
+	            mm : '%d minuti',
+	            h : 'un\'ora',
+	            hh : '%d ore',
+	            d : 'un giorno',
+	            dd : '%d giorni',
+	            M : 'un mese',
+	            MM : '%d mesi',
+	            y : 'un anno',
+	            yy : '%d anni'
+	        },
+	        ordinalParse : /\d{1,2}º/,
+	        ordinal: '%dº',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return it;
+
+	}));
+
+/***/ },
+/* 413 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : japanese (ja)
+	//! author : LI Long : https://github.com/baryon
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var ja = moment.defineLocale('ja', {
+	        months : '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+	        monthsShort : '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+	        weekdays : '日曜日_月曜日_火曜日_水曜日_木曜日_金曜日_土曜日'.split('_'),
+	        weekdaysShort : '日_月_火_水_木_金_土'.split('_'),
+	        weekdaysMin : '日_月_火_水_木_金_土'.split('_'),
+	        longDateFormat : {
+	            LT : 'Ah時m分',
+	            LTS : 'LTs秒',
+	            L : 'YYYY/MM/DD',
+	            LL : 'YYYY年M月D日',
+	            LLL : 'YYYY年M月D日LT',
+	            LLLL : 'YYYY年M月D日LT dddd'
+	        },
+	        meridiemParse: /午前|午後/i,
+	        isPM : function (input) {
+	            return input === '午後';
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 12) {
+	                return '午前';
+	            } else {
+	                return '午後';
+	            }
+	        },
+	        calendar : {
+	            sameDay : '[今日] LT',
+	            nextDay : '[明日] LT',
+	            nextWeek : '[来週]dddd LT',
+	            lastDay : '[昨日] LT',
+	            lastWeek : '[前週]dddd LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s後',
+	            past : '%s前',
+	            s : '数秒',
+	            m : '1分',
+	            mm : '%d分',
+	            h : '1時間',
+	            hh : '%d時間',
+	            d : '1日',
+	            dd : '%d日',
+	            M : '1ヶ月',
+	            MM : '%dヶ月',
+	            y : '1年',
+	            yy : '%d年'
+	        }
+	    });
+
+	    return ja;
+
+	}));
+
+/***/ },
+/* 414 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Georgian (ka)
+	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function monthsCaseReplace(m, format) {
+	        var months = {
+	            'nominative': 'იანვარი_თებერვალი_მარტი_აპრილი_მაისი_ივნისი_ივლისი_აგვისტო_სექტემბერი_ოქტომბერი_ნოემბერი_დეკემბერი'.split('_'),
+	            'accusative': 'იანვარს_თებერვალს_მარტს_აპრილის_მაისს_ივნისს_ივლისს_აგვისტს_სექტემბერს_ოქტომბერს_ნოემბერს_დეკემბერს'.split('_')
+	        },
+	        nounCase = (/D[oD] *MMMM?/).test(format) ?
+	            'accusative' :
+	            'nominative';
+	        return months[nounCase][m.month()];
+	    }
+	    function weekdaysCaseReplace(m, format) {
+	        var weekdays = {
+	            'nominative': 'კვირა_ორშაბათი_სამშაბათი_ოთხშაბათი_ხუთშაბათი_პარასკევი_შაბათი'.split('_'),
+	            'accusative': 'კვირას_ორშაბათს_სამშაბათს_ოთხშაბათს_ხუთშაბათს_პარასკევს_შაბათს'.split('_')
+	        },
+	        nounCase = (/(წინა|შემდეგ)/).test(format) ?
+	            'accusative' :
+	            'nominative';
+	        return weekdays[nounCase][m.day()];
+	    }
+
+	    var ka = moment.defineLocale('ka', {
+	        months : monthsCaseReplace,
+	        monthsShort : 'იან_თებ_მარ_აპრ_მაი_ივნ_ივლ_აგვ_სექ_ოქტ_ნოე_დეკ'.split('_'),
+	        weekdays : weekdaysCaseReplace,
+	        weekdaysShort : 'კვი_ორშ_სამ_ოთხ_ხუთ_პარ_შაბ'.split('_'),
+	        weekdaysMin : 'კვ_ორ_სა_ოთ_ხუ_პა_შა'.split('_'),
+	        longDateFormat : {
+	            LT : 'h:mm A',
+	            LTS : 'h:mm:ss A',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[დღეს] LT[-ზე]',
+	            nextDay : '[ხვალ] LT[-ზე]',
+	            lastDay : '[გუშინ] LT[-ზე]',
+	            nextWeek : '[შემდეგ] dddd LT[-ზე]',
+	            lastWeek : '[წინა] dddd LT-ზე',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : function (s) {
+	                return (/(წამი|წუთი|საათი|წელი)/).test(s) ?
+	                    s.replace(/ი$/, 'ში') :
+	                    s + 'ში';
+	            },
+	            past : function (s) {
+	                if ((/(წამი|წუთი|საათი|დღე|თვე)/).test(s)) {
+	                    return s.replace(/(ი|ე)$/, 'ის წინ');
+	                }
+	                if ((/წელი/).test(s)) {
+	                    return s.replace(/წელი$/, 'წლის წინ');
+	                }
+	            },
+	            s : 'რამდენიმე წამი',
+	            m : 'წუთი',
+	            mm : '%d წუთი',
+	            h : 'საათი',
+	            hh : '%d საათი',
+	            d : 'დღე',
+	            dd : '%d დღე',
+	            M : 'თვე',
+	            MM : '%d თვე',
+	            y : 'წელი',
+	            yy : '%d წელი'
+	        },
+	        ordinalParse: /0|1-ლი|მე-\d{1,2}|\d{1,2}-ე/,
+	        ordinal : function (number) {
+	            if (number === 0) {
+	                return number;
+	            }
+	            if (number === 1) {
+	                return number + '-ლი';
+	            }
+	            if ((number < 20) || (number <= 100 && (number % 20 === 0)) || (number % 100 === 0)) {
+	                return 'მე-' + number;
+	            }
+	            return number + '-ე';
+	        },
+	        week : {
+	            dow : 1,
+	            doy : 7
+	        }
+	    });
+
+	    return ka;
+
+	}));
+
+/***/ },
+/* 415 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : khmer (km)
+	//! author : Kruy Vanna : https://github.com/kruyvanna
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var km = moment.defineLocale('km', {
+	        months: 'មករា_កុម្ភៈ_មិនា_មេសា_ឧសភា_មិថុនា_កក្កដា_សីហា_កញ្ញា_តុលា_វិច្ឆិកា_ធ្នូ'.split('_'),
+	        monthsShort: 'មករា_កុម្ភៈ_មិនា_មេសា_ឧសភា_មិថុនា_កក្កដា_សីហា_កញ្ញា_តុលា_វិច្ឆិកា_ធ្នូ'.split('_'),
+	        weekdays: 'អាទិត្យ_ច័ន្ទ_អង្គារ_ពុធ_ព្រហស្បតិ៍_សុក្រ_សៅរ៍'.split('_'),
+	        weekdaysShort: 'អាទិត្យ_ច័ន្ទ_អង្គារ_ពុធ_ព្រហស្បតិ៍_សុក្រ_សៅរ៍'.split('_'),
+	        weekdaysMin: 'អាទិត្យ_ច័ន្ទ_អង្គារ_ពុធ_ព្រហស្បតិ៍_សុក្រ_សៅរ៍'.split('_'),
+	        longDateFormat: {
+	            LT: 'HH:mm',
+	            LTS : 'LT:ss',
+	            L: 'DD/MM/YYYY',
+	            LL: 'D MMMM YYYY',
+	            LLL: 'D MMMM YYYY LT',
+	            LLLL: 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar: {
+	            sameDay: '[ថ្ងៃនៈ ម៉ោង] LT',
+	            nextDay: '[ស្អែក ម៉ោង] LT',
+	            nextWeek: 'dddd [ម៉ោង] LT',
+	            lastDay: '[ម្សិលមិញ ម៉ោង] LT',
+	            lastWeek: 'dddd [សប្តាហ៍មុន] [ម៉ោង] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime: {
+	            future: '%sទៀត',
+	            past: '%sមុន',
+	            s: 'ប៉ុន្មានវិនាទី',
+	            m: 'មួយនាទី',
+	            mm: '%d នាទី',
+	            h: 'មួយម៉ោង',
+	            hh: '%d ម៉ោង',
+	            d: 'មួយថ្ងៃ',
+	            dd: '%d ថ្ងៃ',
+	            M: 'មួយខែ',
+	            MM: '%d ខែ',
+	            y: 'មួយឆ្នាំ',
+	            yy: '%d ឆ្នាំ'
+	        },
+	        week: {
+	            dow: 1, // Monday is the first day of the week.
+	            doy: 4 // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return km;
+
+	}));
+
+/***/ },
+/* 416 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : korean (ko)
+	//!
+	//! authors
+	//!
+	//! - Kyungwook, Park : https://github.com/kyungw00k
+	//! - Jeeeyul Lee <jeeeyul@gmail.com>
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var ko = moment.defineLocale('ko', {
+	        months : '1월_2월_3월_4월_5월_6월_7월_8월_9월_10월_11월_12월'.split('_'),
+	        monthsShort : '1월_2월_3월_4월_5월_6월_7월_8월_9월_10월_11월_12월'.split('_'),
+	        weekdays : '일요일_월요일_화요일_수요일_목요일_금요일_토요일'.split('_'),
+	        weekdaysShort : '일_월_화_수_목_금_토'.split('_'),
+	        weekdaysMin : '일_월_화_수_목_금_토'.split('_'),
+	        longDateFormat : {
+	            LT : 'A h시 m분',
+	            LTS : 'A h시 m분 s초',
+	            L : 'YYYY.MM.DD',
+	            LL : 'YYYY년 MMMM D일',
+	            LLL : 'YYYY년 MMMM D일 LT',
+	            LLLL : 'YYYY년 MMMM D일 dddd LT'
+	        },
+	        calendar : {
+	            sameDay : '오늘 LT',
+	            nextDay : '내일 LT',
+	            nextWeek : 'dddd LT',
+	            lastDay : '어제 LT',
+	            lastWeek : '지난주 dddd LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s 후',
+	            past : '%s 전',
+	            s : '몇초',
+	            ss : '%d초',
+	            m : '일분',
+	            mm : '%d분',
+	            h : '한시간',
+	            hh : '%d시간',
+	            d : '하루',
+	            dd : '%d일',
+	            M : '한달',
+	            MM : '%d달',
+	            y : '일년',
+	            yy : '%d년'
+	        },
+	        ordinalParse : /\d{1,2}일/,
+	        ordinal : '%d일',
+	        meridiemParse : /오전|오후/,
+	        isPM : function (token) {
+	            return token === '오후';
+	        },
+	        meridiem : function (hour, minute, isUpper) {
+	            return hour < 12 ? '오전' : '오후';
+	        }
+	    });
+
+	    return ko;
+
+	}));
+
+/***/ },
+/* 417 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Luxembourgish (lb)
+	//! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function processRelativeTime(number, withoutSuffix, key, isFuture) {
+	        var format = {
+	            'm': ['eng Minutt', 'enger Minutt'],
+	            'h': ['eng Stonn', 'enger Stonn'],
+	            'd': ['een Dag', 'engem Dag'],
+	            'M': ['ee Mount', 'engem Mount'],
+	            'y': ['ee Joer', 'engem Joer']
+	        };
+	        return withoutSuffix ? format[key][0] : format[key][1];
+	    }
+	    function processFutureTime(string) {
+	        var number = string.substr(0, string.indexOf(' '));
+	        if (eifelerRegelAppliesToNumber(number)) {
+	            return 'a ' + string;
+	        }
+	        return 'an ' + string;
+	    }
+	    function processPastTime(string) {
+	        var number = string.substr(0, string.indexOf(' '));
+	        if (eifelerRegelAppliesToNumber(number)) {
+	            return 'viru ' + string;
+	        }
+	        return 'virun ' + string;
+	    }
+	    /**
+	     * Returns true if the word before the given number loses the '-n' ending.
+	     * e.g. 'an 10 Deeg' but 'a 5 Deeg'
+	     *
+	     * @param number {integer}
+	     * @returns {boolean}
+	     */
+	    function eifelerRegelAppliesToNumber(number) {
+	        number = parseInt(number, 10);
+	        if (isNaN(number)) {
+	            return false;
+	        }
+	        if (number < 0) {
+	            // Negative Number --> always true
+	            return true;
+	        } else if (number < 10) {
+	            // Only 1 digit
+	            if (4 <= number && number <= 7) {
+	                return true;
+	            }
+	            return false;
+	        } else if (number < 100) {
+	            // 2 digits
+	            var lastDigit = number % 10, firstDigit = number / 10;
+	            if (lastDigit === 0) {
+	                return eifelerRegelAppliesToNumber(firstDigit);
+	            }
+	            return eifelerRegelAppliesToNumber(lastDigit);
+	        } else if (number < 10000) {
+	            // 3 or 4 digits --> recursively check first digit
+	            while (number >= 10) {
+	                number = number / 10;
+	            }
+	            return eifelerRegelAppliesToNumber(number);
+	        } else {
+	            // Anything larger than 4 digits: recursively check first n-3 digits
+	            number = number / 1000;
+	            return eifelerRegelAppliesToNumber(number);
+	        }
+	    }
+
+	    var lb = moment.defineLocale('lb', {
+	        months: 'Januar_Februar_Mäerz_Abrëll_Mee_Juni_Juli_August_September_Oktober_November_Dezember'.split('_'),
+	        monthsShort: 'Jan._Febr._Mrz._Abr._Mee_Jun._Jul._Aug._Sept._Okt._Nov._Dez.'.split('_'),
+	        weekdays: 'Sonndeg_Méindeg_Dënschdeg_Mëttwoch_Donneschdeg_Freideg_Samschdeg'.split('_'),
+	        weekdaysShort: 'So._Mé._Dë._Më._Do._Fr._Sa.'.split('_'),
+	        weekdaysMin: 'So_Mé_Dë_Më_Do_Fr_Sa'.split('_'),
+	        longDateFormat: {
+	            LT: 'H:mm [Auer]',
+	            LTS: 'H:mm:ss [Auer]',
+	            L: 'DD.MM.YYYY',
+	            LL: 'D. MMMM YYYY',
+	            LLL: 'D. MMMM YYYY LT',
+	            LLLL: 'dddd, D. MMMM YYYY LT'
+	        },
+	        calendar: {
+	            sameDay: '[Haut um] LT',
+	            sameElse: 'L',
+	            nextDay: '[Muer um] LT',
+	            nextWeek: 'dddd [um] LT',
+	            lastDay: '[Gëschter um] LT',
+	            lastWeek: function () {
+	                // Different date string for 'Dënschdeg' (Tuesday) and 'Donneschdeg' (Thursday) due to phonological rule
+	                switch (this.day()) {
+	                    case 2:
+	                    case 4:
+	                        return '[Leschten] dddd [um] LT';
+	                    default:
+	                        return '[Leschte] dddd [um] LT';
+	                }
+	            }
+	        },
+	        relativeTime : {
+	            future : processFutureTime,
+	            past : processPastTime,
+	            s : 'e puer Sekonnen',
+	            m : processRelativeTime,
+	            mm : '%d Minutten',
+	            h : processRelativeTime,
+	            hh : '%d Stonnen',
+	            d : processRelativeTime,
+	            dd : '%d Deeg',
+	            M : processRelativeTime,
+	            MM : '%d Méint',
+	            y : processRelativeTime,
+	            yy : '%d Joer'
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal: '%d.',
+	        week: {
+	            dow: 1, // Monday is the first day of the week.
+	            doy: 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return lb;
+
+	}));
+
+/***/ },
+/* 418 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Lithuanian (lt)
+	//! author : Mindaugas Mozūras : https://github.com/mmozuras
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var units = {
+	        'm' : 'minutė_minutės_minutę',
+	        'mm': 'minutės_minučių_minutes',
+	        'h' : 'valanda_valandos_valandą',
+	        'hh': 'valandos_valandų_valandas',
+	        'd' : 'diena_dienos_dieną',
+	        'dd': 'dienos_dienų_dienas',
+	        'M' : 'mėnuo_mėnesio_mėnesį',
+	        'MM': 'mėnesiai_mėnesių_mėnesius',
+	        'y' : 'metai_metų_metus',
+	        'yy': 'metai_metų_metus'
+	    },
+	    weekDays = 'sekmadienis_pirmadienis_antradienis_trečiadienis_ketvirtadienis_penktadienis_šeštadienis'.split('_');
+	    function translateSeconds(number, withoutSuffix, key, isFuture) {
+	        if (withoutSuffix) {
+	            return 'kelios sekundės';
+	        } else {
+	            return isFuture ? 'kelių sekundžių' : 'kelias sekundes';
+	        }
+	    }
+	    function translateSingular(number, withoutSuffix, key, isFuture) {
+	        return withoutSuffix ? forms(key)[0] : (isFuture ? forms(key)[1] : forms(key)[2]);
+	    }
+	    function special(number) {
+	        return number % 10 === 0 || (number > 10 && number < 20);
+	    }
+	    function forms(key) {
+	        return units[key].split('_');
+	    }
+	    function translate(number, withoutSuffix, key, isFuture) {
+	        var result = number + ' ';
+	        if (number === 1) {
+	            return result + translateSingular(number, withoutSuffix, key[0], isFuture);
+	        } else if (withoutSuffix) {
+	            return result + (special(number) ? forms(key)[1] : forms(key)[0]);
+	        } else {
+	            if (isFuture) {
+	                return result + forms(key)[1];
+	            } else {
+	                return result + (special(number) ? forms(key)[1] : forms(key)[2]);
+	            }
+	        }
+	    }
+	    function relativeWeekDay(moment, format) {
+	        var nominative = format.indexOf('dddd HH:mm') === -1,
+	            weekDay = weekDays[moment.day()];
+	        return nominative ? weekDay : weekDay.substring(0, weekDay.length - 2) + 'į';
+	    }
+
+	    var lt = moment.defineLocale('lt', {
+	        months : 'sausio_vasario_kovo_balandžio_gegužės_birželio_liepos_rugpjūčio_rugsėjo_spalio_lapkričio_gruodžio'.split('_'),
+	        monthsShort : 'sau_vas_kov_bal_geg_bir_lie_rgp_rgs_spa_lap_grd'.split('_'),
+	        weekdays : relativeWeekDay,
+	        weekdaysShort : 'Sek_Pir_Ant_Tre_Ket_Pen_Šeš'.split('_'),
+	        weekdaysMin : 'S_P_A_T_K_Pn_Š'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'YYYY-MM-DD',
+	            LL : 'YYYY [m.] MMMM D [d.]',
+	            LLL : 'YYYY [m.] MMMM D [d.], LT [val.]',
+	            LLLL : 'YYYY [m.] MMMM D [d.], dddd, LT [val.]',
+	            l : 'YYYY-MM-DD',
+	            ll : 'YYYY [m.] MMMM D [d.]',
+	            lll : 'YYYY [m.] MMMM D [d.], LT [val.]',
+	            llll : 'YYYY [m.] MMMM D [d.], ddd, LT [val.]'
+	        },
+	        calendar : {
+	            sameDay : '[Šiandien] LT',
+	            nextDay : '[Rytoj] LT',
+	            nextWeek : 'dddd LT',
+	            lastDay : '[Vakar] LT',
+	            lastWeek : '[Praėjusį] dddd LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'po %s',
+	            past : 'prieš %s',
+	            s : translateSeconds,
+	            m : translateSingular,
+	            mm : translate,
+	            h : translateSingular,
+	            hh : translate,
+	            d : translateSingular,
+	            dd : translate,
+	            M : translateSingular,
+	            MM : translate,
+	            y : translateSingular,
+	            yy : translate
+	        },
+	        ordinalParse: /\d{1,2}-oji/,
+	        ordinal : function (number) {
+	            return number + '-oji';
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return lt;
+
+	}));
+
+/***/ },
+/* 419 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : latvian (lv)
+	//! author : Kristaps Karlsons : https://github.com/skakri
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var units = {
+	        'mm': 'minūti_minūtes_minūte_minūtes',
+	        'hh': 'stundu_stundas_stunda_stundas',
+	        'dd': 'dienu_dienas_diena_dienas',
+	        'MM': 'mēnesi_mēnešus_mēnesis_mēneši',
+	        'yy': 'gadu_gadus_gads_gadi'
+	    };
+	    function format(word, number, withoutSuffix) {
+	        var forms = word.split('_');
+	        if (withoutSuffix) {
+	            return number % 10 === 1 && number !== 11 ? forms[2] : forms[3];
+	        } else {
+	            return number % 10 === 1 && number !== 11 ? forms[0] : forms[1];
+	        }
+	    }
+	    function relativeTimeWithPlural(number, withoutSuffix, key) {
+	        return number + ' ' + format(units[key], number, withoutSuffix);
+	    }
+
+	    var lv = moment.defineLocale('lv', {
+	        months : 'janvāris_februāris_marts_aprīlis_maijs_jūnijs_jūlijs_augusts_septembris_oktobris_novembris_decembris'.split('_'),
+	        monthsShort : 'jan_feb_mar_apr_mai_jūn_jūl_aug_sep_okt_nov_dec'.split('_'),
+	        weekdays : 'svētdiena_pirmdiena_otrdiena_trešdiena_ceturtdiena_piektdiena_sestdiena'.split('_'),
+	        weekdaysShort : 'Sv_P_O_T_C_Pk_S'.split('_'),
+	        weekdaysMin : 'Sv_P_O_T_C_Pk_S'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'YYYY. [gada] D. MMMM',
+	            LLL : 'YYYY. [gada] D. MMMM, LT',
+	            LLLL : 'YYYY. [gada] D. MMMM, dddd, LT'
+	        },
+	        calendar : {
+	            sameDay : '[Šodien pulksten] LT',
+	            nextDay : '[Rīt pulksten] LT',
+	            nextWeek : 'dddd [pulksten] LT',
+	            lastDay : '[Vakar pulksten] LT',
+	            lastWeek : '[Pagājušā] dddd [pulksten] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s vēlāk',
+	            past : '%s agrāk',
+	            s : 'dažas sekundes',
+	            m : 'minūti',
+	            mm : relativeTimeWithPlural,
+	            h : 'stundu',
+	            hh : relativeTimeWithPlural,
+	            d : 'dienu',
+	            dd : relativeTimeWithPlural,
+	            M : 'mēnesi',
+	            MM : relativeTimeWithPlural,
+	            y : 'gadu',
+	            yy : relativeTimeWithPlural
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return lv;
+
+	}));
+
+/***/ },
+/* 420 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : macedonian (mk)
+	//! author : Borislav Mickov : https://github.com/B0k0
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var mk = moment.defineLocale('mk', {
+	        months : 'јануари_февруари_март_април_мај_јуни_јули_август_септември_октомври_ноември_декември'.split('_'),
+	        monthsShort : 'јан_фев_мар_апр_мај_јун_јул_авг_сеп_окт_ное_дек'.split('_'),
+	        weekdays : 'недела_понеделник_вторник_среда_четврток_петок_сабота'.split('_'),
+	        weekdaysShort : 'нед_пон_вто_сре_чет_пет_саб'.split('_'),
+	        weekdaysMin : 'нe_пo_вт_ср_че_пе_сa'.split('_'),
+	        longDateFormat : {
+	            LT : 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'D.MM.YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[Денес во] LT',
+	            nextDay : '[Утре во] LT',
+	            nextWeek : 'dddd [во] LT',
+	            lastDay : '[Вчера во] LT',
+	            lastWeek : function () {
+	                switch (this.day()) {
+	                case 0:
+	                case 3:
+	                case 6:
+	                    return '[Во изминатата] dddd [во] LT';
+	                case 1:
+	                case 2:
+	                case 4:
+	                case 5:
+	                    return '[Во изминатиот] dddd [во] LT';
+	                }
+	            },
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'после %s',
+	            past : 'пред %s',
+	            s : 'неколку секунди',
+	            m : 'минута',
+	            mm : '%d минути',
+	            h : 'час',
+	            hh : '%d часа',
+	            d : 'ден',
+	            dd : '%d дена',
+	            M : 'месец',
+	            MM : '%d месеци',
+	            y : 'година',
+	            yy : '%d години'
+	        },
+	        ordinalParse: /\d{1,2}-(ев|ен|ти|ви|ри|ми)/,
+	        ordinal : function (number) {
+	            var lastDigit = number % 10,
+	                last2Digits = number % 100;
+	            if (number === 0) {
+	                return number + '-ев';
+	            } else if (last2Digits === 0) {
+	                return number + '-ен';
+	            } else if (last2Digits > 10 && last2Digits < 20) {
+	                return number + '-ти';
+	            } else if (lastDigit === 1) {
+	                return number + '-ви';
+	            } else if (lastDigit === 2) {
+	                return number + '-ри';
+	            } else if (lastDigit === 7 || lastDigit === 8) {
+	                return number + '-ми';
+	            } else {
+	                return number + '-ти';
+	            }
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return mk;
+
+	}));
+
+/***/ },
+/* 421 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : malayalam (ml)
+	//! author : Floyd Pink : https://github.com/floydpink
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var ml = moment.defineLocale('ml', {
+	        months : 'ജനുവരി_ഫെബ്രുവരി_മാർച്ച്_ഏപ്രിൽ_മേയ്_ജൂൺ_ജൂലൈ_ഓഗസ്റ്റ്_സെപ്റ്റംബർ_ഒക്ടോബർ_നവംബർ_ഡിസംബർ'.split('_'),
+	        monthsShort : 'ജനു._ഫെബ്രു._മാർ._ഏപ്രി._മേയ്_ജൂൺ_ജൂലൈ._ഓഗ._സെപ്റ്റ._ഒക്ടോ._നവം._ഡിസം.'.split('_'),
+	        weekdays : 'ഞായറാഴ്ച_തിങ്കളാഴ്ച_ചൊവ്വാഴ്ച_ബുധനാഴ്ച_വ്യാഴാഴ്ച_വെള്ളിയാഴ്ച_ശനിയാഴ്ച'.split('_'),
+	        weekdaysShort : 'ഞായർ_തിങ്കൾ_ചൊവ്വ_ബുധൻ_വ്യാഴം_വെള്ളി_ശനി'.split('_'),
+	        weekdaysMin : 'ഞാ_തി_ചൊ_ബു_വ്യാ_വെ_ശ'.split('_'),
+	        longDateFormat : {
+	            LT : 'A h:mm -നു',
+	            LTS : 'A h:mm:ss -നു',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY, LT',
+	            LLLL : 'dddd, D MMMM YYYY, LT'
+	        },
+	        calendar : {
+	            sameDay : '[ഇന്ന്] LT',
+	            nextDay : '[നാളെ] LT',
+	            nextWeek : 'dddd, LT',
+	            lastDay : '[ഇന്നലെ] LT',
+	            lastWeek : '[കഴിഞ്ഞ] dddd, LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s കഴിഞ്ഞ്',
+	            past : '%s മുൻപ്',
+	            s : 'അൽപ നിമിഷങ്ങൾ',
+	            m : 'ഒരു മിനിറ്റ്',
+	            mm : '%d മിനിറ്റ്',
+	            h : 'ഒരു മണിക്കൂർ',
+	            hh : '%d മണിക്കൂർ',
+	            d : 'ഒരു ദിവസം',
+	            dd : '%d ദിവസം',
+	            M : 'ഒരു മാസം',
+	            MM : '%d മാസം',
+	            y : 'ഒരു വർഷം',
+	            yy : '%d വർഷം'
+	        },
+	        meridiemParse: /രാത്രി|രാവിലെ|ഉച്ച കഴിഞ്ഞ്|വൈകുന്നേരം|രാത്രി/i,
+	        isPM : function (input) {
+	            return /^(ഉച്ച കഴിഞ്ഞ്|വൈകുന്നേരം|രാത്രി)$/.test(input);
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 4) {
+	                return 'രാത്രി';
+	            } else if (hour < 12) {
+	                return 'രാവിലെ';
+	            } else if (hour < 17) {
+	                return 'ഉച്ച കഴിഞ്ഞ്';
+	            } else if (hour < 20) {
+	                return 'വൈകുന്നേരം';
+	            } else {
+	                return 'രാത്രി';
+	            }
+	        }
+	    });
+
+	    return ml;
+
+	}));
+
+/***/ },
+/* 422 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Marathi (mr)
+	//! author : Harshad Kale : https://github.com/kalehv
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var symbolMap = {
+	        '1': '१',
+	        '2': '२',
+	        '3': '३',
+	        '4': '४',
+	        '5': '५',
+	        '6': '६',
+	        '7': '७',
+	        '8': '८',
+	        '9': '९',
+	        '0': '०'
+	    },
+	    numberMap = {
+	        '१': '1',
+	        '२': '2',
+	        '३': '3',
+	        '४': '4',
+	        '५': '5',
+	        '६': '6',
+	        '७': '7',
+	        '८': '8',
+	        '९': '9',
+	        '०': '0'
+	    };
+
+	    var mr = moment.defineLocale('mr', {
+	        months : 'जानेवारी_फेब्रुवारी_मार्च_एप्रिल_मे_जून_जुलै_ऑगस्ट_सप्टेंबर_ऑक्टोबर_नोव्हेंबर_डिसेंबर'.split('_'),
+	        monthsShort: 'जाने._फेब्रु._मार्च._एप्रि._मे._जून._जुलै._ऑग._सप्टें._ऑक्टो._नोव्हें._डिसें.'.split('_'),
+	        weekdays : 'रविवार_सोमवार_मंगळवार_बुधवार_गुरूवार_शुक्रवार_शनिवार'.split('_'),
+	        weekdaysShort : 'रवि_सोम_मंगळ_बुध_गुरू_शुक्र_शनि'.split('_'),
+	        weekdaysMin : 'र_सो_मं_बु_गु_शु_श'.split('_'),
+	        longDateFormat : {
+	            LT : 'A h:mm वाजता',
+	            LTS : 'A h:mm:ss वाजता',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY, LT',
+	            LLLL : 'dddd, D MMMM YYYY, LT'
+	        },
+	        calendar : {
+	            sameDay : '[आज] LT',
+	            nextDay : '[उद्या] LT',
+	            nextWeek : 'dddd, LT',
+	            lastDay : '[काल] LT',
+	            lastWeek: '[मागील] dddd, LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s नंतर',
+	            past : '%s पूर्वी',
+	            s : 'सेकंद',
+	            m: 'एक मिनिट',
+	            mm: '%d मिनिटे',
+	            h : 'एक तास',
+	            hh : '%d तास',
+	            d : 'एक दिवस',
+	            dd : '%d दिवस',
+	            M : 'एक महिना',
+	            MM : '%d महिने',
+	            y : 'एक वर्ष',
+	            yy : '%d वर्षे'
+	        },
+	        preparse: function (string) {
+	            return string.replace(/[१२३४५६७८९०]/g, function (match) {
+	                return numberMap[match];
+	            });
+	        },
+	        postformat: function (string) {
+	            return string.replace(/\d/g, function (match) {
+	                return symbolMap[match];
+	            });
+	        },
+	        meridiemParse: /रात्री|सकाळी|दुपारी|सायंकाळी/,
+	        meridiemHour : function (hour, meridiem) {
+	            if (hour === 12) {
+	                hour = 0;
+	            }
+	            if (meridiem === 'रात्री') {
+	                return hour < 4 ? hour : hour + 12;
+	            } else if (meridiem === 'सकाळी') {
+	                return hour;
+	            } else if (meridiem === 'दुपारी') {
+	                return hour >= 10 ? hour : hour + 12;
+	            } else if (meridiem === 'सायंकाळी') {
+	                return hour + 12;
+	            }
+	        },
+	        meridiem: function (hour, minute, isLower) {
+	            if (hour < 4) {
+	                return 'रात्री';
+	            } else if (hour < 10) {
+	                return 'सकाळी';
+	            } else if (hour < 17) {
+	                return 'दुपारी';
+	            } else if (hour < 20) {
+	                return 'सायंकाळी';
+	            } else {
+	                return 'रात्री';
+	            }
+	        },
+	        week : {
+	            dow : 0, // Sunday is the first day of the week.
+	            doy : 6  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return mr;
+
+	}));
+
+/***/ },
+/* 423 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Bahasa Malaysia (ms-MY)
+	//! author : Weldan Jamili : https://github.com/weldan
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var ms_my = moment.defineLocale('ms-my', {
+	        months : 'Januari_Februari_Mac_April_Mei_Jun_Julai_Ogos_September_Oktober_November_Disember'.split('_'),
+	        monthsShort : 'Jan_Feb_Mac_Apr_Mei_Jun_Jul_Ogs_Sep_Okt_Nov_Dis'.split('_'),
+	        weekdays : 'Ahad_Isnin_Selasa_Rabu_Khamis_Jumaat_Sabtu'.split('_'),
+	        weekdaysShort : 'Ahd_Isn_Sel_Rab_Kha_Jum_Sab'.split('_'),
+	        weekdaysMin : 'Ah_Is_Sl_Rb_Km_Jm_Sb'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH.mm',
+	            LTS : 'LT.ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY [pukul] LT',
+	            LLLL : 'dddd, D MMMM YYYY [pukul] LT'
+	        },
+	        meridiemParse: /pagi|tengahari|petang|malam/,
+	        meridiemHour: function (hour, meridiem) {
+	            if (hour === 12) {
+	                hour = 0;
+	            }
+	            if (meridiem === 'pagi') {
+	                return hour;
+	            } else if (meridiem === 'tengahari') {
+	                return hour >= 11 ? hour : hour + 12;
+	            } else if (meridiem === 'petang' || meridiem === 'malam') {
+	                return hour + 12;
+	            }
+	        },
+	        meridiem : function (hours, minutes, isLower) {
+	            if (hours < 11) {
+	                return 'pagi';
+	            } else if (hours < 15) {
+	                return 'tengahari';
+	            } else if (hours < 19) {
+	                return 'petang';
+	            } else {
+	                return 'malam';
+	            }
+	        },
+	        calendar : {
+	            sameDay : '[Hari ini pukul] LT',
+	            nextDay : '[Esok pukul] LT',
+	            nextWeek : 'dddd [pukul] LT',
+	            lastDay : '[Kelmarin pukul] LT',
+	            lastWeek : 'dddd [lepas pukul] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'dalam %s',
+	            past : '%s yang lepas',
+	            s : 'beberapa saat',
+	            m : 'seminit',
+	            mm : '%d minit',
+	            h : 'sejam',
+	            hh : '%d jam',
+	            d : 'sehari',
+	            dd : '%d hari',
+	            M : 'sebulan',
+	            MM : '%d bulan',
+	            y : 'setahun',
+	            yy : '%d tahun'
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return ms_my;
+
+	}));
+
+/***/ },
+/* 424 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Burmese (my)
+	//! author : Squar team, mysquar.com
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var symbolMap = {
+	        '1': '၁',
+	        '2': '၂',
+	        '3': '၃',
+	        '4': '၄',
+	        '5': '၅',
+	        '6': '၆',
+	        '7': '၇',
+	        '8': '၈',
+	        '9': '၉',
+	        '0': '၀'
+	    }, numberMap = {
+	        '၁': '1',
+	        '၂': '2',
+	        '၃': '3',
+	        '၄': '4',
+	        '၅': '5',
+	        '၆': '6',
+	        '၇': '7',
+	        '၈': '8',
+	        '၉': '9',
+	        '၀': '0'
+	    };
+
+	    var my = moment.defineLocale('my', {
+	        months: 'ဇန်နဝါရီ_ဖေဖော်ဝါရီ_မတ်_ဧပြီ_မေ_ဇွန်_ဇူလိုင်_သြဂုတ်_စက်တင်ဘာ_အောက်တိုဘာ_နိုဝင်ဘာ_ဒီဇင်ဘာ'.split('_'),
+	        monthsShort: 'ဇန်_ဖေ_မတ်_ပြီ_မေ_ဇွန်_လိုင်_သြ_စက်_အောက်_နို_ဒီ'.split('_'),
+	        weekdays: 'တနင်္ဂနွေ_တနင်္လာ_အင်္ဂါ_ဗုဒ္ဓဟူး_ကြာသပတေး_သောကြာ_စနေ'.split('_'),
+	        weekdaysShort: 'နွေ_လာ_င်္ဂါ_ဟူး_ကြာ_သော_နေ'.split('_'),
+	        weekdaysMin: 'နွေ_လာ_င်္ဂါ_ဟူး_ကြာ_သော_နေ'.split('_'),
+	        longDateFormat: {
+	            LT: 'HH:mm',
+	            LTS: 'HH:mm:ss',
+	            L: 'DD/MM/YYYY',
+	            LL: 'D MMMM YYYY',
+	            LLL: 'D MMMM YYYY LT',
+	            LLLL: 'dddd D MMMM YYYY LT'
+	        },
+	        calendar: {
+	            sameDay: '[ယနေ.] LT [မှာ]',
+	            nextDay: '[မနက်ဖြန်] LT [မှာ]',
+	            nextWeek: 'dddd LT [မှာ]',
+	            lastDay: '[မနေ.က] LT [မှာ]',
+	            lastWeek: '[ပြီးခဲ့သော] dddd LT [မှာ]',
+	            sameElse: 'L'
+	        },
+	        relativeTime: {
+	            future: 'လာမည့် %s မှာ',
+	            past: 'လွန်ခဲ့သော %s က',
+	            s: 'စက္ကန်.အနည်းငယ်',
+	            m: 'တစ်မိနစ်',
+	            mm: '%d မိနစ်',
+	            h: 'တစ်နာရီ',
+	            hh: '%d နာရီ',
+	            d: 'တစ်ရက်',
+	            dd: '%d ရက်',
+	            M: 'တစ်လ',
+	            MM: '%d လ',
+	            y: 'တစ်နှစ်',
+	            yy: '%d နှစ်'
+	        },
+	        preparse: function (string) {
+	            return string.replace(/[၁၂၃၄၅၆၇၈၉၀]/g, function (match) {
+	                return numberMap[match];
+	            });
+	        },
+	        postformat: function (string) {
+	            return string.replace(/\d/g, function (match) {
+	                return symbolMap[match];
+	            });
+	        },
+	        week: {
+	            dow: 1, // Monday is the first day of the week.
+	            doy: 4 // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return my;
+
+	}));
+
+/***/ },
+/* 425 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : norwegian bokmål (nb)
+	//! authors : Espen Hovlandsdal : https://github.com/rexxars
+	//!           Sigurd Gartmann : https://github.com/sigurdga
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var nb = moment.defineLocale('nb', {
+	        months : 'januar_februar_mars_april_mai_juni_juli_august_september_oktober_november_desember'.split('_'),
+	        monthsShort : 'jan_feb_mar_apr_mai_jun_jul_aug_sep_okt_nov_des'.split('_'),
+	        weekdays : 'søndag_mandag_tirsdag_onsdag_torsdag_fredag_lørdag'.split('_'),
+	        weekdaysShort : 'søn_man_tirs_ons_tors_fre_lør'.split('_'),
+	        weekdaysMin : 'sø_ma_ti_on_to_fr_lø'.split('_'),
+	        longDateFormat : {
+	            LT : 'H.mm',
+	            LTS : 'LT.ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D. MMMM YYYY',
+	            LLL : 'D. MMMM YYYY [kl.] LT',
+	            LLLL : 'dddd D. MMMM YYYY [kl.] LT'
+	        },
+	        calendar : {
+	            sameDay: '[i dag kl.] LT',
+	            nextDay: '[i morgen kl.] LT',
+	            nextWeek: 'dddd [kl.] LT',
+	            lastDay: '[i går kl.] LT',
+	            lastWeek: '[forrige] dddd [kl.] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'om %s',
+	            past : 'for %s siden',
+	            s : 'noen sekunder',
+	            m : 'ett minutt',
+	            mm : '%d minutter',
+	            h : 'en time',
+	            hh : '%d timer',
+	            d : 'en dag',
+	            dd : '%d dager',
+	            M : 'en måned',
+	            MM : '%d måneder',
+	            y : 'ett år',
+	            yy : '%d år'
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return nb;
+
+	}));
+
+/***/ },
+/* 426 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : nepali/nepalese
+	//! author : suvash : https://github.com/suvash
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var symbolMap = {
+	        '1': '१',
+	        '2': '२',
+	        '3': '३',
+	        '4': '४',
+	        '5': '५',
+	        '6': '६',
+	        '7': '७',
+	        '8': '८',
+	        '9': '९',
+	        '0': '०'
+	    },
+	    numberMap = {
+	        '१': '1',
+	        '२': '2',
+	        '३': '3',
+	        '४': '4',
+	        '५': '5',
+	        '६': '6',
+	        '७': '7',
+	        '८': '8',
+	        '९': '9',
+	        '०': '0'
+	    };
+
+	    var ne = moment.defineLocale('ne', {
+	        months : 'जनवरी_फेब्रुवरी_मार्च_अप्रिल_मई_जुन_जुलाई_अगष्ट_सेप्टेम्बर_अक्टोबर_नोभेम्बर_डिसेम्बर'.split('_'),
+	        monthsShort : 'जन._फेब्रु._मार्च_अप्रि._मई_जुन_जुलाई._अग._सेप्ट._अक्टो._नोभे._डिसे.'.split('_'),
+	        weekdays : 'आइतबार_सोमबार_मङ्गलबार_बुधबार_बिहिबार_शुक्रबार_शनिबार'.split('_'),
+	        weekdaysShort : 'आइत._सोम._मङ्गल._बुध._बिहि._शुक्र._शनि.'.split('_'),
+	        weekdaysMin : 'आइ._सो._मङ्_बु._बि._शु._श.'.split('_'),
+	        longDateFormat : {
+	            LT : 'Aको h:mm बजे',
+	            LTS : 'Aको h:mm:ss बजे',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY, LT',
+	            LLLL : 'dddd, D MMMM YYYY, LT'
+	        },
+	        preparse: function (string) {
+	            return string.replace(/[१२३४५६७८९०]/g, function (match) {
+	                return numberMap[match];
+	            });
+	        },
+	        postformat: function (string) {
+	            return string.replace(/\d/g, function (match) {
+	                return symbolMap[match];
+	            });
+	        },
+	        meridiemParse: /राती|बिहान|दिउँसो|बेलुका|साँझ|राती/,
+	        meridiemHour : function (hour, meridiem) {
+	            if (hour === 12) {
+	                hour = 0;
+	            }
+	            if (meridiem === 'राती') {
+	                return hour < 3 ? hour : hour + 12;
+	            } else if (meridiem === 'बिहान') {
+	                return hour;
+	            } else if (meridiem === 'दिउँसो') {
+	                return hour >= 10 ? hour : hour + 12;
+	            } else if (meridiem === 'बेलुका' || meridiem === 'साँझ') {
+	                return hour + 12;
+	            }
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 3) {
+	                return 'राती';
+	            } else if (hour < 10) {
+	                return 'बिहान';
+	            } else if (hour < 15) {
+	                return 'दिउँसो';
+	            } else if (hour < 18) {
+	                return 'बेलुका';
+	            } else if (hour < 20) {
+	                return 'साँझ';
+	            } else {
+	                return 'राती';
+	            }
+	        },
+	        calendar : {
+	            sameDay : '[आज] LT',
+	            nextDay : '[भोली] LT',
+	            nextWeek : '[आउँदो] dddd[,] LT',
+	            lastDay : '[हिजो] LT',
+	            lastWeek : '[गएको] dddd[,] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%sमा',
+	            past : '%s अगाडी',
+	            s : 'केही समय',
+	            m : 'एक मिनेट',
+	            mm : '%d मिनेट',
+	            h : 'एक घण्टा',
+	            hh : '%d घण्टा',
+	            d : 'एक दिन',
+	            dd : '%d दिन',
+	            M : 'एक महिना',
+	            MM : '%d महिना',
+	            y : 'एक बर्ष',
+	            yy : '%d बर्ष'
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return ne;
+
+	}));
+
+/***/ },
+/* 427 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : dutch (nl)
+	//! author : Joris Röling : https://github.com/jjupiter
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var monthsShortWithDots = 'jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.'.split('_'),
+	        monthsShortWithoutDots = 'jan_feb_mrt_apr_mei_jun_jul_aug_sep_okt_nov_dec'.split('_');
+
+	    var nl = moment.defineLocale('nl', {
+	        months : 'januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december'.split('_'),
+	        monthsShort : function (m, format) {
+	            if (/-MMM-/.test(format)) {
+	                return monthsShortWithoutDots[m.month()];
+	            } else {
+	                return monthsShortWithDots[m.month()];
+	            }
+	        },
+	        weekdays : 'zondag_maandag_dinsdag_woensdag_donderdag_vrijdag_zaterdag'.split('_'),
+	        weekdaysShort : 'zo._ma._di._wo._do._vr._za.'.split('_'),
+	        weekdaysMin : 'Zo_Ma_Di_Wo_Do_Vr_Za'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD-MM-YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[vandaag om] LT',
+	            nextDay: '[morgen om] LT',
+	            nextWeek: 'dddd [om] LT',
+	            lastDay: '[gisteren om] LT',
+	            lastWeek: '[afgelopen] dddd [om] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'over %s',
+	            past : '%s geleden',
+	            s : 'een paar seconden',
+	            m : 'één minuut',
+	            mm : '%d minuten',
+	            h : 'één uur',
+	            hh : '%d uur',
+	            d : 'één dag',
+	            dd : '%d dagen',
+	            M : 'één maand',
+	            MM : '%d maanden',
+	            y : 'één jaar',
+	            yy : '%d jaar'
+	        },
+	        ordinalParse: /\d{1,2}(ste|de)/,
+	        ordinal : function (number) {
+	            return number + ((number === 1 || number === 8 || number >= 20) ? 'ste' : 'de');
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return nl;
+
+	}));
+
+/***/ },
+/* 428 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : norwegian nynorsk (nn)
+	//! author : https://github.com/mechuwind
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var nn = moment.defineLocale('nn', {
+	        months : 'januar_februar_mars_april_mai_juni_juli_august_september_oktober_november_desember'.split('_'),
+	        monthsShort : 'jan_feb_mar_apr_mai_jun_jul_aug_sep_okt_nov_des'.split('_'),
+	        weekdays : 'sundag_måndag_tysdag_onsdag_torsdag_fredag_laurdag'.split('_'),
+	        weekdaysShort : 'sun_mån_tys_ons_tor_fre_lau'.split('_'),
+	        weekdaysMin : 'su_må_ty_on_to_fr_lø'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[I dag klokka] LT',
+	            nextDay: '[I morgon klokka] LT',
+	            nextWeek: 'dddd [klokka] LT',
+	            lastDay: '[I går klokka] LT',
+	            lastWeek: '[Føregåande] dddd [klokka] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'om %s',
+	            past : 'for %s sidan',
+	            s : 'nokre sekund',
+	            m : 'eit minutt',
+	            mm : '%d minutt',
+	            h : 'ein time',
+	            hh : '%d timar',
+	            d : 'ein dag',
+	            dd : '%d dagar',
+	            M : 'ein månad',
+	            MM : '%d månader',
+	            y : 'eit år',
+	            yy : '%d år'
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return nn;
+
+	}));
+
+/***/ },
+/* 429 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : polish (pl)
+	//! author : Rafal Hirsz : https://github.com/evoL
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var monthsNominative = 'styczeń_luty_marzec_kwiecień_maj_czerwiec_lipiec_sierpień_wrzesień_październik_listopad_grudzień'.split('_'),
+	        monthsSubjective = 'stycznia_lutego_marca_kwietnia_maja_czerwca_lipca_sierpnia_września_października_listopada_grudnia'.split('_');
+	    function plural(n) {
+	        return (n % 10 < 5) && (n % 10 > 1) && ((~~(n / 10) % 10) !== 1);
+	    }
+	    function translate(number, withoutSuffix, key) {
+	        var result = number + ' ';
+	        switch (key) {
+	        case 'm':
+	            return withoutSuffix ? 'minuta' : 'minutę';
+	        case 'mm':
+	            return result + (plural(number) ? 'minuty' : 'minut');
+	        case 'h':
+	            return withoutSuffix  ? 'godzina'  : 'godzinę';
+	        case 'hh':
+	            return result + (plural(number) ? 'godziny' : 'godzin');
+	        case 'MM':
+	            return result + (plural(number) ? 'miesiące' : 'miesięcy');
+	        case 'yy':
+	            return result + (plural(number) ? 'lata' : 'lat');
+	        }
+	    }
+
+	    var pl = moment.defineLocale('pl', {
+	        months : function (momentToFormat, format) {
+	            if (/D MMMM/.test(format)) {
+	                return monthsSubjective[momentToFormat.month()];
+	            } else {
+	                return monthsNominative[momentToFormat.month()];
+	            }
+	        },
+	        monthsShort : 'sty_lut_mar_kwi_maj_cze_lip_sie_wrz_paź_lis_gru'.split('_'),
+	        weekdays : 'niedziela_poniedziałek_wtorek_środa_czwartek_piątek_sobota'.split('_'),
+	        weekdaysShort : 'nie_pon_wt_śr_czw_pt_sb'.split('_'),
+	        weekdaysMin : 'N_Pn_Wt_Śr_Cz_Pt_So'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[Dziś o] LT',
+	            nextDay: '[Jutro o] LT',
+	            nextWeek: '[W] dddd [o] LT',
+	            lastDay: '[Wczoraj o] LT',
+	            lastWeek: function () {
+	                switch (this.day()) {
+	                case 0:
+	                    return '[W zeszłą niedzielę o] LT';
+	                case 3:
+	                    return '[W zeszłą środę o] LT';
+	                case 6:
+	                    return '[W zeszłą sobotę o] LT';
+	                default:
+	                    return '[W zeszły] dddd [o] LT';
+	                }
+	            },
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'za %s',
+	            past : '%s temu',
+	            s : 'kilka sekund',
+	            m : translate,
+	            mm : translate,
+	            h : translate,
+	            hh : translate,
+	            d : '1 dzień',
+	            dd : '%d dni',
+	            M : 'miesiąc',
+	            MM : translate,
+	            y : 'rok',
+	            yy : translate
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return pl;
+
+	}));
+
+/***/ },
+/* 430 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : brazilian portuguese (pt-br)
+	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var pt_br = moment.defineLocale('pt-br', {
+	        months : 'janeiro_fevereiro_março_abril_maio_junho_julho_agosto_setembro_outubro_novembro_dezembro'.split('_'),
+	        monthsShort : 'jan_fev_mar_abr_mai_jun_jul_ago_set_out_nov_dez'.split('_'),
+	        weekdays : 'domingo_segunda-feira_terça-feira_quarta-feira_quinta-feira_sexta-feira_sábado'.split('_'),
+	        weekdaysShort : 'dom_seg_ter_qua_qui_sex_sáb'.split('_'),
+	        weekdaysMin : 'dom_2ª_3ª_4ª_5ª_6ª_sáb'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D [de] MMMM [de] YYYY',
+	            LLL : 'D [de] MMMM [de] YYYY [às] LT',
+	            LLLL : 'dddd, D [de] MMMM [de] YYYY [às] LT'
+	        },
+	        calendar : {
+	            sameDay: '[Hoje às] LT',
+	            nextDay: '[Amanhã às] LT',
+	            nextWeek: 'dddd [às] LT',
+	            lastDay: '[Ontem às] LT',
+	            lastWeek: function () {
+	                return (this.day() === 0 || this.day() === 6) ?
+	                    '[Último] dddd [às] LT' : // Saturday + Sunday
+	                    '[Última] dddd [às] LT'; // Monday - Friday
+	            },
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'em %s',
+	            past : '%s atrás',
+	            s : 'segundos',
+	            m : 'um minuto',
+	            mm : '%d minutos',
+	            h : 'uma hora',
+	            hh : '%d horas',
+	            d : 'um dia',
+	            dd : '%d dias',
+	            M : 'um mês',
+	            MM : '%d meses',
+	            y : 'um ano',
+	            yy : '%d anos'
+	        },
+	        ordinalParse: /\d{1,2}º/,
+	        ordinal : '%dº'
+	    });
+
+	    return pt_br;
+
+	}));
+
+/***/ },
+/* 431 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : portuguese (pt)
+	//! author : Jefferson : https://github.com/jalex79
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var pt = moment.defineLocale('pt', {
+	        months : 'janeiro_fevereiro_março_abril_maio_junho_julho_agosto_setembro_outubro_novembro_dezembro'.split('_'),
+	        monthsShort : 'jan_fev_mar_abr_mai_jun_jul_ago_set_out_nov_dez'.split('_'),
+	        weekdays : 'domingo_segunda-feira_terça-feira_quarta-feira_quinta-feira_sexta-feira_sábado'.split('_'),
+	        weekdaysShort : 'dom_seg_ter_qua_qui_sex_sáb'.split('_'),
+	        weekdaysMin : 'dom_2ª_3ª_4ª_5ª_6ª_sáb'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D [de] MMMM [de] YYYY',
+	            LLL : 'D [de] MMMM [de] YYYY LT',
+	            LLLL : 'dddd, D [de] MMMM [de] YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[Hoje às] LT',
+	            nextDay: '[Amanhã às] LT',
+	            nextWeek: 'dddd [às] LT',
+	            lastDay: '[Ontem às] LT',
+	            lastWeek: function () {
+	                return (this.day() === 0 || this.day() === 6) ?
+	                    '[Último] dddd [às] LT' : // Saturday + Sunday
+	                    '[Última] dddd [às] LT'; // Monday - Friday
+	            },
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'em %s',
+	            past : 'há %s',
+	            s : 'segundos',
+	            m : 'um minuto',
+	            mm : '%d minutos',
+	            h : 'uma hora',
+	            hh : '%d horas',
+	            d : 'um dia',
+	            dd : '%d dias',
+	            M : 'um mês',
+	            MM : '%d meses',
+	            y : 'um ano',
+	            yy : '%d anos'
+	        },
+	        ordinalParse: /\d{1,2}º/,
+	        ordinal : '%dº',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return pt;
+
+	}));
+
+/***/ },
+/* 432 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : romanian (ro)
+	//! author : Vlad Gurdiga : https://github.com/gurdiga
+	//! author : Valentin Agachi : https://github.com/avaly
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function relativeTimeWithPlural(number, withoutSuffix, key) {
+	        var format = {
+	                'mm': 'minute',
+	                'hh': 'ore',
+	                'dd': 'zile',
+	                'MM': 'luni',
+	                'yy': 'ani'
+	            },
+	            separator = ' ';
+	        if (number % 100 >= 20 || (number >= 100 && number % 100 === 0)) {
+	            separator = ' de ';
+	        }
+	        return number + separator + format[key];
+	    }
+
+	    var ro = moment.defineLocale('ro', {
+	        months : 'ianuarie_februarie_martie_aprilie_mai_iunie_iulie_august_septembrie_octombrie_noiembrie_decembrie'.split('_'),
+	        monthsShort : 'ian._febr._mart._apr._mai_iun._iul._aug._sept._oct._nov._dec.'.split('_'),
+	        weekdays : 'duminică_luni_marți_miercuri_joi_vineri_sâmbătă'.split('_'),
+	        weekdaysShort : 'Dum_Lun_Mar_Mie_Joi_Vin_Sâm'.split('_'),
+	        weekdaysMin : 'Du_Lu_Ma_Mi_Jo_Vi_Sâ'.split('_'),
+	        longDateFormat : {
+	            LT : 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY H:mm',
+	            LLLL : 'dddd, D MMMM YYYY H:mm'
+	        },
+	        calendar : {
+	            sameDay: '[azi la] LT',
+	            nextDay: '[mâine la] LT',
+	            nextWeek: 'dddd [la] LT',
+	            lastDay: '[ieri la] LT',
+	            lastWeek: '[fosta] dddd [la] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'peste %s',
+	            past : '%s în urmă',
+	            s : 'câteva secunde',
+	            m : 'un minut',
+	            mm : relativeTimeWithPlural,
+	            h : 'o oră',
+	            hh : relativeTimeWithPlural,
+	            d : 'o zi',
+	            dd : relativeTimeWithPlural,
+	            M : 'o lună',
+	            MM : relativeTimeWithPlural,
+	            y : 'un an',
+	            yy : relativeTimeWithPlural
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return ro;
+
+	}));
+
+/***/ },
+/* 433 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : russian (ru)
+	//! author : Viktorminator : https://github.com/Viktorminator
+	//! Author : Menelion Elensúle : https://github.com/Oire
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function plural(word, num) {
+	        var forms = word.split('_');
+	        return num % 10 === 1 && num % 100 !== 11 ? forms[0] : (num % 10 >= 2 && num % 10 <= 4 && (num % 100 < 10 || num % 100 >= 20) ? forms[1] : forms[2]);
+	    }
+	    function relativeTimeWithPlural(number, withoutSuffix, key) {
+	        var format = {
+	            'mm': withoutSuffix ? 'минута_минуты_минут' : 'минуту_минуты_минут',
+	            'hh': 'час_часа_часов',
+	            'dd': 'день_дня_дней',
+	            'MM': 'месяц_месяца_месяцев',
+	            'yy': 'год_года_лет'
+	        };
+	        if (key === 'm') {
+	            return withoutSuffix ? 'минута' : 'минуту';
+	        }
+	        else {
+	            return number + ' ' + plural(format[key], +number);
+	        }
+	    }
+	    function monthsCaseReplace(m, format) {
+	        var months = {
+	            'nominative': 'январь_февраль_март_апрель_май_июнь_июль_август_сентябрь_октябрь_ноябрь_декабрь'.split('_'),
+	            'accusative': 'января_февраля_марта_апреля_мая_июня_июля_августа_сентября_октября_ноября_декабря'.split('_')
+	        },
+	        nounCase = (/D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/).test(format) ?
+	            'accusative' :
+	            'nominative';
+	        return months[nounCase][m.month()];
+	    }
+	    function monthsShortCaseReplace(m, format) {
+	        var monthsShort = {
+	            'nominative': 'янв_фев_март_апр_май_июнь_июль_авг_сен_окт_ноя_дек'.split('_'),
+	            'accusative': 'янв_фев_мар_апр_мая_июня_июля_авг_сен_окт_ноя_дек'.split('_')
+	        },
+	        nounCase = (/D[oD]?(\[[^\[\]]*\]|\s+)+MMMM?/).test(format) ?
+	            'accusative' :
+	            'nominative';
+	        return monthsShort[nounCase][m.month()];
+	    }
+	    function weekdaysCaseReplace(m, format) {
+	        var weekdays = {
+	            'nominative': 'воскресенье_понедельник_вторник_среда_четверг_пятница_суббота'.split('_'),
+	            'accusative': 'воскресенье_понедельник_вторник_среду_четверг_пятницу_субботу'.split('_')
+	        },
+	        nounCase = (/\[ ?[Вв] ?(?:прошлую|следующую|эту)? ?\] ?dddd/).test(format) ?
+	            'accusative' :
+	            'nominative';
+	        return weekdays[nounCase][m.day()];
+	    }
+
+	    var ru = moment.defineLocale('ru', {
+	        months : monthsCaseReplace,
+	        monthsShort : monthsShortCaseReplace,
+	        weekdays : weekdaysCaseReplace,
+	        weekdaysShort : 'вс_пн_вт_ср_чт_пт_сб'.split('_'),
+	        weekdaysMin : 'вс_пн_вт_ср_чт_пт_сб'.split('_'),
+	        monthsParse : [/^янв/i, /^фев/i, /^мар/i, /^апр/i, /^ма[й|я]/i, /^июн/i, /^июл/i, /^авг/i, /^сен/i, /^окт/i, /^ноя/i, /^дек/i],
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D MMMM YYYY г.',
+	            LLL : 'D MMMM YYYY г., LT',
+	            LLLL : 'dddd, D MMMM YYYY г., LT'
+	        },
+	        calendar : {
+	            sameDay: '[Сегодня в] LT',
+	            nextDay: '[Завтра в] LT',
+	            lastDay: '[Вчера в] LT',
+	            nextWeek: function () {
+	                return this.day() === 2 ? '[Во] dddd [в] LT' : '[В] dddd [в] LT';
+	            },
+	            lastWeek: function (now) {
+	                if (now.week() !== this.week()) {
+	                    switch (this.day()) {
+	                    case 0:
+	                        return '[В прошлое] dddd [в] LT';
+	                    case 1:
+	                    case 2:
+	                    case 4:
+	                        return '[В прошлый] dddd [в] LT';
+	                    case 3:
+	                    case 5:
+	                    case 6:
+	                        return '[В прошлую] dddd [в] LT';
+	                    }
+	                } else {
+	                    if (this.day() === 2) {
+	                        return '[Во] dddd [в] LT';
+	                    } else {
+	                        return '[В] dddd [в] LT';
+	                    }
+	                }
+	            },
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'через %s',
+	            past : '%s назад',
+	            s : 'несколько секунд',
+	            m : relativeTimeWithPlural,
+	            mm : relativeTimeWithPlural,
+	            h : 'час',
+	            hh : relativeTimeWithPlural,
+	            d : 'день',
+	            dd : relativeTimeWithPlural,
+	            M : 'месяц',
+	            MM : relativeTimeWithPlural,
+	            y : 'год',
+	            yy : relativeTimeWithPlural
+	        },
+	        meridiemParse: /ночи|утра|дня|вечера/i,
+	        isPM : function (input) {
+	            return /^(дня|вечера)$/.test(input);
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 4) {
+	                return 'ночи';
+	            } else if (hour < 12) {
+	                return 'утра';
+	            } else if (hour < 17) {
+	                return 'дня';
+	            } else {
+	                return 'вечера';
+	            }
+	        },
+	        ordinalParse: /\d{1,2}-(й|го|я)/,
+	        ordinal: function (number, period) {
+	            switch (period) {
+	            case 'M':
+	            case 'd':
+	            case 'DDD':
+	                return number + '-й';
+	            case 'D':
+	                return number + '-го';
+	            case 'w':
+	            case 'W':
+	                return number + '-я';
+	            default:
+	                return number;
+	            }
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return ru;
+
+	}));
+
+/***/ },
+/* 434 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : slovak (sk)
+	//! author : Martin Minka : https://github.com/k2s
+	//! based on work of petrbela : https://github.com/petrbela
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var months = 'január_február_marec_apríl_máj_jún_júl_august_september_október_november_december'.split('_'),
+	        monthsShort = 'jan_feb_mar_apr_máj_jún_júl_aug_sep_okt_nov_dec'.split('_');
+	    function plural(n) {
+	        return (n > 1) && (n < 5);
+	    }
+	    function translate(number, withoutSuffix, key, isFuture) {
+	        var result = number + ' ';
+	        switch (key) {
+	        case 's':  // a few seconds / in a few seconds / a few seconds ago
+	            return (withoutSuffix || isFuture) ? 'pár sekúnd' : 'pár sekundami';
+	        case 'm':  // a minute / in a minute / a minute ago
+	            return withoutSuffix ? 'minúta' : (isFuture ? 'minútu' : 'minútou');
+	        case 'mm': // 9 minutes / in 9 minutes / 9 minutes ago
+	            if (withoutSuffix || isFuture) {
+	                return result + (plural(number) ? 'minúty' : 'minút');
+	            } else {
+	                return result + 'minútami';
+	            }
+	            break;
+	        case 'h':  // an hour / in an hour / an hour ago
+	            return withoutSuffix ? 'hodina' : (isFuture ? 'hodinu' : 'hodinou');
+	        case 'hh': // 9 hours / in 9 hours / 9 hours ago
+	            if (withoutSuffix || isFuture) {
+	                return result + (plural(number) ? 'hodiny' : 'hodín');
+	            } else {
+	                return result + 'hodinami';
+	            }
+	            break;
+	        case 'd':  // a day / in a day / a day ago
+	            return (withoutSuffix || isFuture) ? 'deň' : 'dňom';
+	        case 'dd': // 9 days / in 9 days / 9 days ago
+	            if (withoutSuffix || isFuture) {
+	                return result + (plural(number) ? 'dni' : 'dní');
+	            } else {
+	                return result + 'dňami';
+	            }
+	            break;
+	        case 'M':  // a month / in a month / a month ago
+	            return (withoutSuffix || isFuture) ? 'mesiac' : 'mesiacom';
+	        case 'MM': // 9 months / in 9 months / 9 months ago
+	            if (withoutSuffix || isFuture) {
+	                return result + (plural(number) ? 'mesiace' : 'mesiacov');
+	            } else {
+	                return result + 'mesiacmi';
+	            }
+	            break;
+	        case 'y':  // a year / in a year / a year ago
+	            return (withoutSuffix || isFuture) ? 'rok' : 'rokom';
+	        case 'yy': // 9 years / in 9 years / 9 years ago
+	            if (withoutSuffix || isFuture) {
+	                return result + (plural(number) ? 'roky' : 'rokov');
+	            } else {
+	                return result + 'rokmi';
+	            }
+	            break;
+	        }
+	    }
+
+	    var sk = moment.defineLocale('sk', {
+	        months : months,
+	        monthsShort : monthsShort,
+	        monthsParse : (function (months, monthsShort) {
+	            var i, _monthsParse = [];
+	            for (i = 0; i < 12; i++) {
+	                // use custom parser to solve problem with July (červenec)
+	                _monthsParse[i] = new RegExp('^' + months[i] + '$|^' + monthsShort[i] + '$', 'i');
+	            }
+	            return _monthsParse;
+	        }(months, monthsShort)),
+	        weekdays : 'nedeľa_pondelok_utorok_streda_štvrtok_piatok_sobota'.split('_'),
+	        weekdaysShort : 'ne_po_ut_st_št_pi_so'.split('_'),
+	        weekdaysMin : 'ne_po_ut_st_št_pi_so'.split('_'),
+	        longDateFormat : {
+	            LT: 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D. MMMM YYYY',
+	            LLL : 'D. MMMM YYYY LT',
+	            LLLL : 'dddd D. MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[dnes o] LT',
+	            nextDay: '[zajtra o] LT',
+	            nextWeek: function () {
+	                switch (this.day()) {
+	                case 0:
+	                    return '[v nedeľu o] LT';
+	                case 1:
+	                case 2:
+	                    return '[v] dddd [o] LT';
+	                case 3:
+	                    return '[v stredu o] LT';
+	                case 4:
+	                    return '[vo štvrtok o] LT';
+	                case 5:
+	                    return '[v piatok o] LT';
+	                case 6:
+	                    return '[v sobotu o] LT';
+	                }
+	            },
+	            lastDay: '[včera o] LT',
+	            lastWeek: function () {
+	                switch (this.day()) {
+	                case 0:
+	                    return '[minulú nedeľu o] LT';
+	                case 1:
+	                case 2:
+	                    return '[minulý] dddd [o] LT';
+	                case 3:
+	                    return '[minulú stredu o] LT';
+	                case 4:
+	                case 5:
+	                    return '[minulý] dddd [o] LT';
+	                case 6:
+	                    return '[minulú sobotu o] LT';
+	                }
+	            },
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'za %s',
+	            past : 'pred %s',
+	            s : translate,
+	            m : translate,
+	            mm : translate,
+	            h : translate,
+	            hh : translate,
+	            d : translate,
+	            dd : translate,
+	            M : translate,
+	            MM : translate,
+	            y : translate,
+	            yy : translate
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return sk;
+
+	}));
+
+/***/ },
+/* 435 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : slovenian (sl)
+	//! author : Robert Sedovšek : https://github.com/sedovsek
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function translate(number, withoutSuffix, key) {
+	        var result = number + ' ';
+	        switch (key) {
+	        case 'm':
+	            return withoutSuffix ? 'ena minuta' : 'eno minuto';
+	        case 'mm':
+	            if (number === 1) {
+	                result += 'minuta';
+	            } else if (number === 2) {
+	                result += 'minuti';
+	            } else if (number === 3 || number === 4) {
+	                result += 'minute';
+	            } else {
+	                result += 'minut';
+	            }
+	            return result;
+	        case 'h':
+	            return withoutSuffix ? 'ena ura' : 'eno uro';
+	        case 'hh':
+	            if (number === 1) {
+	                result += 'ura';
+	            } else if (number === 2) {
+	                result += 'uri';
+	            } else if (number === 3 || number === 4) {
+	                result += 'ure';
+	            } else {
+	                result += 'ur';
+	            }
+	            return result;
+	        case 'dd':
+	            if (number === 1) {
+	                result += 'dan';
+	            } else {
+	                result += 'dni';
+	            }
+	            return result;
+	        case 'MM':
+	            if (number === 1) {
+	                result += 'mesec';
+	            } else if (number === 2) {
+	                result += 'meseca';
+	            } else if (number === 3 || number === 4) {
+	                result += 'mesece';
+	            } else {
+	                result += 'mesecev';
+	            }
+	            return result;
+	        case 'yy':
+	            if (number === 1) {
+	                result += 'leto';
+	            } else if (number === 2) {
+	                result += 'leti';
+	            } else if (number === 3 || number === 4) {
+	                result += 'leta';
+	            } else {
+	                result += 'let';
+	            }
+	            return result;
+	        }
+	    }
+
+	    var sl = moment.defineLocale('sl', {
+	        months : 'januar_februar_marec_april_maj_junij_julij_avgust_september_oktober_november_december'.split('_'),
+	        monthsShort : 'jan._feb._mar._apr._maj._jun._jul._avg._sep._okt._nov._dec.'.split('_'),
+	        weekdays : 'nedelja_ponedeljek_torek_sreda_četrtek_petek_sobota'.split('_'),
+	        weekdaysShort : 'ned._pon._tor._sre._čet._pet._sob.'.split('_'),
+	        weekdaysMin : 'ne_po_to_sr_če_pe_so'.split('_'),
+	        longDateFormat : {
+	            LT : 'H:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD. MM. YYYY',
+	            LL : 'D. MMMM YYYY',
+	            LLL : 'D. MMMM YYYY LT',
+	            LLLL : 'dddd, D. MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay  : '[danes ob] LT',
+	            nextDay  : '[jutri ob] LT',
+	            nextWeek : function () {
+	                switch (this.day()) {
+	                case 0:
+	                    return '[v] [nedeljo] [ob] LT';
+	                case 3:
+	                    return '[v] [sredo] [ob] LT';
+	                case 6:
+	                    return '[v] [soboto] [ob] LT';
+	                case 1:
+	                case 2:
+	                case 4:
+	                case 5:
+	                    return '[v] dddd [ob] LT';
+	                }
+	            },
+	            lastDay  : '[včeraj ob] LT',
+	            lastWeek : function () {
+	                switch (this.day()) {
+	                case 0:
+	                case 3:
+	                case 6:
+	                    return '[prejšnja] dddd [ob] LT';
+	                case 1:
+	                case 2:
+	                case 4:
+	                case 5:
+	                    return '[prejšnji] dddd [ob] LT';
+	                }
+	            },
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'čez %s',
+	            past   : '%s nazaj',
+	            s      : 'nekaj sekund',
+	            m      : translate,
+	            mm     : translate,
+	            h      : translate,
+	            hh     : translate,
+	            d      : 'en dan',
+	            dd     : translate,
+	            M      : 'en mesec',
+	            MM     : translate,
+	            y      : 'eno leto',
+	            yy     : translate
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return sl;
+
+	}));
+
+/***/ },
+/* 436 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Albanian (sq)
+	//! author : Flakërim Ismani : https://github.com/flakerimi
+	//! author: Menelion Elensúle: https://github.com/Oire (tests)
+	//! author : Oerd Cukalla : https://github.com/oerd (fixes)
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var sq = moment.defineLocale('sq', {
+	        months : 'Janar_Shkurt_Mars_Prill_Maj_Qershor_Korrik_Gusht_Shtator_Tetor_Nëntor_Dhjetor'.split('_'),
+	        monthsShort : 'Jan_Shk_Mar_Pri_Maj_Qer_Kor_Gus_Sht_Tet_Nën_Dhj'.split('_'),
+	        weekdays : 'E Diel_E Hënë_E Martë_E Mërkurë_E Enjte_E Premte_E Shtunë'.split('_'),
+	        weekdaysShort : 'Die_Hën_Mar_Mër_Enj_Pre_Sht'.split('_'),
+	        weekdaysMin : 'D_H_Ma_Më_E_P_Sh'.split('_'),
+	        meridiemParse: /PD|MD/,
+	        isPM: function (input) {
+	            return input.charAt(0) === 'M';
+	        },
+	        meridiem : function (hours, minutes, isLower) {
+	            return hours < 12 ? 'PD' : 'MD';
+	        },
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[Sot në] LT',
+	            nextDay : '[Nesër në] LT',
+	            nextWeek : 'dddd [në] LT',
+	            lastDay : '[Dje në] LT',
+	            lastWeek : 'dddd [e kaluar në] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'në %s',
+	            past : '%s më parë',
+	            s : 'disa sekonda',
+	            m : 'një minutë',
+	            mm : '%d minuta',
+	            h : 'një orë',
+	            hh : '%d orë',
+	            d : 'një ditë',
+	            dd : '%d ditë',
+	            M : 'një muaj',
+	            MM : '%d muaj',
+	            y : 'një vit',
+	            yy : '%d vite'
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return sq;
+
+	}));
+
+/***/ },
+/* 437 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Serbian-cyrillic (sr-cyrl)
+	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var translator = {
+	        words: { //Different grammatical cases
+	            m: ['један минут', 'једне минуте'],
+	            mm: ['минут', 'минуте', 'минута'],
+	            h: ['један сат', 'једног сата'],
+	            hh: ['сат', 'сата', 'сати'],
+	            dd: ['дан', 'дана', 'дана'],
+	            MM: ['месец', 'месеца', 'месеци'],
+	            yy: ['година', 'године', 'година']
+	        },
+	        correctGrammaticalCase: function (number, wordKey) {
+	            return number === 1 ? wordKey[0] : (number >= 2 && number <= 4 ? wordKey[1] : wordKey[2]);
+	        },
+	        translate: function (number, withoutSuffix, key) {
+	            var wordKey = translator.words[key];
+	            if (key.length === 1) {
+	                return withoutSuffix ? wordKey[0] : wordKey[1];
+	            } else {
+	                return number + ' ' + translator.correctGrammaticalCase(number, wordKey);
+	            }
+	        }
+	    };
+
+	    var sr_cyrl = moment.defineLocale('sr-cyrl', {
+	        months: ['јануар', 'фебруар', 'март', 'април', 'мај', 'јун', 'јул', 'август', 'септембар', 'октобар', 'новембар', 'децембар'],
+	        monthsShort: ['јан.', 'феб.', 'мар.', 'апр.', 'мај', 'јун', 'јул', 'авг.', 'сеп.', 'окт.', 'нов.', 'дец.'],
+	        weekdays: ['недеља', 'понедељак', 'уторак', 'среда', 'четвртак', 'петак', 'субота'],
+	        weekdaysShort: ['нед.', 'пон.', 'уто.', 'сре.', 'чет.', 'пет.', 'суб.'],
+	        weekdaysMin: ['не', 'по', 'ут', 'ср', 'че', 'пе', 'су'],
+	        longDateFormat: {
+	            LT: 'H:mm',
+	            LTS : 'LT:ss',
+	            L: 'DD. MM. YYYY',
+	            LL: 'D. MMMM YYYY',
+	            LLL: 'D. MMMM YYYY LT',
+	            LLLL: 'dddd, D. MMMM YYYY LT'
+	        },
+	        calendar: {
+	            sameDay: '[данас у] LT',
+	            nextDay: '[сутра у] LT',
+	            nextWeek: function () {
+	                switch (this.day()) {
+	                case 0:
+	                    return '[у] [недељу] [у] LT';
+	                case 3:
+	                    return '[у] [среду] [у] LT';
+	                case 6:
+	                    return '[у] [суботу] [у] LT';
+	                case 1:
+	                case 2:
+	                case 4:
+	                case 5:
+	                    return '[у] dddd [у] LT';
+	                }
+	            },
+	            lastDay  : '[јуче у] LT',
+	            lastWeek : function () {
+	                var lastWeekDays = [
+	                    '[прошле] [недеље] [у] LT',
+	                    '[прошлог] [понедељка] [у] LT',
+	                    '[прошлог] [уторка] [у] LT',
+	                    '[прошле] [среде] [у] LT',
+	                    '[прошлог] [четвртка] [у] LT',
+	                    '[прошлог] [петка] [у] LT',
+	                    '[прошле] [суботе] [у] LT'
+	                ];
+	                return lastWeekDays[this.day()];
+	            },
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'за %s',
+	            past   : 'пре %s',
+	            s      : 'неколико секунди',
+	            m      : translator.translate,
+	            mm     : translator.translate,
+	            h      : translator.translate,
+	            hh     : translator.translate,
+	            d      : 'дан',
+	            dd     : translator.translate,
+	            M      : 'месец',
+	            MM     : translator.translate,
+	            y      : 'годину',
+	            yy     : translator.translate
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return sr_cyrl;
+
+	}));
+
+/***/ },
+/* 438 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Serbian-latin (sr)
+	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var translator = {
+	        words: { //Different grammatical cases
+	            m: ['jedan minut', 'jedne minute'],
+	            mm: ['minut', 'minute', 'minuta'],
+	            h: ['jedan sat', 'jednog sata'],
+	            hh: ['sat', 'sata', 'sati'],
+	            dd: ['dan', 'dana', 'dana'],
+	            MM: ['mesec', 'meseca', 'meseci'],
+	            yy: ['godina', 'godine', 'godina']
+	        },
+	        correctGrammaticalCase: function (number, wordKey) {
+	            return number === 1 ? wordKey[0] : (number >= 2 && number <= 4 ? wordKey[1] : wordKey[2]);
+	        },
+	        translate: function (number, withoutSuffix, key) {
+	            var wordKey = translator.words[key];
+	            if (key.length === 1) {
+	                return withoutSuffix ? wordKey[0] : wordKey[1];
+	            } else {
+	                return number + ' ' + translator.correctGrammaticalCase(number, wordKey);
+	            }
+	        }
+	    };
+
+	    var sr = moment.defineLocale('sr', {
+	        months: ['januar', 'februar', 'mart', 'april', 'maj', 'jun', 'jul', 'avgust', 'septembar', 'oktobar', 'novembar', 'decembar'],
+	        monthsShort: ['jan.', 'feb.', 'mar.', 'apr.', 'maj', 'jun', 'jul', 'avg.', 'sep.', 'okt.', 'nov.', 'dec.'],
+	        weekdays: ['nedelja', 'ponedeljak', 'utorak', 'sreda', 'četvrtak', 'petak', 'subota'],
+	        weekdaysShort: ['ned.', 'pon.', 'uto.', 'sre.', 'čet.', 'pet.', 'sub.'],
+	        weekdaysMin: ['ne', 'po', 'ut', 'sr', 'če', 'pe', 'su'],
+	        longDateFormat: {
+	            LT: 'H:mm',
+	            LTS : 'LT:ss',
+	            L: 'DD. MM. YYYY',
+	            LL: 'D. MMMM YYYY',
+	            LLL: 'D. MMMM YYYY LT',
+	            LLLL: 'dddd, D. MMMM YYYY LT'
+	        },
+	        calendar: {
+	            sameDay: '[danas u] LT',
+	            nextDay: '[sutra u] LT',
+	            nextWeek: function () {
+	                switch (this.day()) {
+	                case 0:
+	                    return '[u] [nedelju] [u] LT';
+	                case 3:
+	                    return '[u] [sredu] [u] LT';
+	                case 6:
+	                    return '[u] [subotu] [u] LT';
+	                case 1:
+	                case 2:
+	                case 4:
+	                case 5:
+	                    return '[u] dddd [u] LT';
+	                }
+	            },
+	            lastDay  : '[juče u] LT',
+	            lastWeek : function () {
+	                var lastWeekDays = [
+	                    '[prošle] [nedelje] [u] LT',
+	                    '[prošlog] [ponedeljka] [u] LT',
+	                    '[prošlog] [utorka] [u] LT',
+	                    '[prošle] [srede] [u] LT',
+	                    '[prošlog] [četvrtka] [u] LT',
+	                    '[prošlog] [petka] [u] LT',
+	                    '[prošle] [subote] [u] LT'
+	                ];
+	                return lastWeekDays[this.day()];
+	            },
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'za %s',
+	            past   : 'pre %s',
+	            s      : 'nekoliko sekundi',
+	            m      : translator.translate,
+	            mm     : translator.translate,
+	            h      : translator.translate,
+	            hh     : translator.translate,
+	            d      : 'dan',
+	            dd     : translator.translate,
+	            M      : 'mesec',
+	            MM     : translator.translate,
+	            y      : 'godinu',
+	            yy     : translator.translate
+	        },
+	        ordinalParse: /\d{1,2}\./,
+	        ordinal : '%d.',
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return sr;
+
+	}));
+
+/***/ },
+/* 439 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : swedish (sv)
+	//! author : Jens Alm : https://github.com/ulmus
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var sv = moment.defineLocale('sv', {
+	        months : 'januari_februari_mars_april_maj_juni_juli_augusti_september_oktober_november_december'.split('_'),
+	        monthsShort : 'jan_feb_mar_apr_maj_jun_jul_aug_sep_okt_nov_dec'.split('_'),
+	        weekdays : 'söndag_måndag_tisdag_onsdag_torsdag_fredag_lördag'.split('_'),
+	        weekdaysShort : 'sön_mån_tis_ons_tor_fre_lör'.split('_'),
+	        weekdaysMin : 'sö_må_ti_on_to_fr_lö'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'YYYY-MM-DD',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[Idag] LT',
+	            nextDay: '[Imorgon] LT',
+	            lastDay: '[Igår] LT',
+	            nextWeek: 'dddd LT',
+	            lastWeek: '[Förra] dddd[en] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'om %s',
+	            past : 'för %s sedan',
+	            s : 'några sekunder',
+	            m : 'en minut',
+	            mm : '%d minuter',
+	            h : 'en timme',
+	            hh : '%d timmar',
+	            d : 'en dag',
+	            dd : '%d dagar',
+	            M : 'en månad',
+	            MM : '%d månader',
+	            y : 'ett år',
+	            yy : '%d år'
+	        },
+	        ordinalParse: /\d{1,2}(e|a)/,
+	        ordinal : function (number) {
+	            var b = number % 10,
+	                output = (~~(number % 100 / 10) === 1) ? 'e' :
+	                (b === 1) ? 'a' :
+	                (b === 2) ? 'a' :
+	                (b === 3) ? 'e' : 'e';
+	            return number + output;
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return sv;
+
+	}));
+
+/***/ },
+/* 440 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : tamil (ta)
+	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var ta = moment.defineLocale('ta', {
+	        months : 'ஜனவரி_பிப்ரவரி_மார்ச்_ஏப்ரல்_மே_ஜூன்_ஜூலை_ஆகஸ்ட்_செப்டெம்பர்_அக்டோபர்_நவம்பர்_டிசம்பர்'.split('_'),
+	        monthsShort : 'ஜனவரி_பிப்ரவரி_மார்ச்_ஏப்ரல்_மே_ஜூன்_ஜூலை_ஆகஸ்ட்_செப்டெம்பர்_அக்டோபர்_நவம்பர்_டிசம்பர்'.split('_'),
+	        weekdays : 'ஞாயிற்றுக்கிழமை_திங்கட்கிழமை_செவ்வாய்கிழமை_புதன்கிழமை_வியாழக்கிழமை_வெள்ளிக்கிழமை_சனிக்கிழமை'.split('_'),
+	        weekdaysShort : 'ஞாயிறு_திங்கள்_செவ்வாய்_புதன்_வியாழன்_வெள்ளி_சனி'.split('_'),
+	        weekdaysMin : 'ஞா_தி_செ_பு_வி_வெ_ச'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY, LT',
+	            LLLL : 'dddd, D MMMM YYYY, LT'
+	        },
+	        calendar : {
+	            sameDay : '[இன்று] LT',
+	            nextDay : '[நாளை] LT',
+	            nextWeek : 'dddd, LT',
+	            lastDay : '[நேற்று] LT',
+	            lastWeek : '[கடந்த வாரம்] dddd, LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s இல்',
+	            past : '%s முன்',
+	            s : 'ஒரு சில விநாடிகள்',
+	            m : 'ஒரு நிமிடம்',
+	            mm : '%d நிமிடங்கள்',
+	            h : 'ஒரு மணி நேரம்',
+	            hh : '%d மணி நேரம்',
+	            d : 'ஒரு நாள்',
+	            dd : '%d நாட்கள்',
+	            M : 'ஒரு மாதம்',
+	            MM : '%d மாதங்கள்',
+	            y : 'ஒரு வருடம்',
+	            yy : '%d ஆண்டுகள்'
+	        },
+	        ordinalParse: /\d{1,2}வது/,
+	        ordinal : function (number) {
+	            return number + 'வது';
+	        },
+	        // refer http://ta.wikipedia.org/s/1er1
+	        meridiemParse: /யாமம்|வைகறை|காலை|நண்பகல்|எற்பாடு|மாலை/,
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 2) {
+	                return ' யாமம்';
+	            } else if (hour < 6) {
+	                return ' வைகறை';  // வைகறை
+	            } else if (hour < 10) {
+	                return ' காலை'; // காலை
+	            } else if (hour < 14) {
+	                return ' நண்பகல்'; // நண்பகல்
+	            } else if (hour < 18) {
+	                return ' எற்பாடு'; // எற்பாடு
+	            } else if (hour < 22) {
+	                return ' மாலை'; // மாலை
+	            } else {
+	                return ' யாமம்';
+	            }
+	        },
+	        meridiemHour : function (hour, meridiem) {
+	            if (hour === 12) {
+	                hour = 0;
+	            }
+	            if (meridiem === 'யாமம்') {
+	                return hour < 2 ? hour : hour + 12;
+	            } else if (meridiem === 'வைகறை' || meridiem === 'காலை') {
+	                return hour;
+	            } else if (meridiem === 'நண்பகல்') {
+	                return hour >= 10 ? hour : hour + 12;
+	            } else {
+	                return hour + 12;
+	            }
+	        },
+	        week : {
+	            dow : 0, // Sunday is the first day of the week.
+	            doy : 6  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return ta;
+
+	}));
+
+/***/ },
+/* 441 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : thai (th)
+	//! author : Kridsada Thanabulpong : https://github.com/sirn
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var th = moment.defineLocale('th', {
+	        months : 'มกราคม_กุมภาพันธ์_มีนาคม_เมษายน_พฤษภาคม_มิถุนายน_กรกฎาคม_สิงหาคม_กันยายน_ตุลาคม_พฤศจิกายน_ธันวาคม'.split('_'),
+	        monthsShort : 'มกรา_กุมภา_มีนา_เมษา_พฤษภา_มิถุนา_กรกฎา_สิงหา_กันยา_ตุลา_พฤศจิกา_ธันวา'.split('_'),
+	        weekdays : 'อาทิตย์_จันทร์_อังคาร_พุธ_พฤหัสบดี_ศุกร์_เสาร์'.split('_'),
+	        weekdaysShort : 'อาทิตย์_จันทร์_อังคาร_พุธ_พฤหัส_ศุกร์_เสาร์'.split('_'), // yes, three characters difference
+	        weekdaysMin : 'อา._จ._อ._พ._พฤ._ศ._ส.'.split('_'),
+	        longDateFormat : {
+	            LT : 'H นาฬิกา m นาที',
+	            LTS : 'LT s วินาที',
+	            L : 'YYYY/MM/DD',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY เวลา LT',
+	            LLLL : 'วันddddที่ D MMMM YYYY เวลา LT'
+	        },
+	        meridiemParse: /ก่อนเที่ยง|หลังเที่ยง/,
+	        isPM: function (input) {
+	            return input === 'หลังเที่ยง';
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 12) {
+	                return 'ก่อนเที่ยง';
+	            } else {
+	                return 'หลังเที่ยง';
+	            }
+	        },
+	        calendar : {
+	            sameDay : '[วันนี้ เวลา] LT',
+	            nextDay : '[พรุ่งนี้ เวลา] LT',
+	            nextWeek : 'dddd[หน้า เวลา] LT',
+	            lastDay : '[เมื่อวานนี้ เวลา] LT',
+	            lastWeek : '[วัน]dddd[ที่แล้ว เวลา] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'อีก %s',
+	            past : '%sที่แล้ว',
+	            s : 'ไม่กี่วินาที',
+	            m : '1 นาที',
+	            mm : '%d นาที',
+	            h : '1 ชั่วโมง',
+	            hh : '%d ชั่วโมง',
+	            d : '1 วัน',
+	            dd : '%d วัน',
+	            M : '1 เดือน',
+	            MM : '%d เดือน',
+	            y : '1 ปี',
+	            yy : '%d ปี'
+	        }
+	    });
+
+	    return th;
+
+	}));
+
+/***/ },
+/* 442 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Tagalog/Filipino (tl-ph)
+	//! author : Dan Hagman
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var tl_ph = moment.defineLocale('tl-ph', {
+	        months : 'Enero_Pebrero_Marso_Abril_Mayo_Hunyo_Hulyo_Agosto_Setyembre_Oktubre_Nobyembre_Disyembre'.split('_'),
+	        monthsShort : 'Ene_Peb_Mar_Abr_May_Hun_Hul_Ago_Set_Okt_Nob_Dis'.split('_'),
+	        weekdays : 'Linggo_Lunes_Martes_Miyerkules_Huwebes_Biyernes_Sabado'.split('_'),
+	        weekdaysShort : 'Lin_Lun_Mar_Miy_Huw_Biy_Sab'.split('_'),
+	        weekdaysMin : 'Li_Lu_Ma_Mi_Hu_Bi_Sab'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'MM/D/YYYY',
+	            LL : 'MMMM D, YYYY',
+	            LLL : 'MMMM D, YYYY LT',
+	            LLLL : 'dddd, MMMM DD, YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[Ngayon sa] LT',
+	            nextDay: '[Bukas sa] LT',
+	            nextWeek: 'dddd [sa] LT',
+	            lastDay: '[Kahapon sa] LT',
+	            lastWeek: 'dddd [huling linggo] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'sa loob ng %s',
+	            past : '%s ang nakalipas',
+	            s : 'ilang segundo',
+	            m : 'isang minuto',
+	            mm : '%d minuto',
+	            h : 'isang oras',
+	            hh : '%d oras',
+	            d : 'isang araw',
+	            dd : '%d araw',
+	            M : 'isang buwan',
+	            MM : '%d buwan',
+	            y : 'isang taon',
+	            yy : '%d taon'
+	        },
+	        ordinalParse: /\d{1,2}/,
+	        ordinal : function (number) {
+	            return number;
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return tl_ph;
+
+	}));
+
+/***/ },
+/* 443 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : turkish (tr)
+	//! authors : Erhan Gundogan : https://github.com/erhangundogan,
+	//!           Burak Yiğit Kaya: https://github.com/BYK
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var suffixes = {
+	        1: '\'inci',
+	        5: '\'inci',
+	        8: '\'inci',
+	        70: '\'inci',
+	        80: '\'inci',
+	        2: '\'nci',
+	        7: '\'nci',
+	        20: '\'nci',
+	        50: '\'nci',
+	        3: '\'üncü',
+	        4: '\'üncü',
+	        100: '\'üncü',
+	        6: '\'ncı',
+	        9: '\'uncu',
+	        10: '\'uncu',
+	        30: '\'uncu',
+	        60: '\'ıncı',
+	        90: '\'ıncı'
+	    };
+
+	    var tr = moment.defineLocale('tr', {
+	        months : 'Ocak_Şubat_Mart_Nisan_Mayıs_Haziran_Temmuz_Ağustos_Eylül_Ekim_Kasım_Aralık'.split('_'),
+	        monthsShort : 'Oca_Şub_Mar_Nis_May_Haz_Tem_Ağu_Eyl_Eki_Kas_Ara'.split('_'),
+	        weekdays : 'Pazar_Pazartesi_Salı_Çarşamba_Perşembe_Cuma_Cumartesi'.split('_'),
+	        weekdaysShort : 'Paz_Pts_Sal_Çar_Per_Cum_Cts'.split('_'),
+	        weekdaysMin : 'Pz_Pt_Sa_Ça_Pe_Cu_Ct'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd, D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay : '[bugün saat] LT',
+	            nextDay : '[yarın saat] LT',
+	            nextWeek : '[haftaya] dddd [saat] LT',
+	            lastDay : '[dün] LT',
+	            lastWeek : '[geçen hafta] dddd [saat] LT',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : '%s sonra',
+	            past : '%s önce',
+	            s : 'birkaç saniye',
+	            m : 'bir dakika',
+	            mm : '%d dakika',
+	            h : 'bir saat',
+	            hh : '%d saat',
+	            d : 'bir gün',
+	            dd : '%d gün',
+	            M : 'bir ay',
+	            MM : '%d ay',
+	            y : 'bir yıl',
+	            yy : '%d yıl'
+	        },
+	        ordinalParse: /\d{1,2}'(inci|nci|üncü|ncı|uncu|ıncı)/,
+	        ordinal : function (number) {
+	            if (number === 0) {  // special case for zero
+	                return number + '\'ıncı';
+	            }
+	            var a = number % 10,
+	                b = number % 100 - a,
+	                c = number >= 100 ? 100 : null;
+	            return number + (suffixes[a] || suffixes[b] || suffixes[c]);
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return tr;
+
+	}));
+
+/***/ },
+/* 444 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Morocco Central Atlas Tamaziɣt in Latin (tzm-latn)
+	//! author : Abdel Said : https://github.com/abdelsaid
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var tzm_latn = moment.defineLocale('tzm-latn', {
+	        months : 'innayr_brˤayrˤ_marˤsˤ_ibrir_mayyw_ywnyw_ywlywz_ɣwšt_šwtanbir_ktˤwbrˤ_nwwanbir_dwjnbir'.split('_'),
+	        monthsShort : 'innayr_brˤayrˤ_marˤsˤ_ibrir_mayyw_ywnyw_ywlywz_ɣwšt_šwtanbir_ktˤwbrˤ_nwwanbir_dwjnbir'.split('_'),
+	        weekdays : 'asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas'.split('_'),
+	        weekdaysShort : 'asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas'.split('_'),
+	        weekdaysMin : 'asamas_aynas_asinas_akras_akwas_asimwas_asiḍyas'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[asdkh g] LT',
+	            nextDay: '[aska g] LT',
+	            nextWeek: 'dddd [g] LT',
+	            lastDay: '[assant g] LT',
+	            lastWeek: 'dddd [g] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'dadkh s yan %s',
+	            past : 'yan %s',
+	            s : 'imik',
+	            m : 'minuḍ',
+	            mm : '%d minuḍ',
+	            h : 'saɛa',
+	            hh : '%d tassaɛin',
+	            d : 'ass',
+	            dd : '%d ossan',
+	            M : 'ayowr',
+	            MM : '%d iyyirn',
+	            y : 'asgas',
+	            yy : '%d isgasn'
+	        },
+	        week : {
+	            dow : 6, // Saturday is the first day of the week.
+	            doy : 12  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return tzm_latn;
+
+	}));
+
+/***/ },
+/* 445 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : Morocco Central Atlas Tamaziɣt (tzm)
+	//! author : Abdel Said : https://github.com/abdelsaid
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var tzm = moment.defineLocale('tzm', {
+	        months : 'ⵉⵏⵏⴰⵢⵔ_ⴱⵕⴰⵢⵕ_ⵎⴰⵕⵚ_ⵉⴱⵔⵉⵔ_ⵎⴰⵢⵢⵓ_ⵢⵓⵏⵢⵓ_ⵢⵓⵍⵢⵓⵣ_ⵖⵓⵛⵜ_ⵛⵓⵜⴰⵏⴱⵉⵔ_ⴽⵟⵓⴱⵕ_ⵏⵓⵡⴰⵏⴱⵉⵔ_ⴷⵓⵊⵏⴱⵉⵔ'.split('_'),
+	        monthsShort : 'ⵉⵏⵏⴰⵢⵔ_ⴱⵕⴰⵢⵕ_ⵎⴰⵕⵚ_ⵉⴱⵔⵉⵔ_ⵎⴰⵢⵢⵓ_ⵢⵓⵏⵢⵓ_ⵢⵓⵍⵢⵓⵣ_ⵖⵓⵛⵜ_ⵛⵓⵜⴰⵏⴱⵉⵔ_ⴽⵟⵓⴱⵕ_ⵏⵓⵡⴰⵏⴱⵉⵔ_ⴷⵓⵊⵏⴱⵉⵔ'.split('_'),
+	        weekdays : 'ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ'.split('_'),
+	        weekdaysShort : 'ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ'.split('_'),
+	        weekdaysMin : 'ⴰⵙⴰⵎⴰⵙ_ⴰⵢⵏⴰⵙ_ⴰⵙⵉⵏⴰⵙ_ⴰⴽⵔⴰⵙ_ⴰⴽⵡⴰⵙ_ⴰⵙⵉⵎⵡⴰⵙ_ⴰⵙⵉⴹⵢⴰⵙ'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS: 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'dddd D MMMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[ⴰⵙⴷⵅ ⴴ] LT',
+	            nextDay: '[ⴰⵙⴽⴰ ⴴ] LT',
+	            nextWeek: 'dddd [ⴴ] LT',
+	            lastDay: '[ⴰⵚⴰⵏⵜ ⴴ] LT',
+	            lastWeek: 'dddd [ⴴ] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'ⴷⴰⴷⵅ ⵙ ⵢⴰⵏ %s',
+	            past : 'ⵢⴰⵏ %s',
+	            s : 'ⵉⵎⵉⴽ',
+	            m : 'ⵎⵉⵏⵓⴺ',
+	            mm : '%d ⵎⵉⵏⵓⴺ',
+	            h : 'ⵙⴰⵄⴰ',
+	            hh : '%d ⵜⴰⵙⵙⴰⵄⵉⵏ',
+	            d : 'ⴰⵙⵙ',
+	            dd : '%d oⵙⵙⴰⵏ',
+	            M : 'ⴰⵢoⵓⵔ',
+	            MM : '%d ⵉⵢⵢⵉⵔⵏ',
+	            y : 'ⴰⵙⴳⴰⵙ',
+	            yy : '%d ⵉⵙⴳⴰⵙⵏ'
+	        },
+	        week : {
+	            dow : 6, // Saturday is the first day of the week.
+	            doy : 12  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return tzm;
+
+	}));
+
+/***/ },
+/* 446 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : ukrainian (uk)
+	//! author : zemlanin : https://github.com/zemlanin
+	//! Author : Menelion Elensúle : https://github.com/Oire
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    function plural(word, num) {
+	        var forms = word.split('_');
+	        return num % 10 === 1 && num % 100 !== 11 ? forms[0] : (num % 10 >= 2 && num % 10 <= 4 && (num % 100 < 10 || num % 100 >= 20) ? forms[1] : forms[2]);
+	    }
+	    function relativeTimeWithPlural(number, withoutSuffix, key) {
+	        var format = {
+	            'mm': 'хвилина_хвилини_хвилин',
+	            'hh': 'година_години_годин',
+	            'dd': 'день_дні_днів',
+	            'MM': 'місяць_місяці_місяців',
+	            'yy': 'рік_роки_років'
+	        };
+	        if (key === 'm') {
+	            return withoutSuffix ? 'хвилина' : 'хвилину';
+	        }
+	        else if (key === 'h') {
+	            return withoutSuffix ? 'година' : 'годину';
+	        }
+	        else {
+	            return number + ' ' + plural(format[key], +number);
+	        }
+	    }
+	    function monthsCaseReplace(m, format) {
+	        var months = {
+	            'nominative': 'січень_лютий_березень_квітень_травень_червень_липень_серпень_вересень_жовтень_листопад_грудень'.split('_'),
+	            'accusative': 'січня_лютого_березня_квітня_травня_червня_липня_серпня_вересня_жовтня_листопада_грудня'.split('_')
+	        },
+	        nounCase = (/D[oD]? *MMMM?/).test(format) ?
+	            'accusative' :
+	            'nominative';
+	        return months[nounCase][m.month()];
+	    }
+	    function weekdaysCaseReplace(m, format) {
+	        var weekdays = {
+	            'nominative': 'неділя_понеділок_вівторок_середа_четвер_п’ятниця_субота'.split('_'),
+	            'accusative': 'неділю_понеділок_вівторок_середу_четвер_п’ятницю_суботу'.split('_'),
+	            'genitive': 'неділі_понеділка_вівторка_середи_четверга_п’ятниці_суботи'.split('_')
+	        },
+	        nounCase = (/(\[[ВвУу]\]) ?dddd/).test(format) ?
+	            'accusative' :
+	            ((/\[?(?:минулої|наступної)? ?\] ?dddd/).test(format) ?
+	                'genitive' :
+	                'nominative');
+	        return weekdays[nounCase][m.day()];
+	    }
+	    function processHoursFunction(str) {
+	        return function () {
+	            return str + 'о' + (this.hours() === 11 ? 'б' : '') + '] LT';
+	        };
+	    }
+
+	    var uk = moment.defineLocale('uk', {
+	        months : monthsCaseReplace,
+	        monthsShort : 'січ_лют_бер_квіт_трав_черв_лип_серп_вер_жовт_лист_груд'.split('_'),
+	        weekdays : weekdaysCaseReplace,
+	        weekdaysShort : 'нд_пн_вт_ср_чт_пт_сб'.split('_'),
+	        weekdaysMin : 'нд_пн_вт_ср_чт_пт_сб'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD.MM.YYYY',
+	            LL : 'D MMMM YYYY р.',
+	            LLL : 'D MMMM YYYY р., LT',
+	            LLLL : 'dddd, D MMMM YYYY р., LT'
+	        },
+	        calendar : {
+	            sameDay: processHoursFunction('[Сьогодні '),
+	            nextDay: processHoursFunction('[Завтра '),
+	            lastDay: processHoursFunction('[Вчора '),
+	            nextWeek: processHoursFunction('[У] dddd ['),
+	            lastWeek: function () {
+	                switch (this.day()) {
+	                case 0:
+	                case 3:
+	                case 5:
+	                case 6:
+	                    return processHoursFunction('[Минулої] dddd [').call(this);
+	                case 1:
+	                case 2:
+	                case 4:
+	                    return processHoursFunction('[Минулого] dddd [').call(this);
+	                }
+	            },
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : 'за %s',
+	            past : '%s тому',
+	            s : 'декілька секунд',
+	            m : relativeTimeWithPlural,
+	            mm : relativeTimeWithPlural,
+	            h : 'годину',
+	            hh : relativeTimeWithPlural,
+	            d : 'день',
+	            dd : relativeTimeWithPlural,
+	            M : 'місяць',
+	            MM : relativeTimeWithPlural,
+	            y : 'рік',
+	            yy : relativeTimeWithPlural
+	        },
+	        // M. E.: those two are virtually unused but a user might want to implement them for his/her website for some reason
+	        meridiemParse: /ночі|ранку|дня|вечора/,
+	        isPM: function (input) {
+	            return /^(дня|вечора)$/.test(input);
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            if (hour < 4) {
+	                return 'ночі';
+	            } else if (hour < 12) {
+	                return 'ранку';
+	            } else if (hour < 17) {
+	                return 'дня';
+	            } else {
+	                return 'вечора';
+	            }
+	        },
+	        ordinalParse: /\d{1,2}-(й|го)/,
+	        ordinal: function (number, period) {
+	            switch (period) {
+	            case 'M':
+	            case 'd':
+	            case 'DDD':
+	            case 'w':
+	            case 'W':
+	                return number + '-й';
+	            case 'D':
+	                return number + '-го';
+	            default:
+	                return number;
+	            }
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 1st is the first week of the year.
+	        }
+	    });
+
+	    return uk;
+
+	}));
+
+/***/ },
+/* 447 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : uzbek (uz)
+	//! author : Sardor Muminov : https://github.com/muminoff
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var uz = moment.defineLocale('uz', {
+	        months : 'январь_февраль_март_апрель_май_июнь_июль_август_сентябрь_октябрь_ноябрь_декабрь'.split('_'),
+	        monthsShort : 'янв_фев_мар_апр_май_июн_июл_авг_сен_окт_ноя_дек'.split('_'),
+	        weekdays : 'Якшанба_Душанба_Сешанба_Чоршанба_Пайшанба_Жума_Шанба'.split('_'),
+	        weekdaysShort : 'Якш_Душ_Сеш_Чор_Пай_Жум_Шан'.split('_'),
+	        weekdaysMin : 'Як_Ду_Се_Чо_Па_Жу_Ша'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM YYYY',
+	            LLL : 'D MMMM YYYY LT',
+	            LLLL : 'D MMMM YYYY, dddd LT'
+	        },
+	        calendar : {
+	            sameDay : '[Бугун соат] LT [да]',
+	            nextDay : '[Эртага] LT [да]',
+	            nextWeek : 'dddd [куни соат] LT [да]',
+	            lastDay : '[Кеча соат] LT [да]',
+	            lastWeek : '[Утган] dddd [куни соат] LT [да]',
+	            sameElse : 'L'
+	        },
+	        relativeTime : {
+	            future : 'Якин %s ичида',
+	            past : 'Бир неча %s олдин',
+	            s : 'фурсат',
+	            m : 'бир дакика',
+	            mm : '%d дакика',
+	            h : 'бир соат',
+	            hh : '%d соат',
+	            d : 'бир кун',
+	            dd : '%d кун',
+	            M : 'бир ой',
+	            MM : '%d ой',
+	            y : 'бир йил',
+	            yy : '%d йил'
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 7  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return uz;
+
+	}));
+
+/***/ },
+/* 448 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : vietnamese (vi)
+	//! author : Bang Nguyen : https://github.com/bangnk
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var vi = moment.defineLocale('vi', {
+	        months : 'tháng 1_tháng 2_tháng 3_tháng 4_tháng 5_tháng 6_tháng 7_tháng 8_tháng 9_tháng 10_tháng 11_tháng 12'.split('_'),
+	        monthsShort : 'Th01_Th02_Th03_Th04_Th05_Th06_Th07_Th08_Th09_Th10_Th11_Th12'.split('_'),
+	        weekdays : 'chủ nhật_thứ hai_thứ ba_thứ tư_thứ năm_thứ sáu_thứ bảy'.split('_'),
+	        weekdaysShort : 'CN_T2_T3_T4_T5_T6_T7'.split('_'),
+	        weekdaysMin : 'CN_T2_T3_T4_T5_T6_T7'.split('_'),
+	        longDateFormat : {
+	            LT : 'HH:mm',
+	            LTS : 'LT:ss',
+	            L : 'DD/MM/YYYY',
+	            LL : 'D MMMM [năm] YYYY',
+	            LLL : 'D MMMM [năm] YYYY LT',
+	            LLLL : 'dddd, D MMMM [năm] YYYY LT',
+	            l : 'DD/M/YYYY',
+	            ll : 'D MMM YYYY',
+	            lll : 'D MMM YYYY LT',
+	            llll : 'ddd, D MMM YYYY LT'
+	        },
+	        calendar : {
+	            sameDay: '[Hôm nay lúc] LT',
+	            nextDay: '[Ngày mai lúc] LT',
+	            nextWeek: 'dddd [tuần tới lúc] LT',
+	            lastDay: '[Hôm qua lúc] LT',
+	            lastWeek: 'dddd [tuần rồi lúc] LT',
+	            sameElse: 'L'
+	        },
+	        relativeTime : {
+	            future : '%s tới',
+	            past : '%s trước',
+	            s : 'vài giây',
+	            m : 'một phút',
+	            mm : '%d phút',
+	            h : 'một giờ',
+	            hh : '%d giờ',
+	            d : 'một ngày',
+	            dd : '%d ngày',
+	            M : 'một tháng',
+	            MM : '%d tháng',
+	            y : 'một năm',
+	            yy : '%d năm'
+	        },
+	        ordinalParse: /\d{1,2}/,
+	        ordinal : function (number) {
+	            return number;
+	        },
+	        week : {
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return vi;
+
+	}));
+
+/***/ },
+/* 449 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : chinese (zh-cn)
+	//! author : suupic : https://github.com/suupic
+	//! author : Zeno Zeng : https://github.com/zenozeng
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var zh_cn = moment.defineLocale('zh-cn', {
+	        months : '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
+	        monthsShort : '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+	        weekdays : '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
+	        weekdaysShort : '周日_周一_周二_周三_周四_周五_周六'.split('_'),
+	        weekdaysMin : '日_一_二_三_四_五_六'.split('_'),
+	        longDateFormat : {
+	            LT : 'Ah点mm',
+	            LTS : 'Ah点m分s秒',
+	            L : 'YYYY-MM-DD',
+	            LL : 'YYYY年MMMD日',
+	            LLL : 'YYYY年MMMD日LT',
+	            LLLL : 'YYYY年MMMD日ddddLT',
+	            l : 'YYYY-MM-DD',
+	            ll : 'YYYY年MMMD日',
+	            lll : 'YYYY年MMMD日LT',
+	            llll : 'YYYY年MMMD日ddddLT'
+	        },
+	        meridiemParse: /凌晨|早上|上午|中午|下午|晚上/,
+	        meridiemHour: function (hour, meridiem) {
+	            if (hour === 12) {
+	                hour = 0;
+	            }
+	            if (meridiem === '凌晨' || meridiem === '早上' ||
+	                    meridiem === '上午') {
+	                return hour;
+	            } else if (meridiem === '下午' || meridiem === '晚上') {
+	                return hour + 12;
+	            } else {
+	                // '中午'
+	                return hour >= 11 ? hour : hour + 12;
+	            }
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            var hm = hour * 100 + minute;
+	            if (hm < 600) {
+	                return '凌晨';
+	            } else if (hm < 900) {
+	                return '早上';
+	            } else if (hm < 1130) {
+	                return '上午';
+	            } else if (hm < 1230) {
+	                return '中午';
+	            } else if (hm < 1800) {
+	                return '下午';
+	            } else {
+	                return '晚上';
+	            }
+	        },
+	        calendar : {
+	            sameDay : function () {
+	                return this.minutes() === 0 ? '[今天]Ah[点整]' : '[今天]LT';
+	            },
+	            nextDay : function () {
+	                return this.minutes() === 0 ? '[明天]Ah[点整]' : '[明天]LT';
+	            },
+	            lastDay : function () {
+	                return this.minutes() === 0 ? '[昨天]Ah[点整]' : '[昨天]LT';
+	            },
+	            nextWeek : function () {
+	                var startOfWeek, prefix;
+	                startOfWeek = moment().startOf('week');
+	                prefix = this.unix() - startOfWeek.unix() >= 7 * 24 * 3600 ? '[下]' : '[本]';
+	                return this.minutes() === 0 ? prefix + 'dddAh点整' : prefix + 'dddAh点mm';
+	            },
+	            lastWeek : function () {
+	                var startOfWeek, prefix;
+	                startOfWeek = moment().startOf('week');
+	                prefix = this.unix() < startOfWeek.unix()  ? '[上]' : '[本]';
+	                return this.minutes() === 0 ? prefix + 'dddAh点整' : prefix + 'dddAh点mm';
+	            },
+	            sameElse : 'LL'
+	        },
+	        ordinalParse: /\d{1,2}(日|月|周)/,
+	        ordinal : function (number, period) {
+	            switch (period) {
+	            case 'd':
+	            case 'D':
+	            case 'DDD':
+	                return number + '日';
+	            case 'M':
+	                return number + '月';
+	            case 'w':
+	            case 'W':
+	                return number + '周';
+	            default:
+	                return number;
+	            }
+	        },
+	        relativeTime : {
+	            future : '%s内',
+	            past : '%s前',
+	            s : '几秒',
+	            m : '1分钟',
+	            mm : '%d分钟',
+	            h : '1小时',
+	            hh : '%d小时',
+	            d : '1天',
+	            dd : '%d天',
+	            M : '1个月',
+	            MM : '%d个月',
+	            y : '1年',
+	            yy : '%d年'
+	        },
+	        week : {
+	            // GB/T 7408-1994《数据元和交换格式·信息交换·日期和时间表示法》与ISO 8601:1988等效
+	            dow : 1, // Monday is the first day of the week.
+	            doy : 4  // The week that contains Jan 4th is the first week of the year.
+	        }
+	    });
+
+	    return zh_cn;
+
+	}));
+
+/***/ },
+/* 450 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//! moment.js locale configuration
+	//! locale : traditional chinese (zh-tw)
+	//! author : Ben : https://github.com/ben-lin
+
+	(function (global, factory) {
+	   true ? factory(__webpack_require__(369)) :
+	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
+	   factory(global.moment)
+	}(this, function (moment) { 'use strict';
+
+
+	    var zh_tw = moment.defineLocale('zh-tw', {
+	        months : '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split('_'),
+	        monthsShort : '1月_2月_3月_4月_5月_6月_7月_8月_9月_10月_11月_12月'.split('_'),
+	        weekdays : '星期日_星期一_星期二_星期三_星期四_星期五_星期六'.split('_'),
+	        weekdaysShort : '週日_週一_週二_週三_週四_週五_週六'.split('_'),
+	        weekdaysMin : '日_一_二_三_四_五_六'.split('_'),
+	        longDateFormat : {
+	            LT : 'Ah點mm',
+	            LTS : 'Ah點m分s秒',
+	            L : 'YYYY年MMMD日',
+	            LL : 'YYYY年MMMD日',
+	            LLL : 'YYYY年MMMD日LT',
+	            LLLL : 'YYYY年MMMD日ddddLT',
+	            l : 'YYYY年MMMD日',
+	            ll : 'YYYY年MMMD日',
+	            lll : 'YYYY年MMMD日LT',
+	            llll : 'YYYY年MMMD日ddddLT'
+	        },
+	        meridiemParse: /早上|上午|中午|下午|晚上/,
+	        meridiemHour : function (hour, meridiem) {
+	            if (hour === 12) {
+	                hour = 0;
+	            }
+	            if (meridiem === '早上' || meridiem === '上午') {
+	                return hour;
+	            } else if (meridiem === '中午') {
+	                return hour >= 11 ? hour : hour + 12;
+	            } else if (meridiem === '下午' || meridiem === '晚上') {
+	                return hour + 12;
+	            }
+	        },
+	        meridiem : function (hour, minute, isLower) {
+	            var hm = hour * 100 + minute;
+	            if (hm < 900) {
+	                return '早上';
+	            } else if (hm < 1130) {
+	                return '上午';
+	            } else if (hm < 1230) {
+	                return '中午';
+	            } else if (hm < 1800) {
+	                return '下午';
+	            } else {
+	                return '晚上';
+	            }
+	        },
+	        calendar : {
+	            sameDay : '[今天]LT',
+	            nextDay : '[明天]LT',
+	            nextWeek : '[下]ddddLT',
+	            lastDay : '[昨天]LT',
+	            lastWeek : '[上]ddddLT',
+	            sameElse : 'L'
+	        },
+	        ordinalParse: /\d{1,2}(日|月|週)/,
+	        ordinal : function (number, period) {
+	            switch (period) {
+	            case 'd' :
+	            case 'D' :
+	            case 'DDD' :
+	                return number + '日';
+	            case 'M' :
+	                return number + '月';
+	            case 'w' :
+	            case 'W' :
+	                return number + '週';
+	            default :
+	                return number;
+	            }
+	        },
+	        relativeTime : {
+	            future : '%s內',
+	            past : '%s前',
+	            s : '幾秒',
+	            m : '一分鐘',
+	            mm : '%d分鐘',
+	            h : '一小時',
+	            hh : '%d小時',
+	            d : '一天',
+	            dd : '%d天',
+	            M : '一個月',
+	            MM : '%d個月',
+	            y : '一年',
+	            yy : '%d年'
+	        }
+	    });
+
+	    return zh_tw;
+
+	}));
+
+/***/ },
+/* 451 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/** @jsx React.DOM */var React           = __webpack_require__(6);
+	var Bootstrap       = __webpack_require__(67);
+	var Input           = Bootstrap.Input;
+
+
+
+	module.exports = React.createClass({displayName: "exports",
+	  render: function(){
+	    return (
+	      React.createElement("form", {className: "inline-form"}, 
+	        React.createElement(Input, {ref: "search", type: "text", placeholder: "Type your search here..."}), 
+	        React.createElement("button", {type: "submit", className: "btn btn-primary"}, React.createElement("i", {className: "search"}))
+	      )
+	    )
+	  }
+	})
+
+/***/ },
+/* 452 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(453);
+
+
+/***/ },
+/* 453 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactWithAddons
+	 */
+
+	/**
+	 * This module exists purely in the open source project, and is meant as a way
+	 * to create a separate standalone build of React. This build has "addons", or
+	 * functionality we've built and think might be useful but doesn't have a good
+	 * place to live inside React core.
+	 */
+
+	'use strict';
+
+	var LinkedStateMixin = __webpack_require__(454);
+	var React = __webpack_require__(10);
+	var ReactComponentWithPureRenderMixin =
+	  __webpack_require__(456);
+	var ReactCSSTransitionGroup = __webpack_require__(455);
+	var ReactFragment = __webpack_require__(71);
+	var ReactTransitionGroup = __webpack_require__(457);
+	var ReactUpdates = __webpack_require__(121);
+
+	var cx = __webpack_require__(459);
+	var cloneWithProps = __webpack_require__(458);
+	var update = __webpack_require__(460);
+
+	React.addons = {
+	  CSSTransitionGroup: ReactCSSTransitionGroup,
+	  LinkedStateMixin: LinkedStateMixin,
+	  PureRenderMixin: ReactComponentWithPureRenderMixin,
+	  TransitionGroup: ReactTransitionGroup,
+
+	  batchedUpdates: ReactUpdates.batchedUpdates,
+	  classSet: cx,
+	  cloneWithProps: cloneWithProps,
+	  createFragment: ReactFragment.create,
+	  update: update
+	};
+
+	if ("production" !== process.env.NODE_ENV) {
+	  React.addons.Perf = __webpack_require__(115);
+	  React.addons.TestUtils = __webpack_require__(461);
+	}
+
+	module.exports = React;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 454 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule LinkedStateMixin
+	 * @typechecks static-only
+	 */
+
+	'use strict';
+
+	var ReactLink = __webpack_require__(463);
+	var ReactStateSetters = __webpack_require__(464);
+
+	/**
+	 * A simple mixin around ReactLink.forState().
+	 */
+	var LinkedStateMixin = {
+	  /**
+	   * Create a ReactLink that's linked to part of this component's state. The
+	   * ReactLink will have the current value of this.state[key] and will call
+	   * setState() when a change is requested.
+	   *
+	   * @param {string} key state key to update. Note: you may want to use keyOf()
+	   * if you're using Google Closure Compiler advanced mode.
+	   * @return {ReactLink} ReactLink instance linking to the state.
+	   */
+	  linkState: function(key) {
+	    return new ReactLink(
+	      this.state[key],
+	      ReactStateSetters.createStateKeySetter(this, key)
+	    );
+	  }
+	};
+
+	module.exports = LinkedStateMixin;
+
+
+/***/ },
+/* 455 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @typechecks
+	 * @providesModule ReactCSSTransitionGroup
+	 */
+
+	'use strict';
+
+	var React = __webpack_require__(10);
+
+	var assign = __webpack_require__(50);
+
+	var ReactTransitionGroup = React.createFactory(
+	  __webpack_require__(457)
+	);
+	var ReactCSSTransitionGroupChild = React.createFactory(
+	  __webpack_require__(462)
+	);
+
+	var ReactCSSTransitionGroup = React.createClass({
+	  displayName: 'ReactCSSTransitionGroup',
+
+	  propTypes: {
+	    transitionName: React.PropTypes.string.isRequired,
+	    transitionAppear: React.PropTypes.bool,
+	    transitionEnter: React.PropTypes.bool,
+	    transitionLeave: React.PropTypes.bool
+	  },
+
+	  getDefaultProps: function() {
+	    return {
+	      transitionAppear: false,
+	      transitionEnter: true,
+	      transitionLeave: true
+	    };
+	  },
+
+	  _wrapChild: function(child) {
+	    // We need to provide this childFactory so that
+	    // ReactCSSTransitionGroupChild can receive updates to name, enter, and
+	    // leave while it is leaving.
+	    return ReactCSSTransitionGroupChild(
+	      {
+	        name: this.props.transitionName,
+	        appear: this.props.transitionAppear,
+	        enter: this.props.transitionEnter,
+	        leave: this.props.transitionLeave
+	      },
+	      child
+	    );
+	  },
+
+	  render: function() {
+	    return (
+	      ReactTransitionGroup(
+	        assign({}, this.props, {childFactory: this._wrapChild})
+	      )
+	    );
+	  }
+	});
+
+	module.exports = ReactCSSTransitionGroup;
+
+
+/***/ },
+/* 456 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	* @providesModule ReactComponentWithPureRenderMixin
+	*/
+
+	'use strict';
+
+	var shallowEqual = __webpack_require__(218);
+
+	/**
+	 * If your React component's render function is "pure", e.g. it will render the
+	 * same result given the same props and state, provide this Mixin for a
+	 * considerable performance boost.
+	 *
+	 * Most React components have pure render functions.
+	 *
+	 * Example:
+	 *
+	 *   var ReactComponentWithPureRenderMixin =
+	 *     require('ReactComponentWithPureRenderMixin');
+	 *   React.createClass({
+	 *     mixins: [ReactComponentWithPureRenderMixin],
+	 *
+	 *     render: function() {
+	 *       return <div className={this.props.className}>foo</div>;
+	 *     }
+	 *   });
+	 *
+	 * Note: This only checks shallow equality for props and state. If these contain
+	 * complex data structures this mixin may have false-negatives for deeper
+	 * differences. Only mixin to components which have simple props and state, or
+	 * use `forceUpdate()` when you know deep data structures have changed.
+	 */
+	var ReactComponentWithPureRenderMixin = {
+	  shouldComponentUpdate: function(nextProps, nextState) {
+	    return !shallowEqual(this.props, nextProps) ||
+	           !shallowEqual(this.state, nextState);
+	  }
+	};
+
+	module.exports = ReactComponentWithPureRenderMixin;
+
+
+/***/ },
+/* 457 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactTransitionGroup
+	 */
+
+	'use strict';
+
+	var React = __webpack_require__(10);
+	var ReactTransitionChildMapping = __webpack_require__(465);
+
+	var assign = __webpack_require__(50);
+	var cloneWithProps = __webpack_require__(458);
+	var emptyFunction = __webpack_require__(129);
+
+	var ReactTransitionGroup = React.createClass({
+	  displayName: 'ReactTransitionGroup',
+
+	  propTypes: {
+	    component: React.PropTypes.any,
+	    childFactory: React.PropTypes.func
+	  },
+
+	  getDefaultProps: function() {
+	    return {
+	      component: 'span',
+	      childFactory: emptyFunction.thatReturnsArgument
+	    };
+	  },
+
+	  getInitialState: function() {
+	    return {
+	      children: ReactTransitionChildMapping.getChildMapping(this.props.children)
+	    };
+	  },
+
+	  componentWillMount: function() {
+	    this.currentlyTransitioningKeys = {};
+	    this.keysToEnter = [];
+	    this.keysToLeave = [];
+	  },
+
+	  componentDidMount: function() {
+	    var initialChildMapping = this.state.children;
+	    for (var key in initialChildMapping) {
+	      if (initialChildMapping[key]) {
+	        this.performAppear(key);
+	      }
+	    }
+	  },
+
+	  componentWillReceiveProps: function(nextProps) {
+	    var nextChildMapping = ReactTransitionChildMapping.getChildMapping(
+	      nextProps.children
+	    );
+	    var prevChildMapping = this.state.children;
+
+	    this.setState({
+	      children: ReactTransitionChildMapping.mergeChildMappings(
+	        prevChildMapping,
+	        nextChildMapping
+	      )
+	    });
+
+	    var key;
+
+	    for (key in nextChildMapping) {
+	      var hasPrev = prevChildMapping && prevChildMapping.hasOwnProperty(key);
+	      if (nextChildMapping[key] && !hasPrev &&
+	          !this.currentlyTransitioningKeys[key]) {
+	        this.keysToEnter.push(key);
+	      }
+	    }
+
+	    for (key in prevChildMapping) {
+	      var hasNext = nextChildMapping && nextChildMapping.hasOwnProperty(key);
+	      if (prevChildMapping[key] && !hasNext &&
+	          !this.currentlyTransitioningKeys[key]) {
+	        this.keysToLeave.push(key);
+	      }
+	    }
+
+	    // If we want to someday check for reordering, we could do it here.
+	  },
+
+	  componentDidUpdate: function() {
+	    var keysToEnter = this.keysToEnter;
+	    this.keysToEnter = [];
+	    keysToEnter.forEach(this.performEnter);
+
+	    var keysToLeave = this.keysToLeave;
+	    this.keysToLeave = [];
+	    keysToLeave.forEach(this.performLeave);
+	  },
+
+	  performAppear: function(key) {
+	    this.currentlyTransitioningKeys[key] = true;
+
+	    var component = this.refs[key];
+
+	    if (component.componentWillAppear) {
+	      component.componentWillAppear(
+	        this._handleDoneAppearing.bind(this, key)
+	      );
+	    } else {
+	      this._handleDoneAppearing(key);
+	    }
+	  },
+
+	  _handleDoneAppearing: function(key) {
+	    var component = this.refs[key];
+	    if (component.componentDidAppear) {
+	      component.componentDidAppear();
+	    }
+
+	    delete this.currentlyTransitioningKeys[key];
+
+	    var currentChildMapping = ReactTransitionChildMapping.getChildMapping(
+	      this.props.children
+	    );
+
+	    if (!currentChildMapping || !currentChildMapping.hasOwnProperty(key)) {
+	      // This was removed before it had fully appeared. Remove it.
+	      this.performLeave(key);
+	    }
+	  },
+
+	  performEnter: function(key) {
+	    this.currentlyTransitioningKeys[key] = true;
+
+	    var component = this.refs[key];
+
+	    if (component.componentWillEnter) {
+	      component.componentWillEnter(
+	        this._handleDoneEntering.bind(this, key)
+	      );
+	    } else {
+	      this._handleDoneEntering(key);
+	    }
+	  },
+
+	  _handleDoneEntering: function(key) {
+	    var component = this.refs[key];
+	    if (component.componentDidEnter) {
+	      component.componentDidEnter();
+	    }
+
+	    delete this.currentlyTransitioningKeys[key];
+
+	    var currentChildMapping = ReactTransitionChildMapping.getChildMapping(
+	      this.props.children
+	    );
+
+	    if (!currentChildMapping || !currentChildMapping.hasOwnProperty(key)) {
+	      // This was removed before it had fully entered. Remove it.
+	      this.performLeave(key);
+	    }
+	  },
+
+	  performLeave: function(key) {
+	    this.currentlyTransitioningKeys[key] = true;
+
+	    var component = this.refs[key];
+	    if (component.componentWillLeave) {
+	      component.componentWillLeave(this._handleDoneLeaving.bind(this, key));
+	    } else {
+	      // Note that this is somewhat dangerous b/c it calls setState()
+	      // again, effectively mutating the component before all the work
+	      // is done.
+	      this._handleDoneLeaving(key);
+	    }
+	  },
+
+	  _handleDoneLeaving: function(key) {
+	    var component = this.refs[key];
+
+	    if (component.componentDidLeave) {
+	      component.componentDidLeave();
+	    }
+
+	    delete this.currentlyTransitioningKeys[key];
+
+	    var currentChildMapping = ReactTransitionChildMapping.getChildMapping(
+	      this.props.children
+	    );
+
+	    if (currentChildMapping && currentChildMapping.hasOwnProperty(key)) {
+	      // This entered again before it fully left. Add it again.
+	      this.performEnter(key);
+	    } else {
+	      var newChildren = assign({}, this.state.children);
+	      delete newChildren[key];
+	      this.setState({children: newChildren});
+	    }
+	  },
+
+	  render: function() {
+	    // TODO: we could get rid of the need for the wrapper node
+	    // by cloning a single child
+	    var childrenToRender = [];
+	    for (var key in this.state.children) {
+	      var child = this.state.children[key];
+	      if (child) {
+	        // You may need to apply reactive updates to a child as it is leaving.
+	        // The normal React way to do it won't work since the child will have
+	        // already been removed. In case you need this behavior you can provide
+	        // a childFactory function to wrap every child, even the ones that are
+	        // leaving.
+	        childrenToRender.push(cloneWithProps(
+	          this.props.childFactory(child),
+	          {ref: key, key: key}
+	        ));
+	      }
+	    }
+	    return React.createElement(
+	      this.props.component,
+	      this.props,
+	      childrenToRender
+	    );
+	  }
+	});
+
+	module.exports = ReactTransitionGroup;
+
+
+/***/ },
+/* 458 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @typechecks static-only
+	 * @providesModule cloneWithProps
+	 */
+
+	'use strict';
+
+	var ReactElement = __webpack_require__(39);
+	var ReactPropTransferer = __webpack_require__(466);
+
+	var keyOf = __webpack_require__(80);
+	var warning = __webpack_require__(58);
+
+	var CHILDREN_PROP = keyOf({children: null});
+
+	/**
+	 * Sometimes you want to change the props of a child passed to you. Usually
+	 * this is to add a CSS class.
+	 *
+	 * @param {ReactElement} child child element you'd like to clone
+	 * @param {object} props props you'd like to modify. className and style will be
+	 * merged automatically.
+	 * @return {ReactElement} a clone of child with props merged in.
+	 */
+	function cloneWithProps(child, props) {
+	  if ("production" !== process.env.NODE_ENV) {
+	    ("production" !== process.env.NODE_ENV ? warning(
+	      !child.ref,
+	      'You are calling cloneWithProps() on a child with a ref. This is ' +
+	      'dangerous because you\'re creating a new child which will not be ' +
+	      'added as a ref to its parent.'
+	    ) : null);
+	  }
+
+	  var newProps = ReactPropTransferer.mergeProps(props, child.props);
+
+	  // Use `child.props.children` if it is provided.
+	  if (!newProps.hasOwnProperty(CHILDREN_PROP) &&
+	      child.props.hasOwnProperty(CHILDREN_PROP)) {
+	    newProps.children = child.props.children;
+	  }
+
+	  // The current API doesn't retain _owner and _context, which is why this
+	  // doesn't use ReactElement.cloneAndReplaceProps.
+	  return ReactElement.createElement(child.type, newProps);
+	}
+
+	module.exports = cloneWithProps;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 459 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule cx
+	 */
+
+	/**
+	 * This function is used to mark string literals representing CSS class names
+	 * so that they can be transformed statically. This allows for modularization
+	 * and minification of CSS class names.
+	 *
+	 * In static_upstream, this function is actually implemented, but it should
+	 * eventually be replaced with something more descriptive, and the transform
+	 * that is used in the main stack should be ported for use elsewhere.
+	 *
+	 * @param string|object className to modularize, or an object of key/values.
+	 *                      In the object case, the values are conditions that
+	 *                      determine if the className keys should be included.
+	 * @param [string ...]  Variable list of classNames in the string case.
+	 * @return string       Renderable space-separated CSS className.
+	 */
+
+	'use strict';
+	var warning = __webpack_require__(58);
+
+	var warned = false;
+
+	function cx(classNames) {
+	  if ("production" !== process.env.NODE_ENV) {
+	    ("production" !== process.env.NODE_ENV ? warning(
+	      warned,
+	      'React.addons.classSet will be deprecated in a future version. See ' +
+	      'http://fb.me/react-addons-classset'
+	    ) : null);
+	    warned = true;
+	  }
+
+	  if (typeof classNames == 'object') {
+	    return Object.keys(classNames).filter(function(className) {
+	      return classNames[className];
+	    }).join(' ');
+	  } else {
+	    return Array.prototype.join.call(arguments, ' ');
+	  }
+	}
+
+	module.exports = cx;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 460 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule update
+	 */
+
+	 /* global hasOwnProperty:true */
+
+	'use strict';
+
+	var assign = __webpack_require__(50);
+	var keyOf = __webpack_require__(80);
+	var invariant = __webpack_require__(55);
+	var hasOwnProperty = {}.hasOwnProperty;
+
+	function shallowCopy(x) {
+	  if (Array.isArray(x)) {
+	    return x.concat();
+	  } else if (x && typeof x === 'object') {
+	    return assign(new x.constructor(), x);
+	  } else {
+	    return x;
+	  }
+	}
+
+	var COMMAND_PUSH = keyOf({$push: null});
+	var COMMAND_UNSHIFT = keyOf({$unshift: null});
+	var COMMAND_SPLICE = keyOf({$splice: null});
+	var COMMAND_SET = keyOf({$set: null});
+	var COMMAND_MERGE = keyOf({$merge: null});
+	var COMMAND_APPLY = keyOf({$apply: null});
+
+	var ALL_COMMANDS_LIST = [
+	  COMMAND_PUSH,
+	  COMMAND_UNSHIFT,
+	  COMMAND_SPLICE,
+	  COMMAND_SET,
+	  COMMAND_MERGE,
+	  COMMAND_APPLY
+	];
+
+	var ALL_COMMANDS_SET = {};
+
+	ALL_COMMANDS_LIST.forEach(function(command) {
+	  ALL_COMMANDS_SET[command] = true;
+	});
+
+	function invariantArrayCase(value, spec, command) {
+	  ("production" !== process.env.NODE_ENV ? invariant(
+	    Array.isArray(value),
+	    'update(): expected target of %s to be an array; got %s.',
+	    command,
+	    value
+	  ) : invariant(Array.isArray(value)));
+	  var specValue = spec[command];
+	  ("production" !== process.env.NODE_ENV ? invariant(
+	    Array.isArray(specValue),
+	    'update(): expected spec of %s to be an array; got %s. ' +
+	    'Did you forget to wrap your parameter in an array?',
+	    command,
+	    specValue
+	  ) : invariant(Array.isArray(specValue)));
+	}
+
+	function update(value, spec) {
+	  ("production" !== process.env.NODE_ENV ? invariant(
+	    typeof spec === 'object',
+	    'update(): You provided a key path to update() that did not contain one ' +
+	    'of %s. Did you forget to include {%s: ...}?',
+	    ALL_COMMANDS_LIST.join(', '),
+	    COMMAND_SET
+	  ) : invariant(typeof spec === 'object'));
+
+	  if (hasOwnProperty.call(spec, COMMAND_SET)) {
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      Object.keys(spec).length === 1,
+	      'Cannot have more than one key in an object with %s',
+	      COMMAND_SET
+	    ) : invariant(Object.keys(spec).length === 1));
+
+	    return spec[COMMAND_SET];
+	  }
+
+	  var nextValue = shallowCopy(value);
+
+	  if (hasOwnProperty.call(spec, COMMAND_MERGE)) {
+	    var mergeObj = spec[COMMAND_MERGE];
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      mergeObj && typeof mergeObj === 'object',
+	      'update(): %s expects a spec of type \'object\'; got %s',
+	      COMMAND_MERGE,
+	      mergeObj
+	    ) : invariant(mergeObj && typeof mergeObj === 'object'));
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      nextValue && typeof nextValue === 'object',
+	      'update(): %s expects a target of type \'object\'; got %s',
+	      COMMAND_MERGE,
+	      nextValue
+	    ) : invariant(nextValue && typeof nextValue === 'object'));
+	    assign(nextValue, spec[COMMAND_MERGE]);
+	  }
+
+	  if (hasOwnProperty.call(spec, COMMAND_PUSH)) {
+	    invariantArrayCase(value, spec, COMMAND_PUSH);
+	    spec[COMMAND_PUSH].forEach(function(item) {
+	      nextValue.push(item);
+	    });
+	  }
+
+	  if (hasOwnProperty.call(spec, COMMAND_UNSHIFT)) {
+	    invariantArrayCase(value, spec, COMMAND_UNSHIFT);
+	    spec[COMMAND_UNSHIFT].forEach(function(item) {
+	      nextValue.unshift(item);
+	    });
+	  }
+
+	  if (hasOwnProperty.call(spec, COMMAND_SPLICE)) {
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      Array.isArray(value),
+	      'Expected %s target to be an array; got %s',
+	      COMMAND_SPLICE,
+	      value
+	    ) : invariant(Array.isArray(value)));
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      Array.isArray(spec[COMMAND_SPLICE]),
+	      'update(): expected spec of %s to be an array of arrays; got %s. ' +
+	      'Did you forget to wrap your parameters in an array?',
+	      COMMAND_SPLICE,
+	      spec[COMMAND_SPLICE]
+	    ) : invariant(Array.isArray(spec[COMMAND_SPLICE])));
+	    spec[COMMAND_SPLICE].forEach(function(args) {
+	      ("production" !== process.env.NODE_ENV ? invariant(
+	        Array.isArray(args),
+	        'update(): expected spec of %s to be an array of arrays; got %s. ' +
+	        'Did you forget to wrap your parameters in an array?',
+	        COMMAND_SPLICE,
+	        spec[COMMAND_SPLICE]
+	      ) : invariant(Array.isArray(args)));
+	      nextValue.splice.apply(nextValue, args);
+	    });
+	  }
+
+	  if (hasOwnProperty.call(spec, COMMAND_APPLY)) {
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      typeof spec[COMMAND_APPLY] === 'function',
+	      'update(): expected spec of %s to be a function; got %s.',
+	      COMMAND_APPLY,
+	      spec[COMMAND_APPLY]
+	    ) : invariant(typeof spec[COMMAND_APPLY] === 'function'));
+	    nextValue = spec[COMMAND_APPLY](nextValue);
+	  }
+
+	  for (var k in spec) {
+	    if (!(ALL_COMMANDS_SET.hasOwnProperty(k) && ALL_COMMANDS_SET[k])) {
+	      nextValue[k] = update(value[k], spec[k]);
+	    }
+	  }
+
+	  return nextValue;
+	}
+
+	module.exports = update;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 461 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactTestUtils
+	 */
+
+	'use strict';
+
+	var EventConstants = __webpack_require__(69);
+	var EventPluginHub = __webpack_require__(193);
+	var EventPropagators = __webpack_require__(189);
+	var React = __webpack_require__(10);
+	var ReactElement = __webpack_require__(39);
+	var ReactEmptyComponent = __webpack_require__(119);
+	var ReactBrowserEventEmitter = __webpack_require__(118);
+	var ReactCompositeComponent = __webpack_require__(225);
+	var ReactInstanceHandles = __webpack_require__(44);
+	var ReactInstanceMap = __webpack_require__(75);
+	var ReactMount = __webpack_require__(45);
+	var ReactUpdates = __webpack_require__(121);
+	var SyntheticEvent = __webpack_require__(194);
+
+	var assign = __webpack_require__(50);
+
+	var topLevelTypes = EventConstants.topLevelTypes;
+
+	function Event(suffix) {}
+
+	/**
+	 * @class ReactTestUtils
+	 */
+
+	/**
+	 * Todo: Support the entire DOM.scry query syntax. For now, these simple
+	 * utilities will suffice for testing purposes.
+	 * @lends ReactTestUtils
+	 */
+	var ReactTestUtils = {
+	  renderIntoDocument: function(instance) {
+	    var div = document.createElement('div');
+	    // None of our tests actually require attaching the container to the
+	    // DOM, and doing so creates a mess that we rely on test isolation to
+	    // clean up, so we're going to stop honoring the name of this method
+	    // (and probably rename it eventually) if no problems arise.
+	    // document.documentElement.appendChild(div);
+	    return React.render(instance, div);
+	  },
+
+	  isElement: function(element) {
+	    return ReactElement.isValidElement(element);
+	  },
+
+	  isElementOfType: function(inst, convenienceConstructor) {
+	    return (
+	      ReactElement.isValidElement(inst) &&
+	      inst.type === convenienceConstructor
+	    );
+	  },
+
+	  isDOMComponent: function(inst) {
+	    // TODO: Fix this heuristic. It's just here because composites can currently
+	    // pretend to be DOM components.
+	    return !!(inst && inst.tagName && inst.getDOMNode);
+	  },
+
+	  isDOMComponentElement: function(inst) {
+	    return !!(inst &&
+	              ReactElement.isValidElement(inst) &&
+	              !!inst.tagName);
+	  },
+
+	  isCompositeComponent: function(inst) {
+	    return typeof inst.render === 'function' &&
+	           typeof inst.setState === 'function';
+	  },
+
+	  isCompositeComponentWithType: function(inst, type) {
+	    return !!(ReactTestUtils.isCompositeComponent(inst) &&
+	             (inst.constructor === type));
+	  },
+
+	  isCompositeComponentElement: function(inst) {
+	    if (!ReactElement.isValidElement(inst)) {
+	      return false;
+	    }
+	    // We check the prototype of the type that will get mounted, not the
+	    // instance itself. This is a future proof way of duck typing.
+	    var prototype = inst.type.prototype;
+	    return (
+	      typeof prototype.render === 'function' &&
+	      typeof prototype.setState === 'function'
+	    );
+	  },
+
+	  isCompositeComponentElementWithType: function(inst, type) {
+	    return !!(ReactTestUtils.isCompositeComponentElement(inst) &&
+	             (inst.constructor === type));
+	  },
+
+	  getRenderedChildOfCompositeComponent: function(inst) {
+	    if (!ReactTestUtils.isCompositeComponent(inst)) {
+	      return null;
+	    }
+	    var internalInstance = ReactInstanceMap.get(inst);
+	    return internalInstance._renderedComponent.getPublicInstance();
+	  },
+
+	  findAllInRenderedTree: function(inst, test) {
+	    if (!inst) {
+	      return [];
+	    }
+	    var ret = test(inst) ? [inst] : [];
+	    if (ReactTestUtils.isDOMComponent(inst)) {
+	      var internalInstance = ReactInstanceMap.get(inst);
+	      var renderedChildren = internalInstance
+	        ._renderedComponent
+	        ._renderedChildren;
+	      var key;
+	      for (key in renderedChildren) {
+	        if (!renderedChildren.hasOwnProperty(key)) {
+	          continue;
+	        }
+	        if (!renderedChildren[key].getPublicInstance) {
+	          continue;
+	        }
+	        ret = ret.concat(
+	          ReactTestUtils.findAllInRenderedTree(
+	            renderedChildren[key].getPublicInstance(),
+	            test
+	          )
+	        );
+	      }
+	    } else if (ReactTestUtils.isCompositeComponent(inst)) {
+	      ret = ret.concat(
+	        ReactTestUtils.findAllInRenderedTree(
+	          ReactTestUtils.getRenderedChildOfCompositeComponent(inst),
+	          test
+	        )
+	      );
+	    }
+	    return ret;
+	  },
+
+	  /**
+	   * Finds all instance of components in the rendered tree that are DOM
+	   * components with the class name matching `className`.
+	   * @return an array of all the matches.
+	   */
+	  scryRenderedDOMComponentsWithClass: function(root, className) {
+	    return ReactTestUtils.findAllInRenderedTree(root, function(inst) {
+	      var instClassName = inst.props.className;
+	      return ReactTestUtils.isDOMComponent(inst) && (
+	        (instClassName && (' ' + instClassName + ' ').indexOf(' ' + className + ' ') !== -1)
+	      );
+	    });
+	  },
+
+	  /**
+	   * Like scryRenderedDOMComponentsWithClass but expects there to be one result,
+	   * and returns that one result, or throws exception if there is any other
+	   * number of matches besides one.
+	   * @return {!ReactDOMComponent} The one match.
+	   */
+	  findRenderedDOMComponentWithClass: function(root, className) {
+	    var all =
+	      ReactTestUtils.scryRenderedDOMComponentsWithClass(root, className);
+	    if (all.length !== 1) {
+	      throw new Error('Did not find exactly one match ' +
+	        '(found: ' + all.length + ') for class:' + className
+	      );
+	    }
+	    return all[0];
+	  },
+
+
+	  /**
+	   * Finds all instance of components in the rendered tree that are DOM
+	   * components with the tag name matching `tagName`.
+	   * @return an array of all the matches.
+	   */
+	  scryRenderedDOMComponentsWithTag: function(root, tagName) {
+	    return ReactTestUtils.findAllInRenderedTree(root, function(inst) {
+	      return ReactTestUtils.isDOMComponent(inst) &&
+	            inst.tagName === tagName.toUpperCase();
+	    });
+	  },
+
+	  /**
+	   * Like scryRenderedDOMComponentsWithTag but expects there to be one result,
+	   * and returns that one result, or throws exception if there is any other
+	   * number of matches besides one.
+	   * @return {!ReactDOMComponent} The one match.
+	   */
+	  findRenderedDOMComponentWithTag: function(root, tagName) {
+	    var all = ReactTestUtils.scryRenderedDOMComponentsWithTag(root, tagName);
+	    if (all.length !== 1) {
+	      throw new Error('Did not find exactly one match for tag:' + tagName);
+	    }
+	    return all[0];
+	  },
+
+
+	  /**
+	   * Finds all instances of components with type equal to `componentType`.
+	   * @return an array of all the matches.
+	   */
+	  scryRenderedComponentsWithType: function(root, componentType) {
+	    return ReactTestUtils.findAllInRenderedTree(root, function(inst) {
+	      return ReactTestUtils.isCompositeComponentWithType(
+	        inst,
+	        componentType
+	      );
+	    });
+	  },
+
+	  /**
+	   * Same as `scryRenderedComponentsWithType` but expects there to be one result
+	   * and returns that one result, or throws exception if there is any other
+	   * number of matches besides one.
+	   * @return {!ReactComponent} The one match.
+	   */
+	  findRenderedComponentWithType: function(root, componentType) {
+	    var all = ReactTestUtils.scryRenderedComponentsWithType(
+	      root,
+	      componentType
+	    );
+	    if (all.length !== 1) {
+	      throw new Error(
+	        'Did not find exactly one match for componentType:' + componentType
+	      );
+	    }
+	    return all[0];
+	  },
+
+	  /**
+	   * Pass a mocked component module to this method to augment it with
+	   * useful methods that allow it to be used as a dummy React component.
+	   * Instead of rendering as usual, the component will become a simple
+	   * <div> containing any provided children.
+	   *
+	   * @param {object} module the mock function object exported from a
+	   *                        module that defines the component to be mocked
+	   * @param {?string} mockTagName optional dummy root tag name to return
+	   *                              from render method (overrides
+	   *                              module.mockTagName if provided)
+	   * @return {object} the ReactTestUtils object (for chaining)
+	   */
+	  mockComponent: function(module, mockTagName) {
+	    mockTagName = mockTagName || module.mockTagName || "div";
+
+	    module.prototype.render.mockImplementation(function() {
+	      return React.createElement(
+	        mockTagName,
+	        null,
+	        this.props.children
+	      );
+	    });
+
+	    return this;
+	  },
+
+	  /**
+	   * Simulates a top level event being dispatched from a raw event that occured
+	   * on an `Element` node.
+	   * @param topLevelType {Object} A type from `EventConstants.topLevelTypes`
+	   * @param {!Element} node The dom to simulate an event occurring on.
+	   * @param {?Event} fakeNativeEvent Fake native event to use in SyntheticEvent.
+	   */
+	  simulateNativeEventOnNode: function(topLevelType, node, fakeNativeEvent) {
+	    fakeNativeEvent.target = node;
+	    ReactBrowserEventEmitter.ReactEventListener.dispatchEvent(
+	      topLevelType,
+	      fakeNativeEvent
+	    );
+	  },
+
+	  /**
+	   * Simulates a top level event being dispatched from a raw event that occured
+	   * on the `ReactDOMComponent` `comp`.
+	   * @param topLevelType {Object} A type from `EventConstants.topLevelTypes`.
+	   * @param comp {!ReactDOMComponent}
+	   * @param {?Event} fakeNativeEvent Fake native event to use in SyntheticEvent.
+	   */
+	  simulateNativeEventOnDOMComponent: function(
+	      topLevelType,
+	      comp,
+	      fakeNativeEvent) {
+	    ReactTestUtils.simulateNativeEventOnNode(
+	      topLevelType,
+	      comp.getDOMNode(),
+	      fakeNativeEvent
+	    );
+	  },
+
+	  nativeTouchData: function(x, y) {
+	    return {
+	      touches: [
+	        {pageX: x, pageY: y}
+	      ]
+	    };
+	  },
+
+	  createRenderer: function() {
+	    return new ReactShallowRenderer();
+	  },
+
+	  Simulate: null,
+	  SimulateNative: {}
+	};
+
+	/**
+	 * @class ReactShallowRenderer
+	 */
+	var ReactShallowRenderer = function() {
+	  this._instance = null;
+	};
+
+	ReactShallowRenderer.prototype.getRenderOutput = function() {
+	  return (
+	    (this._instance && this._instance._renderedComponent &&
+	     this._instance._renderedComponent._renderedOutput)
+	    || null
+	  );
+	};
+
+	var NoopInternalComponent = function(element) {
+	  this._renderedOutput = element;
+	  this._currentElement = element === null || element === false ?
+	    ReactEmptyComponent.emptyElement :
+	    element;
+	};
+
+	NoopInternalComponent.prototype = {
+
+	  mountComponent: function() {
+	  },
+
+	  receiveComponent: function(element) {
+	    this._renderedOutput = element;
+	    this._currentElement = element === null || element === false ?
+	      ReactEmptyComponent.emptyElement :
+	      element;
+	  },
+
+	  unmountComponent: function() {
+	  }
+
+	};
+
+	var ShallowComponentWrapper = function() { };
+	assign(
+	  ShallowComponentWrapper.prototype,
+	  ReactCompositeComponent.Mixin, {
+	    _instantiateReactComponent: function(element) {
+	      return new NoopInternalComponent(element);
+	    },
+	    _replaceNodeWithMarkupByID: function() {},
+	    _renderValidatedComponent:
+	      ReactCompositeComponent.Mixin.
+	        _renderValidatedComponentWithoutOwnerOrContext
+	  }
+	);
+
+	ReactShallowRenderer.prototype.render = function(element, context) {
+	  var transaction = ReactUpdates.ReactReconcileTransaction.getPooled();
+	  this._render(element, transaction, context);
+	  ReactUpdates.ReactReconcileTransaction.release(transaction);
+	};
+
+	ReactShallowRenderer.prototype.unmount = function() {
+	  if (this._instance) {
+	    this._instance.unmountComponent();
+	  }
+	};
+
+	ReactShallowRenderer.prototype._render = function(element, transaction, context) {
+	  if (!this._instance) {
+	    var rootID = ReactInstanceHandles.createReactRootID();
+	    var instance = new ShallowComponentWrapper(element.type);
+	    instance.construct(element);
+
+	    instance.mountComponent(rootID, transaction, context);
+
+	    this._instance = instance;
+	  } else {
+	    this._instance.receiveComponent(element, transaction, context);
+	  }
+	};
+
+	/**
+	 * Exports:
+	 *
+	 * - `ReactTestUtils.Simulate.click(Element/ReactDOMComponent)`
+	 * - `ReactTestUtils.Simulate.mouseMove(Element/ReactDOMComponent)`
+	 * - `ReactTestUtils.Simulate.change(Element/ReactDOMComponent)`
+	 * - ... (All keys from event plugin `eventTypes` objects)
+	 */
+	function makeSimulator(eventType) {
+	  return function(domComponentOrNode, eventData) {
+	    var node;
+	    if (ReactTestUtils.isDOMComponent(domComponentOrNode)) {
+	      node = domComponentOrNode.getDOMNode();
+	    } else if (domComponentOrNode.tagName) {
+	      node = domComponentOrNode;
+	    }
+
+	    var fakeNativeEvent = new Event();
+	    fakeNativeEvent.target = node;
+	    // We don't use SyntheticEvent.getPooled in order to not have to worry about
+	    // properly destroying any properties assigned from `eventData` upon release
+	    var event = new SyntheticEvent(
+	      ReactBrowserEventEmitter.eventNameDispatchConfigs[eventType],
+	      ReactMount.getID(node),
+	      fakeNativeEvent
+	    );
+	    assign(event, eventData);
+	    EventPropagators.accumulateTwoPhaseDispatches(event);
+
+	    ReactUpdates.batchedUpdates(function() {
+	      EventPluginHub.enqueueEvents(event);
+	      EventPluginHub.processEventQueue();
+	    });
+	  };
+	}
+
+	function buildSimulators() {
+	  ReactTestUtils.Simulate = {};
+
+	  var eventType;
+	  for (eventType in ReactBrowserEventEmitter.eventNameDispatchConfigs) {
+	    /**
+	     * @param {!Element || ReactDOMComponent} domComponentOrNode
+	     * @param {?object} eventData Fake event data to use in SyntheticEvent.
+	     */
+	    ReactTestUtils.Simulate[eventType] = makeSimulator(eventType);
+	  }
+	}
+
+	// Rebuild ReactTestUtils.Simulate whenever event plugins are injected
+	var oldInjectEventPluginOrder = EventPluginHub.injection.injectEventPluginOrder;
+	EventPluginHub.injection.injectEventPluginOrder = function() {
+	  oldInjectEventPluginOrder.apply(this, arguments);
+	  buildSimulators();
+	};
+	var oldInjectEventPlugins = EventPluginHub.injection.injectEventPluginsByName;
+	EventPluginHub.injection.injectEventPluginsByName = function() {
+	  oldInjectEventPlugins.apply(this, arguments);
+	  buildSimulators();
+	};
+
+	buildSimulators();
+
+	/**
+	 * Exports:
+	 *
+	 * - `ReactTestUtils.SimulateNative.click(Element/ReactDOMComponent)`
+	 * - `ReactTestUtils.SimulateNative.mouseMove(Element/ReactDOMComponent)`
+	 * - `ReactTestUtils.SimulateNative.mouseIn/ReactDOMComponent)`
+	 * - `ReactTestUtils.SimulateNative.mouseOut(Element/ReactDOMComponent)`
+	 * - ... (All keys from `EventConstants.topLevelTypes`)
+	 *
+	 * Note: Top level event types are a subset of the entire set of handler types
+	 * (which include a broader set of "synthetic" events). For example, onDragDone
+	 * is a synthetic event. Except when testing an event plugin or React's event
+	 * handling code specifically, you probably want to use ReactTestUtils.Simulate
+	 * to dispatch synthetic events.
+	 */
+
+	function makeNativeSimulator(eventType) {
+	  return function(domComponentOrNode, nativeEventData) {
+	    var fakeNativeEvent = new Event(eventType);
+	    assign(fakeNativeEvent, nativeEventData);
+	    if (ReactTestUtils.isDOMComponent(domComponentOrNode)) {
+	      ReactTestUtils.simulateNativeEventOnDOMComponent(
+	        eventType,
+	        domComponentOrNode,
+	        fakeNativeEvent
+	      );
+	    } else if (!!domComponentOrNode.tagName) {
+	      // Will allow on actual dom nodes.
+	      ReactTestUtils.simulateNativeEventOnNode(
+	        eventType,
+	        domComponentOrNode,
+	        fakeNativeEvent
+	      );
+	    }
+	  };
+	}
+
+	var eventType;
+	for (eventType in topLevelTypes) {
+	  // Event type is stored as 'topClick' - we transform that to 'click'
+	  var convenienceName = eventType.indexOf('top') === 0 ?
+	    eventType.charAt(3).toLowerCase() + eventType.substr(4) : eventType;
+	  /**
+	   * @param {!Element || ReactDOMComponent} domComponentOrNode
+	   * @param {?Event} nativeEventData Fake native event to use in SyntheticEvent.
+	   */
+	  ReactTestUtils.SimulateNative[convenienceName] =
+	    makeNativeSimulator(eventType);
+	}
+
+	module.exports = ReactTestUtils;
+
+
+/***/ },
+/* 462 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @typechecks
+	 * @providesModule ReactCSSTransitionGroupChild
+	 */
+
+	'use strict';
+
+	var React = __webpack_require__(10);
+
+	var CSSCore = __webpack_require__(467);
+	var ReactTransitionEvents = __webpack_require__(233);
+
+	var onlyChild = __webpack_require__(52);
+	var warning = __webpack_require__(58);
+
+	// We don't remove the element from the DOM until we receive an animationend or
+	// transitionend event. If the user screws up and forgets to add an animation
+	// their node will be stuck in the DOM forever, so we detect if an animation
+	// does not start and if it doesn't, we just call the end listener immediately.
+	var TICK = 17;
+	var NO_EVENT_TIMEOUT = 5000;
+
+	var noEventListener = null;
+
+
+	if ("production" !== process.env.NODE_ENV) {
+	  noEventListener = function() {
+	    ("production" !== process.env.NODE_ENV ? warning(
+	      false,
+	      'transition(): tried to perform an animation without ' +
+	      'an animationend or transitionend event after timeout (' +
+	      '%sms). You should either disable this ' +
+	      'transition in JS or add a CSS animation/transition.',
+	      NO_EVENT_TIMEOUT
+	    ) : null);
+	  };
+	}
+
+	var ReactCSSTransitionGroupChild = React.createClass({
+	  displayName: 'ReactCSSTransitionGroupChild',
+
+	  transition: function(animationType, finishCallback) {
+	    var node = this.getDOMNode();
+	    var className = this.props.name + '-' + animationType;
+	    var activeClassName = className + '-active';
+	    var noEventTimeout = null;
+
+	    var endListener = function(e) {
+	      if (e && e.target !== node) {
+	        return;
+	      }
+	      if ("production" !== process.env.NODE_ENV) {
+	        clearTimeout(noEventTimeout);
+	      }
+
+	      CSSCore.removeClass(node, className);
+	      CSSCore.removeClass(node, activeClassName);
+
+	      ReactTransitionEvents.removeEndEventListener(node, endListener);
+
+	      // Usually this optional callback is used for informing an owner of
+	      // a leave animation and telling it to remove the child.
+	      if (finishCallback) {
+	        finishCallback();
+	      }
+	    };
+
+	    ReactTransitionEvents.addEndEventListener(node, endListener);
+
+	    CSSCore.addClass(node, className);
+
+	    // Need to do this to actually trigger a transition.
+	    this.queueClass(activeClassName);
+
+	    if ("production" !== process.env.NODE_ENV) {
+	      noEventTimeout = setTimeout(noEventListener, NO_EVENT_TIMEOUT);
+	    }
+	  },
+
+	  queueClass: function(className) {
+	    this.classNameQueue.push(className);
+
+	    if (!this.timeout) {
+	      this.timeout = setTimeout(this.flushClassNameQueue, TICK);
+	    }
+	  },
+
+	  flushClassNameQueue: function() {
+	    if (this.isMounted()) {
+	      this.classNameQueue.forEach(
+	        CSSCore.addClass.bind(CSSCore, this.getDOMNode())
+	      );
+	    }
+	    this.classNameQueue.length = 0;
+	    this.timeout = null;
+	  },
+
+	  componentWillMount: function() {
+	    this.classNameQueue = [];
+	  },
+
+	  componentWillUnmount: function() {
+	    if (this.timeout) {
+	      clearTimeout(this.timeout);
+	    }
+	  },
+
+	  componentWillAppear: function(done) {
+	    if (this.props.appear) {
+	      this.transition('appear', done);
+	    } else {
+	      done();
+	    }
+	  },
+
+	  componentWillEnter: function(done) {
+	    if (this.props.enter) {
+	      this.transition('enter', done);
+	    } else {
+	      done();
+	    }
+	  },
+
+	  componentWillLeave: function(done) {
+	    if (this.props.leave) {
+	      this.transition('leave', done);
+	    } else {
+	      done();
+	    }
+	  },
+
+	  render: function() {
+	    return onlyChild(this.props.children);
+	  }
+	});
+
+	module.exports = ReactCSSTransitionGroupChild;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 463 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactLink
+	 * @typechecks static-only
+	 */
+
+	'use strict';
+
+	/**
+	 * ReactLink encapsulates a common pattern in which a component wants to modify
+	 * a prop received from its parent. ReactLink allows the parent to pass down a
+	 * value coupled with a callback that, when invoked, expresses an intent to
+	 * modify that value. For example:
+	 *
+	 * React.createClass({
+	 *   getInitialState: function() {
+	 *     return {value: ''};
+	 *   },
+	 *   render: function() {
+	 *     var valueLink = new ReactLink(this.state.value, this._handleValueChange);
+	 *     return <input valueLink={valueLink} />;
+	 *   },
+	 *   this._handleValueChange: function(newValue) {
+	 *     this.setState({value: newValue});
+	 *   }
+	 * });
+	 *
+	 * We have provided some sugary mixins to make the creation and
+	 * consumption of ReactLink easier; see LinkedValueUtils and LinkedStateMixin.
+	 */
+
+	var React = __webpack_require__(10);
+
+	/**
+	 * @param {*} value current value of the link
+	 * @param {function} requestChange callback to request a change
+	 */
+	function ReactLink(value, requestChange) {
+	  this.value = value;
+	  this.requestChange = requestChange;
+	}
+
+	/**
+	 * Creates a PropType that enforces the ReactLink API and optionally checks the
+	 * type of the value being passed inside the link. Example:
+	 *
+	 * MyComponent.propTypes = {
+	 *   tabIndexLink: ReactLink.PropTypes.link(React.PropTypes.number)
+	 * }
+	 */
+	function createLinkTypeChecker(linkType) {
+	  var shapes = {
+	    value: typeof linkType === 'undefined' ?
+	      React.PropTypes.any.isRequired :
+	      linkType.isRequired,
+	    requestChange: React.PropTypes.func.isRequired
+	  };
+	  return React.PropTypes.shape(shapes);
+	}
+
+	ReactLink.PropTypes = {
+	  link: createLinkTypeChecker
+	};
+
+	module.exports = ReactLink;
+
+
+/***/ },
+/* 464 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactStateSetters
+	 */
+
+	'use strict';
+
+	var ReactStateSetters = {
+	  /**
+	   * Returns a function that calls the provided function, and uses the result
+	   * of that to set the component's state.
+	   *
+	   * @param {ReactCompositeComponent} component
+	   * @param {function} funcReturningState Returned callback uses this to
+	   *                                      determine how to update state.
+	   * @return {function} callback that when invoked uses funcReturningState to
+	   *                    determined the object literal to setState.
+	   */
+	  createStateSetter: function(component, funcReturningState) {
+	    return function(a, b, c, d, e, f) {
+	      var partialState = funcReturningState.call(component, a, b, c, d, e, f);
+	      if (partialState) {
+	        component.setState(partialState);
+	      }
+	    };
+	  },
+
+	  /**
+	   * Returns a single-argument callback that can be used to update a single
+	   * key in the component's state.
+	   *
+	   * Note: this is memoized function, which makes it inexpensive to call.
+	   *
+	   * @param {ReactCompositeComponent} component
+	   * @param {string} key The key in the state that you should update.
+	   * @return {function} callback of 1 argument which calls setState() with
+	   *                    the provided keyName and callback argument.
+	   */
+	  createStateKeySetter: function(component, key) {
+	    // Memoize the setters.
+	    var cache = component.__keySetters || (component.__keySetters = {});
+	    return cache[key] || (cache[key] = createStateKeySetter(component, key));
+	  }
+	};
+
+	function createStateKeySetter(component, key) {
+	  // Partial state is allocated outside of the function closure so it can be
+	  // reused with every call, avoiding memory allocation when this function
+	  // is called.
+	  var partialState = {};
+	  return function stateKeySetter(value) {
+	    partialState[key] = value;
+	    component.setState(partialState);
+	  };
+	}
+
+	ReactStateSetters.Mixin = {
+	  /**
+	   * Returns a function that calls the provided function, and uses the result
+	   * of that to set the component's state.
+	   *
+	   * For example, these statements are equivalent:
+	   *
+	   *   this.setState({x: 1});
+	   *   this.createStateSetter(function(xValue) {
+	   *     return {x: xValue};
+	   *   })(1);
+	   *
+	   * @param {function} funcReturningState Returned callback uses this to
+	   *                                      determine how to update state.
+	   * @return {function} callback that when invoked uses funcReturningState to
+	   *                    determined the object literal to setState.
+	   */
+	  createStateSetter: function(funcReturningState) {
+	    return ReactStateSetters.createStateSetter(this, funcReturningState);
+	  },
+
+	  /**
+	   * Returns a single-argument callback that can be used to update a single
+	   * key in the component's state.
+	   *
+	   * For example, these statements are equivalent:
+	   *
+	   *   this.setState({x: 1});
+	   *   this.createStateKeySetter('x')(1);
+	   *
+	   * Note: this is memoized function, which makes it inexpensive to call.
+	   *
+	   * @param {string} key The key in the state that you should update.
+	   * @return {function} callback of 1 argument which calls setState() with
+	   *                    the provided keyName and callback argument.
+	   */
+	  createStateKeySetter: function(key) {
+	    return ReactStateSetters.createStateKeySetter(this, key);
+	  }
+	};
+
+	module.exports = ReactStateSetters;
+
+
+/***/ },
+/* 465 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @typechecks static-only
+	 * @providesModule ReactTransitionChildMapping
+	 */
+
+	'use strict';
+
+	var ReactChildren = __webpack_require__(34);
+	var ReactFragment = __webpack_require__(71);
+
+	var ReactTransitionChildMapping = {
+	  /**
+	   * Given `this.props.children`, return an object mapping key to child. Just
+	   * simple syntactic sugar around ReactChildren.map().
+	   *
+	   * @param {*} children `this.props.children`
+	   * @return {object} Mapping of key to child
+	   */
+	  getChildMapping: function(children) {
+	    if (!children) {
+	      return children;
+	    }
+	    return ReactFragment.extract(ReactChildren.map(children, function(child) {
+	      return child;
+	    }));
+	  },
+
+	  /**
+	   * When you're adding or removing children some may be added or removed in the
+	   * same render pass. We want to show *both* since we want to simultaneously
+	   * animate elements in and out. This function takes a previous set of keys
+	   * and a new set of keys and merges them with its best guess of the correct
+	   * ordering. In the future we may expose some of the utilities in
+	   * ReactMultiChild to make this easy, but for now React itself does not
+	   * directly have this concept of the union of prevChildren and nextChildren
+	   * so we implement it here.
+	   *
+	   * @param {object} prev prev children as returned from
+	   * `ReactTransitionChildMapping.getChildMapping()`.
+	   * @param {object} next next children as returned from
+	   * `ReactTransitionChildMapping.getChildMapping()`.
+	   * @return {object} a key set that contains all keys in `prev` and all keys
+	   * in `next` in a reasonable order.
+	   */
+	  mergeChildMappings: function(prev, next) {
+	    prev = prev || {};
+	    next = next || {};
+
+	    function getValueForKey(key) {
+	      if (next.hasOwnProperty(key)) {
+	        return next[key];
+	      } else {
+	        return prev[key];
+	      }
+	    }
+
+	    // For each key of `next`, the list of keys to insert before that key in
+	    // the combined list
+	    var nextKeysPending = {};
+
+	    var pendingKeys = [];
+	    for (var prevKey in prev) {
+	      if (next.hasOwnProperty(prevKey)) {
+	        if (pendingKeys.length) {
+	          nextKeysPending[prevKey] = pendingKeys;
+	          pendingKeys = [];
+	        }
+	      } else {
+	        pendingKeys.push(prevKey);
+	      }
+	    }
+
+	    var i;
+	    var childMapping = {};
+	    for (var nextKey in next) {
+	      if (nextKeysPending.hasOwnProperty(nextKey)) {
+	        for (i = 0; i < nextKeysPending[nextKey].length; i++) {
+	          var pendingNextKey = nextKeysPending[nextKey][i];
+	          childMapping[nextKeysPending[nextKey][i]] = getValueForKey(
+	            pendingNextKey
+	          );
+	        }
+	      }
+	      childMapping[nextKey] = getValueForKey(nextKey);
+	    }
+
+	    // Finally, add the keys which didn't appear before any key in `next`
+	    for (i = 0; i < pendingKeys.length; i++) {
+	      childMapping[pendingKeys[i]] = getValueForKey(pendingKeys[i]);
+	    }
+
+	    return childMapping;
+	  }
+	};
+
+	module.exports = ReactTransitionChildMapping;
+
+
+/***/ },
+/* 466 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ReactPropTransferer
+	 */
+
+	'use strict';
+
+	var assign = __webpack_require__(50);
+	var emptyFunction = __webpack_require__(129);
+	var joinClasses = __webpack_require__(468);
+
+	/**
+	 * Creates a transfer strategy that will merge prop values using the supplied
+	 * `mergeStrategy`. If a prop was previously unset, this just sets it.
+	 *
+	 * @param {function} mergeStrategy
+	 * @return {function}
+	 */
+	function createTransferStrategy(mergeStrategy) {
+	  return function(props, key, value) {
+	    if (!props.hasOwnProperty(key)) {
+	      props[key] = value;
+	    } else {
+	      props[key] = mergeStrategy(props[key], value);
+	    }
+	  };
+	}
+
+	var transferStrategyMerge = createTransferStrategy(function(a, b) {
+	  // `merge` overrides the first object's (`props[key]` above) keys using the
+	  // second object's (`value`) keys. An object's style's existing `propA` would
+	  // get overridden. Flip the order here.
+	  return assign({}, b, a);
+	});
+
+	/**
+	 * Transfer strategies dictate how props are transferred by `transferPropsTo`.
+	 * NOTE: if you add any more exceptions to this list you should be sure to
+	 * update `cloneWithProps()` accordingly.
+	 */
+	var TransferStrategies = {
+	  /**
+	   * Never transfer `children`.
+	   */
+	  children: emptyFunction,
+	  /**
+	   * Transfer the `className` prop by merging them.
+	   */
+	  className: createTransferStrategy(joinClasses),
+	  /**
+	   * Transfer the `style` prop (which is an object) by merging them.
+	   */
+	  style: transferStrategyMerge
+	};
+
+	/**
+	 * Mutates the first argument by transferring the properties from the second
+	 * argument.
+	 *
+	 * @param {object} props
+	 * @param {object} newProps
+	 * @return {object}
+	 */
+	function transferInto(props, newProps) {
+	  for (var thisKey in newProps) {
+	    if (!newProps.hasOwnProperty(thisKey)) {
+	      continue;
+	    }
+
+	    var transferStrategy = TransferStrategies[thisKey];
+
+	    if (transferStrategy && TransferStrategies.hasOwnProperty(thisKey)) {
+	      transferStrategy(props, thisKey, newProps[thisKey]);
+	    } else if (!props.hasOwnProperty(thisKey)) {
+	      props[thisKey] = newProps[thisKey];
+	    }
+	  }
+	  return props;
+	}
+
+	/**
+	 * ReactPropTransferer are capable of transferring props to another component
+	 * using a `transferPropsTo` method.
+	 *
+	 * @class ReactPropTransferer
+	 */
+	var ReactPropTransferer = {
+
+	  /**
+	   * Merge two props objects using TransferStrategies.
+	   *
+	   * @param {object} oldProps original props (they take precedence)
+	   * @param {object} newProps new props to merge in
+	   * @return {object} a new object containing both sets of props merged.
+	   */
+	  mergeProps: function(oldProps, newProps) {
+	    return transferInto(assign({}, oldProps), newProps);
+	  }
+
+	};
+
+	module.exports = ReactPropTransferer;
+
+
+/***/ },
+/* 467 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule CSSCore
+	 * @typechecks
+	 */
+
+	var invariant = __webpack_require__(55);
+
+	/**
+	 * The CSSCore module specifies the API (and implements most of the methods)
+	 * that should be used when dealing with the display of elements (via their
+	 * CSS classes and visibility on screen. It is an API focused on mutating the
+	 * display and not reading it as no logical state should be encoded in the
+	 * display of elements.
+	 */
+
+	var CSSCore = {
+
+	  /**
+	   * Adds the class passed in to the element if it doesn't already have it.
+	   *
+	   * @param {DOMElement} element the element to set the class on
+	   * @param {string} className the CSS className
+	   * @return {DOMElement} the element passed in
+	   */
+	  addClass: function(element, className) {
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      !/\s/.test(className),
+	      'CSSCore.addClass takes only a single class name. "%s" contains ' +
+	      'multiple classes.', className
+	    ) : invariant(!/\s/.test(className)));
+
+	    if (className) {
+	      if (element.classList) {
+	        element.classList.add(className);
+	      } else if (!CSSCore.hasClass(element, className)) {
+	        element.className = element.className + ' ' + className;
+	      }
+	    }
+	    return element;
+	  },
+
+	  /**
+	   * Removes the class passed in from the element
+	   *
+	   * @param {DOMElement} element the element to set the class on
+	   * @param {string} className the CSS className
+	   * @return {DOMElement} the element passed in
+	   */
+	  removeClass: function(element, className) {
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      !/\s/.test(className),
+	      'CSSCore.removeClass takes only a single class name. "%s" contains ' +
+	      'multiple classes.', className
+	    ) : invariant(!/\s/.test(className)));
+
+	    if (className) {
+	      if (element.classList) {
+	        element.classList.remove(className);
+	      } else if (CSSCore.hasClass(element, className)) {
+	        element.className = element.className
+	          .replace(new RegExp('(^|\\s)' + className + '(?:\\s|$)', 'g'), '$1')
+	          .replace(/\s+/g, ' ') // multiple spaces to one
+	          .replace(/^\s*|\s*$/g, ''); // trim the ends
+	      }
+	    }
+	    return element;
+	  },
+
+	  /**
+	   * Helper to add or remove a class from an element based on a condition.
+	   *
+	   * @param {DOMElement} element the element to set the class on
+	   * @param {string} className the CSS className
+	   * @param {*} bool condition to whether to add or remove the class
+	   * @return {DOMElement} the element passed in
+	   */
+	  conditionClass: function(element, className, bool) {
+	    return (bool ? CSSCore.addClass : CSSCore.removeClass)(element, className);
+	  },
+
+	  /**
+	   * Tests whether the element has the class specified.
+	   *
+	   * @param {DOMNode|DOMWindow} element the element to set the class on
+	   * @param {string} className the CSS className
+	   * @return {boolean} true if the element has the class, false if not
+	   */
+	  hasClass: function(element, className) {
+	    ("production" !== process.env.NODE_ENV ? invariant(
+	      !/\s/.test(className),
+	      'CSS.hasClass takes only a single class name.'
+	    ) : invariant(!/\s/.test(className)));
+	    if (element.classList) {
+	      return !!className && element.classList.contains(className);
+	    }
+	    return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
+	  }
+
+	};
+
+	module.exports = CSSCore;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 468 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule joinClasses
+	 * @typechecks static-only
+	 */
+
+	'use strict';
+
+	/**
+	 * Combines multiple className strings into one.
+	 * http://jsperf.com/joinclasses-args-vs-array
+	 *
+	 * @param {...?string} classes
+	 * @return {string}
+	 */
+	function joinClasses(className/*, ... */) {
+	  if (!className) {
+	    className = '';
+	  }
+	  var nextClass;
+	  var argLength = arguments.length;
+	  if (argLength > 1) {
+	    for (var ii = 1; ii < argLength; ii++) {
+	      nextClass = arguments[ii];
+	      if (nextClass) {
+	        className = (className ? className + ' ' : '') + nextClass;
+	      }
+	    }
+	  }
+	  return className;
+	}
+
+	module.exports = joinClasses;
+
+
+/***/ },
+/* 469 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Module dependencies.
+	 */
+
+	var Emitter = __webpack_require__(470);
+	var reduce = __webpack_require__(471);
+
+	/**
+	 * Root reference for iframes.
+	 */
+
+	var root = 'undefined' == typeof window
+	  ? (this || self)
+	  : window;
+
+	/**
+	 * Noop.
+	 */
+
+	function noop(){};
+
+	/**
+	 * Check if `obj` is a host object,
+	 * we don't want to serialize these :)
+	 *
+	 * TODO: future proof, move to compoent land
+	 *
+	 * @param {Object} obj
+	 * @return {Boolean}
+	 * @api private
+	 */
+
+	function isHost(obj) {
+	  var str = {}.toString.call(obj);
+
+	  switch (str) {
+	    case '[object File]':
+	    case '[object Blob]':
+	    case '[object FormData]':
+	      return true;
+	    default:
+	      return false;
+	  }
+	}
+
+	/**
+	 * Determine XHR.
+	 */
+
+	request.getXHR = function () {
+	  if (root.XMLHttpRequest
+	      && (!root.location || 'file:' != root.location.protocol
+	          || !root.ActiveXObject)) {
+	    return new XMLHttpRequest;
+	  } else {
+	    try { return new ActiveXObject('Microsoft.XMLHTTP'); } catch(e) {}
+	    try { return new ActiveXObject('Msxml2.XMLHTTP.6.0'); } catch(e) {}
+	    try { return new ActiveXObject('Msxml2.XMLHTTP.3.0'); } catch(e) {}
+	    try { return new ActiveXObject('Msxml2.XMLHTTP'); } catch(e) {}
+	  }
+	  return false;
+	};
+
+	/**
+	 * Removes leading and trailing whitespace, added to support IE.
+	 *
+	 * @param {String} s
+	 * @return {String}
+	 * @api private
+	 */
+
+	var trim = ''.trim
+	  ? function(s) { return s.trim(); }
+	  : function(s) { return s.replace(/(^\s*|\s*$)/g, ''); };
+
+	/**
+	 * Check if `obj` is an object.
+	 *
+	 * @param {Object} obj
+	 * @return {Boolean}
+	 * @api private
+	 */
+
+	function isObject(obj) {
+	  return obj === Object(obj);
+	}
+
+	/**
+	 * Serialize the given `obj`.
+	 *
+	 * @param {Object} obj
+	 * @return {String}
+	 * @api private
+	 */
+
+	function serialize(obj) {
+	  if (!isObject(obj)) return obj;
+	  var pairs = [];
+	  for (var key in obj) {
+	    if (null != obj[key]) {
+	      pairs.push(encodeURIComponent(key)
+	        + '=' + encodeURIComponent(obj[key]));
+	    }
+	  }
+	  return pairs.join('&');
+	}
+
+	/**
+	 * Expose serialization method.
+	 */
+
+	 request.serializeObject = serialize;
+
+	 /**
+	  * Parse the given x-www-form-urlencoded `str`.
+	  *
+	  * @param {String} str
+	  * @return {Object}
+	  * @api private
+	  */
+
+	function parseString(str) {
+	  var obj = {};
+	  var pairs = str.split('&');
+	  var parts;
+	  var pair;
+
+	  for (var i = 0, len = pairs.length; i < len; ++i) {
+	    pair = pairs[i];
+	    parts = pair.split('=');
+	    obj[decodeURIComponent(parts[0])] = decodeURIComponent(parts[1]);
+	  }
+
+	  return obj;
+	}
+
+	/**
+	 * Expose parser.
+	 */
+
+	request.parseString = parseString;
+
+	/**
+	 * Default MIME type map.
+	 *
+	 *     superagent.types.xml = 'application/xml';
+	 *
+	 */
+
+	request.types = {
+	  html: 'text/html',
+	  json: 'application/json',
+	  xml: 'application/xml',
+	  urlencoded: 'application/x-www-form-urlencoded',
+	  'form': 'application/x-www-form-urlencoded',
+	  'form-data': 'application/x-www-form-urlencoded'
+	};
+
+	/**
+	 * Default serialization map.
+	 *
+	 *     superagent.serialize['application/xml'] = function(obj){
+	 *       return 'generated xml here';
+	 *     };
+	 *
+	 */
+
+	 request.serialize = {
+	   'application/x-www-form-urlencoded': serialize,
+	   'application/json': JSON.stringify
+	 };
+
+	 /**
+	  * Default parsers.
+	  *
+	  *     superagent.parse['application/xml'] = function(str){
+	  *       return { object parsed from str };
+	  *     };
+	  *
+	  */
+
+	request.parse = {
+	  'application/x-www-form-urlencoded': parseString,
+	  'application/json': JSON.parse
+	};
+
+	/**
+	 * Parse the given header `str` into
+	 * an object containing the mapped fields.
+	 *
+	 * @param {String} str
+	 * @return {Object}
+	 * @api private
+	 */
+
+	function parseHeader(str) {
+	  var lines = str.split(/\r?\n/);
+	  var fields = {};
+	  var index;
+	  var line;
+	  var field;
+	  var val;
+
+	  lines.pop(); // trailing CRLF
+
+	  for (var i = 0, len = lines.length; i < len; ++i) {
+	    line = lines[i];
+	    index = line.indexOf(':');
+	    field = line.slice(0, index).toLowerCase();
+	    val = trim(line.slice(index + 1));
+	    fields[field] = val;
+	  }
+
+	  return fields;
+	}
+
+	/**
+	 * Return the mime type for the given `str`.
+	 *
+	 * @param {String} str
+	 * @return {String}
+	 * @api private
+	 */
+
+	function type(str){
+	  return str.split(/ *; */).shift();
+	};
+
+	/**
+	 * Return header field parameters.
+	 *
+	 * @param {String} str
+	 * @return {Object}
+	 * @api private
+	 */
+
+	function params(str){
+	  return reduce(str.split(/ *; */), function(obj, str){
+	    var parts = str.split(/ *= */)
+	      , key = parts.shift()
+	      , val = parts.shift();
+
+	    if (key && val) obj[key] = val;
+	    return obj;
+	  }, {});
+	};
+
+	/**
+	 * Initialize a new `Response` with the given `xhr`.
+	 *
+	 *  - set flags (.ok, .error, etc)
+	 *  - parse header
+	 *
+	 * Examples:
+	 *
+	 *  Aliasing `superagent` as `request` is nice:
+	 *
+	 *      request = superagent;
+	 *
+	 *  We can use the promise-like API, or pass callbacks:
+	 *
+	 *      request.get('/').end(function(res){});
+	 *      request.get('/', function(res){});
+	 *
+	 *  Sending data can be chained:
+	 *
+	 *      request
+	 *        .post('/user')
+	 *        .send({ name: 'tj' })
+	 *        .end(function(res){});
+	 *
+	 *  Or passed to `.send()`:
+	 *
+	 *      request
+	 *        .post('/user')
+	 *        .send({ name: 'tj' }, function(res){});
+	 *
+	 *  Or passed to `.post()`:
+	 *
+	 *      request
+	 *        .post('/user', { name: 'tj' })
+	 *        .end(function(res){});
+	 *
+	 * Or further reduced to a single call for simple cases:
+	 *
+	 *      request
+	 *        .post('/user', { name: 'tj' }, function(res){});
+	 *
+	 * @param {XMLHTTPRequest} xhr
+	 * @param {Object} options
+	 * @api private
+	 */
+
+	function Response(req, options) {
+	  options = options || {};
+	  this.req = req;
+	  this.xhr = this.req.xhr;
+	  // responseText is accessible only if responseType is '' or 'text' and on older browsers
+	  this.text = ((this.req.method !='HEAD' && (this.xhr.responseType === '' || this.xhr.responseType === 'text')) || typeof this.xhr.responseType === 'undefined')
+	     ? this.xhr.responseText
+	     : null;
+	  this.statusText = this.req.xhr.statusText;
+	  this.setStatusProperties(this.xhr.status);
+	  this.header = this.headers = parseHeader(this.xhr.getAllResponseHeaders());
+	  // getAllResponseHeaders sometimes falsely returns "" for CORS requests, but
+	  // getResponseHeader still works. so we get content-type even if getting
+	  // other headers fails.
+	  this.header['content-type'] = this.xhr.getResponseHeader('content-type');
+	  this.setHeaderProperties(this.header);
+	  this.body = this.req.method != 'HEAD'
+	    ? this.parseBody(this.text ? this.text : this.xhr.response)
+	    : null;
+	}
+
+	/**
+	 * Get case-insensitive `field` value.
+	 *
+	 * @param {String} field
+	 * @return {String}
+	 * @api public
+	 */
+
+	Response.prototype.get = function(field){
+	  return this.header[field.toLowerCase()];
+	};
+
+	/**
+	 * Set header related properties:
+	 *
+	 *   - `.type` the content type without params
+	 *
+	 * A response of "Content-Type: text/plain; charset=utf-8"
+	 * will provide you with a `.type` of "text/plain".
+	 *
+	 * @param {Object} header
+	 * @api private
+	 */
+
+	Response.prototype.setHeaderProperties = function(header){
+	  // content-type
+	  var ct = this.header['content-type'] || '';
+	  this.type = type(ct);
+
+	  // params
+	  var obj = params(ct);
+	  for (var key in obj) this[key] = obj[key];
+	};
+
+	/**
+	 * Parse the given body `str`.
+	 *
+	 * Used for auto-parsing of bodies. Parsers
+	 * are defined on the `superagent.parse` object.
+	 *
+	 * @param {String} str
+	 * @return {Mixed}
+	 * @api private
+	 */
+
+	Response.prototype.parseBody = function(str){
+	  var parse = request.parse[this.type];
+	  return parse && str && (str.length || str instanceof Object)
+	    ? parse(str)
+	    : null;
+	};
+
+	/**
+	 * Set flags such as `.ok` based on `status`.
+	 *
+	 * For example a 2xx response will give you a `.ok` of __true__
+	 * whereas 5xx will be __false__ and `.error` will be __true__. The
+	 * `.clientError` and `.serverError` are also available to be more
+	 * specific, and `.statusType` is the class of error ranging from 1..5
+	 * sometimes useful for mapping respond colors etc.
+	 *
+	 * "sugar" properties are also defined for common cases. Currently providing:
+	 *
+	 *   - .noContent
+	 *   - .badRequest
+	 *   - .unauthorized
+	 *   - .notAcceptable
+	 *   - .notFound
+	 *
+	 * @param {Number} status
+	 * @api private
+	 */
+
+	Response.prototype.setStatusProperties = function(status){
+	  // handle IE9 bug: http://stackoverflow.com/questions/10046972/msie-returns-status-code-of-1223-for-ajax-request
+	  if (status === 1223) {
+	    status = 204;
+	  }
+
+	  var type = status / 100 | 0;
+
+	  // status / class
+	  this.status = status;
+	  this.statusType = type;
+
+	  // basics
+	  this.info = 1 == type;
+	  this.ok = 2 == type;
+	  this.clientError = 4 == type;
+	  this.serverError = 5 == type;
+	  this.error = (4 == type || 5 == type)
+	    ? this.toError()
+	    : false;
+
+	  // sugar
+	  this.accepted = 202 == status;
+	  this.noContent = 204 == status;
+	  this.badRequest = 400 == status;
+	  this.unauthorized = 401 == status;
+	  this.notAcceptable = 406 == status;
+	  this.notFound = 404 == status;
+	  this.forbidden = 403 == status;
+	};
+
+	/**
+	 * Return an `Error` representative of this response.
+	 *
+	 * @return {Error}
+	 * @api public
+	 */
+
+	Response.prototype.toError = function(){
+	  var req = this.req;
+	  var method = req.method;
+	  var url = req.url;
+
+	  var msg = 'cannot ' + method + ' ' + url + ' (' + this.status + ')';
+	  var err = new Error(msg);
+	  err.status = this.status;
+	  err.method = method;
+	  err.url = url;
+
+	  return err;
+	};
+
+	/**
+	 * Expose `Response`.
+	 */
+
+	request.Response = Response;
+
+	/**
+	 * Initialize a new `Request` with the given `method` and `url`.
+	 *
+	 * @param {String} method
+	 * @param {String} url
+	 * @api public
+	 */
+
+	function Request(method, url) {
+	  var self = this;
+	  Emitter.call(this);
+	  this._query = this._query || [];
+	  this.method = method;
+	  this.url = url;
+	  this.header = {};
+	  this._header = {};
+	  this.on('end', function(){
+	    var err = null;
+	    var res = null;
+
+	    try {
+	      res = new Response(self);
+	    } catch(e) {
+	      err = new Error('Parser is unable to parse the response');
+	      err.parse = true;
+	      err.original = e;
+	      return self.callback(err);
+	    }
+
+	    self.emit('response', res);
+
+	    if (err) {
+	      return self.callback(err, res);
+	    }
+
+	    if (res.status >= 200 && res.status < 300) {
+	      return self.callback(err, res);
+	    }
+
+	    var new_err = new Error(res.statusText || 'Unsuccessful HTTP response');
+	    new_err.original = err;
+	    new_err.response = res;
+	    new_err.status = res.status;
+
+	    self.callback(err || new_err, res);
+	  });
+	}
+
+	/**
+	 * Mixin `Emitter`.
+	 */
+
+	Emitter(Request.prototype);
+
+	/**
+	 * Allow for extension
+	 */
+
+	Request.prototype.use = function(fn) {
+	  fn(this);
+	  return this;
+	}
+
+	/**
+	 * Set timeout to `ms`.
+	 *
+	 * @param {Number} ms
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.timeout = function(ms){
+	  this._timeout = ms;
+	  return this;
+	};
+
+	/**
+	 * Clear previous timeout.
+	 *
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.clearTimeout = function(){
+	  this._timeout = 0;
+	  clearTimeout(this._timer);
+	  return this;
+	};
+
+	/**
+	 * Abort the request, and clear potential timeout.
+	 *
+	 * @return {Request}
+	 * @api public
+	 */
+
+	Request.prototype.abort = function(){
+	  if (this.aborted) return;
+	  this.aborted = true;
+	  this.xhr.abort();
+	  this.clearTimeout();
+	  this.emit('abort');
+	  return this;
+	};
+
+	/**
+	 * Set header `field` to `val`, or multiple fields with one object.
+	 *
+	 * Examples:
+	 *
+	 *      req.get('/')
+	 *        .set('Accept', 'application/json')
+	 *        .set('X-API-Key', 'foobar')
+	 *        .end(callback);
+	 *
+	 *      req.get('/')
+	 *        .set({ Accept: 'application/json', 'X-API-Key': 'foobar' })
+	 *        .end(callback);
+	 *
+	 * @param {String|Object} field
+	 * @param {String} val
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.set = function(field, val){
+	  if (isObject(field)) {
+	    for (var key in field) {
+	      this.set(key, field[key]);
+	    }
+	    return this;
+	  }
+	  this._header[field.toLowerCase()] = val;
+	  this.header[field] = val;
+	  return this;
+	};
+
+	/**
+	 * Remove header `field`.
+	 *
+	 * Example:
+	 *
+	 *      req.get('/')
+	 *        .unset('User-Agent')
+	 *        .end(callback);
+	 *
+	 * @param {String} field
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.unset = function(field){
+	  delete this._header[field.toLowerCase()];
+	  delete this.header[field];
+	  return this;
+	};
+
+	/**
+	 * Get case-insensitive header `field` value.
+	 *
+	 * @param {String} field
+	 * @return {String}
+	 * @api private
+	 */
+
+	Request.prototype.getHeader = function(field){
+	  return this._header[field.toLowerCase()];
+	};
+
+	/**
+	 * Set Content-Type to `type`, mapping values from `request.types`.
+	 *
+	 * Examples:
+	 *
+	 *      superagent.types.xml = 'application/xml';
+	 *
+	 *      request.post('/')
+	 *        .type('xml')
+	 *        .send(xmlstring)
+	 *        .end(callback);
+	 *
+	 *      request.post('/')
+	 *        .type('application/xml')
+	 *        .send(xmlstring)
+	 *        .end(callback);
+	 *
+	 * @param {String} type
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.type = function(type){
+	  this.set('Content-Type', request.types[type] || type);
+	  return this;
+	};
+
+	/**
+	 * Set Accept to `type`, mapping values from `request.types`.
+	 *
+	 * Examples:
+	 *
+	 *      superagent.types.json = 'application/json';
+	 *
+	 *      request.get('/agent')
+	 *        .accept('json')
+	 *        .end(callback);
+	 *
+	 *      request.get('/agent')
+	 *        .accept('application/json')
+	 *        .end(callback);
+	 *
+	 * @param {String} accept
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.accept = function(type){
+	  this.set('Accept', request.types[type] || type);
+	  return this;
+	};
+
+	/**
+	 * Set Authorization field value with `user` and `pass`.
+	 *
+	 * @param {String} user
+	 * @param {String} pass
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.auth = function(user, pass){
+	  var str = btoa(user + ':' + pass);
+	  this.set('Authorization', 'Basic ' + str);
+	  return this;
+	};
+
+	/**
+	* Add query-string `val`.
+	*
+	* Examples:
+	*
+	*   request.get('/shoes')
+	*     .query('size=10')
+	*     .query({ color: 'blue' })
+	*
+	* @param {Object|String} val
+	* @return {Request} for chaining
+	* @api public
+	*/
+
+	Request.prototype.query = function(val){
+	  if ('string' != typeof val) val = serialize(val);
+	  if (val) this._query.push(val);
+	  return this;
+	};
+
+	/**
+	 * Write the field `name` and `val` for "multipart/form-data"
+	 * request bodies.
+	 *
+	 * ``` js
+	 * request.post('/upload')
+	 *   .field('foo', 'bar')
+	 *   .end(callback);
+	 * ```
+	 *
+	 * @param {String} name
+	 * @param {String|Blob|File} val
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.field = function(name, val){
+	  if (!this._formData) this._formData = new root.FormData();
+	  this._formData.append(name, val);
+	  return this;
+	};
+
+	/**
+	 * Queue the given `file` as an attachment to the specified `field`,
+	 * with optional `filename`.
+	 *
+	 * ``` js
+	 * request.post('/upload')
+	 *   .attach(new Blob(['<a id="a"><b id="b">hey!</b></a>'], { type: "text/html"}))
+	 *   .end(callback);
+	 * ```
+	 *
+	 * @param {String} field
+	 * @param {Blob|File} file
+	 * @param {String} filename
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.attach = function(field, file, filename){
+	  if (!this._formData) this._formData = new root.FormData();
+	  this._formData.append(field, file, filename);
+	  return this;
+	};
+
+	/**
+	 * Send `data`, defaulting the `.type()` to "json" when
+	 * an object is given.
+	 *
+	 * Examples:
+	 *
+	 *       // querystring
+	 *       request.get('/search')
+	 *         .end(callback)
+	 *
+	 *       // multiple data "writes"
+	 *       request.get('/search')
+	 *         .send({ search: 'query' })
+	 *         .send({ range: '1..5' })
+	 *         .send({ order: 'desc' })
+	 *         .end(callback)
+	 *
+	 *       // manual json
+	 *       request.post('/user')
+	 *         .type('json')
+	 *         .send('{"name":"tj"})
+	 *         .end(callback)
+	 *
+	 *       // auto json
+	 *       request.post('/user')
+	 *         .send({ name: 'tj' })
+	 *         .end(callback)
+	 *
+	 *       // manual x-www-form-urlencoded
+	 *       request.post('/user')
+	 *         .type('form')
+	 *         .send('name=tj')
+	 *         .end(callback)
+	 *
+	 *       // auto x-www-form-urlencoded
+	 *       request.post('/user')
+	 *         .type('form')
+	 *         .send({ name: 'tj' })
+	 *         .end(callback)
+	 *
+	 *       // defaults to x-www-form-urlencoded
+	  *      request.post('/user')
+	  *        .send('name=tobi')
+	  *        .send('species=ferret')
+	  *        .end(callback)
+	 *
+	 * @param {String|Object} data
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.send = function(data){
+	  var obj = isObject(data);
+	  var type = this.getHeader('Content-Type');
+
+	  // merge
+	  if (obj && isObject(this._data)) {
+	    for (var key in data) {
+	      this._data[key] = data[key];
+	    }
+	  } else if ('string' == typeof data) {
+	    if (!type) this.type('form');
+	    type = this.getHeader('Content-Type');
+	    if ('application/x-www-form-urlencoded' == type) {
+	      this._data = this._data
+	        ? this._data + '&' + data
+	        : data;
+	    } else {
+	      this._data = (this._data || '') + data;
+	    }
+	  } else {
+	    this._data = data;
+	  }
+
+	  if (!obj || isHost(data)) return this;
+	  if (!type) this.type('json');
+	  return this;
+	};
+
+	/**
+	 * Invoke the callback with `err` and `res`
+	 * and handle arity check.
+	 *
+	 * @param {Error} err
+	 * @param {Response} res
+	 * @api private
+	 */
+
+	Request.prototype.callback = function(err, res){
+	  var fn = this._callback;
+	  this.clearTimeout();
+	  fn(err, res);
+	};
+
+	/**
+	 * Invoke callback with x-domain error.
+	 *
+	 * @api private
+	 */
+
+	Request.prototype.crossDomainError = function(){
+	  var err = new Error('Origin is not allowed by Access-Control-Allow-Origin');
+	  err.crossDomain = true;
+	  this.callback(err);
+	};
+
+	/**
+	 * Invoke callback with timeout error.
+	 *
+	 * @api private
+	 */
+
+	Request.prototype.timeoutError = function(){
+	  var timeout = this._timeout;
+	  var err = new Error('timeout of ' + timeout + 'ms exceeded');
+	  err.timeout = timeout;
+	  this.callback(err);
+	};
+
+	/**
+	 * Enable transmission of cookies with x-domain requests.
+	 *
+	 * Note that for this to work the origin must not be
+	 * using "Access-Control-Allow-Origin" with a wildcard,
+	 * and also must set "Access-Control-Allow-Credentials"
+	 * to "true".
+	 *
+	 * @api public
+	 */
+
+	Request.prototype.withCredentials = function(){
+	  this._withCredentials = true;
+	  return this;
+	};
+
+	/**
+	 * Initiate request, invoking callback `fn(res)`
+	 * with an instanceof `Response`.
+	 *
+	 * @param {Function} fn
+	 * @return {Request} for chaining
+	 * @api public
+	 */
+
+	Request.prototype.end = function(fn){
+	  var self = this;
+	  var xhr = this.xhr = request.getXHR();
+	  var query = this._query.join('&');
+	  var timeout = this._timeout;
+	  var data = this._formData || this._data;
+
+	  // store callback
+	  this._callback = fn || noop;
+
+	  // state change
+	  xhr.onreadystatechange = function(){
+	    if (4 != xhr.readyState) return;
+
+	    // In IE9, reads to any property (e.g. status) off of an aborted XHR will
+	    // result in the error "Could not complete the operation due to error c00c023f"
+	    var status;
+	    try { status = xhr.status } catch(e) { status = 0; }
+
+	    if (0 == status) {
+	      if (self.timedout) return self.timeoutError();
+	      if (self.aborted) return;
+	      return self.crossDomainError();
+	    }
+	    self.emit('end');
+	  };
+
+	  // progress
+	  var handleProgress = function(e){
+	    if (e.total > 0) {
+	      e.percent = e.loaded / e.total * 100;
+	    }
+	    self.emit('progress', e);
+	  };
+	  if (this.hasListeners('progress')) {
+	    xhr.onprogress = handleProgress;
+	  }
+	  try {
+	    if (xhr.upload && this.hasListeners('progress')) {
+	      xhr.upload.onprogress = handleProgress;
+	    }
+	  } catch(e) {
+	    // Accessing xhr.upload fails in IE from a web worker, so just pretend it doesn't exist.
+	    // Reported here:
+	    // https://connect.microsoft.com/IE/feedback/details/837245/xmlhttprequest-upload-throws-invalid-argument-when-used-from-web-worker-context
+	  }
+
+	  // timeout
+	  if (timeout && !this._timer) {
+	    this._timer = setTimeout(function(){
+	      self.timedout = true;
+	      self.abort();
+	    }, timeout);
+	  }
+
+	  // querystring
+	  if (query) {
+	    query = request.serializeObject(query);
+	    this.url += ~this.url.indexOf('?')
+	      ? '&' + query
+	      : '?' + query;
+	  }
+
+	  // initiate request
+	  xhr.open(this.method, this.url, true);
+
+	  // CORS
+	  if (this._withCredentials) xhr.withCredentials = true;
+
+	  // body
+	  if ('GET' != this.method && 'HEAD' != this.method && 'string' != typeof data && !isHost(data)) {
+	    // serialize stuff
+	    var serialize = request.serialize[this.getHeader('Content-Type')];
+	    if (serialize) data = serialize(data);
+	  }
+
+	  // set header fields
+	  for (var field in this.header) {
+	    if (null == this.header[field]) continue;
+	    xhr.setRequestHeader(field, this.header[field]);
+	  }
+
+	  // send stuff
+	  this.emit('request', this);
+	  xhr.send(data);
+	  return this;
+	};
+
+	/**
+	 * Expose `Request`.
+	 */
+
+	request.Request = Request;
+
+	/**
+	 * Issue a request:
+	 *
+	 * Examples:
+	 *
+	 *    request('GET', '/users').end(callback)
+	 *    request('/users').end(callback)
+	 *    request('/users', callback)
+	 *
+	 * @param {String} method
+	 * @param {String|Function} url or callback
+	 * @return {Request}
+	 * @api public
+	 */
+
+	function request(method, url) {
+	  // callback
+	  if ('function' == typeof url) {
+	    return new Request('GET', method).end(url);
+	  }
+
+	  // url first
+	  if (1 == arguments.length) {
+	    return new Request('GET', method);
+	  }
+
+	  return new Request(method, url);
+	}
+
+	/**
+	 * GET `url` with optional callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed|Function} data or fn
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.get = function(url, data, fn){
+	  var req = request('GET', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.query(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * HEAD `url` with optional callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed|Function} data or fn
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.head = function(url, data, fn){
+	  var req = request('HEAD', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * DELETE `url` with optional callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.del = function(url, fn){
+	  var req = request('DELETE', url);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * PATCH `url` with optional `data` and callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed} data
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.patch = function(url, data, fn){
+	  var req = request('PATCH', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * POST `url` with optional `data` and callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed} data
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.post = function(url, data, fn){
+	  var req = request('POST', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * PUT `url` with optional `data` and callback `fn(res)`.
+	 *
+	 * @param {String} url
+	 * @param {Mixed|Function} data or fn
+	 * @param {Function} fn
+	 * @return {Request}
+	 * @api public
+	 */
+
+	request.put = function(url, data, fn){
+	  var req = request('PUT', url);
+	  if ('function' == typeof data) fn = data, data = null;
+	  if (data) req.send(data);
+	  if (fn) req.end(fn);
+	  return req;
+	};
+
+	/**
+	 * Expose `request`.
+	 */
+
+	module.exports = request;
+
+
+/***/ },
+/* 470 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	/**
+	 * Expose `Emitter`.
+	 */
+
+	module.exports = Emitter;
+
+	/**
+	 * Initialize a new `Emitter`.
+	 *
+	 * @api public
+	 */
+
+	function Emitter(obj) {
+	  if (obj) return mixin(obj);
+	};
+
+	/**
+	 * Mixin the emitter properties.
+	 *
+	 * @param {Object} obj
+	 * @return {Object}
+	 * @api private
+	 */
+
+	function mixin(obj) {
+	  for (var key in Emitter.prototype) {
+	    obj[key] = Emitter.prototype[key];
+	  }
+	  return obj;
+	}
+
+	/**
+	 * Listen on the given `event` with `fn`.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+
+	Emitter.prototype.on =
+	Emitter.prototype.addEventListener = function(event, fn){
+	  this._callbacks = this._callbacks || {};
+	  (this._callbacks[event] = this._callbacks[event] || [])
+	    .push(fn);
+	  return this;
+	};
+
+	/**
+	 * Adds an `event` listener that will be invoked a single
+	 * time then automatically removed.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+
+	Emitter.prototype.once = function(event, fn){
+	  var self = this;
+	  this._callbacks = this._callbacks || {};
+
+	  function on() {
+	    self.off(event, on);
+	    fn.apply(this, arguments);
+	  }
+
+	  on.fn = fn;
+	  this.on(event, on);
+	  return this;
+	};
+
+	/**
+	 * Remove the given callback for `event` or all
+	 * registered callbacks.
+	 *
+	 * @param {String} event
+	 * @param {Function} fn
+	 * @return {Emitter}
+	 * @api public
+	 */
+
+	Emitter.prototype.off =
+	Emitter.prototype.removeListener =
+	Emitter.prototype.removeAllListeners =
+	Emitter.prototype.removeEventListener = function(event, fn){
+	  this._callbacks = this._callbacks || {};
+
+	  // all
+	  if (0 == arguments.length) {
+	    this._callbacks = {};
+	    return this;
+	  }
+
+	  // specific event
+	  var callbacks = this._callbacks[event];
+	  if (!callbacks) return this;
+
+	  // remove all handlers
+	  if (1 == arguments.length) {
+	    delete this._callbacks[event];
+	    return this;
+	  }
+
+	  // remove specific handler
+	  var cb;
+	  for (var i = 0; i < callbacks.length; i++) {
+	    cb = callbacks[i];
+	    if (cb === fn || cb.fn === fn) {
+	      callbacks.splice(i, 1);
+	      break;
+	    }
+	  }
+	  return this;
+	};
+
+	/**
+	 * Emit `event` with the given args.
+	 *
+	 * @param {String} event
+	 * @param {Mixed} ...
+	 * @return {Emitter}
+	 */
+
+	Emitter.prototype.emit = function(event){
+	  this._callbacks = this._callbacks || {};
+	  var args = [].slice.call(arguments, 1)
+	    , callbacks = this._callbacks[event];
+
+	  if (callbacks) {
+	    callbacks = callbacks.slice(0);
+	    for (var i = 0, len = callbacks.length; i < len; ++i) {
+	      callbacks[i].apply(this, args);
+	    }
+	  }
+
+	  return this;
+	};
+
+	/**
+	 * Return array of callbacks for `event`.
+	 *
+	 * @param {String} event
+	 * @return {Array}
+	 * @api public
+	 */
+
+	Emitter.prototype.listeners = function(event){
+	  this._callbacks = this._callbacks || {};
+	  return this._callbacks[event] || [];
+	};
+
+	/**
+	 * Check if this emitter has `event` handlers.
+	 *
+	 * @param {String} event
+	 * @return {Boolean}
+	 * @api public
+	 */
+
+	Emitter.prototype.hasListeners = function(event){
+	  return !! this.listeners(event).length;
+	};
+
+
+/***/ },
+/* 471 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	/**
+	 * Reduce `arr` with `fn`.
+	 *
+	 * @param {Array} arr
+	 * @param {Function} fn
+	 * @param {Mixed} initial
+	 *
+	 * TODO: combatible error handling?
+	 */
+
+	module.exports = function(arr, fn, initial){  
+	  var idx = 0;
+	  var len = arr.length;
+	  var curr = arguments.length == 3
+	    ? initial
+	    : arr[idx++];
+
+	  while (idx < len) {
+	    curr = fn.call(null, curr, arr[idx], ++idx, arr);
+	  }
+	  
+	  return curr;
+	};
+
+/***/ },
+/* 472 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    activeElement = __webpack_require__(217),
+	    _ = __webpack_require__(474),
+	    $ = __webpack_require__(488),
+	    cx = __webpack_require__(237),
+	    compat = __webpack_require__(475),
+	    CustomPropTypes = __webpack_require__(476),
+	    Popup = __webpack_require__(477),
+	    PlainList = __webpack_require__(478),
+	    GroupableList = __webpack_require__(479),
+	    validateList = __webpack_require__(480),
+	    createUncontrolledWidget = __webpack_require__(489);
+
+	var propTypes = {
+	  //-- controlled props -----------
+	  value: React.PropTypes.any,
+	  onChange: React.PropTypes.func,
+	  open: React.PropTypes.bool,
+	  onToggle: React.PropTypes.func,
+	  //------------------------------------
+
+	  data: React.PropTypes.array,
+	  valueField: React.PropTypes.string,
+	  textField: CustomPropTypes.accessor,
+
+	  valueComponent: CustomPropTypes.elementType,
+	  itemComponent: CustomPropTypes.elementType,
+	  listComponent: CustomPropTypes.elementType,
+
+	  groupComponent: CustomPropTypes.elementType,
+	  groupBy: CustomPropTypes.accessor,
+
+	  onSelect: React.PropTypes.func,
+
+	  searchTerm: React.PropTypes.string,
+	  onSearch: React.PropTypes.func,
+
+	  busy: React.PropTypes.bool,
+
+	  delay: React.PropTypes.number,
+
+	  dropUp: React.PropTypes.bool,
+	  duration: React.PropTypes.number, //popup
+
+	  disabled: React.PropTypes.oneOfType([React.PropTypes.bool, React.PropTypes.oneOf(["disabled"])]),
+
+	  readOnly: React.PropTypes.oneOfType([React.PropTypes.bool, React.PropTypes.oneOf(["readOnly"])]),
+
+	  messages: React.PropTypes.shape({
+	    open: React.PropTypes.string })
+	};
+
+	var DropdownList = React.createClass({
+
+	  displayName: "DropdownList",
+
+	  mixins: [__webpack_require__(481), __webpack_require__(482), __webpack_require__(483), __webpack_require__(484), __webpack_require__(485), __webpack_require__(486), __webpack_require__(487)],
+
+	  propTypes: propTypes,
+
+	  getDefaultProps: function () {
+	    return {
+	      delay: 500,
+	      value: "",
+	      open: false,
+	      data: [],
+	      searchTerm: "",
+	      messages: {
+	        open: "open dropdown",
+	        filterPlaceholder: "",
+	        emptyList: "There are no items in this list",
+	        emptyFilter: "The filter returned no results"
+	      }
+	    };
+	  },
+
+	  getInitialState: function () {
+	    var filter = this.props.open && this.props.filter,
+	        data = filter ? this.filter(this.props.data, props.searchTerm) : this.props.data,
+	        initialIdx = this._dataIndexOf(this.props.data, this.props.value);
+
+	    return {
+	      filteredData: filter && data,
+	      selectedItem: data[initialIdx],
+	      focusedItem: data[initialIdx] || data[0] };
+	  },
+
+	  componentDidUpdate: function () {
+	    this.refs.list && validateList(this.refs.list);
+	  },
+
+	  componentWillReceiveProps: function (props) {
+	    var filter = props.open && props.filter,
+	        data = filter ? this.filter(props.data, props.searchTerm) : props.data,
+	        idx = this._dataIndexOf(data, props.value);
+
+	    this.setState({
+	      filteredData: filter && data,
+	      selectedItem: data[idx],
+	      focusedItem: data[! ~idx ? 0 : idx]
+	    });
+	  },
+
+	  render: function () {
+	    var _this = this;
+
+	    var _$omit = _.omit(this.props, Object.keys(propTypes));
+
+	    var className = _$omit.className;
+	    var props = babelHelpers.objectWithoutProperties(_$omit, ["className"]);
+	    var ValueComponent = this.props.valueComponent;
+	    var data = this._data();
+	    var valueItem = this._dataItem(data, this.props.value);
+	    var optID = this._id("_option");
+	    var dropUp = this.props.dropUp;
+	    var renderList = _.isFirstFocusedRender(this) || this.props.open;
+	    var List = this.props.listComponent || this.props.groupBy && GroupableList || PlainList;
+
+	    return React.createElement(
+	      "div",
+	      babelHelpers._extends({}, props, {
+	        ref: "element",
+	        onKeyDown: this._keyDown,
+	        onClick: this._click,
+	        onFocus: this._focus.bind(null, true),
+	        onBlur: this._focus.bind(null, false),
+	        "aria-expanded": this.props.open,
+	        "aria-haspopup": true,
+	        "aria-busy": !!this.props.busy,
+	        "aria-activedescendent": this.props.open ? optID : undefined,
+	        "aria-disabled": this.props.disabled,
+	        "aria-readonly": this.props.readOnly,
+	        tabIndex: this.props.disabled ? "-1" : "0",
+	        className: cx(className, "rw-dropdownlist", "rw-widget", (function () {
+	          var _cx = {};
+	          _cx["rw-state-disabled"] = _this.props.disabled;
+	          _cx["rw-state-readonly"] = _this.props.readOnly;
+	          _cx["rw-state-focus"] = _this.state.focused;
+	          _cx["rw-rtl"] = _this.isRtl();
+	          _cx["rw-open" + (dropUp ? "-up" : "")] = _this.props.open;
+	          return _cx;
+	        })()) }),
+	      React.createElement(
+	        "span",
+	        { className: "rw-dropdownlist-picker rw-select rw-btn" },
+	        React.createElement(
+	          "i",
+	          { className: "rw-i rw-i-caret-down" + (this.props.busy ? " rw-loading" : "") },
+	          React.createElement(
+	            "span",
+	            { className: "rw-sr" },
+	            this.props.messages.open
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "rw-input" },
+	        !valueItem && props.placeholder ? React.createElement(
+	          "span",
+	          { className: "rw-placeholder" },
+	          props.placeholder
+	        ) : this.props.valueComponent ? React.createElement(ValueComponent, { item: valueItem }) : this._dataText(valueItem)
+	      ),
+	      React.createElement(
+	        Popup,
+	        babelHelpers._extends({}, _.pick(this.props, Object.keys(compat.type(Popup).propTypes)), {
+	          onOpen: this.focus,
+	          onOpening: function () {
+	            return _this.refs.list.forceUpdate();
+	          },
+	          onRequestClose: this.close }),
+	        React.createElement(
+	          "div",
+	          null,
+	          this.props.filter && this._renderFilter(),
+	          renderList && React.createElement(List, babelHelpers._extends({ ref: "list"
+	          }, _.pick(this.props, Object.keys(compat.type(List).propTypes)), {
+	            data: data,
+	            optID: optID,
+	            "aria-hidden": !this.props.open,
+	            selected: this.state.selectedItem,
+	            focused: this.props.open ? this.state.focusedItem : null,
+	            onSelect: this._onSelect,
+	            onMove: this._scrollTo,
+	            messages: {
+	              emptyList: this.props.data.length ? this.props.messages.emptyFilter : this.props.messages.emptyList
+	            } }))
+	        )
+	      )
+	    );
+	  },
+
+	  _renderFilter: function () {
+	    var _this = this;
+
+	    return React.createElement(
+	      "div",
+	      { ref: "filterWrapper", className: "rw-filter-input" },
+	      React.createElement(
+	        "span",
+	        { className: "rw-select rw-btn" },
+	        React.createElement("i", { className: "rw-i rw-i-search" })
+	      ),
+	      React.createElement("input", { ref: "filter", className: "rw-input",
+	        placeholder: this.props.messages.filterPlaceholder,
+	        value: this.props.searchTerm,
+	        onChange: function (e) {
+	          return _this.notify("onSearch", e.target.value);
+	        } })
+	    );
+	  },
+
+	  _focus: _.ifNotDisabled(true, function (focused, e) {
+	    var _this = this;
+
+	    var type = e.type;
+
+	    this.setTimeout("focus", function () {
+	      //console.log(type, focused)
+	      if (focused) _this.focus();else _this.close();
+
+	      if (focused !== _this.state.focused) {
+	        _this.notify(focused ? "onFocus" : "onBlur", e);
+	        _this.setState({ focused: focused });
+	      }
+	    });
+	  }),
+
+	  _onSelect: _.ifNotDisabled(function (data) {
+	    this.close();
+	    this.notify("onSelect", data);
+	    this.change(data);
+	  }),
+
+	  _click: _.ifNotDisabled(function (e) {
+	    var wrapper = this.refs.filterWrapper;
+
+	    if (!this.props.filter || !this.props.open) this.toggle();else if (!$.contains(compat.findDOMNode(wrapper), e.target)) this.close();
+
+	    this.notify("onClick", e);
+	  }),
+
+	  _keyDown: _.ifNotDisabled(function (e) {
+	    var _this = this;
+
+	    var self = this,
+	        key = e.key,
+	        alt = e.altKey,
+	        list = this.refs.list,
+	        focusedItem = this.state.focusedItem,
+	        selectedItem = this.state.selectedItem,
+	        isOpen = this.props.open,
+	        closeWithFocus = function () {
+	      _this.close(), compat.findDOMNode(_this).focus();
+	    };
+
+	    if (key === "End") {
+	      if (isOpen) this.setState({ focusedItem: list.last() });else change(list.last());
+	      e.preventDefault();
+	    } else if (key === "Home") {
+	      if (isOpen) this.setState({ focusedItem: list.first() });else change(list.first());
+	      e.preventDefault();
+	    } else if (key === "Escape" && isOpen) {
+	      closeWithFocus();
+	    } else if ((key === "Enter" || key === " ") && isOpen) {
+	      change(this.state.focusedItem, true);
+	    } else if (key === "ArrowDown") {
+	      if (alt) this.open();else if (isOpen) this.setState({ focusedItem: list.next(focusedItem) });else change(list.next(selectedItem));
+	      e.preventDefault();
+	    } else if (key === "ArrowUp") {
+	      if (alt) closeWithFocus();else if (isOpen) this.setState({ focusedItem: list.prev(focusedItem) });else change(list.prev(selectedItem));
+	      e.preventDefault();
+	    } else if (!(this.props.filter && isOpen)) this.search(String.fromCharCode(e.keyCode), function (item) {
+	      isOpen ? _this.setState({ focusedItem: item }) : change(item);
+	    });
+
+	    this.notify("onKeyDown", [e]);
+
+	    function change(item, fromList) {
+	      if (!item) return;
+	      if (fromList) self.notify("onSelect", item);
+
+	      self.change(item);
+	    }
+	  }),
+
+	  change: function (data) {
+	    if (!_.isShallowEqual(data, this.props.value)) {
+	      this.notify("onChange", data);
+	      this.notify("onSearch", "");
+	      this.close();
+	    }
+	    compat.findDOMNode(this).focus();
+	  },
+
+	  focus: function () {
+	    var inst = this.props.filter && this.props.open ? this.refs.filter : this;
+
+	    if (activeElement() !== compat.findDOMNode(inst)) compat.findDOMNode(inst).focus();
+	  },
+
+	  _data: function () {
+	    return this.state.filteredData || this.props.data;
+	  },
+
+	  search: function (character, cb) {
+	    var _this = this;
+
+	    var word = ((this._searchTerm || "") + character).toLowerCase();
+
+	    this._searchTerm = word;
+
+	    this.setTimeout("search", function () {
+	      var list = _this.refs.list,
+	          key = _this.props.open ? "focusedItem" : "selectedItem",
+	          item = list.next(_this.state[key], word);
+
+	      _this._searchTerm = "";
+	      if (item) cb(item);
+	    }, this.props.delay);
+	  },
+
+	  open: function () {
+	    this.notify("onToggle", true);
+	  },
+
+	  close: function () {
+	    this.notify("onToggle", false);
+	  },
+
+	  toggle: function () {
+	    this.props.open ? this.close() : this.open();
+	  }
+
+	});
+
+	module.exports = createUncontrolledWidget(DropdownList, { open: "onToggle", value: "onChange", searchTerm: "onSearch" });
+
+	module.exports.BaseDropdownList = DropdownList;
+
+/***/ },
+/* 473 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports === "object") {
+	    factory(exports);
+	  } else {
+	    factory(root.babelHelpers = {});
+	  }
+	})(this, function (global) {
+	  var babelHelpers = global;
+
+	  babelHelpers.objectWithoutProperties = function (obj, keys) {
+	    var target = {};
+
+	    for (var i in obj) {
+	      if (keys.indexOf(i) >= 0) continue;
+	      if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
+	      target[i] = obj[i];
+	    }
+
+	    return target;
+	  };
+
+	  babelHelpers._extends = Object.assign || function (target) {
+	    for (var i = 1; i < arguments.length; i++) {
+	      var source = arguments[i];
+
+	      for (var key in source) {
+	        if (Object.prototype.hasOwnProperty.call(source, key)) {
+	          target[key] = source[key];
+	        }
+	      }
+	    }
+
+	    return target;
+	  };
+	})
+
+/***/ },
+/* 474 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var idCount = 0;
+
+	var _ = module.exports = {
+
+	  has: has,
+
+	  assign: __webpack_require__(50),
+
+	  isShallowEqual: function (a, b) {
+	    if (a === b) return true;
+	    if (a instanceof Date && b instanceof Date) return a.getTime() === b.getTime();
+
+	    if (typeof a != "object" && typeof b != "object") return a === b;
+
+	    if (typeof a != typeof b) return false;
+
+	    return shallowEqual(a, b);
+	  },
+
+	  transform: function (obj, cb, seed) {
+	    _.each(obj, cb.bind(null, seed = seed || (Array.isArray(obj) ? [] : {})));
+	    return seed;
+	  },
+
+	  each: function (obj, cb, thisArg) {
+	    if (Array.isArray(obj)) return obj.forEach(cb, thisArg);
+
+	    for (var key in obj) if (has(obj, key)) cb.call(thisArg, obj[key], key, obj);
+	  },
+
+	  pick: function (obj, keys) {
+	    keys = [].concat(keys);
+	    return _.transform(obj, function (mapped, val, key) {
+	      if (keys.indexOf(key) !== -1) mapped[key] = val;
+	    }, {});
+	  },
+
+	  omit: function (obj, keys) {
+	    keys = [].concat(keys);
+	    return _.transform(obj, function (mapped, val, key) {
+	      if (keys.indexOf(key) === -1) mapped[key] = val;
+	    }, {});
+	  },
+
+	  find: function (arr, cb, thisArg) {
+	    var result;
+	    if (Array.isArray(arr)) {
+	      arr.every(function (val, idx) {
+	        if (cb.call(thisArg, val, idx, arr)) return (result = val, false);
+	        return true;
+	      });
+	      return result;
+	    } else for (var key in arr) if (has(arr, key)) if (cb.call(thisArg, arr[key], key, arr)) return arr[key];
+	  },
+
+	  chunk: function (array, chunkSize) {
+	    var index = 0,
+	        length = array ? array.length : 0,
+	        result = [];
+
+	    chunkSize = Math.max(+chunkSize || 1, 1);
+
+	    while (index < length) result.push(array.slice(index, index += chunkSize));
+
+	    return result;
+	  },
+
+	  splat: function (obj) {
+	    return obj == null ? [] : [].concat(obj);
+	  },
+
+	  noop: function () {},
+
+	  uniqueId: function (prefix) {
+	    return "" + ((prefix == null ? "" : prefix) + ++idCount);
+	  },
+
+	  //-- Really specific Component Utilities --
+
+	  isFirstFocusedRender: function (component) {
+	    return component._firstFocus || component.state.focused && (component._firstFocus = true);
+	  },
+
+	  ifNotDisabled: function (disabledOnly, fn) {
+	    if (arguments.length === 1) fn = disabledOnly, disabledOnly = false;
+
+	    //console.log('create method')
+	    return function () {
+	      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	        args[_key] = arguments[_key];
+	      }
+
+	      //console.log('called', disabledOnly)
+	      if (!(this.isDisabled() || !disabledOnly && this.isReadOnly())) return fn.apply(this, args);
+	    };
+	  }
+	};
+
+	function has(o, k) {
+	  return o ? Object.prototype.hasOwnProperty.call(o, k) : false;
+	}
+
+	function eql(a, b) {
+	  return a === b;
+	}
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 */
+	function shallowEqual(objA, objB) {
+
+	  if (objA == null || objB == null) return false;
+
+	  var keysA = Object.keys(objA),
+	      keysB = Object.keys(objB);
+
+	  if (keysA.length !== keysB.length) return false;
+
+	  for (var i = 0; i < keysA.length; i++) if (!has(objB, keysA[i]) || !eql(objA[keysA[i]], objB[keysA[i]])) return false;
+
+	  return true;
+	}
+
+/***/ },
+/* 475 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var React = __webpack_require__(6),
+	    _ = __webpack_require__(474),
+	    version = React.version.split(".").map(parseFloat);
+
+	var compat = module.exports = {
+
+	  version: function () {
+	    return version;
+	  },
+
+	  type: function (component) {
+	    if (version[0] === 0 && version[1] >= 13) return component;
+
+	    return component.type;
+	  },
+
+	  findDOMNode: function (component) {
+	    if (React.findDOMNode) return React.findDOMNode(component);
+
+	    return component.getDOMNode();
+	  },
+
+	  cloneElement: function (child, props) {
+	    if (React.cloneElement) return React.cloneElement(child, props);
+
+	    //just mutate if pre 0.13
+	    _.each(props, function (value, prop) {
+	      return child.props[prop] = value;
+	    });
+
+	    return child;
+	  }
+	};
+
+/***/ },
+/* 476 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var React = __webpack_require__(6);
+
+	module.exports = {
+
+	  elementType: createChainableTypeChecker(function (props, propName, componentName, location) {
+
+	    if (typeof props[propName] !== "function") {
+	      if (React.isValidElement(props[propName])) return new Error("Invalid prop `" + propName + "` specified in  `" + componentName + "`." + " Expected an Element `type`, not an actual Element");
+
+	      if (typeof props[propName] !== "string") return new Error("Invalid prop `" + propName + "` specified in  `" + componentName + "`." + " Expected an Element `type` such as a tag name or return value of React.createClass(...)");
+	    }
+	    return true;
+	  }),
+
+	  localeFormat: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]),
+
+	  accessor: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.func]) };
+
+	function createChainableTypeChecker(validate) {
+
+	  function checkType(isRequired, props, propName, componentName, location) {
+	    componentName = componentName || "<<anonymous>>";
+	    if (props[propName] == null) {
+	      if (isRequired) {
+	        return new Error("Required prop `" + propName + "` was not specified in  `" + componentName + "`.");
+	      }
+	    } else return validate(props, propName, componentName, location);
+	  }
+
+	  var chainedCheckType = checkType.bind(null, false);
+	  chainedCheckType.isRequired = checkType.bind(null, true);
+
+	  return chainedCheckType;
+	}
+
+/***/ },
+/* 477 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    $ = __webpack_require__(488),
+	    config = __webpack_require__(491),
+	    cn = __webpack_require__(237),
+	    compat = __webpack_require__(475);
+
+	var transform = config.animate.transform,
+	    support = !!config.animate.endEvent;
+
+	function properties(prop, value) {
+	  var TRANSLATION_MAP = config.animate.TRANSLATION_MAP;
+
+	  if (TRANSLATION_MAP && TRANSLATION_MAP[prop]) return (function () {
+	    var _ref = {};
+	    _ref[transform] = "" + TRANSLATION_MAP[prop] + "(" + value + ")";
+	    return _ref;
+	  })();
+
+	  return (function () {
+	    var _ref2 = {};
+	    _ref2[prop] = value;
+	    return _ref2;
+	  })();
+	}
+
+	var PopupContent = React.createClass({
+	  displayName: "PopupContent",
+
+	  render: function () {
+	    var child = this.props.children;
+
+	    if (!child) return React.createElement("span", { className: "rw-popup rw-widget" });
+
+	    child = React.Children.only(this.props.children);
+
+	    return compat.cloneElement(child, {
+	      className: cn(child.props.className, "rw-popup rw-widget")
+	    });
+	  }
+	});
+
+	module.exports = React.createClass({
+
+	  displayName: "Popup",
+
+	  propTypes: {
+	    open: React.PropTypes.bool,
+	    dropUp: React.PropTypes.bool,
+	    duration: React.PropTypes.number,
+
+	    onRequestClose: React.PropTypes.func.isRequired,
+	    onClosing: React.PropTypes.func,
+	    onOpening: React.PropTypes.func,
+	    onClose: React.PropTypes.func,
+	    onOpen: React.PropTypes.func
+	  },
+
+	  getInitialState: function () {
+	    return {};
+	  },
+
+	  getDefaultProps: function () {
+	    return {
+	      duration: 200,
+	      open: false,
+	      onClosing: function () {},
+	      onOpening: function () {},
+	      onClose: function () {},
+	      onOpen: function () {} };
+	  },
+
+	  // componentDidMount(){
+	  //   !this.props.open && this.close(0)
+	  // },
+	  componentWillMount: function () {
+	    !this.props.open && (this._initialPosition = true);
+	  },
+
+	  componentWillReceiveProps: function (nextProps) {
+	    this.setState({
+	      contentChanged: childKey(nextProps.children) !== childKey(this.props.children)
+	    });
+	  },
+
+	  componentDidUpdate: function (pvProps, pvState) {
+	    var closing = pvProps.open && !this.props.open,
+	        opening = !pvProps.open && this.props.open,
+	        open = this.props.open;
+
+	    if (opening) this.open();else if (closing) this.close();else if (open) this.height();
+	  },
+
+	  render: function () {
+	    var _props = this.props;
+	    var className = _props.className;
+	    var open = _props.open;
+	    var dropUp = _props.dropUp;
+	    var props = babelHelpers.objectWithoutProperties(_props, ["className", "open", "dropUp"]);
+	    var display = open ? "block" : void 0;
+	    var styles = {};
+
+	    if (this._initialPosition) {
+	      display = "none";
+	    }
+
+	    return React.createElement(
+	      "div",
+	      babelHelpers._extends({}, props, {
+	        style: babelHelpers._extends({
+	          display: display,
+	          height: this.state.height }, props.style),
+	        className: cn(className, "rw-popup-container", { "rw-dropup": dropUp })
+	      }),
+	      React.createElement(
+	        PopupContent,
+	        { ref: "content" },
+	        this.props.children
+	      )
+	    );
+	  },
+
+	  reset: function () {
+	    var container = compat.findDOMNode(this),
+	        content = compat.findDOMNode(this.refs.content),
+	        style = { display: "block", overflow: "hidden" };
+
+	    $.css(container, style);
+	    this.height();
+	    $.css(content, properties("top", this.props.dropUp ? "100%" : "-100%"));
+	  },
+
+	  height: function () {
+	    var el = compat.findDOMNode(this),
+	        content = compat.findDOMNode(this.refs.content),
+	        margin = parseInt($.css(content, "margin-top"), 10) + parseInt($.css(content, "margin-bottom"), 10);
+
+	    var height = $.height(content) + (isNaN(margin) ? 0 : margin);
+
+	    if (this.state.height !== height) {
+	      el.style.height = height + "px";
+	      this.setState({ height: height });
+	    }
+	  },
+
+	  open: function () {
+	    var self = this,
+	        anim = compat.findDOMNode(this),
+	        el = compat.findDOMNode(this.refs.content);
+
+	    this.ORGINAL_POSITION = $.css(el, "position");
+	    this._isOpening = true;
+
+	    if (this._initialPosition) {
+	      this._initialPosition = false;
+	      this.reset();
+	    } else this.height();
+
+	    this.props.onOpening();
+
+	    anim.className += " rw-popup-animating";
+	    el.style.position = "absolute";
+
+	    config.animate(el, { top: 0 }, self.props.duration, "ease", function () {
+	      if (!self._isOpening) return;
+
+	      anim.className = anim.className.replace(/ ?rw-popup-animating/g, "");
+
+	      el.style.position = self.ORGINAL_POSITION;
+	      anim.style.overflow = "visible";
+	      self.ORGINAL_POSITION = null;
+
+	      self.props.onOpen();
+	    });
+	  },
+
+	  close: function (dur) {
+	    var self = this,
+	        el = compat.findDOMNode(this.refs.content),
+	        anim = compat.findDOMNode(this);
+
+	    this.ORGINAL_POSITION = $.css(el, "position");
+
+	    this._isOpening = false;
+	    this.height();
+	    this.props.onClosing();
+
+	    anim.style.overflow = "hidden";
+	    anim.className += " rw-popup-animating";
+	    el.style.position = "absolute";
+
+	    config.animate(el, { top: this.props.dropUp ? "100%" : "-100%" }, dur === undefined ? this.props.duration : dur, "ease", function () {
+	      if (self._isOpening) return;
+
+	      el.style.position = self.ORGINAL_POSITION;
+	      anim.className = anim.className.replace(/ ?rw-popup-animating/g, "");
+
+	      anim.style.display = "none";
+	      self.ORGINAL_POSITION = null;
+	      self.props.onClose();
+	    });
+	  }
+
+	});
+
+	function childKey(children) {
+	  var nextChildMapping = React.Children.map(children, function (c) {
+	    return c;
+	  });
+	  for (var key in nextChildMapping) return key;
+	}
+
+/***/ },
+/* 478 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    CustomPropTypes = __webpack_require__(476),
+	    compat = __webpack_require__(475),
+	    cx = __webpack_require__(237),
+	    _ = __webpack_require__(474),
+	    $ = __webpack_require__(488);
+
+	module.exports = React.createClass({
+
+	  displayName: "List",
+
+	  mixins: [__webpack_require__(481), __webpack_require__(485), __webpack_require__(490)],
+
+	  propTypes: {
+	    data: React.PropTypes.array,
+	    onSelect: React.PropTypes.func,
+	    onMove: React.PropTypes.func,
+	    itemComponent: CustomPropTypes.elementType,
+
+	    selectedIndex: React.PropTypes.number,
+	    focusedIndex: React.PropTypes.number,
+	    valueField: React.PropTypes.string,
+	    textField: CustomPropTypes.accessor,
+
+	    optID: React.PropTypes.string,
+
+	    messages: React.PropTypes.shape({
+	      emptyList: React.PropTypes.string
+	    }) },
+
+	  getDefaultProps: function () {
+	    return {
+	      optID: "",
+	      onSelect: function () {},
+	      data: [],
+	      messages: {
+	        emptyList: "There are no items in this list"
+	      }
+	    };
+	  },
+
+	  getInitialState: function () {
+	    return {};
+	  },
+
+	  componentDidMount: function () {
+	    this.move();
+	  },
+
+	  componentDidUpdate: function (prevProps) {
+	    this.move();
+	  },
+
+	  render: function () {
+	    var _this = this;
+
+	    var _$omit = _.omit(this.props, ["data"]);
+
+	    var className = _$omit.className;
+	    var props = babelHelpers.objectWithoutProperties(_$omit, ["className"]);
+	    var ItemComponent = this.props.itemComponent;
+	    var items;
+
+	    items = !this.props.data.length ? React.createElement(
+	      "li",
+	      null,
+	      this.props.messages.emptyList
+	    ) : this.props.data.map(function (item, idx) {
+	      var focused = item === _this.props.focused,
+	          selected = item === _this.props.selected;
+
+	      return React.createElement(
+	        "li",
+	        {
+	          tabIndex: "-1",
+	          key: "item_" + idx,
+	          role: "option",
+	          id: focused ? _this.props.optID : undefined,
+	          "aria-selected": selected,
+	          className: cx({
+	            "rw-list-option": true,
+	            "rw-state-focus": focused,
+	            "rw-state-selected": selected }),
+	          onClick: _this.props.onSelect.bind(null, item) },
+	        ItemComponent ? React.createElement(ItemComponent, { item: item }) : _this._dataText(item)
+	      );
+	    });
+
+	    return React.createElement(
+	      "ul",
+	      babelHelpers._extends({}, props, {
+	        className: (className || "") + " rw-list",
+	        ref: "scrollable",
+	        role: "listbox" }),
+	      items
+	    );
+	  },
+
+	  _data: function () {
+	    return this.props.data;
+	  },
+
+	  move: function () {
+	    var list = compat.findDOMNode(this),
+	        idx = this._data().indexOf(this.props.focused),
+	        selected = list.children[idx];
+
+	    if (!selected) return;
+
+	    this.notify("onMove", [selected, list, this.props.focused]);
+	  }
+
+	});
+
+/***/ },
+/* 479 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    warning = __webpack_require__(58),
+	    CustomPropTypes = __webpack_require__(476),
+	    compat = __webpack_require__(475),
+	    cx = __webpack_require__(237),
+	    _ = __webpack_require__(474);
+
+	module.exports = React.createClass({
+
+	  displayName: "List",
+
+	  mixins: [__webpack_require__(481), __webpack_require__(485), __webpack_require__(490)],
+
+	  propTypes: {
+	    data: React.PropTypes.array,
+	    onSelect: React.PropTypes.func,
+	    onMove: React.PropTypes.func,
+
+	    itemComponent: CustomPropTypes.elementType,
+	    groupComponent: CustomPropTypes.elementType,
+
+	    selected: React.PropTypes.any,
+	    focused: React.PropTypes.any,
+
+	    valueField: React.PropTypes.string,
+	    textField: CustomPropTypes.accessor,
+
+	    optID: React.PropTypes.string,
+
+	    groupBy: CustomPropTypes.accessor,
+
+	    messages: React.PropTypes.shape({
+	      emptyList: React.PropTypes.string
+	    }) },
+
+	  getDefaultProps: function () {
+	    return {
+	      optID: "",
+	      onSelect: function () {},
+	      data: [],
+	      messages: {
+	        emptyList: "There are no items in this list"
+	      }
+	    };
+	  },
+
+	  getInitialState: function () {
+	    var keys = [];
+
+	    return {
+	      groups: this._group(this.props.groupBy, this.props.data, keys),
+
+	      sortedKeys: keys
+	    };
+	  },
+
+	  componentWillReceiveProps: function (nextProps) {
+	    var keys = [];
+
+	    if (nextProps.data !== this.props.data || nextProps.groupBy !== this.props.groupBy) this.setState({
+	      groups: this._group(nextProps.groupBy, nextProps.data, keys),
+	      sortedKeys: keys
+	    });
+	  },
+
+	  componentDidMount: function (prevProps, prevState) {
+	    this.move();
+	  },
+
+	  componentDidUpdate: function (prevProps) {
+	    this.move();
+	  },
+
+	  render: function () {
+	    var _this = this;
+
+	    var _$omit = _.omit(this.props, ["data", "selectedIndex"]);
+
+	    var className = _$omit.className;
+	    var props = babelHelpers.objectWithoutProperties(_$omit, ["className"]);
+	    var groups = this.state.groups;
+	    var items = [];
+	    var idx = -1;
+	    var group;
+
+	    if (this.props.data.length) {
+	      items = this.state.sortedKeys.reduce(function (items, key) {
+	        group = groups[key];
+	        items.push(_this._renderGroupHeader(key));
+
+	        for (var itemIdx = 0; itemIdx < group.length; itemIdx++) items.push(_this._renderItem(key, group[itemIdx], ++idx));
+
+	        return items;
+	      }, []);
+	    } else items = React.createElement(
+	      "li",
+	      null,
+	      this.props.messages.emptyList
+	    );
+
+	    return React.createElement(
+	      "ul",
+	      babelHelpers._extends({}, props, {
+	        className: (className || "") + " rw-list  rw-list-grouped",
+	        ref: "scrollable",
+	        role: "listbox" }),
+	      items
+	    );
+	  },
+
+	  _renderGroupHeader: function (group) {
+	    var ItemComponent = this.props.groupComponent;
+
+	    return React.createElement(
+	      "li",
+	      {
+	        key: "item_" + group,
+	        tabIndex: "-1",
+	        role: "separator",
+	        className: "rw-list-optgroup" },
+	      ItemComponent ? React.createElement(ItemComponent, { item: group }) : group
+	    );
+	  },
+
+	  _renderItem: function (group, item, idx) {
+	    var focused = this.props.focused === item,
+	        selected = this.props.selected === item,
+	        ItemComponent = this.props.itemComponent;
+
+	    //console.log('hi')
+	    return React.createElement(
+	      "li",
+	      {
+	        key: "item_" + group + "_" + idx,
+	        role: "option",
+	        id: focused ? this.props.optID : undefined,
+	        "aria-selected": selected,
+	        onClick: this.props.onSelect.bind(null, item),
+	        className: cx({
+	          "rw-state-focus": focused,
+	          "rw-state-selected": selected,
+	          "rw-list-option": true
+	        }) },
+	      ItemComponent ? React.createElement(ItemComponent, { item: item }) : this._dataText(item)
+	    );
+	  },
+
+	  _isIndexOf: function (idx, item) {
+	    return this.props.data[idx] === item;
+	  },
+
+	  _group: function (groupBy, data, keys) {
+	    var iter = typeof groupBy === "function" ? groupBy : function (item) {
+	      return item[groupBy];
+	    };
+
+	    // the keys array ensures that groups are rendered in the order they came in
+	    // which means that if you sort the data array it will render sorted,
+	    // so long as you also sorted by group
+	    keys = keys || [];
+
+	    warning(typeof groupBy !== "string" || !data.length || _.has(data[0], groupBy), "[React Widgets] You are seem to be trying to group this list by a " + ("property `" + groupBy + "` that doesn't exist in the dataset items, this may be a typo"));
+
+	    return data.reduce(function (grps, item) {
+	      var group = iter(item);
+
+	      _.has(grps, group) ? grps[group].push(item) : (keys.push(group), grps[group] = [item]);
+
+	      return grps;
+	    }, {});
+	  },
+
+	  _data: function () {
+	    var groups = this.state.groups;
+
+	    return this.state.sortedKeys.reduce(function (flat, grp) {
+	      return flat.concat(groups[grp]);
+	    }, []);
+	  },
+
+	  move: function () {
+	    var selected = this.getItemDOMNode(this.props.focused);
+
+	    if (!selected) return;
+
+	    this.notify("onMove", [selected, compat.findDOMNode(this), this.props.focused]);
+	  },
+
+	  getItemDOMNode: function (item) {
+	    var list = compat.findDOMNode(this),
+	        groups = this.state.groups,
+	        idx = -1,
+	        itemIdx,
+	        child;
+
+	    this.state.sortedKeys.some(function (group) {
+	      itemIdx = groups[group].indexOf(item);
+	      idx++;
+
+	      if (itemIdx !== -1) return !!(child = list.children[idx + itemIdx + 1]);
+
+	      idx += groups[group].length;
+	    });
+
+	    return child;
+	  }
+
+	});
+
+/***/ },
+/* 480 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
+	var METHODS = ["next", "prev", "first", "last"];
+
+	module.exports = function validateListComponent(list) {
+
+	  if ("production" !== process.env.NODE_ENV) {
+	    METHODS.forEach(function (method) {
+	      return assert(typeof list[method] === "function", "List components must implement a `" + method + "()` method");
+	    });
+	  }
+	};
+
+	function assert(condition, msg) {
+	  var error;
+
+	  if (!condition) {
+	    error = new Error(msg);
+	    error.framesToPop = 1;
+	    throw error;
+	  }
+	}
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 481 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var React = __webpack_require__(6),
+	    _ = __webpack_require__(474); //uniqueID
+
+	module.exports = {
+
+	  propTypes: {
+
+	    disabled: React.PropTypes.oneOfType([React.PropTypes.bool, React.PropTypes.oneOf(["disabled"])]),
+
+	    readOnly: React.PropTypes.oneOfType([React.PropTypes.bool, React.PropTypes.oneOf(["readOnly"])]) },
+
+	  isDisabled: function () {
+	    return this.props.disabled === true || this.props.disabled === "disabled";
+	  },
+
+	  isReadOnly: function () {
+	    return this.props.readOnly === true || this.props.readOnly === "readonly";
+	  },
+
+	  notify: function (handler, args) {
+	    this.props[handler] && this.props[handler].apply(null, [].concat(args));
+	  },
+
+	  _id: function (suffix) {
+	    this._id_ || (this._id_ = _.uniqueId("rw_"));
+	    return (this.props.id || this._id_) + suffix;
+	  },
+
+	  _maybeHandle: function (handler, disabledOnly) {
+	    if (!(this.isDisabled() || !disabledOnly && this.isReadOnly())) return handler;
+	    return function () {};
+	  } };
+
+/***/ },
+/* 482 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _require = __webpack_require__(474);
+
+	var has = _require.has;
+
+	module.exports = {
+
+	  componentWillUnmount: function () {
+	    var timers = this._timers || {};
+
+	    this._unmounted = true;
+
+	    for (var k in timers) if (has(timers, k)) clearTimeout(timers[k]);
+	  },
+
+	  setTimeout: function (key, cb, duration) {
+	    var timers = this._timers || (this._timers = Object.create(null));
+
+	    if (this._unmounted) return;
+
+	    clearTimeout(timers[key]);
+	    timers[key] = setTimeout(cb, duration);
+	  }
+
+	};
+
+/***/ },
+/* 483 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var _ = __webpack_require__(474);
+
+	//backport PureRenderEqual
+	module.exports = {
+
+	  shouldComponentUpdate: function (nextProps, nextState) {
+	    return !_.isShallowEqual(this.props, nextProps) || !_.isShallowEqual(this.state, nextState);
+	  }
+	};
+
+/***/ },
+/* 484 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var React = __webpack_require__(6),
+	    filters = __webpack_require__(492),
+	    helper = __webpack_require__(485);
+
+	var filterTypes = Object.keys(filters).filter(function (i) {
+	  return i !== "filter";
+	});
+
+	module.exports = {
+
+	  propTypes: {
+	    data: React.PropTypes.array,
+	    value: React.PropTypes.any,
+	    filter: React.PropTypes.oneOfType([React.PropTypes.func, React.PropTypes.oneOf(filterTypes.concat(false))]),
+	    caseSensitive: React.PropTypes.bool,
+	    minLength: React.PropTypes.number },
+
+	  getDefaultProps: function () {
+	    return {
+	      caseSensitive: false,
+	      minLength: 1
+	    };
+	  },
+
+	  filterIndexOf: function (items, searchTerm) {
+	    var idx = -1,
+	        matches = typeof this.props.filter === "function" ? this.props.filter : getFilter(filters[this.props.filter || "eq"], searchTerm, this);
+
+	    if (!searchTerm || !searchTerm.trim() || this.props.filter && searchTerm.length < (this.props.minLength || 1)) return -1;
+
+	    items.every(function (item, i) {
+	      if (matches(item, searchTerm, i)) return (idx = i, false);
+
+	      return true;
+	    });
+
+	    return idx;
+	  },
+
+	  filter: function (items, searchTerm) {
+	    var matches = typeof this.props.filter === "string" ? getFilter(filters[this.props.filter], searchTerm, this) : this.props.filter;
+
+	    if (!matches || !searchTerm || !searchTerm.trim() || searchTerm.length < (this.props.minLength || 1)) return items;
+
+	    return items.filter(function (item, idx) {
+	      return matches(item, searchTerm, idx);
+	    });
+	  }
+	};
+
+	function getFilter(matcher, searchTerm, ctx) {
+	  searchTerm = !ctx.props.caseSensitive ? searchTerm.toLowerCase() : searchTerm;
+
+	  return function (item) {
+	    var val = helper._dataText.call(ctx, item);
+
+	    if (!ctx.props.caseSensitive) val = val.toLowerCase();
+
+	    return matcher(val, searchTerm);
+	  };
+	}
+
+/***/ },
+/* 485 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var React = __webpack_require__(6);
+	var propTypes = __webpack_require__(476);
+
+	var _require = __webpack_require__(474);
+
+	var has = _require.has;
+	var isShallowEqual = _require.isShallowEqual;
+
+	function accessor(data, field) {
+	  var value = data;
+
+	  if (typeof field === "function") value = field(data);else if (data == null) value = data;else if (typeof field === "string" && typeof data === "object" && field in data) value = data[field];
+
+	  return value;
+	}
+
+	module.exports = {
+
+	  propTypes: {
+	    valueField: React.PropTypes.string,
+	    textField: propTypes.accessor },
+
+	  _dataValue: function (item) {
+	    var field = this.props.valueField;
+
+	    return field && item && has(item, field) ? item[field] : item;
+	  },
+
+	  _dataText: function (item) {
+	    var field = this.props.textField;
+
+	    return accessor(item, field) + "";
+	  },
+
+	  _dataIndexOf: function (data, item) {
+	    var _this = this;
+
+	    var idx = -1,
+	        len = data.length,
+	        finder = function (datum) {
+	      return _this._valueMatcher(item, datum);
+	    };
+
+	    while (++idx < len) if (finder(data[idx])) return idx;
+
+	    return -1;
+	  },
+
+	  _valueMatcher: function (a, b) {
+	    return isShallowEqual(this._dataValue(a), this._dataValue(b));
+	  },
+
+	  _dataItem: function (data, item) {
+	    var first = data[0],
+	        field = this.props.valueField,
+	        idx;
+
+	    // make an attempt to see if we were passed in dataItem vs just a valueField value
+	    // either an object with the right prop, or a primitive
+	    // { valueField: 5 } || "hello" [ "hello" ]
+	    if (has(item, field) || typeof first === typeof val) return item;
+
+	    idx = this._dataIndexOf(data, this._dataValue(item));
+
+	    if (idx !== -1) return data[idx];
+
+	    return item;
+	  }
+	};
+
+/***/ },
+/* 486 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var scrollTo = __webpack_require__(493);
+
+	module.exports = {
+
+	  _scrollTo: function (selected, list, focused) {
+	    var state = this._scrollState || (this._scrollState = {}),
+	        handler = this.props.onMove,
+	        lastVisible = state.visible,
+	        lastItem = state.focused,
+	        shown,
+	        changed;
+
+	    state.visible = !(!list.offsetWidth || !list.offsetHeight);
+	    state.focused = focused;
+
+	    changed = lastItem !== focused;
+	    shown = state.visible && !lastVisible;
+
+	    if (shown || state.visible && changed) {
+	      if (handler) handler(selected, list, focused);else {
+	        state.scrollCancel && state.scrollCancel();
+	        state.scrollCancel = scrollTo(selected, list);
+	      }
+	    }
+	  } };
+
+/***/ },
+/* 487 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var React = __webpack_require__(6);
+
+	module.exports = {
+
+	  propTypes: {
+	    isRtl: React.PropTypes.bool
+	  },
+
+	  contextTypes: {
+	    isRtl: React.PropTypes.bool
+	  },
+
+	  childContextTypes: {
+	    isRtl: React.PropTypes.bool
+	  },
+
+	  getChildContext: function () {
+	    return {
+	      isRtl: this.props.isRtl || this.context && this.context.isRtl
+	    };
+	  },
+
+	  isRtl: function () {
+	    return !!(this.props.isRtl || this.context && this.context.isRtl);
+	  }
+
+	};
+
+/***/ },
+/* 488 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _require = __webpack_require__(494);
+
+	var on = _require.on;
+	var off = _require.off;
+
+	var _require2 = __webpack_require__(495);
+
+	var height = _require2.height;
+	var width = _require2.width;
+	var offset = _require2.offset;
+
+	module.exports = {
+
+	  height: height,
+
+	  width: width,
+
+	  offset: offset,
+
+	  on: on,
+
+	  off: off,
+
+	  css: __webpack_require__(496),
+
+	  contains: __webpack_require__(497),
+
+	  scrollParent: __webpack_require__(498),
+
+	  scrollTop: __webpack_require__(499),
+
+	  raf: __webpack_require__(500),
+
+	  animate: __webpack_require__(501) };
+
+/***/ },
+/* 489 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(process) {"use strict";
+	var babelHelpers = __webpack_require__(502);
+	var React = __webpack_require__(6);
+	var invariant = __webpack_require__(55);
+
+	function customPropType(handler, propType, name) {
+
+	  return function (props, propName, componentName, location) {
+
+	    if (props[propName] !== undefined) {
+	      if (!props[handler]) return new Error("You have provided a `" + propName + "` prop to " + "`" + name + "` without an `" + handler + "` handler. This will render a read-only field. " + "If the field should be mutable use `" + defaultKey(propName) + "`. Otherwise, set `" + handler + "`");
+
+	      return propType && propType(props, propName, name, location);
+	    }
+	  };
+	}
+
+	var version = React.version.split(".").map(parseFloat);
+
+	function getType(component) {
+	  if (version[0] === 0 && version[1] >= 13) return component;
+
+	  return component.type;
+	}
+
+	module.exports = function (Component, controlledValues, taps) {
+	  var name = Component.displayName || Component.name || "Component",
+	      types = {};
+
+	  if (process.env.NODE_ENV !== "production" && getType(Component).propTypes) {
+	    types = transform(controlledValues, function (obj, handler, prop) {
+	      var type = getType(Component).propTypes[prop];
+
+	      invariant(typeof handler === "string" && handler.trim().length, "Uncontrollable - [%s]: the prop `%s` needs a valid handler key name in order to make it uncontrollable", Component.displayName, prop);
+
+	      obj[prop] = customPropType(handler, type, Component.displayName);
+	      if (type !== undefined) {
+	        obj[defaultKey(prop)] = type;
+	      }
+	    }, {});
+	  }
+
+	  name = name[0].toUpperCase() + name.substr(1);
+
+	  taps = taps || {};
+
+	  return React.createClass({
+
+	    displayName: "Uncontrolled" + name,
+
+	    propTypes: types,
+
+	    getInitialState: function () {
+	      var props = this.props,
+	          keys = Object.keys(controlledValues);
+
+	      return transform(keys, function (state, key) {
+	        state[key] = props[defaultKey(key)];
+	      }, {});
+	    },
+
+	    shouldComponentUpdate: function () {
+	      //let the setState trigger the update
+	      return !this._notifying;
+	    },
+
+	    render: function () {
+	      var _this = this;
+
+	      var props = {};
+
+	      each(controlledValues, function (handle, prop) {
+
+	        props[prop] = isProp(_this.props, prop) ? _this.props[prop] : _this.state[prop];
+
+	        props[handle] = setAndNotify.bind(_this, prop);
+	      });
+
+	      props = babelHelpers._extends({}, this.props, props);
+
+	      each(taps, function (val, key) {
+	        return props[key] = chain(_this, val, props[key]);
+	      });
+
+	      return React.createElement(Component, props);
+	    }
+	  });
+
+	  function setAndNotify(prop, value) {
+	    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+	      args[_key - 2] = arguments[_key];
+	    }
+
+	    var handler = controlledValues[prop],
+	        controlled = handler && isProp(this.props, prop),
+	        args;
+
+	    if (this.props[handler]) {
+	      var _props$handler;
+
+	      this._notifying = true;
+	      (_props$handler = this.props[handler]).call.apply(_props$handler, [this, value].concat(args));
+	      this._notifying = false;
+	    }
+
+	    this.setState((function () {
+	      var _setState = {};
+	      _setState[prop] = value;
+	      return _setState;
+	    })());
+
+	    return !controlled;
+	  }
+
+	  function isProp(props, prop) {
+	    return props[prop] !== undefined;
+	  }
+	};
+
+	function defaultKey(key) {
+	  return "default" + key.charAt(0).toUpperCase() + key.substr(1);
+	}
+
+	function chain(thisArg, a, b) {
+	  return function chainedFunction() {
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    a && a.call.apply(a, [thisArg].concat(args));
+	    b && b.call.apply(b, [thisArg].concat(args));
+	  };
+	}
+
+	function transform(obj, cb, seed) {
+	  each(obj, cb.bind(null, seed = seed || (Array.isArray(obj) ? [] : {})));
+	  return seed;
+	}
+
+	function each(obj, cb, thisArg) {
+	  if (Array.isArray(obj)) return obj.forEach(cb, thisArg);
+
+	  for (var key in obj) if (has(obj, key)) cb.call(thisArg, obj[key], key, obj);
+	}
+
+	function has(o, k) {
+	  return o ? Object.prototype.hasOwnProperty.call(o, k) : false;
+	}
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(68)))
+
+/***/ },
+/* 490 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var React = __webpack_require__(6),
+	    _ = __webpack_require__(474),
+	    filter = __webpack_require__(492),
+	    helper = __webpack_require__(485);
+
+	module.exports = {
+
+	  propTypes: {
+	    textField: React.PropTypes.string },
+
+	  first: function () {
+	    return this._data()[0];
+	  },
+
+	  last: function () {
+	    var data = this._data();
+	    return data[data.length - 1];
+	  },
+
+	  prev: function (item, word) {
+	    var data = this._data(),
+	        idx = data.indexOf(item);
+
+	    if (idx === -1) idx = data.length;
+
+	    return word ? findPrevInstance(this, data, word, idx) : --idx < 0 ? data[0] : data[idx];
+	  },
+
+	  next: function (item, word) {
+	    var data = this._data(),
+	        idx = data.indexOf(item);
+
+	    return word ? findNextInstance(this, data, word, idx) : ++idx === data.length ? data[data.length - 1] : data[idx];
+	  }
+
+	};
+
+	function findNextInstance(ctx, data, word, startIndex) {
+	  var matches = filter.startsWith,
+	      idx = -1,
+	      len = data.length,
+	      foundStart,
+	      itemText;
+
+	  word = word.toLowerCase();
+
+	  while (++idx < len) {
+	    foundStart = foundStart || idx > startIndex;
+	    itemText = foundStart && helper._dataText.call(ctx, data[idx]).toLowerCase();
+
+	    if (foundStart && matches(itemText, word)) return data[idx];
+	  }
+	}
+
+	function findPrevInstance(ctx, data, word, startIndex) {
+	  var matches = filter.startsWith,
+	      idx = data.length,
+	      foundStart,
+	      itemText;
+
+	  word = word.toLowerCase();
+
+	  while (--idx >= 0) {
+	    foundStart = foundStart || idx < startIndex;
+	    itemText = foundStart && helper._dataText.call(ctx, data[idx]).toLowerCase();
+
+	    if (foundStart && matches(itemText, word)) return data[idx];
+	  }
+	}
+
+/***/ },
+/* 491 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	module.exports = {
+
+	  globalize: __webpack_require__(503),
+
+	  animate: __webpack_require__(501)
+	};
+
+/***/ },
+/* 492 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var common = {
+	  eq: function (a, b) {
+	    return a === b;
+	  },
+	  neq: function (a, b) {
+	    return a !== b;
+	  },
+	  gt: function (a, b) {
+	    return a > b;
+	  },
+	  gte: function (a, b) {
+	    return a >= b;
+	  },
+	  lt: function (a, b) {
+	    return a < b;
+	  },
+	  lte: function (a, b) {
+	    return a <= b;
+	  },
+
+	  contains: function (a, b) {
+	    return a.indexOf(b) !== -1;
+	  },
+
+	  startsWith: function (a, b) {
+	    return a.lastIndexOf(b, 0) === 0;
+	  },
+
+	  endsWith: function (a, b) {
+	    var pos = a.length - b.length,
+	        lastIndex = a.indexOf(b, pos);
+
+	    return lastIndex !== -1 && lastIndex === pos;
+	  }
+	};
+
+	module.exports = common;
+
+/***/ },
+/* 493 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _require = __webpack_require__(495);
+
+	var getOffset = _require.offset;
+	var height = _require.height;
+	var getScrollParent = __webpack_require__(498);
+	var scrollTop = __webpack_require__(499);
+	var raf = __webpack_require__(500);
+
+	module.exports = function scrollTo(selected, scrollParent) {
+	    var offset = getOffset(selected),
+	        poff = { top: 0, left: 0 },
+	        list,
+	        listScrollTop,
+	        selectedTop,
+	        isWin,
+	        selectedHeight,
+	        listHeight,
+	        bottom;
+
+	    if (!selected) return;
+
+	    list = scrollParent || getScrollParent(selected);
+	    isWin = getWindow(list);
+	    listScrollTop = scrollTop(list);
+
+	    listHeight = height(list, true);
+	    isWin = getWindow(list);
+
+	    if (!isWin) poff = getOffset(list);
+
+	    offset = {
+	        top: offset.top - poff.top,
+	        left: offset.left - poff.left,
+	        height: offset.height,
+	        width: offset.width
+	    };
+
+	    selectedHeight = offset.height;
+	    selectedTop = offset.top + (isWin ? 0 : listScrollTop);
+	    bottom = selectedTop + selectedHeight;
+
+	    listScrollTop = listScrollTop > selectedTop ? selectedTop : bottom > listScrollTop + listHeight ? bottom - listHeight : listScrollTop;
+
+	    var id = raf(function () {
+	        return scrollTop(list, listScrollTop);
+	    });
+
+	    return function () {
+	        return raf.cancel(id);
+	    };
+	};
+
+	function getWindow(node) {
+	    return node === node.window ? node : node.nodeType === 9 && node.defaultView;
+	}
+
+/***/ },
+/* 494 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	module.exports = {
+
+	  on: function (node, eventName, handler) {
+	    if (node.addEventListener) node.addEventListener(eventName, handler, false);else if (node.attachEvent) node.attachEvent("on" + eventName, handler);
+	  },
+
+	  off: function (node, eventName, handler) {
+	    if (node.addEventListener) node.removeEventListener(eventName, handler, false);else if (node.attachEvent) node.detachEvent("on" + eventName, handler);
+	  }
+	};
+
+/***/ },
+/* 495 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var contains = __webpack_require__(497);
+
+	function offset(node) {
+	  var doc = node.ownerDocument,
+	      docElem = doc && doc.documentElement,
+	      box = { top: 0, left: 0, height: 0, width: 0 };
+
+	  if (!docElem) return;
+
+	  if (!contains(docElem, node)) return box;
+
+	  if (node.getBoundingClientRect !== undefined) box = node.getBoundingClientRect();
+
+	  return {
+	    top: box.top + window.pageYOffset - docElem.clientTop,
+	    left: box.left + window.pageXOffset - docElem.clientLeft,
+	    width: box.width || node.offsetWidth,
+	    height: box.height || node.offsetHeight };
+	}
+
+	module.exports = {
+
+	  width: function (node, client) {
+	    var win = getWindow(node);
+	    return win ? win.innerWidth : client ? node.clientWidth : offset(node).width;
+	  },
+
+	  height: function (node, client) {
+	    var win = getWindow(node);
+	    return win ? win.innerHeight : client ? node.clientHeight : offset(node).height;
+	  },
+
+	  offset: offset
+
+	};
+
+	function getWindow(node) {
+	  return node === node.window ? node : node.nodeType === 9 && node.defaultView;
+	}
+
+/***/ },
+/* 496 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var camelize = __webpack_require__(239),
+	    hyphenate = __webpack_require__(241),
+	    has = Object.prototype.hasOwnProperty;
+
+	module.exports = function cssFn(node, property, value) {
+	  var css = "",
+	      props = property;
+
+	  if (typeof property === "string") {
+	    if (value === undefined) return node.style[camelize(property)] || _getComputedStyle(node).getPropertyValue(property);else (props = {})[property] = value;
+	  }
+
+	  for (var key in props) if (has.call(props, key)) {
+	    !props[key] && props[key] !== 0 ? removeStyle(node.style, hyphenate(key)) : css += hyphenate(key) + ":" + props[key] + ";";
+	  }
+
+	  node.style.cssText += ";" + css;
+	};
+
+	function removeStyle(styles, key) {
+	  return "removeProperty" in styles ? styles.removeProperty(key) : styles.removeAttribute(key);
+	}
+
+	function _getComputedStyle(node) {
+	  if (!node) throw new Error();
+	  var doc = node.ownerDocument;
+
+	  return "defaultView" in doc ? doc.defaultView.opener ? node.ownerDocument.defaultView.getComputedStyle(node, null) : window.getComputedStyle(node, null) : { //ie 8 "magic"
+	    getPropertyValue: function (prop) {
+	      var re = /(\-([a-z]){1})/g;
+	      if (prop == "float") prop = "styleFloat";
+	      if (re.test(prop)) prop = prop.replace(re, function () {
+	        return arguments[2].toUpperCase();
+	      });
+
+	      return node.currentStyle[prop] || null;
+	    }
+	  };
+	}
+
+/***/ },
+/* 497 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var canUseDOM = __webpack_require__(53).canUseDOM;
+
+	var contains = (function () {
+	  var root = canUseDOM && document.documentElement;
+
+	  return root && root.contains ? function (context, node) {
+	    return context.contains(node);
+	  } : root && root.compareDocumentPosition ? function (context, node) {
+	    return context === node || !!(context.compareDocumentPosition(node) & 16);
+	  } : function (context, node) {
+	    if (node) do {
+	      if (node === context) return true;
+	    } while (node = node.parentNode);
+
+	    return false;
+	  };
+	})();
+
+	module.exports = contains;
+
+/***/ },
+/* 498 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var css = __webpack_require__(496);
+
+	var _require = __webpack_require__(495);
+
+	var height = _require.height;
+
+	module.exports = function scrollPrarent(node) {
+	  var position = css(node, "position"),
+	      excludeStatic = position === "absolute",
+	      ownerDoc = node.ownerDocument;
+
+	  if (position === "fixed") return ownerDoc || document;
+
+	  while ((node = node.parentNode) && node.nodeType !== 9) {
+
+	    var isStatic = excludeStatic && css(node, "position") === "static",
+	        style = css(node, "overflow") + css(node, "overflow-y") + css(node, "overflow-x");
+
+	    if (isStatic) continue;
+
+	    if (/(auto|scroll)/.test(style) && height(node) < node.scrollHeight) return node;
+	  }
+
+	  return document;
+	};
+
+/***/ },
+/* 499 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	module.exports = function scrollTop(node, val) {
+	  var win = node === node.window ? node : node.nodeType === 9 && node.defaultView;
+
+	  if (val === undefined) return win ? "pageYOffset" in win ? win.pageYOffset : win.document.documentElement.scrollTop : node.scrollTop;
+
+	  if (win) win.scrollTo("pageXOffset" in win ? win.pageXOffset : win.document.documentElement.scrollLeft, val);else node.scrollTop = val;
+	};
+
+/***/ },
+/* 500 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var canUseDOM = __webpack_require__(53).canUseDOM,
+	    cancel = "clearTimeout",
+	    raf = fallback,
+	    compatRaf;
+
+	var keys = ["cancelAnimationFrame", "webkitCancelAnimationFrame", "mozCancelAnimationFrame", "oCancelAnimationFrame", "msCancelAnimationFrame"];
+
+	compatRaf = function (cb) {
+	  return raf(cb);
+	};
+	compatRaf.cancel = function (id) {
+	  return window[cancel](id);
+	};
+
+	module.exports = compatRaf;
+
+	if (canUseDOM) {
+	  raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || fallback;
+
+	  for (var i = 0; i < keys.length; i++) if (keys[i] in window) {
+	    cancel = keys[i];
+	    break;
+	  }
+	}
+
+	/* https://github.com/component/raf */
+	var prev = new Date().getTime();
+
+	function fallback(fn) {
+	  var curr = new Date().getTime(),
+	      ms = Math.max(0, 16 - (curr - prev)),
+	      req = setTimeout(fn, ms);
+	  prev = curr;
+	  return req;
+	}
+
+/***/ },
+/* 501 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var canUseDOM = __webpack_require__(53).canUseDOM;
+	var hyphenate = __webpack_require__(241);
+	var has = Object.prototype.hasOwnProperty;
+	var css = __webpack_require__(496);
+
+	var _require = __webpack_require__(494);
+
+	var on = _require.on;
+	var off = _require.off;
+
+	var TRANSLATION_MAP = {
+	  left: "translateX", right: "translateX",
+	  top: "translateY", bottom: "translateY" };
+
+	var reset = {},
+	    transform = "transform",
+	    transition = {},
+	    transitionTiming,
+	    transitionDuration,
+	    transitionProperty,
+	    transitionDelay;
+
+	if (canUseDOM) {
+	  transition = getTransitionProperties();
+
+	  transform = transition.prefix + transform;
+
+	  reset[transitionProperty = transition.prefix + "transition-property"] = reset[transitionDuration = transition.prefix + "transition-duration"] = reset[transitionDelay = transition.prefix + "transition-delay"] = reset[transitionTiming = transition.prefix + "transition-timing-function"] = "";
+	}
+
+	animate.endEvent = transition.endEvent;
+	animate.transform = transform;
+	animate.TRANSLATION_MAP = TRANSLATION_MAP;
+
+	module.exports = animate;
+
+	/* code in part from: Zepto 1.1.4 | zeptojs.com/license */
+	// super lean animate function for transitions
+	// doesn't support all translations to keep it matching the jquery API
+	function animate(node, properties, duration, easing, callback) {
+	  var cssProperties = [],
+	      fakeEvent = { target: node, currentTarget: node },
+	      cssValues = {},
+	      transforms = "",
+	      fired;
+
+	  if (typeof easing === "function") callback = easing, easing = null;
+
+	  if (!transition.endEvent) duration = 0;
+	  if (duration === undefined) duration = 200;
+
+	  for (var key in properties) if (has.call(properties, key)) {
+	    if (/(top|bottom)/.test(key)) transforms += TRANSLATION_MAP[key] + "(" + properties[key] + ") ";else {
+	      cssValues[key] = properties[key];
+	      cssProperties.push(hyphenate(key));
+	    }
+	  }
+
+	  if (transforms) {
+	    cssValues[transform] = transforms;
+	    cssProperties.push(transform);
+	  }
+
+	  if (duration > 0) {
+	    cssValues[transitionProperty] = cssProperties.join(", ");
+	    cssValues[transitionDuration] = duration / 1000 + "s";
+	    cssValues[transitionDelay] = 0 + "s";
+	    cssValues[transitionTiming] = easing || "linear";
+
+	    on(node, transition.endEvent, done);
+
+	    setTimeout(function () {
+	      if (!fired) done(fakeEvent);
+	    }, duration + 500);
+	  }
+
+	  // trigger page reflow
+	  node.clientLeft;
+	  css(node, cssValues);
+
+	  if (duration <= 0) setTimeout(done.bind(null, fakeEvent), 0);
+
+	  function done(event) {
+	    if (event.target !== event.currentTarget) return;
+
+	    fired = true;
+	    off(event.target, transition.endEvent, done);
+
+	    css(node, reset);
+
+	    callback && callback.call(this);
+	  }
+	}
+
+	function getTransitionProperties() {
+	  var endEvent,
+	      prefix = "",
+	      transitions = {
+	    O: "otransitionend",
+	    Moz: "transitionend",
+	    Webkit: "webkitTransitionEnd"
+	  };
+
+	  var element = document.createElement("div");
+
+	  for (var vendor in transitions) if (has.call(transitions, vendor)) {
+	    if (element.style[vendor + "TransitionProperty"] !== undefined) {
+	      prefix = "-" + vendor.toLowerCase() + "-";
+	      endEvent = transitions[vendor];
+	      break;
+	    }
+	  }
+
+	  if (!endEvent && element.style.transitionProperty !== undefined) endEvent = "transitionend";
+
+	  return { endEvent: endEvent, prefix: prefix };
+	}
+
+/***/ },
+/* 502 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
+	  if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports === "object") {
+	    factory(exports);
+	  } else {
+	    factory(root.babelHelpers = {});
+	  }
+	})(this, function (global) {
+	  var babelHelpers = global;
+
+	  babelHelpers._extends = Object.assign || function (target) {
+	    for (var i = 1; i < arguments.length; i++) {
+	      var source = arguments[i];
+
+	      for (var key in source) {
+	        if (Object.prototype.hasOwnProperty.call(source, key)) {
+	          target[key] = source[key];
+	        }
+	      }
+	    }
+
+	    return target;
+	  };
+	})
+
+/***/ },
+/* 503 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*!
+	 * Globalize
+	 *
+	 * http://github.com/jquery/globalize
+	 *
+	 * Copyright Software Freedom Conservancy, Inc.
+	 * Dual licensed under the MIT or GPL Version 2 licenses.
+	 * http://jquery.org/license
+	 */
+
+	(function( window, undefined ) {
+
+	var Globalize,
+		// private variables
+		regexHex,
+		regexInfinity,
+		regexParseFloat,
+		regexTrim,
+		// private JavaScript utility functions
+		arrayIndexOf,
+		endsWith,
+		extend,
+		isArray,
+		isFunction,
+		isObject,
+		startsWith,
+		trim,
+		truncate,
+		zeroPad,
+		// private Globalization utility functions
+		appendPreOrPostMatch,
+		expandFormat,
+		formatDate,
+		formatNumber,
+		getTokenRegExp,
+		getEra,
+		getEraYear,
+		parseExact,
+		parseNegativePattern;
+
+	// Global variable (Globalize) or CommonJS module (globalize)
+	Globalize = function( cultureSelector ) {
+		return new Globalize.prototype.init( cultureSelector );
+	};
+
+	if ( true ) {
+		// Assume CommonJS
+		module.exports = Globalize;
+	} else {
+		// Export as global variable
+		window.Globalize = Globalize;
+	}
+
+	Globalize.cultures = {};
+
+	Globalize.prototype = {
+		constructor: Globalize,
+		init: function( cultureSelector ) {
+			this.cultures = Globalize.cultures;
+			this.cultureSelector = cultureSelector;
+
+			return this;
+		}
+	};
+	Globalize.prototype.init.prototype = Globalize.prototype;
+
+	// 1. When defining a culture, all fields are required except the ones stated as optional.
+	// 2. Each culture should have a ".calendars" object with at least one calendar named "standard"
+	//    which serves as the default calendar in use by that culture.
+	// 3. Each culture should have a ".calendar" object which is the current calendar being used,
+	//    it may be dynamically changed at any time to one of the calendars in ".calendars".
+	Globalize.cultures[ "default" ] = {
+		// A unique name for the culture in the form <language code>-<country/region code>
+		name: "en",
+		// the name of the culture in the english language
+		englishName: "English",
+		// the name of the culture in its own language
+		nativeName: "English",
+		// whether the culture uses right-to-left text
+		isRTL: false,
+		// "language" is used for so-called "specific" cultures.
+		// For example, the culture "es-CL" means "Spanish, in Chili".
+		// It represents the Spanish-speaking culture as it is in Chili,
+		// which might have different formatting rules or even translations
+		// than Spanish in Spain. A "neutral" culture is one that is not
+		// specific to a region. For example, the culture "es" is the generic
+		// Spanish culture, which may be a more generalized version of the language
+		// that may or may not be what a specific culture expects.
+		// For a specific culture like "es-CL", the "language" field refers to the
+		// neutral, generic culture information for the language it is using.
+		// This is not always a simple matter of the string before the dash.
+		// For example, the "zh-Hans" culture is netural (Simplified Chinese).
+		// And the "zh-SG" culture is Simplified Chinese in Singapore, whose lanugage
+		// field is "zh-CHS", not "zh".
+		// This field should be used to navigate from a specific culture to it's
+		// more general, neutral culture. If a culture is already as general as it
+		// can get, the language may refer to itself.
+		language: "en",
+		// numberFormat defines general number formatting rules, like the digits in
+		// each grouping, the group separator, and how negative numbers are displayed.
+		numberFormat: {
+			// [negativePattern]
+			// Note, numberFormat.pattern has no "positivePattern" unlike percent and currency,
+			// but is still defined as an array for consistency with them.
+			//   negativePattern: one of "(n)|-n|- n|n-|n -"
+			pattern: [ "-n" ],
+			// number of decimal places normally shown
+			decimals: 2,
+			// string that separates number groups, as in 1,000,000
+			",": ",",
+			// string that separates a number from the fractional portion, as in 1.99
+			".": ".",
+			// array of numbers indicating the size of each number group.
+			// TODO: more detailed description and example
+			groupSizes: [ 3 ],
+			// symbol used for positive numbers
+			"+": "+",
+			// symbol used for negative numbers
+			"-": "-",
+			// symbol used for NaN (Not-A-Number)
+			"NaN": "NaN",
+			// symbol used for Negative Infinity
+			negativeInfinity: "-Infinity",
+			// symbol used for Positive Infinity
+			positiveInfinity: "Infinity",
+			percent: {
+				// [negativePattern, positivePattern]
+				//   negativePattern: one of "-n %|-n%|-%n|%-n|%n-|n-%|n%-|-% n|n %-|% n-|% -n|n- %"
+				//   positivePattern: one of "n %|n%|%n|% n"
+				pattern: [ "-n %", "n %" ],
+				// number of decimal places normally shown
+				decimals: 2,
+				// array of numbers indicating the size of each number group.
+				// TODO: more detailed description and example
+				groupSizes: [ 3 ],
+				// string that separates number groups, as in 1,000,000
+				",": ",",
+				// string that separates a number from the fractional portion, as in 1.99
+				".": ".",
+				// symbol used to represent a percentage
+				symbol: "%"
+			},
+			currency: {
+				// [negativePattern, positivePattern]
+				//   negativePattern: one of "($n)|-$n|$-n|$n-|(n$)|-n$|n-$|n$-|-n $|-$ n|n $-|$ n-|$ -n|n- $|($ n)|(n $)"
+				//   positivePattern: one of "$n|n$|$ n|n $"
+				pattern: [ "($n)", "$n" ],
+				// number of decimal places normally shown
+				decimals: 2,
+				// array of numbers indicating the size of each number group.
+				// TODO: more detailed description and example
+				groupSizes: [ 3 ],
+				// string that separates number groups, as in 1,000,000
+				",": ",",
+				// string that separates a number from the fractional portion, as in 1.99
+				".": ".",
+				// symbol used to represent currency
+				symbol: "$"
+			}
+		},
+		// calendars defines all the possible calendars used by this culture.
+		// There should be at least one defined with name "standard", and is the default
+		// calendar used by the culture.
+		// A calendar contains information about how dates are formatted, information about
+		// the calendar's eras, a standard set of the date formats,
+		// translations for day and month names, and if the calendar is not based on the Gregorian
+		// calendar, conversion functions to and from the Gregorian calendar.
+		calendars: {
+			standard: {
+				// name that identifies the type of calendar this is
+				name: "Gregorian_USEnglish",
+				// separator of parts of a date (e.g. "/" in 11/05/1955)
+				"/": "/",
+				// separator of parts of a time (e.g. ":" in 05:44 PM)
+				":": ":",
+				// the first day of the week (0 = Sunday, 1 = Monday, etc)
+				firstDay: 0,
+				days: {
+					// full day names
+					names: [ "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ],
+					// abbreviated day names
+					namesAbbr: [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ],
+					// shortest day names
+					namesShort: [ "Su", "Mo", "Tu", "We", "Th", "Fr", "Sa" ]
+				},
+				months: {
+					// full month names (13 months for lunar calendards -- 13th month should be "" if not lunar)
+					names: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "" ],
+					// abbreviated month names
+					namesAbbr: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "" ]
+				},
+				// AM and PM designators in one of these forms:
+				// The usual view, and the upper and lower case versions
+				//   [ standard, lowercase, uppercase ]
+				// The culture does not use AM or PM (likely all standard date formats use 24 hour time)
+				//   null
+				AM: [ "AM", "am", "AM" ],
+				PM: [ "PM", "pm", "PM" ],
+				eras: [
+					// eras in reverse chronological order.
+					// name: the name of the era in this culture (e.g. A.D., C.E.)
+					// start: when the era starts in ticks (gregorian, gmt), null if it is the earliest supported era.
+					// offset: offset in years from gregorian calendar
+					{
+						"name": "A.D.",
+						"start": null,
+						"offset": 0
+					}
+				],
+				// when a two digit year is given, it will never be parsed as a four digit
+				// year greater than this year (in the appropriate era for the culture)
+				// Set it as a full year (e.g. 2029) or use an offset format starting from
+				// the current year: "+19" would correspond to 2029 if the current year 2010.
+				twoDigitYearMax: 2029,
+				// set of predefined date and time patterns used by the culture
+				// these represent the format someone in this culture would expect
+				// to see given the portions of the date that are shown.
+				patterns: {
+					// short date pattern
+					d: "M/d/yyyy",
+					// long date pattern
+					D: "dddd, MMMM dd, yyyy",
+					// short time pattern
+					t: "h:mm tt",
+					// long time pattern
+					T: "h:mm:ss tt",
+					// long date, short time pattern
+					f: "dddd, MMMM dd, yyyy h:mm tt",
+					// long date, long time pattern
+					F: "dddd, MMMM dd, yyyy h:mm:ss tt",
+					// month/day pattern
+					M: "MMMM dd",
+					// month/year pattern
+					Y: "yyyy MMMM",
+					// S is a sortable format that does not vary by culture
+					S: "yyyy\u0027-\u0027MM\u0027-\u0027dd\u0027T\u0027HH\u0027:\u0027mm\u0027:\u0027ss"
+				}
+				// optional fields for each calendar:
+				/*
+				monthsGenitive:
+					Same as months but used when the day preceeds the month.
+					Omit if the culture has no genitive distinction in month names.
+					For an explaination of genitive months, see http://blogs.msdn.com/michkap/archive/2004/12/25/332259.aspx
+				convert:
+					Allows for the support of non-gregorian based calendars. This convert object is used to
+					to convert a date to and from a gregorian calendar date to handle parsing and formatting.
+					The two functions:
+						fromGregorian( date )
+							Given the date as a parameter, return an array with parts [ year, month, day ]
+							corresponding to the non-gregorian based year, month, and day for the calendar.
+						toGregorian( year, month, day )
+							Given the non-gregorian year, month, and day, return a new Date() object
+							set to the corresponding date in the gregorian calendar.
+				*/
+			}
+		},
+		// For localized strings
+		messages: {}
+	};
+
+	Globalize.cultures[ "default" ].calendar = Globalize.cultures[ "default" ].calendars.standard;
+
+	Globalize.cultures.en = Globalize.cultures[ "default" ];
+
+	Globalize.cultureSelector = "en";
+
+	//
+	// private variables
+	//
+
+	regexHex = /^0x[a-f0-9]+$/i;
+	regexInfinity = /^[+\-]?infinity$/i;
+	regexParseFloat = /^[+\-]?\d*\.?\d*(e[+\-]?\d+)?$/;
+	regexTrim = /^\s+|\s+$/g;
+
+	//
+	// private JavaScript utility functions
+	//
+
+	arrayIndexOf = function( array, item ) {
+		if ( array.indexOf ) {
+			return array.indexOf( item );
+		}
+		for ( var i = 0, length = array.length; i < length; i++ ) {
+			if ( array[i] === item ) {
+				return i;
+			}
+		}
+		return -1;
+	};
+
+	endsWith = function( value, pattern ) {
+		return value.substr( value.length - pattern.length ) === pattern;
+	};
+
+	extend = function() {
+		var options, name, src, copy, copyIsArray, clone,
+			target = arguments[0] || {},
+			i = 1,
+			length = arguments.length,
+			deep = false;
+
+		// Handle a deep copy situation
+		if ( typeof target === "boolean" ) {
+			deep = target;
+			target = arguments[1] || {};
+			// skip the boolean and the target
+			i = 2;
+		}
+
+		// Handle case when target is a string or something (possible in deep copy)
+		if ( typeof target !== "object" && !isFunction(target) ) {
+			target = {};
+		}
+
+		for ( ; i < length; i++ ) {
+			// Only deal with non-null/undefined values
+			if ( (options = arguments[ i ]) != null ) {
+				// Extend the base object
+				for ( name in options ) {
+					src = target[ name ];
+					copy = options[ name ];
+
+					// Prevent never-ending loop
+					if ( target === copy ) {
+						continue;
+					}
+
+					// Recurse if we're merging plain objects or arrays
+					if ( deep && copy && ( isObject(copy) || (copyIsArray = isArray(copy)) ) ) {
+						if ( copyIsArray ) {
+							copyIsArray = false;
+							clone = src && isArray(src) ? src : [];
+
+						} else {
+							clone = src && isObject(src) ? src : {};
+						}
+
+						// Never move original objects, clone them
+						target[ name ] = extend( deep, clone, copy );
+
+					// Don't bring in undefined values
+					} else if ( copy !== undefined ) {
+						target[ name ] = copy;
+					}
+				}
+			}
+		}
+
+		// Return the modified object
+		return target;
+	};
+
+	isArray = Array.isArray || function( obj ) {
+		return Object.prototype.toString.call( obj ) === "[object Array]";
+	};
+
+	isFunction = function( obj ) {
+		return Object.prototype.toString.call( obj ) === "[object Function]";
+	};
+
+	isObject = function( obj ) {
+		return Object.prototype.toString.call( obj ) === "[object Object]";
+	};
+
+	startsWith = function( value, pattern ) {
+		return value.indexOf( pattern ) === 0;
+	};
+
+	trim = function( value ) {
+		return ( value + "" ).replace( regexTrim, "" );
+	};
+
+	truncate = function( value ) {
+		if ( isNaN( value ) ) {
+			return NaN;
+		}
+		return Math[ value < 0 ? "ceil" : "floor" ]( value );
+	};
+
+	zeroPad = function( str, count, left ) {
+		var l;
+		for ( l = str.length; l < count; l += 1 ) {
+			str = ( left ? ("0" + str) : (str + "0") );
+		}
+		return str;
+	};
+
+	//
+	// private Globalization utility functions
+	//
+
+	appendPreOrPostMatch = function( preMatch, strings ) {
+		// appends pre- and post- token match strings while removing escaped characters.
+		// Returns a single quote count which is used to determine if the token occurs
+		// in a string literal.
+		var quoteCount = 0,
+			escaped = false;
+		for ( var i = 0, il = preMatch.length; i < il; i++ ) {
+			var c = preMatch.charAt( i );
+			switch ( c ) {
+				case "\'":
+					if ( escaped ) {
+						strings.push( "\'" );
+					}
+					else {
+						quoteCount++;
+					}
+					escaped = false;
+					break;
+				case "\\":
+					if ( escaped ) {
+						strings.push( "\\" );
+					}
+					escaped = !escaped;
+					break;
+				default:
+					strings.push( c );
+					escaped = false;
+					break;
+			}
+		}
+		return quoteCount;
+	};
+
+	expandFormat = function( cal, format ) {
+		// expands unspecified or single character date formats into the full pattern.
+		format = format || "F";
+		var pattern,
+			patterns = cal.patterns,
+			len = format.length;
+		if ( len === 1 ) {
+			pattern = patterns[ format ];
+			if ( !pattern ) {
+				throw "Invalid date format string \'" + format + "\'.";
+			}
+			format = pattern;
+		}
+		else if ( len === 2 && format.charAt(0) === "%" ) {
+			// %X escape format -- intended as a custom format string that is only one character, not a built-in format.
+			format = format.charAt( 1 );
+		}
+		return format;
+	};
+
+	formatDate = function( value, format, culture ) {
+		var cal = culture.calendar,
+			convert = cal.convert,
+			ret;
+
+		if ( !format || !format.length || format === "i" ) {
+			if ( culture && culture.name.length ) {
+				if ( convert ) {
+					// non-gregorian calendar, so we cannot use built-in toLocaleString()
+					ret = formatDate( value, cal.patterns.F, culture );
+				}
+				else {
+					var eraDate = new Date( value.getTime() ),
+						era = getEra( value, cal.eras );
+					eraDate.setFullYear( getEraYear(value, cal, era) );
+					ret = eraDate.toLocaleString();
+				}
+			}
+			else {
+				ret = value.toString();
+			}
+			return ret;
+		}
+
+		var eras = cal.eras,
+			sortable = format === "s";
+		format = expandFormat( cal, format );
+
+		// Start with an empty string
+		ret = [];
+		var hour,
+			zeros = [ "0", "00", "000" ],
+			foundDay,
+			checkedDay,
+			dayPartRegExp = /([^d]|^)(d|dd)([^d]|$)/g,
+			quoteCount = 0,
+			tokenRegExp = getTokenRegExp(),
+			converted;
+
+		function padZeros( num, c ) {
+			var r, s = num + "";
+			if ( c > 1 && s.length < c ) {
+				r = ( zeros[c - 2] + s);
+				return r.substr( r.length - c, c );
+			}
+			else {
+				r = s;
+			}
+			return r;
+		}
+
+		function hasDay() {
+			if ( foundDay || checkedDay ) {
+				return foundDay;
+			}
+			foundDay = dayPartRegExp.test( format );
+			checkedDay = true;
+			return foundDay;
+		}
+
+		function getPart( date, part ) {
+			if ( converted ) {
+				return converted[ part ];
+			}
+			switch ( part ) {
+				case 0:
+					return date.getFullYear();
+				case 1:
+					return date.getMonth();
+				case 2:
+					return date.getDate();
+				default:
+					throw "Invalid part value " + part;
+			}
+		}
+
+		if ( !sortable && convert ) {
+			converted = convert.fromGregorian( value );
+		}
+
+		for ( ; ; ) {
+			// Save the current index
+			var index = tokenRegExp.lastIndex,
+				// Look for the next pattern
+				ar = tokenRegExp.exec( format );
+
+			// Append the text before the pattern (or the end of the string if not found)
+			var preMatch = format.slice( index, ar ? ar.index : format.length );
+			quoteCount += appendPreOrPostMatch( preMatch, ret );
+
+			if ( !ar ) {
+				break;
+			}
+
+			// do not replace any matches that occur inside a string literal.
+			if ( quoteCount % 2 ) {
+				ret.push( ar[0] );
+				continue;
+			}
+
+			var current = ar[ 0 ],
+				clength = current.length;
+
+			switch ( current ) {
+				case "ddd":
+					//Day of the week, as a three-letter abbreviation
+				case "dddd":
+					// Day of the week, using the full name
+					var names = ( clength === 3 ) ? cal.days.namesAbbr : cal.days.names;
+					ret.push( names[value.getDay()] );
+					break;
+				case "d":
+					// Day of month, without leading zero for single-digit days
+				case "dd":
+					// Day of month, with leading zero for single-digit days
+					foundDay = true;
+					ret.push(
+						padZeros( getPart(value, 2), clength )
+					);
+					break;
+				case "MMM":
+					// Month, as a three-letter abbreviation
+				case "MMMM":
+					// Month, using the full name
+					var part = getPart( value, 1 );
+					ret.push(
+						( cal.monthsGenitive && hasDay() ) ?
+						( cal.monthsGenitive[ clength === 3 ? "namesAbbr" : "names" ][ part ] ) :
+						( cal.months[ clength === 3 ? "namesAbbr" : "names" ][ part ] )
+					);
+					break;
+				case "M":
+					// Month, as digits, with no leading zero for single-digit months
+				case "MM":
+					// Month, as digits, with leading zero for single-digit months
+					ret.push(
+						padZeros( getPart(value, 1) + 1, clength )
+					);
+					break;
+				case "y":
+					// Year, as two digits, but with no leading zero for years less than 10
+				case "yy":
+					// Year, as two digits, with leading zero for years less than 10
+				case "yyyy":
+					// Year represented by four full digits
+					part = converted ? converted[ 0 ] : getEraYear( value, cal, getEra(value, eras), sortable );
+					if ( clength < 4 ) {
+						part = part % 100;
+					}
+					ret.push(
+						padZeros( part, clength )
+					);
+					break;
+				case "h":
+					// Hours with no leading zero for single-digit hours, using 12-hour clock
+				case "hh":
+					// Hours with leading zero for single-digit hours, using 12-hour clock
+					hour = value.getHours() % 12;
+					if ( hour === 0 ) hour = 12;
+					ret.push(
+						padZeros( hour, clength )
+					);
+					break;
+				case "H":
+					// Hours with no leading zero for single-digit hours, using 24-hour clock
+				case "HH":
+					// Hours with leading zero for single-digit hours, using 24-hour clock
+					ret.push(
+						padZeros( value.getHours(), clength )
+					);
+					break;
+				case "m":
+					// Minutes with no leading zero for single-digit minutes
+				case "mm":
+					// Minutes with leading zero for single-digit minutes
+					ret.push(
+						padZeros( value.getMinutes(), clength )
+					);
+					break;
+				case "s":
+					// Seconds with no leading zero for single-digit seconds
+				case "ss":
+					// Seconds with leading zero for single-digit seconds
+					ret.push(
+						padZeros( value.getSeconds(), clength )
+					);
+					break;
+				case "t":
+					// One character am/pm indicator ("a" or "p")
+				case "tt":
+					// Multicharacter am/pm indicator
+					part = value.getHours() < 12 ? ( cal.AM ? cal.AM[0] : " " ) : ( cal.PM ? cal.PM[0] : " " );
+					ret.push( clength === 1 ? part.charAt(0) : part );
+					break;
+				case "f":
+					// Deciseconds
+				case "ff":
+					// Centiseconds
+				case "fff":
+					// Milliseconds
+					ret.push(
+						padZeros( value.getMilliseconds(), 3 ).substr( 0, clength )
+					);
+					break;
+				case "z":
+					// Time zone offset, no leading zero
+				case "zz":
+					// Time zone offset with leading zero
+					hour = value.getTimezoneOffset() / 60;
+					ret.push(
+						( hour <= 0 ? "+" : "-" ) + padZeros( Math.floor(Math.abs(hour)), clength )
+					);
+					break;
+				case "zzz":
+					// Time zone offset with leading zero
+					hour = value.getTimezoneOffset() / 60;
+					ret.push(
+						( hour <= 0 ? "+" : "-" ) + padZeros( Math.floor(Math.abs(hour)), 2 ) +
+						// Hard coded ":" separator, rather than using cal.TimeSeparator
+						// Repeated here for consistency, plus ":" was already assumed in date parsing.
+						":" + padZeros( Math.abs(value.getTimezoneOffset() % 60), 2 )
+					);
+					break;
+				case "g":
+				case "gg":
+					if ( cal.eras ) {
+						ret.push(
+							cal.eras[ getEra(value, eras) ].name
+						);
+					}
+					break;
+			case "/":
+				ret.push( cal["/"] );
+				break;
+			default:
+				throw "Invalid date format pattern \'" + current + "\'.";
+			}
+		}
+		return ret.join( "" );
+	};
+
+	// formatNumber
+	(function() {
+		var expandNumber;
+
+		expandNumber = function( number, precision, formatInfo ) {
+			var groupSizes = formatInfo.groupSizes,
+				curSize = groupSizes[ 0 ],
+				curGroupIndex = 1,
+				factor = Math.pow( 10, precision ),
+				rounded = Math.round( number * factor ) / factor;
+
+			if ( !isFinite(rounded) ) {
+				rounded = number;
+			}
+			number = rounded;
+
+			var numberString = number+"",
+				right = "",
+				split = numberString.split( /e/i ),
+				exponent = split.length > 1 ? parseInt( split[1], 10 ) : 0;
+			numberString = split[ 0 ];
+			split = numberString.split( "." );
+			numberString = split[ 0 ];
+			right = split.length > 1 ? split[ 1 ] : "";
+
+			var l;
+			if ( exponent > 0 ) {
+				right = zeroPad( right, exponent, false );
+				numberString += right.slice( 0, exponent );
+				right = right.substr( exponent );
+			}
+			else if ( exponent < 0 ) {
+				exponent = -exponent;
+				numberString = zeroPad( numberString, exponent + 1, true );
+				right = numberString.slice( -exponent, numberString.length ) + right;
+				numberString = numberString.slice( 0, -exponent );
+			}
+
+			if ( precision > 0 ) {
+				right = formatInfo[ "." ] +
+					( (right.length > precision) ? right.slice(0, precision) : zeroPad(right, precision) );
+			}
+			else {
+				right = "";
+			}
+
+			var stringIndex = numberString.length - 1,
+				sep = formatInfo[ "," ],
+				ret = "";
+
+			while ( stringIndex >= 0 ) {
+				if ( curSize === 0 || curSize > stringIndex ) {
+					return numberString.slice( 0, stringIndex + 1 ) + ( ret.length ? (sep + ret + right) : right );
+				}
+				ret = numberString.slice( stringIndex - curSize + 1, stringIndex + 1 ) + ( ret.length ? (sep + ret) : "" );
+
+				stringIndex -= curSize;
+
+				if ( curGroupIndex < groupSizes.length ) {
+					curSize = groupSizes[ curGroupIndex ];
+					curGroupIndex++;
+				}
+			}
+
+			return numberString.slice( 0, stringIndex + 1 ) + sep + ret + right;
+		};
+
+		formatNumber = function( value, format, culture ) {
+			if ( !isFinite(value) ) {
+				if ( value === Infinity ) {
+					return culture.numberFormat.positiveInfinity;
+				}
+				if ( value === -Infinity ) {
+					return culture.numberFormat.negativeInfinity;
+				}
+				return culture.numberFormat[ "NaN" ];
+			}
+			if ( !format || format === "i" ) {
+				return culture.name.length ? value.toLocaleString() : value.toString();
+			}
+			format = format || "D";
+
+			var nf = culture.numberFormat,
+				number = Math.abs( value ),
+				precision = -1,
+				pattern;
+			if ( format.length > 1 ) precision = parseInt( format.slice(1), 10 );
+
+			var current = format.charAt( 0 ).toUpperCase(),
+				formatInfo;
+
+			switch ( current ) {
+				case "D":
+					pattern = "n";
+					number = truncate( number );
+					if ( precision !== -1 ) {
+						number = zeroPad( "" + number, precision, true );
+					}
+					if ( value < 0 ) number = "-" + number;
+					break;
+				case "N":
+					formatInfo = nf;
+					/* falls through */
+				case "C":
+					formatInfo = formatInfo || nf.currency;
+					/* falls through */
+				case "P":
+					formatInfo = formatInfo || nf.percent;
+					pattern = value < 0 ? formatInfo.pattern[ 0 ] : ( formatInfo.pattern[1] || "n" );
+					if ( precision === -1 ) precision = formatInfo.decimals;
+					number = expandNumber( number * (current === "P" ? 100 : 1), precision, formatInfo );
+					break;
+				default:
+					throw "Bad number format specifier: " + current;
+			}
+
+			var patternParts = /n|\$|-|%/g,
+				ret = "";
+			for ( ; ; ) {
+				var index = patternParts.lastIndex,
+					ar = patternParts.exec( pattern );
+
+				ret += pattern.slice( index, ar ? ar.index : pattern.length );
+
+				if ( !ar ) {
+					break;
+				}
+
+				switch ( ar[0] ) {
+					case "n":
+						ret += number;
+						break;
+					case "$":
+						ret += nf.currency.symbol;
+						break;
+					case "-":
+						// don't make 0 negative
+						if ( /[1-9]/.test(number) ) {
+							ret += nf[ "-" ];
+						}
+						break;
+					case "%":
+						ret += nf.percent.symbol;
+						break;
+				}
+			}
+
+			return ret;
+		};
+
+	}());
+
+	getTokenRegExp = function() {
+		// regular expression for matching date and time tokens in format strings.
+		return (/\/|dddd|ddd|dd|d|MMMM|MMM|MM|M|yyyy|yy|y|hh|h|HH|H|mm|m|ss|s|tt|t|fff|ff|f|zzz|zz|z|gg|g/g);
+	};
+
+	getEra = function( date, eras ) {
+		if ( !eras ) return 0;
+		var start, ticks = date.getTime();
+		for ( var i = 0, l = eras.length; i < l; i++ ) {
+			start = eras[ i ].start;
+			if ( start === null || ticks >= start ) {
+				return i;
+			}
+		}
+		return 0;
+	};
+
+	getEraYear = function( date, cal, era, sortable ) {
+		var year = date.getFullYear();
+		if ( !sortable && cal.eras ) {
+			// convert normal gregorian year to era-shifted gregorian
+			// year by subtracting the era offset
+			year -= cal.eras[ era ].offset;
+		}
+		return year;
+	};
+
+	// parseExact
+	(function() {
+		var expandYear,
+			getDayIndex,
+			getMonthIndex,
+			getParseRegExp,
+			outOfRange,
+			toUpper,
+			toUpperArray;
+
+		expandYear = function( cal, year ) {
+			// expands 2-digit year into 4 digits.
+			if ( year < 100 ) {
+				var now = new Date(),
+					era = getEra( now ),
+					curr = getEraYear( now, cal, era ),
+					twoDigitYearMax = cal.twoDigitYearMax;
+				twoDigitYearMax = typeof twoDigitYearMax === "string" ? new Date().getFullYear() % 100 + parseInt( twoDigitYearMax, 10 ) : twoDigitYearMax;
+				year += curr - ( curr % 100 );
+				if ( year > twoDigitYearMax ) {
+					year -= 100;
+				}
+			}
+			return year;
+		};
+
+		getDayIndex = function	( cal, value, abbr ) {
+			var ret,
+				days = cal.days,
+				upperDays = cal._upperDays;
+			if ( !upperDays ) {
+				cal._upperDays = upperDays = [
+					toUpperArray( days.names ),
+					toUpperArray( days.namesAbbr ),
+					toUpperArray( days.namesShort )
+				];
+			}
+			value = toUpper( value );
+			if ( abbr ) {
+				ret = arrayIndexOf( upperDays[1], value );
+				if ( ret === -1 ) {
+					ret = arrayIndexOf( upperDays[2], value );
+				}
+			}
+			else {
+				ret = arrayIndexOf( upperDays[0], value );
+			}
+			return ret;
+		};
+
+		getMonthIndex = function( cal, value, abbr ) {
+			var months = cal.months,
+				monthsGen = cal.monthsGenitive || cal.months,
+				upperMonths = cal._upperMonths,
+				upperMonthsGen = cal._upperMonthsGen;
+			if ( !upperMonths ) {
+				cal._upperMonths = upperMonths = [
+					toUpperArray( months.names ),
+					toUpperArray( months.namesAbbr )
+				];
+				cal._upperMonthsGen = upperMonthsGen = [
+					toUpperArray( monthsGen.names ),
+					toUpperArray( monthsGen.namesAbbr )
+				];
+			}
+			value = toUpper( value );
+			var i = arrayIndexOf( abbr ? upperMonths[1] : upperMonths[0], value );
+			if ( i < 0 ) {
+				i = arrayIndexOf( abbr ? upperMonthsGen[1] : upperMonthsGen[0], value );
+			}
+			return i;
+		};
+
+		getParseRegExp = function( cal, format ) {
+			// converts a format string into a regular expression with groups that
+			// can be used to extract date fields from a date string.
+			// check for a cached parse regex.
+			var re = cal._parseRegExp;
+			if ( !re ) {
+				cal._parseRegExp = re = {};
+			}
+			else {
+				var reFormat = re[ format ];
+				if ( reFormat ) {
+					return reFormat;
+				}
+			}
+
+			// expand single digit formats, then escape regular expression characters.
+			var expFormat = expandFormat( cal, format ).replace( /([\^\$\.\*\+\?\|\[\]\(\)\{\}])/g, "\\\\$1" ),
+				regexp = [ "^" ],
+				groups = [],
+				index = 0,
+				quoteCount = 0,
+				tokenRegExp = getTokenRegExp(),
+				match;
+
+			// iterate through each date token found.
+			while ( (match = tokenRegExp.exec(expFormat)) !== null ) {
+				var preMatch = expFormat.slice( index, match.index );
+				index = tokenRegExp.lastIndex;
+
+				// don't replace any matches that occur inside a string literal.
+				quoteCount += appendPreOrPostMatch( preMatch, regexp );
+				if ( quoteCount % 2 ) {
+					regexp.push( match[0] );
+					continue;
+				}
+
+				// add a regex group for the token.
+				var m = match[ 0 ],
+					len = m.length,
+					add;
+				switch ( m ) {
+					case "dddd": case "ddd":
+					case "MMMM": case "MMM":
+					case "gg": case "g":
+						add = "(\\D+)";
+						break;
+					case "tt": case "t":
+						add = "(\\D*)";
+						break;
+					case "yyyy":
+					case "fff":
+					case "ff":
+					case "f":
+						add = "(\\d{" + len + "})";
+						break;
+					case "dd": case "d":
+					case "MM": case "M":
+					case "yy": case "y":
+					case "HH": case "H":
+					case "hh": case "h":
+					case "mm": case "m":
+					case "ss": case "s":
+						add = "(\\d\\d?)";
+						break;
+					case "zzz":
+						add = "([+-]?\\d\\d?:\\d{2})";
+						break;
+					case "zz": case "z":
+						add = "([+-]?\\d\\d?)";
+						break;
+					case "/":
+						add = "(\\/)";
+						break;
+					default:
+						throw "Invalid date format pattern \'" + m + "\'.";
+				}
+				if ( add ) {
+					regexp.push( add );
+				}
+				groups.push( match[0] );
+			}
+			appendPreOrPostMatch( expFormat.slice(index), regexp );
+			regexp.push( "$" );
+
+			// allow whitespace to differ when matching formats.
+			var regexpStr = regexp.join( "" ).replace( /\s+/g, "\\s+" ),
+				parseRegExp = { "regExp": regexpStr, "groups": groups };
+
+			// cache the regex for this format.
+			return re[ format ] = parseRegExp;
+		};
+
+		outOfRange = function( value, low, high ) {
+			return value < low || value > high;
+		};
+
+		toUpper = function( value ) {
+			// "he-IL" has non-breaking space in weekday names.
+			return value.split( "\u00A0" ).join( " " ).toUpperCase();
+		};
+
+		toUpperArray = function( arr ) {
+			var results = [];
+			for ( var i = 0, l = arr.length; i < l; i++ ) {
+				results[ i ] = toUpper( arr[i] );
+			}
+			return results;
+		};
+
+		parseExact = function( value, format, culture ) {
+			// try to parse the date string by matching against the format string
+			// while using the specified culture for date field names.
+			value = trim( value );
+			var cal = culture.calendar,
+				// convert date formats into regular expressions with groupings.
+				// use the regexp to determine the input format and extract the date fields.
+				parseInfo = getParseRegExp( cal, format ),
+				match = new RegExp( parseInfo.regExp ).exec( value );
+			if ( match === null ) {
+				return null;
+			}
+			// found a date format that matches the input.
+			var groups = parseInfo.groups,
+				era = null, year = null, month = null, date = null, weekDay = null,
+				hour = 0, hourOffset, min = 0, sec = 0, msec = 0, tzMinOffset = null,
+				pmHour = false;
+			// iterate the format groups to extract and set the date fields.
+			for ( var j = 0, jl = groups.length; j < jl; j++ ) {
+				var matchGroup = match[ j + 1 ];
+				if ( matchGroup ) {
+					var current = groups[ j ],
+						clength = current.length,
+						matchInt = parseInt( matchGroup, 10 );
+					switch ( current ) {
+						case "dd": case "d":
+							// Day of month.
+							date = matchInt;
+							// check that date is generally in valid range, also checking overflow below.
+							if ( outOfRange(date, 1, 31) ) return null;
+							break;
+						case "MMM": case "MMMM":
+							month = getMonthIndex( cal, matchGroup, clength === 3 );
+							if ( outOfRange(month, 0, 11) ) return null;
+							break;
+						case "M": case "MM":
+							// Month.
+							month = matchInt - 1;
+							if ( outOfRange(month, 0, 11) ) return null;
+							break;
+						case "y": case "yy":
+						case "yyyy":
+							year = clength < 4 ? expandYear( cal, matchInt ) : matchInt;
+							if ( outOfRange(year, 0, 9999) ) return null;
+							break;
+						case "h": case "hh":
+							// Hours (12-hour clock).
+							hour = matchInt;
+							if ( hour === 12 ) hour = 0;
+							if ( outOfRange(hour, 0, 11) ) return null;
+							break;
+						case "H": case "HH":
+							// Hours (24-hour clock).
+							hour = matchInt;
+							if ( outOfRange(hour, 0, 23) ) return null;
+							break;
+						case "m": case "mm":
+							// Minutes.
+							min = matchInt;
+							if ( outOfRange(min, 0, 59) ) return null;
+							break;
+						case "s": case "ss":
+							// Seconds.
+							sec = matchInt;
+							if ( outOfRange(sec, 0, 59) ) return null;
+							break;
+						case "tt": case "t":
+							// AM/PM designator.
+							// see if it is standard, upper, or lower case PM. If not, ensure it is at least one of
+							// the AM tokens. If not, fail the parse for this format.
+							pmHour = cal.PM && ( matchGroup === cal.PM[0] || matchGroup === cal.PM[1] || matchGroup === cal.PM[2] );
+							if (
+								!pmHour && (
+									!cal.AM || ( matchGroup !== cal.AM[0] && matchGroup !== cal.AM[1] && matchGroup !== cal.AM[2] )
+								)
+							) return null;
+							break;
+						case "f":
+							// Deciseconds.
+						case "ff":
+							// Centiseconds.
+						case "fff":
+							// Milliseconds.
+							msec = matchInt * Math.pow( 10, 3 - clength );
+							if ( outOfRange(msec, 0, 999) ) return null;
+							break;
+						case "ddd":
+							// Day of week.
+						case "dddd":
+							// Day of week.
+							weekDay = getDayIndex( cal, matchGroup, clength === 3 );
+							if ( outOfRange(weekDay, 0, 6) ) return null;
+							break;
+						case "zzz":
+							// Time zone offset in +/- hours:min.
+							var offsets = matchGroup.split( /:/ );
+							if ( offsets.length !== 2 ) return null;
+							hourOffset = parseInt( offsets[0], 10 );
+							if ( outOfRange(hourOffset, -12, 13) ) return null;
+							var minOffset = parseInt( offsets[1], 10 );
+							if ( outOfRange(minOffset, 0, 59) ) return null;
+							tzMinOffset = ( hourOffset * 60 ) + ( startsWith(matchGroup, "-") ? -minOffset : minOffset );
+							break;
+						case "z": case "zz":
+							// Time zone offset in +/- hours.
+							hourOffset = matchInt;
+							if ( outOfRange(hourOffset, -12, 13) ) return null;
+							tzMinOffset = hourOffset * 60;
+							break;
+						case "g": case "gg":
+							var eraName = matchGroup;
+							if ( !eraName || !cal.eras ) return null;
+							eraName = trim( eraName.toLowerCase() );
+							for ( var i = 0, l = cal.eras.length; i < l; i++ ) {
+								if ( eraName === cal.eras[i].name.toLowerCase() ) {
+									era = i;
+									break;
+								}
+							}
+							// could not find an era with that name
+							if ( era === null ) return null;
+							break;
+					}
+				}
+			}
+			var result = new Date(), defaultYear, convert = cal.convert;
+			defaultYear = convert ? convert.fromGregorian( result )[ 0 ] : result.getFullYear();
+			if ( year === null ) {
+				year = defaultYear;
+			}
+			else if ( cal.eras ) {
+				// year must be shifted to normal gregorian year
+				// but not if year was not specified, its already normal gregorian
+				// per the main if clause above.
+				year += cal.eras[( era || 0 )].offset;
+			}
+			// set default day and month to 1 and January, so if unspecified, these are the defaults
+			// instead of the current day/month.
+			if ( month === null ) {
+				month = 0;
+			}
+			if ( date === null ) {
+				date = 1;
+			}
+			// now have year, month, and date, but in the culture's calendar.
+			// convert to gregorian if necessary
+			if ( convert ) {
+				result = convert.toGregorian( year, month, date );
+				// conversion failed, must be an invalid match
+				if ( result === null ) return null;
+			}
+			else {
+				// have to set year, month and date together to avoid overflow based on current date.
+				result.setFullYear( year, month, date );
+				// check to see if date overflowed for specified month (only checked 1-31 above).
+				if ( result.getDate() !== date ) return null;
+				// invalid day of week.
+				if ( weekDay !== null && result.getDay() !== weekDay ) {
+					return null;
+				}
+			}
+			// if pm designator token was found make sure the hours fit the 24-hour clock.
+			if ( pmHour && hour < 12 ) {
+				hour += 12;
+			}
+			result.setHours( hour, min, sec, msec );
+			if ( tzMinOffset !== null ) {
+				// adjust timezone to utc before applying local offset.
+				var adjustedMin = result.getMinutes() - ( tzMinOffset + result.getTimezoneOffset() );
+				// Safari limits hours and minutes to the range of -127 to 127.  We need to use setHours
+				// to ensure both these fields will not exceed this range.	adjustedMin will range
+				// somewhere between -1440 and 1500, so we only need to split this into hours.
+				result.setHours( result.getHours() + parseInt(adjustedMin / 60, 10), adjustedMin % 60 );
+			}
+			return result;
+		};
+	}());
+
+	parseNegativePattern = function( value, nf, negativePattern ) {
+		var neg = nf[ "-" ],
+			pos = nf[ "+" ],
+			ret;
+		switch ( negativePattern ) {
+			case "n -":
+				neg = " " + neg;
+				pos = " " + pos;
+				/* falls through */
+			case "n-":
+				if ( endsWith(value, neg) ) {
+					ret = [ "-", value.substr(0, value.length - neg.length) ];
+				}
+				else if ( endsWith(value, pos) ) {
+					ret = [ "+", value.substr(0, value.length - pos.length) ];
+				}
+				break;
+			case "- n":
+				neg += " ";
+				pos += " ";
+				/* falls through */
+			case "-n":
+				if ( startsWith(value, neg) ) {
+					ret = [ "-", value.substr(neg.length) ];
+				}
+				else if ( startsWith(value, pos) ) {
+					ret = [ "+", value.substr(pos.length) ];
+				}
+				break;
+			case "(n)":
+				if ( startsWith(value, "(") && endsWith(value, ")") ) {
+					ret = [ "-", value.substr(1, value.length - 2) ];
+				}
+				break;
+		}
+		return ret || [ "", value ];
+	};
+
+	//
+	// public instance functions
+	//
+
+	Globalize.prototype.findClosestCulture = function( cultureSelector ) {
+		return Globalize.findClosestCulture.call( this, cultureSelector );
+	};
+
+	Globalize.prototype.format = function( value, format, cultureSelector ) {
+		return Globalize.format.call( this, value, format, cultureSelector );
+	};
+
+	Globalize.prototype.localize = function( key, cultureSelector ) {
+		return Globalize.localize.call( this, key, cultureSelector );
+	};
+
+	Globalize.prototype.parseInt = function( value, radix, cultureSelector ) {
+		return Globalize.parseInt.call( this, value, radix, cultureSelector );
+	};
+
+	Globalize.prototype.parseFloat = function( value, radix, cultureSelector ) {
+		return Globalize.parseFloat.call( this, value, radix, cultureSelector );
+	};
+
+	Globalize.prototype.culture = function( cultureSelector ) {
+		return Globalize.culture.call( this, cultureSelector );
+	};
+
+	//
+	// public singleton functions
+	//
+
+	Globalize.addCultureInfo = function( cultureName, baseCultureName, info ) {
+
+		var base = {},
+			isNew = false;
+
+		if ( typeof cultureName !== "string" ) {
+			// cultureName argument is optional string. If not specified, assume info is first
+			// and only argument. Specified info deep-extends current culture.
+			info = cultureName;
+			cultureName = this.culture().name;
+			base = this.cultures[ cultureName ];
+		} else if ( typeof baseCultureName !== "string" ) {
+			// baseCultureName argument is optional string. If not specified, assume info is second
+			// argument. Specified info deep-extends specified culture.
+			// If specified culture does not exist, create by deep-extending default
+			info = baseCultureName;
+			isNew = ( this.cultures[ cultureName ] == null );
+			base = this.cultures[ cultureName ] || this.cultures[ "default" ];
+		} else {
+			// cultureName and baseCultureName specified. Assume a new culture is being created
+			// by deep-extending an specified base culture
+			isNew = true;
+			base = this.cultures[ baseCultureName ];
+		}
+
+		this.cultures[ cultureName ] = extend(true, {},
+			base,
+			info
+		);
+		// Make the standard calendar the current culture if it's a new culture
+		if ( isNew ) {
+			this.cultures[ cultureName ].calendar = this.cultures[ cultureName ].calendars.standard;
+		}
+	};
+
+	Globalize.findClosestCulture = function( name ) {
+		var match;
+		if ( !name ) {
+			return this.findClosestCulture( this.cultureSelector ) || this.cultures[ "default" ];
+		}
+		if ( typeof name === "string" ) {
+			name = name.split( "," );
+		}
+		if ( isArray(name) ) {
+			var lang,
+				cultures = this.cultures,
+				list = name,
+				i, l = list.length,
+				prioritized = [];
+			for ( i = 0; i < l; i++ ) {
+				name = trim( list[i] );
+				var pri, parts = name.split( ";" );
+				lang = trim( parts[0] );
+				if ( parts.length === 1 ) {
+					pri = 1;
+				}
+				else {
+					name = trim( parts[1] );
+					if ( name.indexOf("q=") === 0 ) {
+						name = name.substr( 2 );
+						pri = parseFloat( name );
+						pri = isNaN( pri ) ? 0 : pri;
+					}
+					else {
+						pri = 1;
+					}
+				}
+				prioritized.push({ lang: lang, pri: pri });
+			}
+			prioritized.sort(function( a, b ) {
+				if ( a.pri < b.pri ) {
+					return 1;
+				} else if ( a.pri > b.pri ) {
+					return -1;
+				}
+				return 0;
+			});
+			// exact match
+			for ( i = 0; i < l; i++ ) {
+				lang = prioritized[ i ].lang;
+				match = cultures[ lang ];
+				if ( match ) {
+					return match;
+				}
+			}
+
+			// neutral language match
+			for ( i = 0; i < l; i++ ) {
+				lang = prioritized[ i ].lang;
+				do {
+					var index = lang.lastIndexOf( "-" );
+					if ( index === -1 ) {
+						break;
+					}
+					// strip off the last part. e.g. en-US => en
+					lang = lang.substr( 0, index );
+					match = cultures[ lang ];
+					if ( match ) {
+						return match;
+					}
+				}
+				while ( 1 );
+			}
+
+			// last resort: match first culture using that language
+			for ( i = 0; i < l; i++ ) {
+				lang = prioritized[ i ].lang;
+				for ( var cultureKey in cultures ) {
+					var culture = cultures[ cultureKey ];
+					if ( culture.language == lang ) {
+						return culture;
+					}
+				}
+			}
+		}
+		else if ( typeof name === "object" ) {
+			return name;
+		}
+		return match || null;
+	};
+
+	Globalize.format = function( value, format, cultureSelector ) {
+		var culture = this.findClosestCulture( cultureSelector );
+		if ( value instanceof Date ) {
+			value = formatDate( value, format, culture );
+		}
+		else if ( typeof value === "number" ) {
+			value = formatNumber( value, format, culture );
+		}
+		return value;
+	};
+
+	Globalize.localize = function( key, cultureSelector ) {
+		return this.findClosestCulture( cultureSelector ).messages[ key ] ||
+			this.cultures[ "default" ].messages[ key ];
+	};
+
+	Globalize.parseDate = function( value, formats, culture ) {
+		culture = this.findClosestCulture( culture );
+
+		var date, prop, patterns;
+		if ( formats ) {
+			if ( typeof formats === "string" ) {
+				formats = [ formats ];
+			}
+			if ( formats.length ) {
+				for ( var i = 0, l = formats.length; i < l; i++ ) {
+					var format = formats[ i ];
+					if ( format ) {
+						date = parseExact( value, format, culture );
+						if ( date ) {
+							break;
+						}
+					}
+				}
+			}
+		} else {
+			patterns = culture.calendar.patterns;
+			for ( prop in patterns ) {
+				date = parseExact( value, patterns[prop], culture );
+				if ( date ) {
+					break;
+				}
+			}
+		}
+
+		return date || null;
+	};
+
+	Globalize.parseInt = function( value, radix, cultureSelector ) {
+		return truncate( Globalize.parseFloat(value, radix, cultureSelector) );
+	};
+
+	Globalize.parseFloat = function( value, radix, cultureSelector ) {
+		// radix argument is optional
+		if ( typeof radix !== "number" ) {
+			cultureSelector = radix;
+			radix = 10;
+		}
+
+		var culture = this.findClosestCulture( cultureSelector );
+		var ret = NaN,
+			nf = culture.numberFormat;
+
+		if ( value.indexOf(culture.numberFormat.currency.symbol) > -1 ) {
+			// remove currency symbol
+			value = value.replace( culture.numberFormat.currency.symbol, "" );
+			// replace decimal seperator
+			value = value.replace( culture.numberFormat.currency["."], culture.numberFormat["."] );
+		}
+
+		//Remove percentage character from number string before parsing
+		if ( value.indexOf(culture.numberFormat.percent.symbol) > -1){
+			value = value.replace( culture.numberFormat.percent.symbol, "" );
+		}
+
+		// remove spaces: leading, trailing and between - and number. Used for negative currency pt-BR
+		value = value.replace( / /g, "" );
+
+		// allow infinity or hexidecimal
+		if ( regexInfinity.test(value) ) {
+			ret = parseFloat( value );
+		}
+		else if ( !radix && regexHex.test(value) ) {
+			ret = parseInt( value, 16 );
+		}
+		else {
+
+			// determine sign and number
+			var signInfo = parseNegativePattern( value, nf, nf.pattern[0] ),
+				sign = signInfo[ 0 ],
+				num = signInfo[ 1 ];
+
+			// #44 - try parsing as "(n)"
+			if ( sign === "" && nf.pattern[0] !== "(n)" ) {
+				signInfo = parseNegativePattern( value, nf, "(n)" );
+				sign = signInfo[ 0 ];
+				num = signInfo[ 1 ];
+			}
+
+			// try parsing as "-n"
+			if ( sign === "" && nf.pattern[0] !== "-n" ) {
+				signInfo = parseNegativePattern( value, nf, "-n" );
+				sign = signInfo[ 0 ];
+				num = signInfo[ 1 ];
+			}
+
+			sign = sign || "+";
+
+			// determine exponent and number
+			var exponent,
+				intAndFraction,
+				exponentPos = num.indexOf( "e" );
+			if ( exponentPos < 0 ) exponentPos = num.indexOf( "E" );
+			if ( exponentPos < 0 ) {
+				intAndFraction = num;
+				exponent = null;
+			}
+			else {
+				intAndFraction = num.substr( 0, exponentPos );
+				exponent = num.substr( exponentPos + 1 );
+			}
+			// determine decimal position
+			var integer,
+				fraction,
+				decSep = nf[ "." ],
+				decimalPos = intAndFraction.indexOf( decSep );
+			if ( decimalPos < 0 ) {
+				integer = intAndFraction;
+				fraction = null;
+			}
+			else {
+				integer = intAndFraction.substr( 0, decimalPos );
+				fraction = intAndFraction.substr( decimalPos + decSep.length );
+			}
+			// handle groups (e.g. 1,000,000)
+			var groupSep = nf[ "," ];
+			integer = integer.split( groupSep ).join( "" );
+			var altGroupSep = groupSep.replace( /\u00A0/g, " " );
+			if ( groupSep !== altGroupSep ) {
+				integer = integer.split( altGroupSep ).join( "" );
+			}
+			// build a natively parsable number string
+			var p = sign + integer;
+			if ( fraction !== null ) {
+				p += "." + fraction;
+			}
+			if ( exponent !== null ) {
+				// exponent itself may have a number patternd
+				var expSignInfo = parseNegativePattern( exponent, nf, "-n" );
+				p += "e" + ( expSignInfo[0] || "+" ) + expSignInfo[ 1 ];
+			}
+			if ( regexParseFloat.test(p) ) {
+				ret = parseFloat( p );
+			}
+		}
+		return ret;
+	};
+
+	Globalize.culture = function( cultureSelector ) {
+		// setter
+		if ( typeof cultureSelector !== "undefined" ) {
+			this.cultureSelector = cultureSelector;
+		}
+		// getter
+		return this.findClosestCulture( cultureSelector ) || this.cultures[ "default" ];
+	};
+
+	}( this ));
+
+
+/***/ },
+/* 504 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = [
+		{
+			"name": "Alabama",
+			"abbreviation": "AL"
+		},
+		{
+			"name": "Alaska",
+			"abbreviation": "AK"
+		},
+		{
+			"name": "American Samoa",
+			"abbreviation": "AS"
+		},
+		{
+			"name": "Arizona",
+			"abbreviation": "AZ"
+		},
+		{
+			"name": "Arkansas",
+			"abbreviation": "AR"
+		},
+		{
+			"name": "California",
+			"abbreviation": "CA"
+		},
+		{
+			"name": "Colorado",
+			"abbreviation": "CO"
+		},
+		{
+			"name": "Connecticut",
+			"abbreviation": "CT"
+		},
+		{
+			"name": "Delaware",
+			"abbreviation": "DE"
+		},
+		{
+			"name": "District Of Columbia",
+			"abbreviation": "DC"
+		},
+		{
+			"name": "Federated States Of Micronesia",
+			"abbreviation": "FM"
+		},
+		{
+			"name": "Florida",
+			"abbreviation": "FL"
+		},
+		{
+			"name": "Georgia",
+			"abbreviation": "GA"
+		},
+		{
+			"name": "Guam",
+			"abbreviation": "GU"
+		},
+		{
+			"name": "Hawaii",
+			"abbreviation": "HI"
+		},
+		{
+			"name": "Idaho",
+			"abbreviation": "ID"
+		},
+		{
+			"name": "Illinois",
+			"abbreviation": "IL"
+		},
+		{
+			"name": "Indiana",
+			"abbreviation": "IN"
+		},
+		{
+			"name": "Iowa",
+			"abbreviation": "IA"
+		},
+		{
+			"name": "Kansas",
+			"abbreviation": "KS"
+		},
+		{
+			"name": "Kentucky",
+			"abbreviation": "KY"
+		},
+		{
+			"name": "Louisiana",
+			"abbreviation": "LA"
+		},
+		{
+			"name": "Maine",
+			"abbreviation": "ME"
+		},
+		{
+			"name": "Marshall Islands",
+			"abbreviation": "MH"
+		},
+		{
+			"name": "Maryland",
+			"abbreviation": "MD"
+		},
+		{
+			"name": "Massachusetts",
+			"abbreviation": "MA"
+		},
+		{
+			"name": "Michigan",
+			"abbreviation": "MI"
+		},
+		{
+			"name": "Minnesota",
+			"abbreviation": "MN"
+		},
+		{
+			"name": "Mississippi",
+			"abbreviation": "MS"
+		},
+		{
+			"name": "Missouri",
+			"abbreviation": "MO"
+		},
+		{
+			"name": "Montana",
+			"abbreviation": "MT"
+		},
+		{
+			"name": "Nebraska",
+			"abbreviation": "NE"
+		},
+		{
+			"name": "Nevada",
+			"abbreviation": "NV"
+		},
+		{
+			"name": "New Hampshire",
+			"abbreviation": "NH"
+		},
+		{
+			"name": "New Jersey",
+			"abbreviation": "NJ"
+		},
+		{
+			"name": "New Mexico",
+			"abbreviation": "NM"
+		},
+		{
+			"name": "New York",
+			"abbreviation": "NY"
+		},
+		{
+			"name": "North Carolina",
+			"abbreviation": "NC"
+		},
+		{
+			"name": "North Dakota",
+			"abbreviation": "ND"
+		},
+		{
+			"name": "Northern Mariana Islands",
+			"abbreviation": "MP"
+		},
+		{
+			"name": "Ohio",
+			"abbreviation": "OH"
+		},
+		{
+			"name": "Oklahoma",
+			"abbreviation": "OK"
+		},
+		{
+			"name": "Oregon",
+			"abbreviation": "OR"
+		},
+		{
+			"name": "Palau",
+			"abbreviation": "PW"
+		},
+		{
+			"name": "Pennsylvania",
+			"abbreviation": "PA"
+		},
+		{
+			"name": "Puerto Rico",
+			"abbreviation": "PR"
+		},
+		{
+			"name": "Rhode Island",
+			"abbreviation": "RI"
+		},
+		{
+			"name": "South Carolina",
+			"abbreviation": "SC"
+		},
+		{
+			"name": "South Dakota",
+			"abbreviation": "SD"
+		},
+		{
+			"name": "Tennessee",
+			"abbreviation": "TN"
+		},
+		{
+			"name": "Texas",
+			"abbreviation": "TX"
+		},
+		{
+			"name": "Utah",
+			"abbreviation": "UT"
+		},
+		{
+			"name": "Vermont",
+			"abbreviation": "VT"
+		},
+		{
+			"name": "Virgin Islands",
+			"abbreviation": "VI"
+		},
+		{
+			"name": "Virginia",
+			"abbreviation": "VA"
+		},
+		{
+			"name": "Washington",
+			"abbreviation": "WA"
+		},
+		{
+			"name": "West Virginia",
+			"abbreviation": "WV"
+		},
+		{
+			"name": "Wisconsin",
+			"abbreviation": "WI"
+		},
+		{
+			"name": "Wyoming",
+			"abbreviation": "WY"
+		}
+	]
+
+/***/ },
+/* 505 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    cx = __webpack_require__(237),
+	    compat = __webpack_require__(475),
+	    Header = __webpack_require__(506),
+	    Footer = __webpack_require__(507),
+	    Month = __webpack_require__(508),
+	    Year = __webpack_require__(509),
+	    Decade = __webpack_require__(510),
+	    Century = __webpack_require__(511),
+	    CustomPropTypes = __webpack_require__(476),
+	    createUncontrolledWidget = __webpack_require__(489),
+	    SlideTransition = __webpack_require__(512),
+	    dates = __webpack_require__(513),
+	    constants = __webpack_require__(514),
+	    _ = __webpack_require__(474); //values, omit
+
+	var dir = constants.directions,
+	    values = function (obj) {
+	  return Object.keys(obj).map(function (k) {
+	    return obj[k];
+	  });
+	},
+	    invert = function (obj) {
+	  return _.transform(obj, function (o, val, key) {
+	    o[val] = key;
+	  }, {});
+	};
+
+	var views = constants.calendarViews,
+	    VIEW_OPTIONS = values(views),
+	    ALT_VIEW = invert(constants.calendarViewHierarchy),
+	    NEXT_VIEW = constants.calendarViewHierarchy,
+	    VIEW_UNIT = constants.calendarViewUnits,
+	    VIEW = (function () {
+	  var _VIEW = {};
+	  _VIEW[views.MONTH] = Month;
+	  _VIEW[views.YEAR] = Year;
+	  _VIEW[views.DECADE] = Decade;
+	  _VIEW[views.CENTURY] = Century;
+	  return _VIEW;
+	})();
+
+	var MULTIPLIER = (function () {
+	  var _MULTIPLIER = {};
+	  _MULTIPLIER[views.YEAR] = 1;
+	  _MULTIPLIER[views.DECADE] = 10;
+	  _MULTIPLIER[views.CENTURY] = 100;
+	  return _MULTIPLIER;
+	})();
+
+	var VIEW_FORMATS = (function () {
+	  var _VIEW_FORMATS = {};
+	  _VIEW_FORMATS[views.MONTH] = "dateFormat";
+	  _VIEW_FORMATS[views.YEAR] = "monthFormat";
+	  _VIEW_FORMATS[views.DECADE] = "yearFormat";
+	  _VIEW_FORMATS[views.CENTURY] = "decadeFormat";
+	  return _VIEW_FORMATS;
+	})();
+
+	var propTypes = {
+
+	  onChange: React.PropTypes.func,
+	  value: React.PropTypes.instanceOf(Date),
+
+	  min: React.PropTypes.instanceOf(Date),
+	  max: React.PropTypes.instanceOf(Date),
+
+	  initialView: React.PropTypes.oneOf(VIEW_OPTIONS),
+
+	  finalView: function (props, propname, componentName) {
+	    var err = React.PropTypes.oneOf(VIEW_OPTIONS)(props, propname, componentName);
+
+	    if (err) return err;
+	    if (VIEW_OPTIONS.indexOf(props[propname]) < VIEW_OPTIONS.indexOf(props.initialView)) return new Error(("The `" + propname + "` prop: `" + props[propname] + "` cannot be 'lower' than the `initialView` \n                        prop. This creates a range that cannot be rendered.").replace(/\n\t/g, ""));
+	  },
+
+	  disabled: React.PropTypes.oneOfType([React.PropTypes.bool, React.PropTypes.oneOf(["disabled"])]),
+
+	  readOnly: React.PropTypes.oneOfType([React.PropTypes.bool, React.PropTypes.oneOf(["readOnly"])]),
+
+	  culture: React.PropTypes.string,
+
+	  footer: React.PropTypes.bool,
+
+	  headerFormat: CustomPropTypes.localeFormat,
+	  footerFormat: CustomPropTypes.localeFormat,
+
+	  dayFormat: CustomPropTypes.localeFormat,
+	  dateFormat: CustomPropTypes.localeFormat,
+	  monthFormat: CustomPropTypes.localeFormat,
+	  yearFormat: CustomPropTypes.localeFormat,
+	  decadeFormat: CustomPropTypes.localeFormat,
+	  centuryFormat: CustomPropTypes.localeFormat,
+
+	  messages: React.PropTypes.shape({
+	    moveBack: React.PropTypes.string,
+	    moveForward: React.PropTypes.string })
+	};
+
+	var Calendar = React.createClass({
+
+	  displayName: "Calendar",
+
+	  mixins: [__webpack_require__(481), __webpack_require__(482), __webpack_require__(483), __webpack_require__(487)],
+
+	  propTypes: propTypes,
+
+	  getInitialState: function () {
+	    var value = this.inRangeValue(this.props.value);
+
+	    return {
+	      selectedIndex: 0,
+	      view: this.props.initialView || "month",
+	      currentDate: value ? new Date(value) : this.inRangeValue(new Date())
+	    };
+	  },
+
+	  getDefaultProps: function () {
+	    return {
+
+	      value: null,
+	      min: new Date(1900, 0, 1),
+	      max: new Date(2099, 11, 31),
+
+	      initialView: "month",
+	      finalView: "century",
+
+	      tabIndex: "0",
+	      footer: false,
+
+	      headerFormat: dates.formats.MONTH_YEAR,
+	      footerFormat: dates.formats.FOOTER,
+
+	      dayFormat: dates.shortDay,
+	      dateFormat: dates.formats.DAY_OF_MONTH,
+	      monthFormat: dates.formats.MONTH_NAME_ABRV,
+	      yearFormat: dates.formats.YEAR,
+
+	      decadeFormat: function (dt, culture) {
+	        return "" + dates.format(dt, dates.formats.YEAR, culture) + " - " + dates.format(dates.endOf(dt, "decade"), dates.formats.YEAR, culture);
+	      },
+
+	      centuryFormat: function (dt, culture) {
+	        return "" + dates.format(dt, dates.formats.YEAR, culture) + " - " + dates.format(dates.endOf(dt, "century"), dates.formats.YEAR, culture);
+	      },
+
+	      messages: msgs({})
+	    };
+	  },
+
+	  componentWillReceiveProps: function (nextProps) {
+	    var bottom = VIEW_OPTIONS.indexOf(nextProps.initialView),
+	        top = VIEW_OPTIONS.indexOf(nextProps.finalView),
+	        current = VIEW_OPTIONS.indexOf(this.state.view),
+	        view = this.state.view,
+	        val = this.inRangeValue(nextProps.value);
+
+	    if (current < bottom) this.setState({ view: view = nextProps.initialView });else if (current > top) this.setState({ view: view = nextProps.finalView });
+
+	    //if the value changes reset views to the new one
+	    if (!dates.eq(val, dateOrNull(this.props.value), VIEW_UNIT[view])) this.setState({
+	      currentDate: val ? new Date(val) : new Date()
+	    });
+	  },
+
+	  render: function () {
+	    var _this = this;
+
+	    var _$omit = _.omit(this.props, Object.keys(propTypes));
+
+	    var className = _$omit.className;
+	    var props = babelHelpers.objectWithoutProperties(_$omit, ["className"]);
+	    var View = VIEW[this.state.view];
+	    var viewProps = _.pick(this.props, Object.keys(compat.type(View).propTypes));
+	    var unit = this.state.view;
+	    var messages = msgs(this.props.messages);
+
+	    var disabled = this.props.disabled || this.props.readOnly;
+	    var date = this.state.currentDate;
+	    var todaysDate = new Date();
+	    var todayNotInRange = !dates.inRange(todaysDate, this.props.min, this.props.max, unit);
+	    var labelId = this._id("_view_label");
+	    var key = this.state.view + "_" + dates[this.state.view](date);
+	    var id = this._id("_view");
+
+	    return React.createElement(
+	      "div",
+	      babelHelpers._extends({}, props, {
+	        onKeyDown: this._keyDown,
+	        onFocus: this._maybeHandle(this._focus.bind(null, true), true),
+	        onBlur: this._focus.bind(null, false),
+	        className: cx(className, "rw-calendar", "rw-widget", {
+	          "rw-state-focus": this.state.focused,
+	          "rw-state-disabled": this.props.disabled,
+	          "rw-state-readonly": this.props.readOnly,
+	          "rw-rtl": this.isRtl()
+	        }) }),
+	      React.createElement(Header, {
+	        label: this._label(),
+	        labelId: labelId,
+	        messages: messages,
+	        upDisabled: disabled || this.state.view === this.props.finalView,
+	        prevDisabled: disabled || !dates.inRange(this.nextDate(dir.LEFT), this.props.min, this.props.max, unit),
+	        nextDisabled: disabled || !dates.inRange(this.nextDate(dir.RIGHT), this.props.min, this.props.max, unit),
+	        onViewChange: this._maybeHandle(this.navigate.bind(null, dir.UP, null)),
+	        onMoveLeft: this._maybeHandle(this.navigate.bind(null, dir.LEFT, null)),
+	        onMoveRight: this._maybeHandle(this.navigate.bind(null, dir.RIGHT, null)) }),
+	      React.createElement(
+	        SlideTransition,
+	        {
+	          ref: "animation",
+	          duration: props.duration,
+	          direction: this.state.slideDirection,
+	          onAnimate: function () {
+	            return _this._focus(true);
+	          } },
+	        React.createElement(View, babelHelpers._extends({}, viewProps, {
+	          tabIndex: "-1",
+	          ref: "currentView",
+	          key: key,
+	          id: id,
+	          "aria-labelledby": labelId,
+	          selectedDate: this.props.value,
+	          today: todaysDate,
+	          value: this.state.currentDate,
+	          onChange: this._maybeHandle(this.change),
+	          onKeyDown: this._maybeHandle(this._keyDown),
+	          onMoveLeft: this._maybeHandle(this.navigate.bind(null, dir.LEFT)),
+	          onMoveRight: this._maybeHandle(this.navigate.bind(null, dir.RIGHT)) }))
+	      ),
+	      this.props.footer && React.createElement(Footer, {
+	        value: todaysDate,
+	        format: this.props.footerFormat,
+	        culture: this.props.culture,
+	        disabled: this.props.disabled || todayNotInRange,
+	        readOnly: this.props.readOnly,
+	        onClick: this._maybeHandle(this.select)
+	      })
+	    );
+	  },
+
+	  navigate: function (direction, date) {
+	    var view = this.state.view,
+	        slideDir = direction === dir.LEFT || direction === dir.UP ? "right" : "left";
+
+	    if (!date) date = [dir.LEFT, dir.RIGHT].indexOf(direction) !== -1 ? this.nextDate(direction) : this.state.currentDate;
+
+	    if (direction === dir.DOWN) view = ALT_VIEW[view] || view;
+
+	    if (direction === dir.UP) view = NEXT_VIEW[view] || view;
+
+	    if (this.isValidView(view) && dates.inRange(date, this.props.min, this.props.max, view)) {
+	      this._focus(true, "nav");
+
+	      this.setState({
+	        currentDate: date,
+	        slideDirection: slideDir,
+	        view: view
+	      });
+	    }
+	  },
+
+	  _focus: function (focused, e) {
+	    var _this = this;
+
+	    if (+this.props.tabIndex === -1) return;
+
+	    this.setTimeout("focus", function () {
+
+	      if (focused) compat.findDOMNode(_this).focus();
+
+	      if (focused !== _this.state.focused) {
+	        _this.notify(focused ? "onFocus" : "onBlur", e);
+	        _this.setState({ focused: focused });
+	      }
+	    });
+	  },
+
+	  change: function (date) {
+	    var _this = this;
+
+	    setTimeout(function () {
+	      return _this._focus(true);
+	    });
+
+	    if (this.props.onChange && this.state.view === this.props.initialView) return this.notify("onChange", date);
+
+	    this.navigate(dir.DOWN, date);
+	  },
+
+	  select: function (date) {
+	    var view = this.props.initialView,
+	        slideDir = view !== this.state.view || dates.gt(date, this.state.currentDate) ? "left" // move down to a the view
+	    : "right";
+
+	    this.notify("onChange", date);
+
+	    if (this.isValidView(view) && dates.inRange(date, this.props.min, this.props.max, view)) {
+	      this._focus(true, "nav");
+
+	      this.setState({
+	        currentDate: date,
+	        slideDirection: slideDir,
+	        view: view
+	      });
+	    }
+	  },
+
+	  nextDate: function (direction) {
+	    var method = direction === dir.LEFT ? "subtract" : "add",
+	        view = this.state.view,
+	        unit = view === views.MONTH ? view : views.YEAR,
+	        multi = MULTIPLIER[view] || 1;
+
+	    return dates[method](this.state.currentDate, 1 * multi, unit);
+	  },
+
+	  _keyDown: function (e) {
+	    var ctrl = e.ctrlKey,
+	        key = e.key;
+
+	    if (ctrl) {
+	      if (key === "ArrowDown") {
+	        e.preventDefault();
+	        this.navigate(dir.DOWN);
+	      }
+	      if (key === "ArrowUp") {
+	        e.preventDefault();
+	        this.navigate(dir.UP);
+	      }
+	      if (key === "ArrowLeft") {
+	        e.preventDefault();
+	        this.navigate(dir.LEFT);
+	      }
+	      if (key === "ArrowRight") {
+	        e.preventDefault();
+	        this.navigate(dir.RIGHT);
+	      }
+	    } else {
+	      this.refs.currentView._keyDown && this.refs.currentView._keyDown(e);
+	    }
+
+	    this.notify("onKeyDown", [e]);
+	  },
+
+	  _label: function () {
+	    var _props = this.props;
+	    var culture = _props.culture;
+	    var props = babelHelpers.objectWithoutProperties(_props, ["culture"]);
+	    var view = this.state.view;
+	    var dt = this.state.currentDate;
+
+	    if (view === "month") return dates.format(dt, props.headerFormat, culture);else if (view === "year") return dates.format(dt, props.yearFormat, culture);else if (view === "decade") return dates.format(dates.startOf(dt, "decade"), props.decadeFormat, culture);else if (view === "century") return dates.format(dates.startOf(dt, "century"), props.centuryFormat, culture);
+	  },
+
+	  inRangeValue: function (_value) {
+	    var value = dateOrNull(_value);
+
+	    if (value === null) return value;
+
+	    return dates.max(dates.min(value, this.props.max), this.props.min);
+	  },
+
+	  isValidView: function (next) {
+	    var bottom = VIEW_OPTIONS.indexOf(this.props.initialView),
+	        top = VIEW_OPTIONS.indexOf(this.props.finalView),
+	        current = VIEW_OPTIONS.indexOf(next);
+
+	    return current >= bottom && current <= top;
+	  }
+	});
+
+	function dateOrNull(dt) {
+	  if (dt && !isNaN(dt.getTime())) return dt;
+	  return null;
+	}
+
+	function msgs(msgs) {
+	  return babelHelpers._extends({
+	    moveBack: "navigate back",
+	    moveForward: "navigate forward" }, msgs);
+	}
+
+	function formats(obj) {
+	  return babelHelpers._extends({
+	    headerFormat: dates.formats.MONTH_YEAR,
+	    dateFormat: dates.formats.DAY_OF_MONTH,
+	    monthFormat: dates.formats.MONTH_NAME_ABRV,
+	    yearFormat: dates.formats.YEAR,
+
+	    decadeFormat: function (dt, culture) {
+	      return "" + dates.format(dt, dates.formats.YEAR, culture) + " - " + dates.format(dates.endOf(dt, "decade"), dates.formats.YEAR, culture);
+	    },
+
+	    centuryFormat: function (dt, culture) {
+	      return "" + dates.format(dt, dates.formats.YEAR, culture) + " - " + dates.format(dates.endOf(dt, "century"), dates.formats.YEAR, culture);
+	    } }, obj);
+	}
+
+	module.exports = createUncontrolledWidget(Calendar, { value: "onChange" });
+
+	module.exports.BaseCalendar = Calendar;
+
+/***/ },
+/* 506 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var React = __webpack_require__(6),
+	    Btn = __webpack_require__(515);
+
+	module.exports = React.createClass({
+	  displayName: "exports",
+
+	  propTypes: {
+	    label: React.PropTypes.string.isRequired,
+	    labelId: React.PropTypes.string,
+
+	    upDisabled: React.PropTypes.bool.isRequired,
+	    prevDisabled: React.PropTypes.bool.isRequired,
+	    nextDisabled: React.PropTypes.bool.isRequired,
+	    onViewChange: React.PropTypes.func.isRequired,
+	    onMoveLeft: React.PropTypes.func.isRequired,
+	    onMoveRight: React.PropTypes.func.isRequired,
+
+	    messages: React.PropTypes.shape({
+	      moveBack: React.PropTypes.string,
+	      moveForward: React.PropTypes.string
+	    })
+	  },
+
+	  mixins: [__webpack_require__(483), __webpack_require__(516)],
+
+	  getDefaultProps: function () {
+	    return {
+	      messages: {
+	        moveBack: "navigate back",
+	        moveForward: "navigate forward" }
+	    };
+	  },
+
+	  render: function () {
+	    var rtl = this.isRtl();
+
+	    return React.createElement(
+	      "div",
+	      { className: "rw-header" },
+	      React.createElement(
+	        Btn,
+	        { className: "rw-btn-left",
+	          tabIndex: "-1",
+	          onClick: this.props.onMoveLeft,
+	          disabled: this.props.prevDisabled,
+	          "aria-disabled": this.props.prevDisabled,
+	          title: this.props.moveBack },
+	        React.createElement("i", { className: "rw-i rw-i-caret-" + (rtl ? "right" : "left") }),
+	        React.createElement(
+	          "span",
+	          { className: "rw-sr" },
+	          this.props.messages.moveBack
+	        )
+	      ),
+	      React.createElement(
+	        Btn,
+	        { className: "rw-btn-view",
+	          id: this.props.labelId,
+	          tabIndex: "-1",
+	          onClick: this.props.onViewChange,
+	          disabled: this.props.upDisabled,
+	          "aria-disabled": this.props.upDisabled },
+	        this.props.label
+	      ),
+	      React.createElement(
+	        Btn,
+	        { className: "rw-btn-right",
+	          tabIndex: "-1",
+	          onClick: this.props.onMoveRight,
+	          disabled: this.props.nextDisabled,
+	          "aria-disabled": this.props.nextDisabled,
+	          title: this.props.moveForward },
+	        React.createElement("i", { className: "rw-i rw-i-caret-" + (rtl ? "left" : "right") }),
+	        React.createElement(
+	          "span",
+	          { className: "rw-sr" },
+	          this.props.messages.moveForward
+	        )
+	      )
+	    );
+	  }
+	});
+
+/***/ },
+/* 507 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(6),
+	    Btn = __webpack_require__(515),
+	    dates = __webpack_require__(513);
+
+	module.exports = React.createClass({
+
+	  displayName: "Footer",
+
+	  render: function () {
+	    var now = this.props.value,
+	        formatted = dates.format(now, this.props.format, this.props.culture);
+
+	    return React.createElement(
+	      "div",
+	      { className: "rw-footer" },
+	      React.createElement(
+	        Btn,
+	        { tabIndex: "-1",
+	          "aria-disabled": !!this.props.disabled,
+	          "aria-readonly": !!this.props.readOnly,
+	          disabled: this.props.disabled,
+	          readOnly: this.props.readOnly,
+	          onClick: this.props.onClick.bind(null, now)
+	        },
+	        formatted
+	      )
+	    );
+	  }
+
+	});
+
+/***/ },
+/* 508 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    cx = __webpack_require__(237),
+	    dates = __webpack_require__(513),
+	    directions = __webpack_require__(514).directions,
+	    CustomPropTypes = __webpack_require__(476),
+	    _ = __webpack_require__(474),
+	    Btn = __webpack_require__(515);
+
+	var opposite = {
+	  LEFT: directions.RIGHT,
+	  RIGHT: directions.LEFT
+	};
+
+	module.exports = React.createClass({
+
+	  displayName: "MonthView",
+
+	  mixins: [__webpack_require__(481), __webpack_require__(516), __webpack_require__(517)("month", "day")],
+
+	  propTypes: {
+	    culture: React.PropTypes.string,
+	    value: React.PropTypes.instanceOf(Date),
+	    selectedDate: React.PropTypes.instanceOf(Date),
+	    min: React.PropTypes.instanceOf(Date),
+	    max: React.PropTypes.instanceOf(Date),
+
+	    dayFormat: CustomPropTypes.localeFormat.isRequired,
+	    dateFormat: CustomPropTypes.localeFormat.isRequired,
+
+	    onChange: React.PropTypes.func.isRequired, //value is chosen
+	    onMoveLeft: React.PropTypes.func,
+	    onMoveRight: React.PropTypes.func
+	  },
+
+	  render: function () {
+	    var props = _.omit(this.props, ["max", "min", "value", "onChange"]),
+	        month = dates.visibleDays(this.props.value, this.props.culture),
+	        rows = _.chunk(month, 7);
+
+	    return React.createElement(
+	      "table",
+	      babelHelpers._extends({}, props, {
+	        role: "grid",
+	        className: "rw-calendar-grid",
+	        "aria-activedescendant": this._id("_selected_item"),
+	        onKeyUp: this._keyUp }),
+	      React.createElement(
+	        "thead",
+	        null,
+	        React.createElement(
+	          "tr",
+	          null,
+	          this._headers(props.dayFormat, props.culture)
+	        )
+	      ),
+	      React.createElement(
+	        "tbody",
+	        null,
+	        rows.map(this._row)
+	      )
+	    );
+	  },
+
+	  _row: function (row, i) {
+	    var _this = this;
+
+	    var id = this._id("_selected_item");
+
+	    return React.createElement(
+	      "tr",
+	      { key: "week_" + i, role: "row" },
+	      row.map(function (day, idx) {
+	        var focused = dates.eq(day, _this.state.focusedDate, "day"),
+	            selected = dates.eq(day, _this.props.selectedDate, "day"),
+	            today = dates.eq(day, _this.props.today, "day");
+
+	        return !dates.inRange(day, _this.props.min, _this.props.max) ? React.createElement(
+	          "td",
+	          { key: "day_" + idx, role: "gridcell", className: "rw-empty-cell" },
+	          " "
+	        ) : React.createElement(
+	          "td",
+	          { key: "day_" + idx, role: "gridcell" },
+	          React.createElement(
+	            Btn,
+	            {
+	              tabIndex: "-1",
+	              onClick: _this.props.onChange.bind(null, day),
+	              "aria-pressed": selected,
+	              "aria-disabled": _this.props.disabled || undefined,
+	              disabled: _this.props.disabled,
+	              className: cx({
+	                "rw-off-range": dates.month(day) !== dates.month(_this.state.focusedDate),
+	                "rw-state-focus": focused,
+	                "rw-state-selected": selected,
+	                "rw-now": today
+	              }),
+	              id: focused ? id : undefined },
+	            dates.format(day, _this.props.dateFormat, _this.props.culture)
+	          )
+	        );
+	      })
+	    );
+	  },
+
+	  _headers: function (format, culture) {
+	    return [0, 1, 2, 3, 4, 5, 6].map(function (day) {
+	      return React.createElement(
+	        "th",
+	        { key: "header_" + day },
+	        dates.format(day, format, culture)
+	      );
+	    });
+	  },
+
+	  move: function (date, direction) {
+	    var min = this.props.min,
+	        max = this.props.max;
+
+	    if (this.isRtl() && opposite[direction]) direction = opposite[direction];
+
+	    if (direction === directions.LEFT) date = nextDate(date, -1, "day", min, max);else if (direction === directions.RIGHT) date = nextDate(date, 1, "day", min, max);else if (direction === directions.UP) date = nextDate(date, -1, "week", min, max);else if (direction === directions.DOWN) date = nextDate(date, 1, "week", min, max);
+
+	    return date;
+	  }
+
+	});
+
+	function nextDate(date, val, unit, min, max) {
+	  var newDate = dates.add(date, val, unit);
+
+	  return dates.inRange(newDate, min, max, "day") ? newDate : date;
+	}
+
+/***/ },
+/* 509 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    cx = __webpack_require__(237),
+	    dates = __webpack_require__(513),
+	    directions = __webpack_require__(514).directions,
+	    Btn = __webpack_require__(515),
+	    _ = __webpack_require__(474),
+	    compat = __webpack_require__(475),
+	    CustomPropTypes = __webpack_require__(476);
+
+	var opposite = {
+	  LEFT: directions.RIGHT,
+	  RIGHT: directions.LEFT
+	};
+
+	module.exports = React.createClass({
+
+	  displayName: "YearView",
+
+	  mixins: [__webpack_require__(481), __webpack_require__(516), __webpack_require__(517)("year", "month")],
+
+	  propTypes: {
+	    culture: React.PropTypes.string,
+	    value: React.PropTypes.instanceOf(Date),
+	    min: React.PropTypes.instanceOf(Date),
+	    max: React.PropTypes.instanceOf(Date),
+	    onChange: React.PropTypes.func.isRequired,
+
+	    monthFormat: CustomPropTypes.localeFormat.isRequired
+	  },
+
+	  render: function () {
+	    var props = _.omit(this.props, ["max", "min", "value", "onChange"]),
+	        months = dates.monthsInYear(dates.year(this.props.value)),
+	        rows = _.chunk(months, 4);
+
+	    return React.createElement(
+	      "table",
+	      babelHelpers._extends({}, props, {
+	        tabIndex: this.props.disabled ? "-1" : "0",
+	        ref: "table",
+	        role: "grid",
+	        className: "rw-calendar-grid rw-nav-view",
+	        "aria-activedescendant": this._id("_selected_item"),
+	        onKeyUp: this._keyUp }),
+	      React.createElement(
+	        "tbody",
+	        null,
+	        rows.map(this._row)
+	      )
+	    );
+	  },
+
+	  _row: function (row, i) {
+	    var _this = this;
+
+	    var id = this._id("_selected_item");
+
+	    return React.createElement(
+	      "tr",
+	      { key: i, role: "row" },
+	      row.map(function (date, i) {
+	        var focused = dates.eq(date, _this.state.focusedDate, "month"),
+	            selected = dates.eq(date, _this.props.value, "month"),
+	            currentMonth = dates.eq(date, _this.props.today, "month");
+
+	        return dates.inRange(date, _this.props.min, _this.props.max, "month") ? React.createElement(
+	          "td",
+	          { key: i, role: "gridcell" },
+	          React.createElement(
+	            Btn,
+	            { onClick: _this.props.onChange.bind(null, date), tabIndex: "-1",
+	              id: focused ? id : undefined,
+	              "aria-pressed": selected,
+	              "aria-disabled": _this.props.disabled || undefined,
+	              disabled: _this.props.disabled,
+	              className: cx({
+	                "rw-state-focus": focused,
+	                "rw-state-selected": selected,
+	                "rw-now": currentMonth
+	              }) },
+	            dates.format(date, _this.props.monthFormat, _this.props.culture)
+	          )
+	        ) : React.createElement(
+	          "td",
+	          { key: i, className: "rw-empty-cell", role: "gridcell" },
+	          " "
+	        );
+	      })
+	    );
+	  },
+
+	  focus: function () {
+	    compat.findDOMNode(this.refs.table).focus();
+	  },
+
+	  move: function (date, direction) {
+	    var min = this.props.min,
+	        max = this.props.max;
+
+	    if (this.isRtl() && opposite[direction]) direction = opposite[direction];
+
+	    if (direction === directions.LEFT) date = nextDate(date, -1, "month", min, max);else if (direction === directions.RIGHT) date = nextDate(date, 1, "month", min, max);else if (direction === directions.UP) date = nextDate(date, -4, "month", min, max);else if (direction === directions.DOWN) date = nextDate(date, 4, "month", min, max);
+
+	    return date;
+	  }
+
+	});
+
+	function nextDate(date, val, unit, min, max) {
+	  var newDate = dates.add(date, val, unit);
+	  return dates.inRange(newDate, min, max, "month") ? newDate : date;
+	}
+
+/***/ },
+/* 510 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    _ = __webpack_require__(474),
+	    cx = __webpack_require__(237),
+	    dates = __webpack_require__(513),
+	    directions = __webpack_require__(514).directions,
+	    CustomPropTypes = __webpack_require__(476),
+	    Btn = __webpack_require__(515);
+
+	var opposite = {
+	  LEFT: directions.RIGHT,
+	  RIGHT: directions.LEFT
+	};
+
+	module.exports = React.createClass({
+
+	  displayName: "DecadeView",
+
+	  mixins: [__webpack_require__(481), __webpack_require__(483), __webpack_require__(516), __webpack_require__(517)("decade", "year")],
+
+	  propTypes: {
+	    culture: React.PropTypes.string,
+
+	    value: React.PropTypes.instanceOf(Date),
+	    min: React.PropTypes.instanceOf(Date),
+	    max: React.PropTypes.instanceOf(Date),
+	    onChange: React.PropTypes.func.isRequired,
+
+	    yearFormat: CustomPropTypes.localeFormat.isRequired
+
+	  },
+
+	  render: function () {
+	    var props = _.omit(this.props, ["max", "min", "value", "onChange"]),
+	        years = getDecadeYears(this.props.value),
+	        rows = _.chunk(years, 4);
+
+	    return React.createElement(
+	      "table",
+	      babelHelpers._extends({}, props, {
+	        tabIndex: this.props.disabled ? "-1" : "0",
+	        role: "grid",
+	        className: "rw-calendar-grid rw-nav-view",
+	        "aria-activedescendant": this._id("_selected_item"),
+	        onKeyUp: this._keyUp }),
+	      React.createElement(
+	        "tbody",
+	        null,
+	        rows.map(this._row)
+	      )
+	    );
+	  },
+
+	  _row: function (row, i) {
+	    var _this = this;
+
+	    var id = this._id("_selected_item");
+
+	    return React.createElement(
+	      "tr",
+	      { key: "row_" + i, role: "row" },
+	      row.map(function (date, i) {
+	        var focused = dates.eq(date, _this.state.focusedDate, "year"),
+	            selected = dates.eq(date, _this.props.value, "year"),
+	            currentYear = dates.eq(date, _this.props.today, "year");
+
+	        return !dates.inRange(date, _this.props.min, _this.props.max, "year") ? React.createElement(
+	          "td",
+	          { key: i, role: "gridcell", className: "rw-empty-cell" },
+	          " "
+	        ) : React.createElement(
+	          "td",
+	          { key: i, role: "gridcell" },
+	          React.createElement(
+	            Btn,
+	            { onClick: _this.props.onChange.bind(null, date), tabIndex: "-1",
+	              id: focused ? id : undefined,
+	              "aria-pressed": selected,
+	              "aria-disabled": _this.props.disabled,
+	              disabled: _this.props.disabled || undefined,
+	              className: cx({
+	                "rw-off-range": !inDecade(date, _this.props.value),
+	                "rw-state-focus": focused,
+	                "rw-state-selected": selected,
+	                "rw-now": currentYear
+	              }) },
+	            dates.format(date, _this.props.yearFormat, _this.props.culture)
+	          )
+	        );
+	      })
+	    );
+	  },
+
+	  move: function (date, direction) {
+	    var min = this.props.min,
+	        max = this.props.max;
+
+	    if (this.isRtl() && opposite[direction]) direction = opposite[direction];
+
+	    if (direction === directions.LEFT) date = nextDate(date, -1, "year", min, max);else if (direction === directions.RIGHT) date = nextDate(date, 1, "year", min, max);else if (direction === directions.UP) date = nextDate(date, -4, "year", min, max);else if (direction === directions.DOWN) date = nextDate(date, 4, "year", min, max);
+
+	    return date;
+	  }
+
+	});
+
+	function inDecade(date, start) {
+	  return dates.gte(date, dates.startOf(start, "decade"), "year") && dates.lte(date, dates.endOf(start, "decade"), "year");
+	}
+
+	function getDecadeYears(_date) {
+	  var days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+	      date = dates.add(dates.startOf(_date, "decade"), -2, "year");
+
+	  return days.map(function (i) {
+	    return date = dates.add(date, 1, "year");
+	  });
+	}
+
+	function nextDate(date, val, unit, min, max) {
+	  var newDate = dates.add(date, val, unit);
+	  return dates.inRange(newDate, min, max, "year") ? newDate : date;
+	}
+
+/***/ },
+/* 511 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    cx = __webpack_require__(237),
+	    dates = __webpack_require__(513),
+	    directions = __webpack_require__(514).directions,
+	    Btn = __webpack_require__(515),
+	    _ = __webpack_require__(474),
+	    CustomPropTypes = __webpack_require__(476); //omit
+
+	var opposite = {
+	  LEFT: directions.RIGHT,
+	  RIGHT: directions.LEFT
+	};
+
+	module.exports = React.createClass({
+
+	  displayName: "CenturyView",
+
+	  mixins: [__webpack_require__(481), __webpack_require__(483), __webpack_require__(516), __webpack_require__(517)("century", "decade")],
+
+	  propTypes: {
+	    culture: React.PropTypes.string,
+	    value: React.PropTypes.instanceOf(Date),
+	    min: React.PropTypes.instanceOf(Date),
+	    max: React.PropTypes.instanceOf(Date),
+
+	    onChange: React.PropTypes.func.isRequired,
+
+	    decadeFormat: CustomPropTypes.localeFormat.isRequired
+	  },
+
+	  render: function () {
+	    var props = _.omit(this.props, ["max", "min", "value", "onChange"]),
+	        years = getCenturyDecades(this.props.value),
+	        rows = _.chunk(years, 4);
+
+	    return React.createElement(
+	      "table",
+	      babelHelpers._extends({}, props, {
+	        tabIndex: this.props.disabled ? "-1" : "0",
+	        role: "grid",
+	        className: "rw-calendar-grid rw-nav-view",
+	        "aria-activedescendant": this._id("_selected_item"),
+	        onKeyUp: this._keyUp }),
+	      React.createElement(
+	        "tbody",
+	        null,
+	        rows.map(this._row)
+	      )
+	    );
+	  },
+
+	  _row: function (row, i) {
+	    var _this = this;
+
+	    var id = this._id("_selected_item");
+
+	    return React.createElement(
+	      "tr",
+	      { key: "row_" + i, role: "row" },
+	      row.map(function (date, i) {
+	        var focused = dates.eq(date, _this.state.focusedDate, "decade"),
+	            selected = dates.eq(date, _this.props.value, "decade"),
+	            d = inRangeDate(date, _this.props.min, _this.props.max),
+	            currentDecade = dates.eq(date, _this.props.today, "decade");
+
+	        return !inRange(date, _this.props.min, _this.props.max) ? React.createElement(
+	          "td",
+	          { key: i, role: "gridcell", className: "rw-empty-cell" },
+	          " "
+	        ) : React.createElement(
+	          "td",
+	          { key: i, role: "gridcell" },
+	          React.createElement(
+	            Btn,
+	            { onClick: _this.props.onChange.bind(null, d),
+	              tabIndex: "-1",
+	              id: focused ? id : undefined,
+	              "aria-pressed": selected,
+	              "aria-disabled": _this.props.disabled,
+	              disabled: _this.props.disabled || undefined,
+	              className: cx({
+	                "rw-off-range": !inCentury(date, _this.props.value),
+	                "rw-state-focus": focused,
+	                "rw-state-selected": selected,
+	                "rw-now": currentDecade
+	              }) },
+	            dates.format(dates.startOf(date, "decade"), _this.props.decadeFormat, _this.props.culture)
+	          )
+	        );
+	      })
+	    );
+	  },
+
+	  move: function (date, direction) {
+	    var min = this.props.min,
+	        max = this.props.max;
+
+	    if (this.isRtl() && opposite[direction]) direction = opposite[direction];
+
+	    if (direction === directions.LEFT) date = nextDate(date, -1, "decade", min, max);else if (direction === directions.RIGHT) date = nextDate(date, 1, "decade", min, max);else if (direction === directions.UP) date = nextDate(date, -4, "decade", min, max);else if (direction === directions.DOWN) date = nextDate(date, 4, "decade", min, max);
+
+	    return date;
+	  }
+
+	});
+
+	function label(date, format, culture) {
+	  return dates.format(dates.startOf(date, "decade"), format, culture) + " - " + dates.format(dates.endOf(date, "decade"), format, culture);
+	}
+
+	function inRangeDate(decade, min, max) {
+	  return dates.max(dates.min(decade, max), min);
+	}
+
+	function inRange(decade, min, max) {
+	  return dates.gte(decade, dates.startOf(min, "decade"), "year") && dates.lte(decade, dates.endOf(max, "decade"), "year");
+	}
+
+	function inCentury(date, start) {
+	  return dates.gte(date, dates.startOf(start, "century"), "year") && dates.lte(date, dates.endOf(start, "century"), "year");
+	}
+
+	function getCenturyDecades(_date) {
+	  var days = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+	      date = dates.add(dates.startOf(_date, "century"), -20, "year");
+
+	  return days.map(function (i) {
+	    return date = dates.add(date, 10, "year");
+	  });
+	}
+
+	function nextDate(date, val, unit, min, max) {
+	  var newDate = dates.add(date, val, unit);
+	  return dates.inRange(newDate, min, max, "decade") ? newDate : date;
+	}
+
+/***/ },
+/* 512 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    ReplaceTransitionGroup = __webpack_require__(518),
+	    _ = __webpack_require__(474),
+	    compat = __webpack_require__(475),
+	    $ = __webpack_require__(488),
+	    config = __webpack_require__(491);
+
+	var SlideChildGroup = React.createClass({
+	  displayName: "SlideChildGroup",
+
+	  propTypes: {
+	    direction: React.PropTypes.oneOf(["left", "right"]),
+	    duration: React.PropTypes.number
+	  },
+
+	  componentWillEnter: function (done) {
+	    var _this = this;
+
+	    var node = compat.findDOMNode(this),
+	        width = $.width(node),
+	        direction = this.props.direction;
+
+	    width = direction === "left" ? width : -width;
+
+	    this.ORGINAL_POSITION = node.style.position;
+
+	    $.css(node, { position: "absolute", left: width + "px", top: 0 });
+
+	    config.animate(node, { left: 0 }, this.props.duration, function () {
+
+	      $.css(node, {
+	        position: _this.ORGINAL_POSITION,
+	        overflow: "hidden"
+	      });
+
+	      _this.ORGINAL_POSITION = null;
+	      done && done();
+	    });
+	  },
+
+	  componentWillLeave: function (done) {
+	    var _this = this;
+
+	    var node = compat.findDOMNode(this),
+	        width = $.width(node),
+	        direction = this.props.direction;
+
+	    width = direction === "left" ? -width : width;
+
+	    this.ORGINAL_POSITION = node.style.position;
+
+	    $.css(node, { position: "absolute", top: 0, left: 0 });
+
+	    config.animate(node, { left: width + "px" }, this.props.duration, function () {
+	      $.css(node, {
+	        position: _this.ORGINAL_POSITION,
+	        overflow: "hidden"
+	      });
+
+	      _this.ORGINAL_POSITION = null;
+	      done && done();
+	    });
+	  },
+
+	  render: function () {
+	    return React.Children.only(this.props.children);
+	  }
+
+	});
+
+	module.exports = React.createClass({
+	  displayName: "exports",
+
+	  propTypes: {
+	    direction: React.PropTypes.oneOf(["left", "right"]),
+	    duration: React.PropTypes.number
+	  },
+
+	  getDefaultProps: function () {
+	    return {
+	      direction: "left",
+	      duration: 250
+	    };
+	  },
+
+	  _wrapChild: function (child, ref) {
+	    return React.createElement(
+	      SlideChildGroup,
+	      { key: child.key, ref: ref,
+	        direction: this.props.direction,
+	        duration: this.props.duration },
+	      child
+	    );
+	  },
+
+	  render: function () {
+	    var _props = this.props;
+	    var style = _props.style;
+	    var children = _props.children;
+	    var props = babelHelpers.objectWithoutProperties(_props, ["style", "children"]);
+
+	    style = _.assign({}, style, { position: "relative", overflow: "hidden" });
+
+	    return React.createElement(
+	      ReplaceTransitionGroup,
+	      babelHelpers._extends({}, props, {
+	        ref: "container",
+	        childFactory: this._wrapChild,
+	        style: style,
+	        component: "div" }),
+	      children
+	    );
+	  },
+
+	  isTransitioning: function () {
+	    return this.isMounted() && this.refs.container.isTransitioning();
+	  }
+	});
+
+/***/ },
+/* 513 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var dateMath = __webpack_require__(519),
+	    config = __webpack_require__(491),
+	    _ = __webpack_require__(474); //extend
+
+	var shortNames = {};
+
+	var dates = module.exports = _.assign(dateMath, {
+	  // wrapper methods for isolating globalize use throughout the lib
+	  // looking forward towards the 1.0 release
+	  culture: function (culture) {
+	    return culture ? config.globalize.findClosestCulture(culture) : config.globalize.culture();
+	  },
+
+	  startOfWeek: function (culture) {
+	    culture = dates.culture(culture);
+
+	    if (!culture || !culture.calendar) return 0;
+
+	    return culture.calendar.firstDay || 0;
+	  },
+
+	  parse: function (date, format, culture) {
+	    if (typeof format === "function") return format(date, culture);
+
+	    return config.globalize.parseDate(date, format, culture);
+	  },
+
+	  format: function (date, format, culture) {
+	    if (typeof format === "function") return format(date, culture);
+
+	    return config.globalize.format(date, format, culture);
+	  },
+
+	  //-------------------------------------
+
+	  shortDay: function (dayOfTheWeek) {
+	    var culture = dates.culture(arguments[1]),
+	        name = typeof culture === "string" ? culture : culture.name;
+
+	    var names = shortNames[name] || (shortNames[name] = dates.shortDaysOfWeek(culture));
+
+	    return names[dayOfTheWeek];
+	  },
+
+	  shortDaysOfWeek: function (culture) {
+	    var start = dates.startOfWeek(culture),
+	        days,
+	        front;
+
+	    culture = dates.culture(culture);
+
+	    if (culture && culture.calendar) {
+	      days = culture.calendar.days.namesShort.slice();
+
+	      if (start === 0) return days;
+
+	      front = days.splice(0, start);
+	      days = days.concat(front);
+	      return days;
+	    }
+	  },
+
+	  monthsInYear: function (year) {
+	    var months = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+	        date = new Date(year, 0, 1);
+
+	    return months.map(function (i) {
+	      return dates.month(date, i);
+	    });
+	  },
+
+	  firstOfDecade: function (date) {
+	    var decade = dates.year(date) % 10;
+
+	    return dates.subtract(date, decade, "year");
+	  },
+
+	  lastOfDecade: function (date) {
+	    return dates.add(dates.firstOfDecade(date), 9, "year");
+	  },
+
+	  firstOfCentury: function (date) {
+	    var decade = dates.year(date) % 100;
+	    return dates.subtract(date, decade, "year");
+	  },
+
+	  lastOfCentury: function (date) {
+	    return dates.add(dates.firstOfCentury(date), 99, "year");
+	  },
+
+	  firstVisibleDay: function (date, culture) {
+	    var firstOfMonth = dates.startOf(date, "month");
+	    return dates.startOf(firstOfMonth, "week", dates.startOfWeek(culture));
+	  },
+
+	  lastVisibleDay: function (date, culture) {
+	    var endOfMonth = dates.endOf(date, "month");
+	    return dates.endOf(endOfMonth, "week", dates.startOfWeek(culture));
+	  },
+
+	  visibleDays: function (date, culture) {
+	    var current = dates.firstVisibleDay(date, culture),
+	        last = dates.lastVisibleDay(date, culture),
+	        days = [];
+
+	    while (dates.lte(current, last, "day")) {
+	      days.push(current);
+	      current = dates.add(current, 1, "day");
+	    }
+
+	    return days;
+	  },
+
+	  merge: function (date, time) {
+	    if (time == null && date == null) return null;
+
+	    if (time == null) time = new Date();
+	    if (date == null) date = new Date();
+
+	    date = dates.startOf(date, "day");
+	    date = dates.hours(date, dates.hours(time));
+	    date = dates.minutes(date, dates.minutes(time));
+	    date = dates.seconds(date, dates.seconds(time));
+	    return dates.milliseconds(date, dates.milliseconds(time));
+	  },
+
+	  sameMonth: function (dateA, dateB) {
+	    return dates.eq(dateA, dateB, "month");
+	  },
+
+	  today: function () {
+	    return this.startOf(new Date(), "day");
+	  },
+
+	  yesterday: function () {
+	    return this.add(this.startOf(new Date(), "day"), -1, "day");
+	  },
+
+	  tomorrow: function () {
+	    return this.add(this.startOf(new Date(), "day"), 1, "day");
+	  },
+
+	  formats: {
+	    DAY_OF_MONTH: "dd",
+	    DAY_NAME_SHORT: null,
+	    MONTH_NAME_ABRV: "MMM",
+	    MONTH_YEAR: "MMMM yyyy",
+	    YEAR: "yyyy",
+	    FOOTER: "D"
+	  }
+
+	});
+
+/***/ },
+/* 514 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var _ = __webpack_require__(474); //object
+
+	var views = {
+	  MONTH: "month",
+	  YEAR: "year",
+	  DECADE: "decade",
+	  CENTURY: "century"
+	};
+
+	module.exports = {
+
+	  directions: {
+	    LEFT: "LEFT",
+	    RIGHT: "RIGHT",
+	    UP: "UP",
+	    DOWN: "DOWN"
+	  },
+
+	  datePopups: {
+	    TIME: "time",
+	    CALENDAR: "calendar"
+	  },
+
+	  calendarViews: views,
+
+	  calendarViewHierarchy: (function () {
+	    var _calendarViewHierarchy = {};
+	    _calendarViewHierarchy[views.MONTH] = views.YEAR;
+	    _calendarViewHierarchy[views.YEAR] = views.DECADE;
+	    _calendarViewHierarchy[views.DECADE] = views.CENTURY;
+	    return _calendarViewHierarchy;
+	  })(),
+
+	  calendarViewUnits: (function () {
+	    var _calendarViewUnits = {};
+	    _calendarViewUnits[views.MONTH] = views.DAY;
+	    _calendarViewUnits[views.YEAR] = views.MONTH;
+	    _calendarViewUnits[views.DECADE] = views.YEAR;
+	    _calendarViewUnits[views.CENTURY] = views.DECADE;
+	    return _calendarViewUnits;
+	  })()
+	};
+
+/***/ },
+/* 515 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6);
+	var cn = __webpack_require__(237);
+	module.exports = React.createClass({
+	  displayName: "exports",
+
+	  render: function () {
+	    var _props = this.props;
+	    var className = _props.className;
+	    var children = _props.children;
+	    var props = babelHelpers.objectWithoutProperties(_props, ["className", "children"]);
+
+	    return React.createElement(
+	      "button",
+	      babelHelpers._extends({}, props, { type: "button", className: cn(className, "rw-btn") }),
+	      children
+	    );
+	  }
+	});
+
+/***/ },
+/* 516 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var React = __webpack_require__(6);
+
+	module.exports = {
+
+	  contextTypes: {
+	    isRtl: React.PropTypes.bool
+	  },
+
+	  isRtl: function () {
+	    return !!this.context.isRtl;
+	  }
+
+	};
+
+/***/ },
+/* 517 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var React = __webpack_require__(6),
+	    dates = __webpack_require__(513),
+	    directions = __webpack_require__(514).directions;
+
+	module.exports = function (viewUnit, smallUnit) {
+
+	  return {
+	    propTypes: {
+	      value: React.PropTypes.instanceOf(Date),
+	      min: React.PropTypes.instanceOf(Date),
+	      max: React.PropTypes.instanceOf(Date) },
+
+	    getInitialState: function () {
+	      return {
+	        focusedDate: constrainValue(this.props.value, this.props.min, this.props.max)
+	      };
+	    },
+
+	    componentWillReceiveProps: function (nextProps) {
+	      var focused = this.state.focusedDate;
+
+	      if (!dates.eq(nextProps.value, focused, smallUnit)) this.setState({
+	        focusedDate: nextProps.value
+	      });
+	    },
+
+	    _keyDown: function (e) {
+	      var key = e.key,
+	          current = this.state.focusedDate,
+	          date = current;
+
+	      if (key === "Enter") {
+	        e.preventDefault();
+	        return this.props.onChange(date);
+	      }
+
+	      if (key === "ArrowLeft") date = this.move(date, directions.LEFT);else if (key === "ArrowRight") date = this.move(date, directions.RIGHT);else if (key === "ArrowUp") date = this.move(date, directions.UP);else if (key === "ArrowDown") date = this.move(date, directions.DOWN);
+
+	      if (!dates.eq(current, date, smallUnit)) {
+	        e.preventDefault();
+
+	        if (dates.gt(date, this.props.value, viewUnit)) return this.props.onMoveRight(date);
+
+	        if (dates.lt(date, this.props.value, viewUnit)) return this.props.onMoveLeft(date);
+
+	        this.setState({
+	          focusedDate: date
+	        });
+	      }
+	    }
+	  };
+	};
+
+	function constrainValue(value, min, max) {
+	  if (value == null) return value;
+	  return dates.max(dates.min(value, max), min);
+	}
+
+/***/ },
+/* 518 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * A streamlined version of TransitionGroup built for managing at most two active children
+	 * also provides additional hooks for animation start/end
+	 * https://github.com/facebook/react/blob/master/src/addons/transitions/ReactTransitionGroup.js
+	 * relevent code is licensed accordingly 
+	 */
+
+	"use strict";
+
+	var React = __webpack_require__(6),
+	    $ = __webpack_require__(488),
+	    compat = __webpack_require__(475),
+	    _ = __webpack_require__(474);
+
+	module.exports = React.createClass({
+
+	  displayName: "ReplaceTransitionGroup",
+
+	  propTypes: {
+	    component: React.PropTypes.oneOfType([React.PropTypes.element, React.PropTypes.string]),
+	    childFactory: React.PropTypes.func,
+
+	    onAnimating: React.PropTypes.func,
+	    onAnimate: React.PropTypes.func },
+
+	  getDefaultProps: function () {
+	    return {
+	      component: "span",
+	      childFactory: function (a) {
+	        return a;
+	      },
+
+	      onAnimating: _.noop,
+	      onAnimate: _.noop
+	    };
+	  },
+
+	  getInitialState: function () {
+	    return {
+	      children: _.splat(this.props.children)
+	    };
+	  },
+
+	  componentWillReceiveProps: function (nextProps) {
+	    var nextChild = getChild(nextProps.children),
+	        stack = this.state.children.slice(),
+	        next = stack[1],
+	        last = stack[0];
+
+	    var isLastChild = last && key(last) === key(nextChild),
+	        isNextChild = next && key(next) === key(nextChild);
+
+	    //no children
+	    if (!last) {
+	      stack.push(nextChild);
+	      this.entering = nextChild;
+	    } else if (last && !next && !isLastChild) {
+	      //new child
+	      stack.push(nextChild);
+	      this.leaving = last;
+	      this.entering = nextChild;
+	    } else if (last && next && !isLastChild && !isNextChild) {
+	      // the child is not the current one, exit the current one, add the new one
+	      //  - shift the stack down
+	      stack.shift();
+	      stack.push(nextChild);
+	      this.leaving = next;
+	      this.entering = nextChild;
+	    }
+	    //new child that just needs to be re-rendered
+	    else if (isLastChild) stack.splice(0, 1, nextChild);else if (isNextChild) stack.splice(1, 1, nextChild);
+
+	    if (this.state.children[0] !== stack[0] || this.state.children[1] !== stack[1]) this.setState({ children: stack });
+	  },
+
+	  componentWillMount: function () {
+	    this.animatingKeys = {};
+	    this.leaving = null;
+	    this.entering = null;
+	  },
+
+	  componentDidUpdate: function () {
+	    var entering = this.entering,
+	        leaving = this.leaving,
+	        first = this.refs[key(entering) || key(leaving)],
+	        node = compat.findDOMNode(this),
+	        el = first && compat.findDOMNode(first);
+
+	    if (el) $.css(node, {
+	      overflow: "hidden",
+	      height: $.height(el) + "px",
+	      width: $.width(el) + "px"
+	    });
+
+	    this.props.onAnimating();
+
+	    this.entering = null;
+	    this.leaving = null;
+
+	    if (entering) this.performEnter(key(entering));
+	    if (leaving) this.performLeave(key(leaving));
+	  },
+
+	  performEnter: function (key) {
+	    var component = this.refs[key];
+
+	    if (!component) return;
+
+	    this.animatingKeys[key] = true;
+
+	    if (component.componentWillEnter) component.componentWillEnter(this._handleDoneEntering.bind(this, key));else this._handleDoneEntering(key);
+	  },
+
+	  _tryFinish: function () {
+
+	    if (this.isTransitioning()) return;
+
+	    if (this.isMounted()) $.css(compat.findDOMNode(this), { overflow: "visible", height: "", width: "" });
+
+	    this.props.onAnimate();
+	  },
+
+	  _handleDoneEntering: function (enterkey) {
+	    var component = this.refs[enterkey];
+
+	    if (component && component.componentDidEnter) component.componentDidEnter();
+
+	    delete this.animatingKeys[enterkey];
+
+	    if (key(this.props.children) !== enterkey) this.performLeave(enterkey); // This was removed before it had fully entered. Remove it.
+
+	    this._tryFinish();
+	  },
+
+	  isTransitioning: function () {
+	    return Object.keys(this.animatingKeys).length !== 0;
+	  },
+
+	  performLeave: function (key) {
+	    var component = this.refs[key];
+
+	    if (!component) return;
+
+	    this.animatingKeys[key] = true;
+
+	    if (component.componentWillLeave) component.componentWillLeave(this._handleDoneLeaving.bind(this, key));else this._handleDoneLeaving(key);
+	  },
+
+	  _handleDoneLeaving: function (leavekey) {
+	    var component = this.refs[leavekey];
+
+	    if (component && component.componentDidLeave) component.componentDidLeave();
+
+	    delete this.animatingKeys[leavekey];
+
+	    if (key(this.props.children) === leavekey) this.performEnter(leavekey);else if (this.isMounted()) this.setState({
+	      children: this.state.children.filter(function (c) {
+	        return key(c) !== leavekey;
+	      })
+	    });
+
+	    this._tryFinish();
+	  },
+
+	  render: function () {
+	    var _this = this;
+
+	    var Component = this.props.component;
+	    return React.createElement(
+	      Component,
+	      this.props,
+	      this.state.children.map(function (c) {
+	        return _this.props.childFactory(c, key(c));
+	      })
+	    );
+	  }
+	});
+
+	function getChild(children) {
+	  return React.Children.only(children);
+	}
+
+	function key(child) {
+	  return child && child.key;
+	}
+	// This entered again before it fully left. Add it again.
+
+/***/ },
+/* 519 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var MILI    = 'milliseconds'
+	  , SECONDS = 'seconds'
+	  , MINUTES = 'minutes'
+	  , HOURS   = 'hours'
+	  , DAY     = 'day'
+	  , WEEK    = 'week'
+	  , MONTH   = 'month'
+	  , YEAR    = 'year'
+	  , DECADE  = 'decade'
+	  , CENTURY = 'century';
+
+	var dates = module.exports = {
+
+	  add: function(date, num, unit) {
+	    date = new Date(date)
+
+	    switch (unit){
+	      case MILI:
+	      case SECONDS:
+	      case MINUTES:
+	      case HOURS:
+	      case YEAR:
+	        return dates[unit](date, dates[unit](date) + num)
+	      case DAY:
+	        return dates.date(date, dates.date(date) + num)
+	      case WEEK:
+	        return dates.date(date, dates.date(date) + (7 * num)) 
+	      case MONTH:
+	        return monthMath(date, num)
+	      case DECADE:
+	        return dates.year(date, dates.year(date) + (num * 10))
+	      case CENTURY:
+	        return dates.year(date, dates.year(date) + (num * 100))
+	    }
+
+	    throw new TypeError('Invalid units: "' + unit + '"')
+	  },
+
+	  subtract: function(date, num, unit) {
+	    return dates.add(date, -num, unit)
+	  },
+
+	  startOf: function(date, unit, firstOfWeek) {
+	    date = new Date(date)
+
+	    switch (unit) {
+	      case 'century':
+	      case 'decade':
+	      case 'year':
+	          date = dates.month(date, 0);
+	      case 'month':
+	          date = dates.date(date, 1);
+	      case 'week':
+	      case 'day':
+	          date = dates.hours(date, 0);
+	      case 'hours':
+	          date = dates.minutes(date, 0);
+	      case 'minutes':
+	          date = dates.seconds(date, 0);
+	      case 'seconds':
+	          date = dates.milliseconds(date, 0);
+	    }
+
+	    if (unit === DECADE) 
+	      date = dates.subtract(date, dates.year(date) % 10, 'year')
+	    
+	    if (unit === CENTURY) 
+	      date = dates.subtract(date, dates.year(date) % 100, 'year')
+
+	    if (unit === WEEK) 
+	      date = dates.weekday(date, 0, firstOfWeek);
+
+	    return date
+	  },
+
+
+	  endOf: function(date, unit, firstOfWeek){
+	    date = new Date(date)
+	    date = dates.startOf(date, unit, firstOfWeek)
+	    date = dates.add(date, 1, unit)
+	    date = dates.subtract(date, 1, MILI)
+	    return date
+	  },
+
+	  eq:  createComparer(function(a, b){ return a === b }),
+	  neq: createComparer(function(a, b){ return a !== b }),
+	  gt:  createComparer(function(a, b){ return a > b }),
+	  gte: createComparer(function(a, b){ return a >= b }),
+	  lt:  createComparer(function(a, b){ return a < b }),
+	  lte: createComparer(function(a, b){ return a <= b }),
+
+	  min: function(){
+	    return new Date(Math.min.apply(Math, arguments))
+	  },
+
+	  max: function(){
+	    return new Date(Math.max.apply(Math, arguments))
+	  },
+	  
+	  inRange: function(day, min, max, unit){
+	    unit = unit || 'day'
+
+	    return (!min || dates.gte(day, min, unit))
+	        && (!max || dates.lte(day, max, unit))
+	  },
+
+	  milliseconds:   createAccessor('Milliseconds'),
+	  seconds:        createAccessor('Seconds'),
+	  minutes:        createAccessor('Minutes'),
+	  hours:          createAccessor('Hours'),
+	  day:            createAccessor('Day'),
+	  date:           createAccessor('Date'),
+	  month:          createAccessor('Month'),
+	  year:           createAccessor('FullYear'),
+
+	  decade: function (date, val) {
+	    return val === undefined 
+	      ? dates.year(dates.startOf(date, DECADE))
+	      : dates.add(date, val + 10, YEAR);
+	  },
+
+	  century: function (date, val) {
+	    return val === undefined 
+	      ? dates.year(dates.startOf(date, CENTURY))
+	      : dates.add(date, val + 100, YEAR);
+	  },
+
+	  weekday: function (date, val, firstDay) {
+	      var weekday = (dates.day(date) + 7 - (firstDay || 0) ) % 7;
+
+	      return val === undefined 
+	        ? weekday 
+	        : dates.add(date, val - weekday, DAY);
+	  }
+	}
+
+
+	function monthMath(date, val){
+	  var current = dates.month(date)
+	    , newMonth  = (current + val);
+
+	    date = dates.month(date, newMonth)
+
+	    if (newMonth < 0 ) newMonth = 12 + val
+	      
+	    //month rollover
+	    if ( dates.month(date) !== ( newMonth % 12))
+	      date = dates.date(date, 0) //move to last of month
+
+	    return date
+	}
+
+	function createAccessor(method){
+	  return function(date, val){
+	    if (val === undefined)
+	      return date['get' + method]()
+
+	    date = new Date(date)
+	    date['set' + method](val)
+	    return date
+	  }
+	}
+
+	function createComparer(operator) {
+	  return function (a, b, unit) {
+	    return operator(+dates.startOf(a, unit), +dates.startOf(b, unit))
+	  };
+	}
+
+
+/***/ },
+/* 520 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    invariant = __webpack_require__(55),
+	    activeElement = __webpack_require__(217),
+	    cx = __webpack_require__(237),
+	    compat = __webpack_require__(475),
+	    _ = __webpack_require__(474) //pick, omit, has
+
+	,
+	    dates = __webpack_require__(513),
+	    views = __webpack_require__(514).calendarViews,
+	    popups = __webpack_require__(514).datePopups,
+	    Popup = __webpack_require__(477),
+	    Calendar = __webpack_require__(505).BaseCalendar,
+	    Time = __webpack_require__(522),
+	    DateInput = __webpack_require__(521),
+	    Btn = __webpack_require__(515),
+	    CustomPropTypes = __webpack_require__(476),
+	    createUncontrolledWidget = __webpack_require__(489);
+
+	var viewEnum = Object.keys(views).map(function (k) {
+	  return views[k];
+	});
+
+	var propTypes = babelHelpers._extends({}, compat.type(Calendar).propTypes, {
+
+	  //-- controlled props -----------
+	  value: React.PropTypes.instanceOf(Date),
+	  onChange: React.PropTypes.func,
+	  open: React.PropTypes.oneOf([false, popups.TIME, popups.CALENDAR]),
+	  onToggle: React.PropTypes.func,
+	  //------------------------------------
+
+	  onSelect: React.PropTypes.func,
+
+	  min: React.PropTypes.instanceOf(Date),
+	  max: React.PropTypes.instanceOf(Date),
+
+	  culture: React.PropTypes.string,
+
+	  format: CustomPropTypes.localeFormat,
+	  editFormat: CustomPropTypes.localeFormat,
+
+	  calendar: React.PropTypes.bool,
+	  time: React.PropTypes.bool,
+
+	  timeComponent: CustomPropTypes.elementType,
+
+	  //popup
+	  dropUp: React.PropTypes.bool,
+	  duration: React.PropTypes.number,
+
+	  placeholder: React.PropTypes.string,
+	  name: React.PropTypes.string,
+
+	  initialView: React.PropTypes.oneOf(viewEnum),
+	  finalView: React.PropTypes.oneOf(viewEnum),
+
+	  disabled: React.PropTypes.oneOfType([React.PropTypes.bool, React.PropTypes.oneOf(["disabled"])]),
+
+	  readOnly: React.PropTypes.oneOfType([React.PropTypes.bool, React.PropTypes.oneOf(["readOnly"])]),
+
+	  parse: React.PropTypes.oneOfType([React.PropTypes.arrayOf(React.PropTypes.string), React.PropTypes.string, React.PropTypes.func]),
+
+	  messages: React.PropTypes.shape({
+	    calendarButton: React.PropTypes.string,
+	    timeButton: React.PropTypes.string })
+	});
+
+	var DateTimePicker = React.createClass({
+
+	  displayName: "DateTimePicker",
+
+	  mixins: [__webpack_require__(481), __webpack_require__(482), __webpack_require__(483), __webpack_require__(486), __webpack_require__(487)],
+
+	  propTypes: propTypes,
+
+	  getInitialState: function () {
+	    return {
+	      focused: false };
+	  },
+
+	  getDefaultProps: function () {
+
+	    return {
+	      value: null,
+
+	      min: new Date(1900, 0, 1),
+	      max: new Date(2099, 11, 31),
+	      calendar: true,
+	      time: true,
+	      open: false,
+
+	      //calendar override
+	      footer: true,
+
+	      messages: {
+	        calendarButton: "Select Date",
+	        timeButton: "Select Time" }
+	    };
+	  },
+
+	  render: function () {
+	    var _this = this;
+
+	    var _$omit = _.omit(this.props, Object.keys(propTypes));
+
+	    var className = _$omit.className;
+	    var props = babelHelpers.objectWithoutProperties(_$omit, ["className"]);
+	    var calProps = _.pick(this.props, Object.keys(compat.type(Calendar).propTypes));
+
+	    var timeListID = this._id("_time_listbox");
+	    var timeOptID = this._id("_time_option");
+	    var dateListID = this._id("_cal");
+	    var dropUp = this.props.dropUp;
+	    var renderPopup = _.isFirstFocusedRender(this) || this.props.open;
+	    var value = dateOrNull(this.props.value);
+	    var owns;
+
+	    if (dateListID && this.props.calendar) owns = dateListID;
+	    if (timeListID && this.props.time) owns += " " + timeListID;
+
+	    return React.createElement(
+	      "div",
+	      babelHelpers._extends({}, props, {
+	        ref: "element",
+	        tabIndex: "-1",
+	        onKeyDown: this._maybeHandle(this._keyDown),
+	        onFocus: this._maybeHandle(this._focus.bind(null, true), true),
+	        onBlur: this._focus.bind(null, false),
+	        className: cx(className, "rw-datetimepicker", "rw-widget", (function () {
+	          var _cx = {};
+	          _cx["rw-state-focus"] = _this.state.focused;
+	          _cx["rw-state-disabled"] = _this.isDisabled();
+	          _cx["rw-state-readonly"] = _this.isReadOnly();
+	          _cx["rw-has-both"] = _this.props.calendar && _this.props.time;
+	          _cx["rw-has-neither"] = !_this.props.calendar && !_this.props.time;
+	          _cx["rw-rtl"] = _this.isRtl();
+	          _cx["rw-open" + (dropUp ? "-up" : "")] = _this.props.open;
+	          return _cx;
+	        })()) }),
+	      React.createElement(DateInput, { ref: "valueInput",
+	        "aria-labelledby": this.props["aria-labelledby"],
+	        "aria-activedescendant": this.props.open ? this.props.open === popups.CALENDAR ? this._id("_cal_view_selected_item") : timeOptID : undefined,
+	        "aria-expanded": !!this.props.open,
+	        "aria-busy": !!this.props.busy,
+	        "aria-owns": owns,
+	        "aria-haspopup": true,
+	        placeholder: this.props.placeholder,
+	        name: this.props.name,
+	        disabled: this.isDisabled(),
+	        readOnly: this.isReadOnly(),
+	        role: this.props.time ? "combobox" : null,
+	        value: value,
+
+	        format: getFormat(this.props),
+	        editFormat: this.props.editFormat,
+
+	        editing: this.state.focused,
+	        culture: this.props.culture,
+	        parse: this._parse,
+	        onChange: this._change }),
+	      (this.props.calendar || this.props.time) && React.createElement(
+	        "span",
+	        { className: "rw-select" },
+	        this.props.calendar && React.createElement(
+	          Btn,
+	          { tabIndex: "-1",
+	            className: "rw-btn-calendar",
+	            disabled: this.isDisabled() || this.isReadOnly(),
+	            "aria-disabled": this.isDisabled() || this.isReadOnly(),
+	            onClick: this._maybeHandle(this._click.bind(null, popups.CALENDAR)) },
+	          React.createElement(
+	            "i",
+	            { className: "rw-i rw-i-calendar" },
+	            React.createElement(
+	              "span",
+	              { className: "rw-sr" },
+	              this.props.messages.calendarButton
+	            )
+	          )
+	        ),
+	        this.props.time && React.createElement(
+	          Btn,
+	          { tabIndex: "-1",
+	            className: "rw-btn-time",
+	            disabled: this.isDisabled() || this.isReadOnly(),
+	            "aria-disabled": this.isDisabled() || this.isReadOnly(),
+	            onClick: this._maybeHandle(this._click.bind(null, popups.TIME)) },
+	          React.createElement(
+	            "i",
+	            { className: "rw-i rw-i-clock-o" },
+	            React.createElement(
+	              "span",
+	              { className: "rw-sr" },
+	              this.props.messages.timeButton
+	            )
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        Popup,
+	        {
+	          dropUp: dropUp,
+	          open: this.props.open === popups.TIME,
+	          onRequestClose: this.close,
+	          duration: this.props.duration,
+	          onOpening: function () {
+	            return _this.refs.timePopup.forceUpdate();
+	          } },
+	        React.createElement(
+	          "div",
+	          null,
+	          renderPopup && React.createElement(Time, { ref: "timePopup",
+	            id: timeListID,
+	            optID: timeOptID,
+	            "aria-hidden": !this.props.open,
+	            value: value,
+	            step: this.props.step,
+	            min: this.props.min,
+	            max: this.props.max,
+	            culture: this.props.culture,
+	            onMove: this._scrollTo,
+	            preserveDate: !!this.props.calendar,
+	            itemComponent: this.props.timeComponent,
+	            onSelect: this._maybeHandle(this._selectTime) })
+	        )
+	      ),
+	      React.createElement(
+	        Popup,
+	        {
+	          className: "rw-calendar-popup",
+	          dropUp: dropUp,
+	          open: this.props.open === popups.CALENDAR,
+	          duration: this.props.duration,
+	          onRequestClose: this.close },
+	        renderPopup && React.createElement(Calendar, babelHelpers._extends({}, calProps, {
+	          ref: "calPopup",
+	          tabIndex: "-1",
+	          id: dateListID,
+	          value: value,
+	          "aria-hidden": !this.props.open,
+	          onChange: this._maybeHandle(this._selectDate) }))
+	      )
+	    );
+	  },
+
+	  _change: function (date, str, constrain) {
+	    var change = this.props.onChange;
+
+	    if (constrain) date = this.inRangeValue(date);
+
+	    if (change) {
+	      if (date == null || this.props.value == null) {
+	        if (date != this.props.value) change(date, str);
+	      } else if (!dates.eq(date, this.props.value)) change(date, str);
+	    }
+	  },
+
+	  _keyDown: function (e) {
+
+	    if (e.key === "Tab") return;
+
+	    if (e.key === "Escape" && this.props.open) this.close();else if (e.altKey) {
+	      e.preventDefault();
+
+	      if (e.key === "ArrowDown") this.open(this.props.open === popups.CALENDAR ? popups.TIME : popups.CALENDAR);else if (e.key === "ArrowUp") this.close();
+	    } else if (this.props.open) {
+	      if (this.props.open === popups.CALENDAR) this.refs.calPopup._keyDown(e);
+	      if (this.props.open === popups.TIME) this.refs.timePopup._keyDown(e);
+	    }
+
+	    this.notify("onKeyDown", [e]);
+	  },
+
+	  //timeout prevents transitions from breaking focus
+	  _focus: function (focused, e) {
+	    var _this = this;
+
+	    this.setTimeout("focus", function () {
+	      var calendarOpen = _this.props.open === popups.CALENDAR;
+
+	      // #75: need to aggressively reclaim focus from the calendar otherwise
+	      // disabled header/footer buttons will drop focus completely from the widget
+	      if (focused) calendarOpen && _this.refs.valueInput.focus();else _this.close();
+
+	      if (focused !== _this.state.focused) {
+	        _this.notify(focused ? "onFocus" : "onBlur", e);
+	        _this.setState({ focused: focused });
+	      }
+	    });
+	  },
+
+	  focus: function () {
+	    if (activeElement() !== compat.findDOMNode(this.refs.valueInput)) this.refs.valueInput.focus();
+	  },
+
+	  _selectDate: function (date) {
+	    var format = getFormat(this.props),
+	        dateTime = dates.merge(date, this.props.value),
+	        dateStr = formatDate(date, format, this.props.culture);
+
+	    this.close();
+	    this.notify("onSelect", [dateTime, dateStr]);
+	    this._change(dateTime, dateStr, true);
+	    this.focus();
+	  },
+
+	  _selectTime: function (datum) {
+	    var format = getFormat(this.props),
+	        dateTime = dates.merge(this.props.value, datum.date),
+	        dateStr = formatDate(datum.date, format, this.props.culture);
+
+	    this.close();
+	    this.notify("onSelect", [dateTime, dateStr]);
+	    this._change(dateTime, dateStr, true);
+	    this.focus();
+	  },
+
+	  _click: function (view, e) {
+	    this.focus();
+	    this.toggle(view, e);
+	  },
+
+	  _parse: function (string) {
+	    var format = getFormat(this.props, true),
+	        editFormat = this.props.editFormat,
+	        parse = this.props.parse,
+	        formats = [];
+
+	    if (typeof parse === "function") return parse(string, this.props.culture);
+
+	    if (typeof format === "string") formats.push(format);
+
+	    if (typeof editFormat === "string") formats.push(editFormat);
+
+	    if (parse) formats = formats.concat(this.props.parse);
+
+	    invariant(formats.length, "React Widgets: there are no specified `parse` formats provided and the `format` prop is a function. " + "the DateTimePicker is unable to parse `%s` into a dateTime, " + "please provide either a parse function or Globalize.js compatible string for `format`", string);
+
+	    return formatsParser(formats, this.props.culture, string);
+	  },
+
+	  toggle: function (view, e) {
+
+	    this.props.open ? this.state.view !== view ? this.open(view) : this.close(view) : this.open(view);
+	  },
+
+	  open: function (view) {
+	    if (this.props.open !== view && this.props[view] === true) this.notify("onToggle", view);
+	  },
+
+	  close: function () {
+	    if (this.props.open) this.notify("onToggle", false);
+	  },
+
+	  inRangeValue: function (value) {
+	    if (value == null) return value;
+
+	    return dates.max(dates.min(value, this.props.max), this.props.min);
+	  } });
+
+	module.exports = createUncontrolledWidget(DateTimePicker, { open: "onToggle", value: "onChange" });
+
+	module.exports.BaseDateTimePicker = DateTimePicker;
+
+	function getFormat(props) {
+	  var cal = props[popups.CALENDAR] != null ? props.calendar : true,
+	      time = props[popups.TIME] != null ? props.time : true;
+
+	  return props.format ? props.format : cal && time || !cal && !time ? "f" : cal ? "d" : "t";
+	}
+
+	function formatDate(date, format, culture) {
+	  var val = "";
+
+	  if (date instanceof Date && !isNaN(date.getTime())) val = dates.format(date, format, culture);
+
+	  return val;
+	}
+
+	function formatsParser(formats, culture, str) {
+	  var date;
+
+	  for (var i = 0; i < formats.length; i++) {
+	    date = dates.parse(str, formats[i], culture);
+	    if (date) return date;
+	  }
+	  return null;
+	}
+
+	function dateOrNull(dt) {
+	  if (dt && !isNaN(dt.getTime())) return dt;
+	  return null;
+	}
+
+/***/ },
+/* 521 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    cx = __webpack_require__(237),
+	    dates = __webpack_require__(513),
+	    compat = __webpack_require__(475),
+	    CustomPropTypes = __webpack_require__(476);
+
+	module.exports = React.createClass({
+
+	  displayName: "DatePickerInput",
+
+	  propTypes: {
+	    format: CustomPropTypes.localeFormat,
+	    parse: React.PropTypes.func.isRequired,
+
+	    value: React.PropTypes.instanceOf(Date),
+	    onChange: React.PropTypes.func.isRequired,
+	    culture: React.PropTypes.string },
+
+	  getDefaultProps: function () {
+	    return {
+	      textValue: ""
+	    };
+	  },
+
+	  componentWillReceiveProps: function (nextProps) {
+	    var text = formatDate(nextProps.value, nextProps.editing && nextProps.editFormat ? nextProps.editFormat : nextProps.format, nextProps.culture);
+
+	    this.startValue = text;
+
+	    this.setState({
+	      textValue: text
+	    });
+	  },
+
+	  getInitialState: function () {
+	    var text = formatDate(this.props.value, this.props.editing && this.props.editFormat ? this.props.editFormat : this.props.format, this.props.culture);
+
+	    this.startValue = text;
+
+	    return {
+	      textValue: text
+	    };
+	  },
+
+	  render: function () {
+	    var value = this.state.textValue;
+
+	    return React.createElement("input", babelHelpers._extends({}, this.props, {
+	      type: "text",
+	      className: cx({ "rw-input": true }),
+	      value: value,
+	      "aria-disabled": this.props.disabled,
+	      "aria-readonly": this.props.readOnly,
+	      disabled: this.props.disabled,
+	      readOnly: this.props.readOnly,
+	      onChange: this._change,
+	      onBlur: chain(this.props.blur, this._blur, this) }));
+	  },
+
+	  _change: function (e) {
+	    this.setState({ textValue: e.target.value });
+	    this._needsFlush = true;
+	  },
+
+	  _blur: function (e) {
+	    var val = e.target.value;
+
+	    if (this._needsFlush) {
+	      this._needsFlush = false;
+	      this.props.onChange(this.props.parse(val), val);
+	    }
+	  },
+
+	  focus: function () {
+	    compat.findDOMNode(this).focus();
+	  }
+
+	});
+
+	function isValid(d) {
+	  return !isNaN(d.getTime());
+	}
+
+	function formatDate(date, format, culture) {
+	  var val = "";
+
+	  if (date instanceof Date && isValid(date)) val = dates.format(date, format, culture);
+
+	  return val;
+	}
+
+	function chain(a, b, thisArg) {
+	  return function () {
+	    a && a.apply(thisArg, arguments);
+	    b && b.apply(thisArg, arguments);
+	  };
+	}
+
+/***/ },
+/* 522 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var babelHelpers = __webpack_require__(473);
+	var React = __webpack_require__(6),
+	    dates = __webpack_require__(513),
+	    List = __webpack_require__(478),
+	    compat = __webpack_require__(475),
+	    CustomPropTypes = __webpack_require__(476),
+	    _ = __webpack_require__(474); // omit
+
+	module.exports = React.createClass({
+
+	  displayName: "TimeList",
+
+	  propTypes: {
+	    value: React.PropTypes.instanceOf(Date),
+	    min: React.PropTypes.instanceOf(Date),
+	    max: React.PropTypes.instanceOf(Date),
+	    step: React.PropTypes.number,
+	    itemComponent: CustomPropTypes.elementType,
+	    onSelect: React.PropTypes.func,
+	    preserveDate: React.PropTypes.bool,
+	    culture: React.PropTypes.string },
+
+	  mixins: [__webpack_require__(482)],
+
+	  getDefaultProps: function () {
+	    return {
+	      step: 30,
+	      format: "t",
+	      onSelect: function () {},
+	      min: new Date(1900, 0, 1),
+	      max: new Date(2099, 11, 31),
+	      preserveDate: true,
+	      delay: 300
+	    };
+	  },
+
+	  getInitialState: function () {
+	    var data = this._dates(this.props),
+	        focusedItem = this._closestDate(data, this.props.value);
+
+	    return {
+	      focusedItem: focusedItem || data[0],
+	      dates: data
+	    };
+	  },
+
+	  componentWillReceiveProps: function (nextProps) {
+	    var data = this._dates(nextProps),
+	        focusedItem = this._closestDate(data, nextProps.value),
+	        valChanged = !dates.eq(nextProps.value, this.props.value, "minutes"),
+	        minChanged = !dates.eq(nextProps.min, this.props.min, "minutes"),
+	        maxChanged = !dates.eq(nextProps.max, this.props.max, "minutes");
+
+	    if (valChanged || minChanged || maxChanged) {
+	      this.setState({
+	        focusedItem: focusedItem || data[0],
+	        dates: data
+	      });
+	    }
+	  },
+
+	  render: function () {
+	    var times = this.state.dates,
+	        date = this._closestDate(times, this.props.value);
+
+	    return React.createElement(List, babelHelpers._extends({}, _.pick(this.props, Object.keys(compat.type(List).propTypes)), {
+	      ref: "list",
+	      data: times,
+	      textField: "label",
+	      valueField: "date",
+	      selected: date,
+	      focused: this.state.focusedItem,
+	      itemComponent: this.props.itemComponent,
+	      onSelect: this.props.onSelect }));
+	  },
+
+	  _closestDate: function (times, date) {
+	    var roundTo = 1000 * 60 * this.props.step,
+	        inst = null,
+	        label;
+
+	    if (!date) return null;
+
+	    date = new Date(Math.floor(date.getTime() / roundTo) * roundTo);
+	    label = dates.format(date, this.props.format, this.props.culture);
+
+	    times.some(function (time) {
+	      if (time.label === label) return inst = time;
+	    });
+
+	    return inst;
+	  },
+
+	  _data: function () {
+	    return this.state.dates;
+	  },
+
+	  _dates: function (props) {
+	    var times = [],
+	        i = 0,
+	        values = this._dateValues(props),
+	        start = values.min,
+	        startDay = dates.date(start);
+
+	    while (i < 100 && (dates.date(start) === startDay && dates.lte(start, values.max))) {
+	      i++;
+	      times.push({ date: start, label: dates.format(start, props.format, props.culture) });
+	      start = dates.add(start, props.step || 30, "minutes");
+	    }
+	    return times;
+	  },
+
+	  _dateValues: function (props) {
+	    var value = props.value || dates.today(),
+	        useDate = props.preserveDate,
+	        min = props.min,
+	        max = props.max,
+	        start,
+	        end;
+
+	    //compare just the time regradless of whether they fall on the same day
+	    if (!useDate) {
+	      start = dates.startOf(dates.merge(new Date(), min), "minutes");
+	      end = dates.startOf(dates.merge(new Date(), max), "minutes");
+
+	      if (dates.lte(end, start) && dates.gt(max, min, "day")) end = dates.tomorrow();
+
+	      return {
+	        min: start,
+	        max: end
+	      };
+	    }
+
+	    start = dates.today();
+	    end = dates.tomorrow();
+	    //date parts are equal
+	    return {
+	      min: dates.eq(value, min, "day") ? dates.merge(start, min) : start,
+	      max: dates.eq(value, max, "day") ? dates.merge(start, max) : end
+	    };
+	  },
+
+	  _keyDown: function (e) {
+	    var _this = this;
+
+	    var key = e.key,
+	        character = String.fromCharCode(e.keyCode),
+	        focusedItem = this.state.focusedItem,
+	        list = this.refs.list;
+
+	    if (key === "End") this.setState({ focusedItem: list.last() });else if (key === "Home") this.setState({ focusedItem: list.first() });else if (key === "Enter") this.props.onSelect(focusedItem);else if (key === "ArrowDown") {
+	      e.preventDefault();
+	      this.setState({ focusedItem: list.next(focusedItem) });
+	    } else if (key === "ArrowUp") {
+	      e.preventDefault();
+	      this.setState({ focusedItem: list.prev(focusedItem) });
+	    } else {
+	      e.preventDefault();
+
+	      this.search(character, function (item) {
+	        _this.setState({ focusedItem: item });
+	      });
+	    }
+	  },
+
+	  scrollTo: function () {
+	    this.refs.list.move && this.refs.list.move();
+	  },
+
+	  search: function (character, cb) {
+	    var _this = this;
+
+	    var word = ((this._searchTerm || "") + character).toLowerCase();
+
+	    this._searchTerm = word;
+
+	    this.setTimeout("search", function () {
+	      var list = _this.refs.list,
+	          item = list.next(_this.state.focusedItem, word);
+
+	      _this._searchTerm = "";
+	      if (item) cb(item);
+	    }, this.props.delay);
+	  } });
 
 /***/ }
 /******/ ]);

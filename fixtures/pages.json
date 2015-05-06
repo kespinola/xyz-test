@@ -1,0 +1,22 @@
+[
+  {
+    "title":"About",
+    "path":"/about"
+  },
+  {
+    "title":"Rates",
+    "path":"/rates"
+  },
+  {
+    "title":"Requirements",
+    "path":"/requirements"
+  },
+  {
+    "title":"FAQ",
+    "path":"/faq"
+  },
+  {
+    "title":"Apply",
+    "path":"/apply"
+  }
+]
