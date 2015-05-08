@@ -15,16 +15,16 @@ module.exports = React.createClass({
         <Jumbotron>
           <Grid>
             <Row>
-              <Col xs={12} sm={6}>
-                <h1>Lorem <strong>ipsum</strong> dolor sit amet, consectetur</h1>
-              </Col>
-              <Col xs={12} sm={6}>
+              <Col className="pull-right" xs={12} sm={6}>
                 <Well><JoinForm/></Well>
+              </Col>
+              <Col  className="pull-left" xs={12} sm={6}>
+                <h1>Lorem <strong>ipsum</strong> dolor sit amet, consectetur</h1>
               </Col>
             </Row>
           </Grid>
         </Jumbotron>
-        <Grid>
+        <Grid className="content">
           <Row>
             <Block
               header="Consectetur, Adipiscing Elit"

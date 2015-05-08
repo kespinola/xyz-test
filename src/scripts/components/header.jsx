@@ -26,10 +26,17 @@ module.exports = React.createClass({
   render: function(){
     return (
       <header>
-        <Navbar brand={<Link to="home"><img src="images/logo.png" className="img-responsive"/></Link>} toggleNavKey={0}>
+        <Navbar brand={<Link to="home"><img src="images/logo.png" /></Link>} toggleNavKey={0}>
           <CollapsableNav  eventKey={0}>
+            <Nav navbar center className="nav-links">
+              <NavItem eventKey={1} href='/about'>About</NavItem>
+              <NavItem eventKey={2} href='/rates'>Rates</NavItem>
+              <NavItem eventKey={3} href='/requirements'>Requirements</NavItem>
+              <NavItem eventKey={4} href='/faq'>FAQ</NavItem>
+              <NavItem eventKey={5} href='/apply'>Apply</NavItem>
+            </Nav>
             <Nav navbar right>
-              <SiteSearch />
+              <SiteSearch className="hidden-xs" />
             </Nav>
           </CollapsableNav>
         </Navbar>

@@ -58,6 +58,7 @@
     "react-keybinding": "^1.2.0",
     "react-router": "^0.13.3",
     "react-widgets": "^2.4.1",
-    "superagent": "^1.2.0"
+    "superagent": "^1.2.0",
+    "validator": "^3.39.0"
   }
 }

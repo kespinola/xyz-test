@@ -16,7 +16,7 @@ module.exports = React.createClass({
 
   render: function(){
     return (
-      <footer>
+      <footer id="app-footer">
         <Grid>
           <Row>
             <Col xs={12} sm={4}>
@@ -24,7 +24,7 @@ module.exports = React.createClass({
               <span className="clearfix">{this.state.currentYear + ". All Rights Reserved."}</span>
             </Col>
             <Col xs={12} sm={8}>
-              <ul className="inline-list">
+              <ul>
                 <li><a href="#">Privacy Policy</a></li>
                 <li><a href="#">Contact Us</a></li>
                 <li><a href="#">Terms of Use</a></li>
